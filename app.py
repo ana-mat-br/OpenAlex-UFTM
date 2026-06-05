@@ -84,6 +84,9 @@ sel_tipos = st.sidebar.multiselect("Tipo de produção", tipos, default=tipos)
 
 so_oa = st.sidebar.checkbox("Apenas acesso aberto", value=False)
 
+st.sidebar.divider()
+st.sidebar.caption("Desenvolvido por **DAAD · PROPPG · UFTM**")
+
 # filtros aplicados
 m_raw = raw["year"].between(*faixa) & raw["type"].isin(sel_tipos)
 m_sdg = sdg["year"].between(*faixa) & sdg["type"].isin(sel_tipos)
@@ -165,6 +168,15 @@ with tab_explorar:
 
 # ------------------------------------------------------------------- rodapé
 st.divider()
+st.markdown(
+    """
+    <div style="text-align:center; color:#166534; font-weight:600;
+                padding:.6rem 0 .2rem; letter-spacing:.3px;">
+      DAAD · PROPPG · UFTM
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 st.caption(
     f"**Fonte:** OpenAlex (ROR UFTM `01av3m334`). "
     f"**Atenção metodológica:** a marcação de ODS é uma *estimativa automática* do classificador "
