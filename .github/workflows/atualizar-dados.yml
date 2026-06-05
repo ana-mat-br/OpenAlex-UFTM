@@ -31,6 +31,7 @@ jobs:
         run: |
           python fetch_uftm_ods.py
           python fetch_observatorio.py
+          python fetch_scimago.py
 
       - name: Commit e push se houver mudanças
         run: |

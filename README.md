@@ -11,8 +11,8 @@ colaboração/internacionalização, ODS e impacto social. Tema escuro "Verde Sa
 
 Visão Geral · **Excelência** (FWCI e percentis mundiais) · Benchmarking · **Impacto
 Social** (ODS, financiamento, APC) · **Ciência Aberta** (status OA, repositório verde,
-APC, selo DOAJ) · Colaboração · ODS · Temas · Pesquisadores · Periódicos · Explorar —
-navegação por menu lateral (`streamlit-option-menu`).
+APC, selo DOAJ) · Colaboração · ODS · Temas · Pesquisadores · Periódicos · **Qualidade**
+(quartis Scimago Q1–Q4) · Explorar — navegação por menu lateral (`streamlit-option-menu`).
 
 ## Rodar no seu computador
 
@@ -26,8 +26,9 @@ acessar, o Streamlit também mostra um endereço "Network URL".
 ## Atualizar os dados
 
 ```bash
-.venv/bin/python fetch_uftm_ods.py      # produção + ODS (data/*.parquet)
+.venv/bin/python fetch_uftm_ods.py      # produção + ODS + FWCI/percentis/OA/DOAJ (data/*.parquet)
 .venv/bin/python fetch_observatorio.py  # benchmarking, colaboração, pesquisadores, temas (data/*.csv)
+.venv/bin/python fetch_scimago.py       # quartis Scimago Q1–Q4 por ISSN (data/scimago_quartis.csv)
 ```
 
 O `fetch_observatorio.py` compara a UFTM com as 11 universidades federais de MG

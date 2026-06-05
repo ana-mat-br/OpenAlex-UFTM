@@ -79,7 +79,8 @@ def load(sig):
 @st.cache_data
 def load_obs(sig):
     nomes = ["bench_instituicoes", "bench_por_ano", "colab_instituicoes",
-             "colab_paises", "temas_campo", "temas_topicos", "top_autores"]
+             "colab_paises", "temas_campo", "temas_topicos", "top_autores",
+             "scimago_quartis"]
     return {n: (pd.read_csv(DATA / f"{n}.csv") if (DATA / f"{n}.csv").exists() else None)
             for n in nomes}
 
@@ -159,9 +160,10 @@ with st.sidebar:
     pagina = option_menu(
         None,
         ["Visão Geral", "Excelência", "Benchmarking", "Impacto Social", "Ciência Aberta",
-         "Colaboração", "ODS", "Temas", "Pesquisadores", "Periódicos", "Explorar"],
+         "Colaboração", "ODS", "Temas", "Pesquisadores", "Periódicos", "Qualidade", "Explorar"],
         icons=["speedometer2", "award", "bar-chart-line", "globe-americas", "unlock",
-               "diagram-3", "bullseye", "tags", "person-badge", "journal-text", "search"],
+               "diagram-3", "bullseye", "tags", "person-badge", "journal-text",
+               "patch-check", "search"],
         default_index=0,
         styles={
             "container": {"padding": "0", "background-color": T["surface"]},
@@ -535,6 +537,62 @@ def render_periodicos():
     st.plotly_chart(barra_h(top, "Periódico", "n", h=540), width="stretch")
 
 
+def render_qualidade():
+    cabecalho("Qualidade de Periódicos", "Quartis Scimago (SJR) das produções em periódico")
+    sq = obs.get("scimago_quartis")
+    if sq is None or "issn_l" not in fraw.columns:
+        st.info("Rode `python fetch_scimago.py` para baixar os quartis Scimago.")
+        return
+    f = fraw[fraw["issn_l"].notna()].copy()
+    f["issn"] = f["issn_l"].str.replace("-", "", regex=False).str.upper()
+    m = f.merge(sq[["issn", "quartile", "sjr"]], on="issn", how="left")
+    cq = m[m["quartile"].isin(["Q1", "Q2", "Q3", "Q4"])]
+    cobertura = len(cq) / max(len(m), 1)
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Em Q1", f"{(cq['quartile'] == 'Q1').mean():.0%}" if len(cq) else "—",
+              help="Entre as produções com quartil Scimago conhecido.")
+    c2.metric("Em Q1 ou Q2", f"{cq['quartile'].isin(['Q1', 'Q2']).mean():.0%}" if len(cq) else "—")
+    c3.metric("SJR médio", br(cq["sjr"].mean(), 2) if len(cq) else "—")
+    c4.metric("Cobertura Scimago", f"{cobertura:.0%}",
+              help="% das produções em periódico com quartil no Scimago. O restante são "
+                   "periódicos fora do Scopus/Scimago (ex.: muitos periódicos nacionais).")
+    style_metric_cards(background_color=T["surface"], border_left_color=T["primary"],
+                       border_color=T["border"], box_shadow=False)
+
+    qcor = {"Q1": T["primary"], "Q2": T["secondary"], "Q3": T["accent"], "Q4": "#d97706"}
+    c1, c2 = st.columns(2)
+    with c1:
+        st.subheader("Distribuição por quartil")
+        dist = (cq["quartile"].value_counts().reindex(["Q4", "Q3", "Q2", "Q1"])
+                .fillna(0).reset_index())
+        dist.columns = ["quartile", "n"]
+        fig = go.Figure(go.Bar(
+            x=dist["n"], y=dist["quartile"], orientation="h",
+            marker_color=[qcor[q] for q in dist["quartile"]], text=dist["n"],
+            texttemplate="%{text:,.0f}", textposition="outside",
+            textfont=dict(color=T["text"], size=12), cliponaxis=False,
+            hovertemplate="%{y}: %{x:,.0f}<extra></extra>"))
+        st.plotly_chart(fig_layout(fig, 320), width="stretch")
+    with c2:
+        st.subheader("% em Q1 ao longo do tempo")
+        yr = (cq.assign(is_q1=cq["quartile"] == "Q1").groupby("year")["is_q1"]
+              .mean().reset_index())
+        fig = go.Figure(go.Scatter(x=yr["year"], y=yr["is_q1"], mode="lines+markers",
+                                   line=dict(color=T["primary"], width=3),
+                                   hovertemplate="%{x}: %{y:.0%}<extra></extra>"))
+        fig = fig_layout(fig, 320)
+        fig.update_yaxes(tickformat=".0%")
+        st.plotly_chart(fig, width="stretch")
+
+    st.subheader("Principais periódicos Q1")
+    q1j = cq[cq["quartile"] == "Q1"]["source"].value_counts().head(15).reset_index()
+    q1j.columns = ["Periódico", "n"]
+    if len(q1j):
+        st.plotly_chart(barra_h(q1j, "Periódico", "n", h=460), width="stretch")
+    st.caption("Quartil pelo melhor ranking Scimago (SJR Best Quartile, edição 2025), cruzado "
+               "por ISSN. Periódicos fora do Scopus/Scimago não recebem quartil.")
+
+
 def render_explorar():
     cabecalho("Explorar", "Busca nas produções")
     termo = st.text_input("Filtrar por palavra no título")
@@ -556,7 +614,7 @@ PAGINAS = {
     "Ciência Aberta": render_ciencia_aberta,
     "Colaboração": render_colaboracao, "ODS": render_ods, "Temas": render_temas,
     "Pesquisadores": render_pesquisadores, "Periódicos": render_periodicos,
-    "Explorar": render_explorar,
+    "Qualidade": render_qualidade, "Explorar": render_explorar,
 }
 _forcar = os.environ.get("OBS_FORCE_PAGE")  # seam de teste (sem efeito em produção)
 PAGINAS.get(_forcar or pagina or "Visão Geral", render_visao_geral)()
