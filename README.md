@@ -10,8 +10,9 @@ colaboração/internacionalização, ODS e impacto social. Tema escuro "Verde Sa
 ## Páginas
 
 Visão Geral · **Excelência** (FWCI e percentis mundiais) · Benchmarking · **Impacto
-Social** (ODS, financiamento, APC) · Colaboração · ODS · Temas · Pesquisadores ·
-Periódicos · Explorar — navegação por menu lateral (`streamlit-option-menu`).
+Social** (ODS, financiamento, APC) · **Ciência Aberta** (status OA, repositório verde,
+APC, selo DOAJ) · Colaboração · ODS · Temas · Pesquisadores · Periódicos · Explorar —
+navegação por menu lateral (`streamlit-option-menu`).
 
 ## Rodar no seu computador
 

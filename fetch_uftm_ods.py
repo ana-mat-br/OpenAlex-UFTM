@@ -62,6 +62,7 @@ def fetch_works() -> pd.DataFrame:
                 "in_repository": oa.get("any_repository_has_fulltext"),
                 "source": primary.get("display_name"),
                 "issn_l": primary.get("issn_l"),
+                "in_doaj": primary.get("is_in_doaj"),
                 "fwci": work.get("fwci"),
                 "pct": cnp.get("value"),
                 "top1": cnp.get("is_in_top_1_percent"),

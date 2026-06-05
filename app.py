@@ -158,9 +158,9 @@ with st.sidebar:
 
     pagina = option_menu(
         None,
-        ["Visão Geral", "Excelência", "Benchmarking", "Impacto Social",
+        ["Visão Geral", "Excelência", "Benchmarking", "Impacto Social", "Ciência Aberta",
          "Colaboração", "ODS", "Temas", "Pesquisadores", "Periódicos", "Explorar"],
-        icons=["speedometer2", "award", "bar-chart-line", "globe-americas",
+        icons=["speedometer2", "award", "bar-chart-line", "globe-americas", "unlock",
                "diagram-3", "bullseye", "tags", "person-badge", "journal-text", "search"],
         default_index=0,
         styles={
@@ -329,6 +329,74 @@ def render_impacto_social():
         "equivalente em dados abertos.")
 
 
+def render_ciencia_aberta():
+    cabecalho("Ciência Aberta", "Acesso aberto, repositório verde, custos de publicação e DOAJ")
+    if "oa_status" not in fraw.columns:
+        st.info("Re-colete os dados (fetch_uftm_ods.py) para habilitar esta aba.")
+        return
+    oa_pt = {"diamond": "Diamante (grátis autor e leitor)", "gold": "Ouro (com APC)",
+             "green": "Verde (repositório)", "hybrid": "Híbrido", "bronze": "Bronze",
+             "closed": "Fechado"}
+    oa_cor = {"diamond": T["primary"], "gold": T["accent"], "green": "#4ade80",
+              "hybrid": T["secondary"], "bronze": "#d97706", "closed": T["muted"]}
+
+    oa = fraw["is_oa"].mean() if len(fraw) else 0
+    diam = (fraw["oa_status"] == "diamond").mean() if len(fraw) else 0
+    verde = fraw["in_repository"].mean() if "in_repository" in fraw.columns else None
+    oa_works = fraw[fraw["is_oa"] == True]  # noqa: E712
+    doaj = oa_works["in_doaj"].mean() if "in_doaj" in fraw.columns and len(oa_works) else None
+    apc = fraw["apc_usd"].dropna()
+    c1, c2, c3, c4, c5 = st.columns(5)
+    c1.metric("Acesso aberto", f"{oa:.0%}")
+    c2.metric("Diamante (sem custo)", f"{diam:.0%}", help="Grátis para autor e leitor.")
+    c3.metric("Via verde (repositório)", f"{verde:.0%}" if verde is not None else "—")
+    c4.metric("Em periódico DOAJ", f"{doaj:.0%}" if doaj is not None else "—",
+              help="Entre as produções OA, % em periódicos com selo DOAJ (qualidade).")
+    c5.metric("APC total (US$)", br(apc.sum()) if len(apc) else "—")
+    style_metric_cards(background_color=T["surface"], border_left_color=T["primary"],
+                       border_color=T["border"], box_shadow=False)
+
+    c1, c2 = st.columns(2)
+    with c1:
+        st.subheader("Composição do acesso aberto")
+        comp = fraw["oa_status"].value_counts().reset_index()
+        comp.columns = ["status", "n"]
+        comp = comp.sort_values("n", ascending=True)
+        fig = go.Figure(go.Bar(
+            x=comp["n"], y=comp["status"].map(oa_pt), orientation="h",
+            marker_color=[oa_cor.get(s, T["muted"]) for s in comp["status"]],
+            text=comp["n"], texttemplate="%{text:,.0f}", textposition="outside",
+            textfont=dict(color=T["text"], size=11), cliponaxis=False,
+            hovertemplate="%{y}: %{x:,.0f}<extra></extra>"))
+        st.plotly_chart(fig_layout(fig, 360), width="stretch")
+    with c2:
+        st.subheader("Acesso aberto ao longo do tempo")
+        ev = fraw.groupby("year")["is_oa"].mean().reset_index()
+        fig = go.Figure(go.Scatter(x=ev["year"], y=ev["is_oa"], mode="lines+markers",
+                                   line=dict(color=T["primary"], width=3),
+                                   hovertemplate="%{x}: %{y:.0%}<extra></extra>"))
+        fig = fig_layout(fig, 360)
+        fig.update_yaxes(tickformat=".0%")
+        st.plotly_chart(fig, width="stretch")
+
+    st.subheader("Custos de publicação (APC)")
+    pagos = fraw[fraw["apc_usd"] > 0]
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Produções com APC", br(len(pagos)),
+              f"{len(pagos)/max(len(fraw),1):.0%} do total")
+    c2.metric("APC médio (US$)", br(pagos["apc_usd"].mean()) if len(pagos) else "—")
+    c3.metric("Sem custo para o autor", f"{1 - len(pagos)/max(len(fraw),1):.0%}",
+              help="Diamante, verde, bronze e fechado não cobram APC do autor.")
+    style_metric_cards(background_color=T["surface"], border_left_color=T["accent"],
+                       border_color=T["border"], box_shadow=False)
+    apc_ano = fraw.groupby("year")["apc_usd"].sum().reset_index()
+    fig = go.Figure(go.Bar(x=apc_ano["year"], y=apc_ano["apc_usd"], marker_color=T["accent"],
+                           hovertemplate="%{x}: US$ %{y:,.0f}<extra></extra>"))
+    st.plotly_chart(fig_layout(fig, 300), width="stretch")
+    st.caption("APC = Article Processing Charge reportado ao OpenAlex — estimativa do gasto com "
+               "publicação em acesso aberto pago (não inclui acordos transformativos/descontos).")
+
+
 def render_benchmarking():
     cabecalho("Benchmarking", "UFTM e as 11 universidades federais de Minas Gerais")
     bi = obs.get("bench_instituicoes")
@@ -485,6 +553,7 @@ def render_explorar():
 PAGINAS = {
     "Visão Geral": render_visao_geral, "Excelência": render_excelencia,
     "Benchmarking": render_benchmarking, "Impacto Social": render_impacto_social,
+    "Ciência Aberta": render_ciencia_aberta,
     "Colaboração": render_colaboracao, "ODS": render_ods, "Temas": render_temas,
     "Pesquisadores": render_pesquisadores, "Periódicos": render_periodicos,
     "Explorar": render_explorar,
