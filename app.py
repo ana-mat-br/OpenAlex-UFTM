@@ -356,8 +356,8 @@ def render_excelencia():
     if "fwci" not in fraw.columns:
         st.info("Re-colete os dados (fetch_uftm_ods.py) para habilitar FWCI e percentis.")
         return
-    excluir = st.checkbox("Não contar os 2 anos mais recentes (pesquisas novas ainda estão "
-                          "recebendo citações)", value=True)
+    excluir = st.checkbox("Excluir os 2 anos mais recentes (a janela de citações deles ainda "
+                          "está incompleta)", value=False)
     base = fraw[fraw["year"] <= faixa[1] - 2] if excluir else fraw
     fw = base["fwci"].dropna()
     c1, c2, c3, c4 = st.columns(4)
