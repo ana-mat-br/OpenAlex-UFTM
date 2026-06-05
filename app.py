@@ -223,19 +223,18 @@ with st.sidebar:
              "patch-check", "search", "info-circle"]
     _override = st.session_state.pop("ir_para", None)  # navegação por link (ex.: rodapé)
     # key dependente do conteúdo+estilo: força o re-render quando ordem/ícones/visual mudam
-    _menu_sig = hashlib.md5(("|".join(NAV) + "|".join(ICONS) + "estilo-v2").encode()).hexdigest()[:8]
+    _menu_sig = hashlib.md5(("|".join(NAV) + "|".join(ICONS) + "estilo-v3").encode()).hexdigest()[:8]
     pagina = option_menu(
         None, NAV, icons=ICONS, default_index=0, key=f"navmenu-{_menu_sig}",
         manual_select=(NAV.index(_override) if _override in NAV else None),
         styles={
-            "container": {"padding": "0.3rem 0", "background-color": T["surface"]},
-            "icon": {"color": T["primary"], "font-size": "14px"},
+            "container": {"padding": "0.2rem 0", "background-color": T["surface"]},
+            "icon": {"color": T["muted"], "font-size": "13px"},
             "nav-link": {"color": T["text_soft"], "font-size": "14px", "font-weight": "500",
-                         "border-radius": "6px", "margin": "1px 4px",
-                         "--hover-color": "#F2F2F0"},
-            "nav-link-selected": {"background-color": "#F2F2F0", "color": T["text"],
-                                  "font-weight": "600", "border-left": f"2px solid {T['primary']}",
-                                  "border-radius": "6px"},
+                         "border-radius": "0", "margin": "0", "padding": "6px 6px",
+                         "--hover-color": "#F4F4F2"},
+            "nav-link-selected": {"background-color": "transparent", "color": T["primary"],
+                                  "font-weight": "700"},
         })
 
     st.divider()
