@@ -811,27 +811,64 @@ def render_transparencia():
         st.markdown(f"**{termo}** — {definicao}")
 
     st.divider()
-    st.subheader("De onde vêm os dados (metodologia)")
+    st.subheader("Metodologia — como o painel é feito")
     st.markdown(
-        "- **Fonte:** [OpenAlex](https://openalex.org), uma base científica mundial, aberta e "
-        "gratuita. A UFTM é identificada pelo código institucional ROR `01av3m334`.\n"
-        "- **Atualização:** automática, **todo mês**, sem intervenção manual.\n"
-        "- **O que entra:** todas as produções com pelo menos um autor vinculado à UFTM "
-        "indexadas no OpenAlex.\n"
-        "- **Comparação:** com as **11 universidades federais de Minas Gerais**.\n"
-        "- **Qualidade das revistas:** quartis do **Scimago (SJR)**, base pública e gratuita.\n"
-        "- **Patentes:** dados do **The Lens** (ativados quando há credencial de acesso).\n")
-    st.subheader("Limites e cuidados (honestidade dos dados)")
+        f"**Em resumo:** o painel reúne **{br(len(raw))} produções** da UFTM registradas no "
+        f"OpenAlex (anos {ymin}–{ymax}), compara com **11 universidades federais de Minas "
+        f"Gerais** e é atualizado automaticamente todo mês. Todo o código é aberto.")
+
+    st.markdown("**1. Fonte principal — OpenAlex**")
     st.markdown(
-        "- A associação aos **ODS** é uma **estimativa por inteligência artificial** do OpenAlex, "
-        "não uma classificação declarada pelos autores — leia como aproximação.\n"
-        "- O **FWCI** dos 2 anos mais recentes ainda é provisório (as pesquisas novas seguem "
+        "- Os dados vêm do [OpenAlex](https://openalex.org), base científica mundial, aberta e "
+        "gratuita, que cataloga publicações, autores, instituições e citações.\n"
+        "- A produção da UFTM é identificada pelo seu código institucional único "
+        "(**ROR `01av3m334`**): entram todos os trabalhos com pelo menos um autor vinculado à "
+        "universidade.")
+
+    st.markdown("**2. Fontes complementares**")
+    st.markdown(
+        "- **Scimago (SJR):** ranking mundial e gratuito de revistas — define os quartis (Q1–Q4) "
+        "da aba *Qualidade das revistas*, ligado pelo código (ISSN) de cada revista.\n"
+        "- **The Lens:** base aberta que liga pesquisas a patentes — alimenta as patentes da aba "
+        "*Impacto Social* (quando há credencial de acesso).")
+
+    st.markdown("**3. Como cada indicador é calculado**")
+    st.markdown(
+        "- **Produções:** número de trabalhos no período.\n"
+        "- **Citações:** soma das vezes que esses trabalhos foram citados por outros.\n"
+        "- **Impacto científico (FWCI):** média do índice que o OpenAlex calcula por trabalho, "
+        "comparando as citações com a média mundial da mesma área e ano (1,0 = média do mundo).\n"
+        "- **Top 10% / Top 1%:** % de trabalhos que o OpenAlex marca entre os mais citados do "
+        "mundo na sua área.\n"
+        "- **Acesso aberto:** classificação de acesso do OpenAlex (diamante, verde, ouro, "
+        "bronze, híbrido, fechado).\n"
+        "- **Comparação entre universidades:** dados institucionais do OpenAlex para as 11 "
+        "federais de MG.\n"
+        "- **Qualidade das revistas:** quartil Scimago de cada revista, ligado pelo ISSN.\n"
+        "- **Colaboração:** a partir dos países e instituições dos coautores de cada trabalho.\n"
+        "- **Rede de coautoria:** construída com a biblioteca aberta *networkx* (quem publica "
+        "com quem), destacando grupos e os pesquisadores que mais conectam.\n"
+        "- **ODS:** classificação automática por inteligência artificial do OpenAlex (modelo "
+        "Aurora), contada quando a confiança é de pelo menos 0,4 (escala de 0 a 1).\n"
+        "- **Patentes:** trabalhos da UFTM citados por patentes no mundo, segundo o The Lens.")
+
+    st.markdown("**4. Atualização e reprodutibilidade**")
+    st.markdown(
+        "- A coleta roda **automaticamente todo mês**, sem intervenção manual; o período "
+        "aparece no topo de cada página e pode ser ajustado na barra lateral.\n"
+        "- Todo o código que coleta e monta o painel é **aberto e auditável** em "
+        "[github.com/ana-mat-br/painel-daad](https://github.com/ana-mat-br/painel-daad).")
+
+    st.markdown("**5. Limites e cuidados (honestidade dos dados)**")
+    st.markdown(
+        "- A associação aos **ODS** é uma **estimativa por inteligência artificial**, não uma "
+        "classificação declarada pelos autores — leia como aproximação.\n"
+        "- O **FWCI** dos 2 anos mais recentes ainda é provisório (pesquisas novas seguem "
         "recebendo citações).\n"
-        "- A cobertura depende do que está indexado no OpenAlex; **periódicos não indexados** "
-        "(muitos nacionais) podem não receber quartil ou impacto.\n"
+        "- A cobertura depende do que está indexado no OpenAlex; **revistas não indexadas** "
+        "(muitas nacionais) podem não receber quartil ou impacto.\n"
         "- Indicadores de impacto **não são comparáveis entre bases diferentes** — o OpenAlex e "
-        "as bases científicas pagas contam de formas distintas.\n")
-    st.caption("Código aberto e auditável em github.com/ana-mat-br/painel-daad.")
+        "as bases científicas pagas contam de formas distintas.")
 
 
 PAGINAS = {
