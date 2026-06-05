@@ -5,7 +5,8 @@ DAAD/PROPPG), com dados do **OpenAlex** (ROR `01av3m334`). Construído em **Stre
 
 Reproduz, com fontes abertas, análises no estilo SciVal/Stela Experta: indicadores
 **normalizados** (FWCI, percentis top 1%/10%), benchmarking com as 11 federais de MG,
-colaboração/internacionalização, ODS e impacto social. Tema escuro "Verde Sage".
+colaboração/internacionalização, ODS e impacto social. Visual claro e minimalista
+(verde UFTM #00983A, Inter + Palatino).
 
 ## Páginas
 

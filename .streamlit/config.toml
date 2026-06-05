@@ -1,8 +1,8 @@
-# Observatório DAAD — paleta "Verde Sage Sofisticado" (dark)
+# Observatório DAAD — tema claro minimalista (verde UFTM #00983A de destaque)
 [theme]
-base = "dark"
-primaryColor = "#2DD4A7"
-backgroundColor = "#10211C"
-secondaryBackgroundColor = "#16302A"
-textColor = "#EAF2EF"
+base = "light"
+primaryColor = "#00983A"
+backgroundColor = "#FAFBFC"
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#2B2B2B"
 font = "sans serif"

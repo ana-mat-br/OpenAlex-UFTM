@@ -18,11 +18,24 @@ from streamlit_option_menu import option_menu
 DATA = Path(__file__).parent / "data"
 SCORE_CUTOFF = 0.4
 
-# paleta "Verde Sage Sofisticado" (dark)
+# paleta UFTM — clara e minimalista (verde #00983A de destaque)
 T = {
-    "primary": "#2DD4A7", "secondary": "#38BDF8", "accent": "#F2B441",
-    "bg": "#10211C", "surface": "#16302A", "border": "#234A40",
-    "text": "#EAF2EF", "muted": "#8FA89F", "alert": "#F87171",
+    "primary": "#00983A",       # uftmgreen — destaques, links, títulos
+    "primary_deep": "#007A2E",  # uftmgreendeep
+    "primary_dark": "#005C22",  # uftmgreendark
+    "green_mid": "#A6DBB7",     # uftmgreenmid — barras secundárias
+    "green_tint": "#E6F4EA",    # uftmgreentint — fundos de destaque
+    "secondary": "#E87722",     # uftmaccent — laranja de acento (2ª série)
+    "accent": "#E87722",
+    "bg": "#FAFBFC",            # bgslate — fundo das páginas
+    "surface": "#FFFFFF",       # cards
+    "border": "#EAEAEA",        # rulelight
+    "border_med": "#DCDCDC",    # rulemed
+    "text": "#2B2B2B",          # inkdark
+    "text_soft": "#5C5C5C",     # inksoft
+    "muted": "#8A8A8A",         # inkmute
+    "faint": "#B5B5B5",         # inkfaint
+    "alert": "#E87722",
 }
 
 ODS_PT = {
@@ -38,24 +51,33 @@ ODS_PT = {
 st.set_page_config(page_title="Observatório DAAD/UFTM", layout="wide",
                    initial_sidebar_state="expanded")
 
+SERIF = "'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif"
 st.markdown(f"""
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-  html, body, [class*="css"] {{ font-family: 'Inter', sans-serif; }}
+  html, body, [class*="css"], p, div, span, label {{ font-family: 'Inter', sans-serif; }}
+  h1, h2, h3, h4, .obs-header h1 {{ font-family: {SERIF}; color: {T['text']};
+    font-weight: 600; letter-spacing: .2px; }}
   .stApp {{ background: {T['bg']}; }}
+  .block-container {{ padding-top: 2.2rem; max-width: 1280px; }}
   [data-testid="stSidebar"] {{ background: {T['surface']}; border-right: 1px solid {T['border']}; }}
   .obs-header {{
-    background: linear-gradient(120deg, {T['surface']} 0%, #1d5f4e 60%, {T['primary']} 135%);
-    padding: 1.3rem 1.7rem; border-radius: 16px; margin-bottom: 1.1rem;
-    border: 1px solid {T['border']};
+    background: {T['surface']}; border: 1px solid {T['border']};
+    border-left: 4px solid {T['primary']}; padding: 1.1rem 1.4rem;
+    border-radius: 14px; margin-bottom: 1.3rem;
   }}
-  .obs-header h1 {{ color: #fff; font-size: 1.5rem; margin: 0; font-weight: 700; }}
-  .obs-header p {{ color: #d6f5ec; margin: .25rem 0 0; font-size: .9rem; }}
-  h1, h2, h3, h4 {{ color: {T['text']}; }}
-  [data-testid="stMetricValue"] {{ color: {T['primary']}; font-weight: 700; }}
-  [data-testid="stMetricLabel"] {{ color: {T['muted']}; }}
-  .stTabs [aria-selected="true"] {{ color: {T['primary']} !important; }}
-  div[data-baseweb="select"] > div, .stTextInput input {{ background: {T['surface']}; }}
+  .obs-header h1 {{ color: {T['text']}; font-size: 1.5rem; margin: 0; }}
+  .obs-header p {{ color: {T['muted']}; margin: .3rem 0 0; font-size: .9rem;
+    font-family: 'Inter', sans-serif; }}
+  [data-testid="stMetric"] {{ background: {T['surface']}; border: 1px solid {T['border']};
+    border-radius: 12px; padding: 1rem 1.1rem; }}
+  [data-testid="stMetricValue"] {{ color: {T['primary']}; font-weight: 700;
+    font-family: 'Inter', sans-serif; }}
+  [data-testid="stMetricLabel"] {{ color: {T['muted']}; font-weight: 500; }}
+  a, .stMarkdown a {{ color: {T['primary']}; }}
+  hr {{ border-color: {T['border']}; }}
+  div[data-baseweb="select"] > div, .stTextInput input {{
+    background: {T['surface']}; border-color: {T['border']}; }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -113,7 +135,7 @@ def barra_h(df, cat, val, h=420, fmt=",.0f", destaque=None, cor=None):
     """Barras horizontais em ordem decrescente (maior no topo) com rótulos."""
     d = df[[cat, val]].copy().sort_values(val, ascending=True)
     if destaque:
-        cores = [T["primary"] if str(c) == destaque else T["muted"] for c in d[cat]]
+        cores = [T["primary"] if str(c) == destaque else T["green_mid"] for c in d[cat]]
     else:
         cores = cor or T["primary"]
     fig = go.Figure(go.Bar(
@@ -133,17 +155,17 @@ def linhas_tempo(df, x, y, series, destaque=None, h=360, ytitle=""):
         fig.add_trace(go.Scatter(
             x=g[x], y=g[y], mode="lines" + ("+markers" if is_d else ""),
             name=str(nome),
-            line=dict(color=T["primary"] if is_d else T["muted"],
+            line=dict(color=T["primary"] if is_d else T["faint"],
                       width=3 if is_d else 1.3),
-            opacity=1 if is_d else 0.55,
+            opacity=1 if is_d else 0.7,
             hovertemplate=str(nome) + " %{x}: %{y:,.0f}<extra></extra>"))
     fig = fig_layout(fig, h)
     fig.update_layout(yaxis_title=ytitle)
     return fig
 
 
-PALETA_COM = ["#2DD4A7", "#38BDF8", "#F2B441", "#c084fc", "#fb7185", "#a3e635",
-              "#22d3ee", "#f97316", "#e879f9", "#4ade80"]
+PALETA_COM = ["#00983A", "#E87722", "#2563EB", "#7C3AED", "#DB2777", "#0891B2",
+              "#65A30D", "#CA8A04", "#DC2626", "#475569"]
 
 
 def grafo_coautoria(nos, arestas, h=560):
@@ -189,7 +211,8 @@ def aplica_filtros(faixa, tipos, so_oa):
 
 # ----------------------------------------------------------------- sidebar
 with st.sidebar:
-    st.markdown(f"<h3 style='color:{T['primary']};margin-bottom:0'>Observatório DAAD</h3>"
+    st.markdown(f"<h3 style='color:{T['primary']};margin-bottom:0;font-family:{SERIF}'>"
+                f"Observatório DAAD</h3>"
                 f"<p style='color:{T['muted']};font-size:.8rem;margin-top:.2rem'>"
                 f"Diretoria de Avaliação e Análise de Dados · PROPPG/UFTM</p>",
                 unsafe_allow_html=True)
@@ -203,10 +226,12 @@ with st.sidebar:
                "patch-check", "search"],
         default_index=0,
         styles={
-            "container": {"padding": "0", "background-color": T["surface"]},
-            "icon": {"color": T["primary"], "font-size": "15px"},
-            "nav-link": {"color": T["text"], "font-size": "14px", "--hover-color": "#1d4a3f"},
-            "nav-link-selected": {"background-color": T["primary"], "color": "#0d211c",
+            "container": {"padding": "0.3rem 0", "background-color": T["surface"]},
+            "icon": {"color": T["primary"], "font-size": "14px"},
+            "nav-link": {"color": T["text_soft"], "font-size": "14px", "font-weight": "500",
+                         "border-radius": "8px", "margin": "1px 4px",
+                         "--hover-color": T["green_tint"]},
+            "nav-link-selected": {"background-color": T["green_tint"], "color": T["primary"],
                                   "font-weight": "600"},
         })
 
@@ -394,8 +419,8 @@ def render_ciencia_aberta():
     oa_pt = {"diamond": "Diamante (grátis autor e leitor)", "gold": "Ouro (com APC)",
              "green": "Verde (repositório)", "hybrid": "Híbrido", "bronze": "Bronze",
              "closed": "Fechado"}
-    oa_cor = {"diamond": T["primary"], "gold": T["accent"], "green": "#4ade80",
-              "hybrid": T["secondary"], "bronze": "#d97706", "closed": T["muted"]}
+    oa_cor = {"diamond": T["primary"], "gold": T["accent"], "green": T["green_mid"],
+              "hybrid": "#2563EB", "bronze": "#B5733A", "closed": T["faint"]}
 
     oa = fraw["is_oa"].mean() if len(fraw) else 0
     diam = (fraw["oa_status"] == "diamond").mean() if len(fraw) else 0
@@ -563,7 +588,7 @@ def render_ods():
     if len(sub):
         ev = sub.groupby(["year", "ODS"])["work_id"].nunique().reset_index(name="n")
         fig = go.Figure()
-        cores = [T["primary"], T["secondary"], T["accent"], "#c084fc", "#f87171", "#a3e635"]
+        cores = [T["primary"], T["accent"], "#2563EB", "#7C3AED", "#DB2777", "#0891B2"]
         for i, (nome, gg) in enumerate(ev.groupby("ODS")):
             fig.add_trace(go.Scatter(x=gg["year"], y=gg["n"], mode="lines+markers",
                                      name=nome, line=dict(color=cores[i % len(cores)], width=2.5)))
@@ -629,7 +654,7 @@ def render_qualidade():
     style_metric_cards(background_color=T["surface"], border_left_color=T["primary"],
                        border_color=T["border"], box_shadow=False)
 
-    qcor = {"Q1": T["primary"], "Q2": T["secondary"], "Q3": T["accent"], "Q4": "#d97706"}
+    qcor = {"Q1": T["primary"], "Q2": "#2563EB", "Q3": T["accent"], "Q4": T["faint"]}
     c1, c2 = st.columns(2)
     with c1:
         st.subheader("Distribuição por quartil")
