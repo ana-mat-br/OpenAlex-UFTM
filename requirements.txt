@@ -3,3 +3,6 @@ pandas>=2.0
 matplotlib>=3.7
 pyarrow>=14
 streamlit>=1.35
+streamlit-option-menu>=0.3.13
+streamlit-extras>=0.4
+plotly>=5.20

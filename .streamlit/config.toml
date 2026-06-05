@@ -1,7 +1,8 @@
+# Observatório DAAD — paleta "Verde Sage Sofisticado" (dark)
 [theme]
-base = "light"
-primaryColor = "#15803d"
-backgroundColor = "#ffffff"
-secondaryBackgroundColor = "#e9f7ef"
-textColor = "#14342b"
+base = "dark"
+primaryColor = "#2DD4A7"
+backgroundColor = "#10211C"
+secondaryBackgroundColor = "#16302A"
+textColor = "#EAF2EF"
 font = "sans serif"

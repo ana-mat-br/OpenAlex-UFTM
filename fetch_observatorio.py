@@ -26,21 +26,39 @@ INSTS = {
 }
 
 
+def _share_true(ror: str, campo: str) -> float:
+    """Proporção de works de uma instituição com flag booleana True (via group_by barato)."""
+    g = {str(x["key_display_name"]).lower(): x["count"]
+         for x in Works().filter(institutions={"ror": ror}).group_by(campo).get()}
+    return g.get("true", 0) / max(sum(g.values()), 1)
+
+
+def _intl_share(ror: str) -> float:
+    """Proporção de works com colaboração internacional (>= 2 países distintos)."""
+    g = Works().filter(institutions={"ror": ror}).group_by("countries_distinct_count").get()
+    total = sum(x["count"] for x in g)
+    intl = sum(x["count"] for x in g if str(x["key"]).isdigit() and int(x["key"]) >= 2)
+    return intl / max(total, 1)
+
+
 def benchmarking() -> None:
     linhas, series = [], []
     for sigla, ror in INSTS.items():
         inst = Institutions()[f"https://ror.org/{ror}"]
         ss = inst.get("summary_stats", {})
-        # OA share via group_by (1 chamada)
-        oa = {str(g["key_display_name"]).lower(): g["count"]
-              for g in Works().filter(institutions={"ror": ror}).group_by("open_access.is_oa").get()}
-        oa_share = oa.get("true", 0) / max(sum(oa.values()), 1)
+        oa_share = _share_true(ror, "open_access.is_oa")
+        top10 = _share_true(ror, "citation_normalized_percentile.is_in_top_10_percent")
+        top1 = _share_true(ror, "citation_normalized_percentile.is_in_top_1_percent")
+        intl = _intl_share(ror)  # colaboração internacional (>= 2 países)
         linhas.append({
             "sigla": sigla, "instituicao": inst["display_name"], "ror": ror,
             "works": inst["works_count"], "citacoes": inst["cited_by_count"],
             "h_index": ss.get("h_index"), "i10": ss.get("i10_index"),
             "mean_citedness": round(ss.get("2yr_mean_citedness", 0), 3),
             "oa_share": round(oa_share, 4),
+            "top10_share": round(top10, 4),
+            "top1_share": round(top1, 4),
+            "intl_share": round(intl, 4),
             "cit_por_trabalho": round(inst["cited_by_count"] / max(inst["works_count"], 1), 2),
         })
         for c in inst.get("counts_by_year", []):

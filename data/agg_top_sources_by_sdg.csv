@@ -97,6 +97,7 @@ sdg_id,source,n
 10,Revista da SPAGESP,4
 10,SSRN Electronic Journal,4
 10,Cadernos CIMEAC,3
+10,Ciência & Saúde Coletiva,3
 10,DOAJ (DOAJ: Directory of Open Access Journals),3
 10,International Journal of Environmental Research and Public Health,3
 10,Jornal Brasileiro de Psiquiatria,3
@@ -105,7 +106,6 @@ sdg_id,source,n
 10,Revista de Terapia Ocupacional da Universidade de São Paulo,3
 10,Acta Paulista de Enfermagem,2
 10,Arquivos de Neuro-Psiquiatria,2
-10,Ciência & Saúde Coletiva,2
 10,Clinical and Vaccine Immunology,2
 10,Colloquium Vitae,2
 10,Contribuciones a las Ciencias Sociales,2
@@ -134,6 +134,7 @@ sdg_id,source,n
 10,Revista Triângulo,2
 10,Revista de Enfermagem e Atenção à Saúde,2
 10,Topics in Stroke Rehabilitation,2
+10,bioRxiv (Cold Spring Harbor Laboratory),2
 10,Acta Biologica Brasiliensia.,1
 10,Acta Fisiátrica,1
 10,Acta Ortopédica Brasileira,1
@@ -281,7 +282,6 @@ sdg_id,source,n
 10,Veterinary Research Communications,1
 10,"WEB REVISTA LINGUAGEM, EDUCAÇÃO E MEMÓRIA",1
 10,albuquerque revista de história,1
-10,bioRxiv (Cold Spring Harbor Laboratory),1
 11,Revista Brasileira de Ciência Tecnologia e Inovação,5
 11,Caminhos de Geografia,3
 11,LA Referencia (Red Federada de Repositorios Institucionales de Publicaciones Científicas),3
@@ -480,9 +480,9 @@ sdg_id,source,n
 14,Cretaceous Research,12
 14,Journal of South American Earth Sciences,6
 14,Brazilian Journal of Biology,5
+14,Comparative Biochemistry and Physiology Part B Biochemistry and Molecular Biology,5
 14,Livro de Resumos do X Congresso Brasileiro sobre Crustáceos,5
 14,Zootaxa,5
-14,Comparative Biochemistry and Physiology Part B Biochemistry and Molecular Biology,4
 14,PLoS ONE,4
 14,Revista da Sociedade Brasileira de Medicina Tropical,4
 14,Acta Biologica Brasiliensia.,3
@@ -532,6 +532,7 @@ sdg_id,source,n
 14,Bioorganic & Medicinal Chemistry Letters,1
 14,Brazilian Journal of Chemical Engineering,1
 14,Brazilian Journal of Medical and Biological Research,1
+14,Brazilian Journal of Microbiology,1
 14,Brazilian Journal of Veterinary Pathology,1
 14,British Journal of Obstetrics and Gynaecology,1
 14,Bulletin of Phylogenetic Nomenclature,1
@@ -788,8 +789,8 @@ sdg_id,source,n
 15,bioRxiv (Cold Spring Harbor Laboratory),1
 15,genesis,1
 16,Zenodo (CERN European Organization for Nuclear Research),8
+16,DOAJ (DOAJ: Directory of Open Access Journals),4
 16,Revista Bioética,4
-16,DOAJ (DOAJ: Directory of Open Access Journals),3
 16,Estudos Interdisciplinares em Psicologia,3
 16,Revista Família Ciclos de Vida e Saúde no Contexto Social,3
 16,Revista Latino-Americana de Enfermagem,3
@@ -872,6 +873,7 @@ sdg_id,source,n
 16,Práxis Educacional,1
 16,Psicologia Ciência e Profissão,1
 16,Psicologia em Estudo,1
+16,RECIMA21 - Revista Científica Multidisciplinar - ISSN 2675-6218,1
 16,REUNIR Revista de Administração Contabilidade e Sustentabilidade,1
 16,REVISTA BRASILEIRA DE BIOMETRIA,1
 16,Rehabilitation Psychology,1
@@ -990,10 +992,10 @@ sdg_id,source,n
 2,Revista da Sociedade Brasileira de Medicina Tropical,13
 2,Genetics and Molecular Research,9
 2,Hematology Transfusion and Cell Therapy,9
+2,Journal of Coloproctology,9
 2,Parasitology Research,8
 2,PubMed,8
 2,Blucher Chemical Engineering Proceedings,7
-2,Journal of Coloproctology,7
 2,Brazilian Journal of Development,6
 2,LA Referencia (Red Federada de Repositorios Institucionales de Publicaciones Científicas),6
 2,Nutrition,6
@@ -1136,6 +1138,7 @@ sdg_id,source,n
 2,European Journal of Nutrition,1
 2,F&S Science,1
 2,Food Biophysics,1
+2,Food Bioscience,1
 2,Food and Humanity,1
 2,Foods,1
 2,Frontiers in Cellular and Infection Microbiology,1
@@ -1312,8 +1315,8 @@ sdg_id,source,n
 3,Revista da Associação Médica Brasileira,30
 3,Revista de Enfermagem e Atenção à Saúde,28
 3,PLoS ONE,27
+3,Journal of Coloproctology,26
 3,Research Square,26
-3,Journal of Coloproctology,24
 3,Revista Brasileira de Enfermagem,24
 3,Revista do Instituto de Medicina Tropical de São Paulo,24
 3,Revista Eletrônica de Enfermagem,22
@@ -1373,6 +1376,7 @@ sdg_id,source,n
 3,Revista de Enfermagem UFPE on line,9
 3,Revista de Patologia Tropical / Journal of Tropical Pathology,9
 3,ABCS Health Sciences,8
+3,Acta Biologica Brasiliensia.,8
 3,Acta Cirúrgica Brasileira,8
 3,Frontiers in Immunology,8
 3,Medical Mycology,8
@@ -1381,7 +1385,6 @@ sdg_id,source,n
 3,Revista Neurociências,8
 3,Revista do Colégio Brasileiro de Cirurgiões,8
 3,Tumori Journal,8
-3,Acta Biologica Brasiliensia.,7
 3,Acta Fisiátrica,7
 3,American Journal of Tropical Medicine and Hygiene,7
 3,Brazilian Journal of Medical and Biological Research,7
@@ -1445,6 +1448,7 @@ sdg_id,source,n
 3,European Journal of Obstetrics & Gynecology and Reproductive Biology,4
 3,Experimental Physiology,4
 3,Human Pathology,4
+3,Hygeia - Revista Brasileira de Geografia Médica e da Saúde,4
 3,International Journal of Sports Medicine,4
 3,International journal of exercise science,4
 3,Journal of Clinical Ultrasound,4
@@ -1492,7 +1496,6 @@ sdg_id,source,n
 3,Gene,3
 3,Gynecologic and Obstetric Investigation,3
 3,HU Revista,3
-3,Hygeia - Revista Brasileira de Geografia Médica e da Saúde,3
 3,Hypertension,3
 3,Interação em Psicologia,3
 3,Jornal Brasileiro de Psiquiatria,3
@@ -1775,6 +1778,7 @@ sdg_id,source,n
 3,Brazilian Archives of Biology and Technology,1
 3,Brazilian Journal of Anesthesiology (Edicion en Espanol),1
 3,Brazilian Journal of Microbiology,1
+3,Brazilian Journal of Oncology,1
 3,Brazilian Journal of Science,1
 3,Brazilian Journal of Transplantation,1
 3,Brazilian Journal of Veterinary Pathology,1
@@ -2124,6 +2128,7 @@ sdg_id,source,n
 3,RBPFEX - Revista Brasileira de Prescrição e Fisiologia do Exercício,1
 3,RECISATEC - REVISTA CIENTÍFICA SAÚDE E TECNOLOGIA - ISSN 2763-8405,1
 3,Radiation Protection Dosimetry,1
+3,Radiographics,1
 3,Recital - Revista de Educação Ciência e Tecnologia de Almenara/MG,1
 3,Rehabilitation Research and Practice,1
 3,Relatos de Casos Cirúrgicos do Colégio Brasileiro de Cirurgiões,1
@@ -2160,6 +2165,7 @@ sdg_id,source,n
 3,Revista Nova Paideia - Revista Interdisciplinar em Educação e Pesquisa,1
 3,Revista Paulista de Pediatria (English Edition),1
 3,Revista Paulista de Reumatologia,1
+3,Revista Pesquisa em Fisioterapia,1
 3,Revista Portuguesa de Cardiologia,1
 3,Revista Portuguesa de Cardiologia (English Edition),1
 3,Revista Portuguesa de Enfermagem de Saúde Mental,1
@@ -2958,6 +2964,7 @@ sdg_id,source,n
 5,Physical Therapy in Sport,1
 5,Physiology & Behavior,1
 5,Physiotherapy,1
+5,Práticas Educativas Memórias e Oralidades - Rev Pemo,1
 5,Psico-USF,1
 5,Psicologia Teoria e Pesquisa,1
 5,Psicologia e Saúde em Debate,1
@@ -2990,6 +2997,7 @@ sdg_id,source,n
 5,Revista Opinião Filosófica,1
 5,Revista Periódicus,1
 5,Revista Pesquisa Qualitativa,1
+5,Revista Pesquisa em Fisioterapia,1
 5,Revista Psicologia e Saúde,1
 5,Revista Psicologia em Pesquisa,1
 5,Revista Relegens Thréskeia,1
@@ -3308,6 +3316,7 @@ sdg_id,source,n
 7,Journal of Applied Polymer Science,1
 7,Journal of Biomolecular Structure and Dynamics,1
 7,Journal of Chemical Technology & Biotechnology,1
+7,Journal of Chemistry,1
 7,Journal of Cleaner Production,1
 7,Journal of Cluster Science,1
 7,Journal of Colloid and Interface Science,1

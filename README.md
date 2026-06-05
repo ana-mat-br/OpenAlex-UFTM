@@ -1,7 +1,17 @@
-# Observatório PROPPG/UFTM
+# Observatório DAAD/UFTM
 
-Painel web da produção científica da UFTM, com dados do **OpenAlex** (ROR `01av3m334`).
-Construído em **Streamlit** (Python).
+Painel web da produção científica da UFTM (Diretoria de Avaliação e Análise de Dados —
+DAAD/PROPPG), com dados do **OpenAlex** (ROR `01av3m334`). Construído em **Streamlit**.
+
+Reproduz, com fontes abertas, análises no estilo SciVal/Stela Experta: indicadores
+**normalizados** (FWCI, percentis top 1%/10%), benchmarking com as 11 federais de MG,
+colaboração/internacionalização, ODS e impacto social. Tema escuro "Verde Sage".
+
+## Páginas
+
+Visão Geral · **Excelência** (FWCI e percentis mundiais) · Benchmarking · **Impacto
+Social** (ODS, financiamento, APC) · Colaboração · ODS · Temas · Pesquisadores ·
+Periódicos · Explorar — navegação por menu lateral (`streamlit-option-menu`).
 
 ## Rodar no seu computador
 
@@ -45,6 +55,14 @@ institucional (ex.: `observatorio.uftm.edu.br`).
 
 ## Observação metodológica
 
-A marcação de ODS é uma **estimativa automática** do classificador de IA
-**Aurora/mBERT** do OpenAlex (score ≥ 0,4). É um indicador probabilístico, não uma
-classificação declarada pelos autores — pode divergir de painéis manuais (ex.: Capivara).
+A marcação de ODS é uma **estimativa automática** do classificador **Aurora/mBERT** do
+OpenAlex (score ≥ 0,4) — indicador probabilístico, não declarado pelos autores. **FWCI** e
+**percentis** são normalizados por campo (metodologia equivalente à do Scopus; valores não
+comparáveis entre bases). Para o FWCI, a janela de citação (ano + 3) fica incompleta nos
+2 anos mais recentes — a aba Excelência permite excluí-los.
+
+## APIs gratuitas no roadmap (impacto social e rankings)
+
+Crossref, ROR v2, Scimago (quartis Q1–Q4), DOAJ, Unpaywall, ORCID, OpenCitations,
+BIP! Scholar; e para impacto societal: The Lens (patentes), Overton/Sage Policy
+Profiles (políticas públicas) e Altmetric (atenção online).
