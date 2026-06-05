@@ -226,7 +226,7 @@ with st.sidebar:
         f"<div style='font-family:{SERIF};font-size:2.15rem;font-weight:700;line-height:1;"
         f"margin:.15rem 0 .3rem'><span style='color:{T['text']}'>Painel</span> "
         f"<span style='color:{T['primary']}'>DAAD</span></div>"
-        f"<p style='color:{T['muted']};font-size:.74rem;line-height:1.5;margin:0 0 .4rem;"
+        f"<p style='color:{T['muted']};font-size:.66rem;line-height:1.5;margin:0 0 1.3rem;"
         f"text-transform:uppercase;letter-spacing:.04em'>"
         f"Diretoria de Avaliação e Análise de Dados<br>PROPPG · UFTM</p>",
         unsafe_allow_html=True)
