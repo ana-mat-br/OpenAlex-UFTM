@@ -32,7 +32,18 @@ acessar, o Streamlit também mostra um endereço "Network URL".
 .venv/bin/python fetch_observatorio.py  # benchmarking, colaboração, pesquisadores, temas (data/*.csv)
 .venv/bin/python fetch_scimago.py       # quartis Scimago Q1–Q4 por ISSN (data/scimago_quartis.csv)
 .venv/bin/python fetch_colaboracao.py   # rede de coautoria (data/rede_autores_*.csv)
+LENS_TOKEN=seu_token \
+  .venv/bin/python fetch_lens.py        # patentes que citam a UFTM (opcional; token grátis do The Lens)
 ```
+
+### Ativar patentes (Impacto Social)
+
+A seção de patentes usa o **The Lens** (token acadêmico gratuito):
+1. Crie conta em **lens.org** e solicite acesso à **Scholarly API**.
+2. Guarde o token como segredo **`LENS_TOKEN`** no GitHub (Settings → Secrets and
+   variables → Actions) — o coletor mensal passa a trazer patentes automaticamente.
+3. Ou rode local: `LENS_TOKEN=seu_token python fetch_lens.py` e dê commit do
+   `data/lens_patentes.csv`.
 
 O `fetch_observatorio.py` compara a UFTM com as 11 universidades federais de MG
 (UFMG, UFU, UFV, UFJF, UFSJ, UFOP, UFLA, UFVJM, UNIFAL, UNIFEI) e usa agregações

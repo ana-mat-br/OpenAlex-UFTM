@@ -80,7 +80,8 @@ def load(sig):
 def load_obs(sig):
     nomes = ["bench_instituicoes", "bench_por_ano", "colab_instituicoes",
              "colab_paises", "temas_campo", "temas_topicos", "top_autores",
-             "scimago_quartis", "rede_autores_nos", "rede_autores_arestas"]
+             "scimago_quartis", "rede_autores_nos", "rede_autores_arestas",
+             "lens_patentes"]
     return {n: (pd.read_csv(DATA / f"{n}.csv") if (DATA / f"{n}.csv").exists() else None)
             for n in nomes}
 
@@ -356,15 +357,33 @@ def render_impacto_social():
                 st.info("Sem dados de financiamento na seleção atual.")
 
     st.divider()
-    st.subheader("Em desenvolvimento — impacto fora da academia")
-    st.markdown(
-        "Estes eixos completam o módulo de impacto societal (o que SciVal/Stela cobram). "
-        "Integração incremental com fontes gratuitas:\n"
-        "- **Patentes** que citam a pesquisa — via **The Lens** (Scholar↔Patent)\n"
-        "- **Políticas públicas** que citam a pesquisa — via **Overton / Sage Policy Profiles**\n"
-        "- **Atenção online** (mídia, redes, Wikipedia) — via **Altmetric** (exige chave de pesquisa)\n\n"
-        "Lacuna conhecida e declarada: *Views/Field-Weighted Views* do Scopus não têm "
-        "equivalente em dados abertos.")
+    st.subheader("Impacto em inovação — citações em patentes (The Lens)")
+    lp = obs.get("lens_patentes")
+    if lp is not None and len(lp):
+        m1, m2, m3 = st.columns(3)
+        m1.metric("Produções citadas por patentes", br(len(lp)))
+        m2.metric("Citações em patentes (total)", br(int(lp["n_patentes"].sum())))
+        m3.metric("Citações por patente (média)",
+                  br(lp["n_patentes"].mean(), 1) if len(lp) else "—")
+        style_metric_cards(background_color=T["surface"], border_left_color=T["secondary"],
+                           border_color=T["border"], box_shadow=False)
+        top = lp.sort_values("n_patentes", ascending=False).head(12).copy()
+        top["rotulo"] = top["title"].str.slice(0, 60)
+        st.plotly_chart(barra_h(top, "rotulo", "n_patentes", h=440, cor=T["secondary"]),
+                        width="stretch")
+        st.caption("Patentes (mundiais) que citam produções da UFTM — proxy de impacto em "
+                   "inovação/transferência de tecnologia. Fonte: The Lens (PatCite).")
+    else:
+        st.info(
+            "**Patentes ainda não ativadas.** Esta seção acende com dados reais quando um "
+            "**token gratuito do The Lens** estiver configurado. Passo a passo:\n"
+            "1. Crie conta em **lens.org** e solicite acesso à **Scholarly API** (uso acadêmico, gratuito).\n"
+            "2. Guarde o token como segredo **`LENS_TOKEN`** no GitHub (Settings → Secrets → Actions) "
+            "e/ou rode localmente: `LENS_TOKEN=seu_token python fetch_lens.py`.\n"
+            "3. Na próxima atualização, patentes que citam a pesquisa da UFTM aparecem aqui.")
+    st.caption("Políticas públicas (Overton) e atenção online (Altmetric) exigem assinatura/chave "
+               "paga e ficam como evolução futura. Lacuna declarada: *Views* do Scopus não têm "
+               "equivalente aberto.")
 
 
 def render_ciencia_aberta():
