@@ -228,13 +228,14 @@ def tipo_pt(t):
 def filtro_tipo(df, key, com_oa=False):
     """Filtros locais discretos: tipo de produção (traduzido) e, opcionalmente, acesso aberto."""
     if com_oa:
-        c1, c2 = st.columns([2, 1])
+        c1, c2 = st.columns([2, 1.3], gap="small")
         with c1:
             escolha = st.selectbox("Tipo de produção", ["Todos os tipos"] + TIPOS,
                                    format_func=lambda t: "Todos os tipos" if t == "Todos os tipos"
                                    else tipo_pt(t), key=key)
         with c2:
-            so_oa = st.checkbox("Apenas acesso aberto", key=key + "_oa")
+            st.markdown("<div style='height:1.8rem'></div>", unsafe_allow_html=True)
+            so_oa = st.toggle("Apenas acesso aberto", key=key + "_oa")
     else:
         escolha = st.selectbox("Tipo de produção", ["Todos os tipos"] + TIPOS,
                                format_func=lambda t: "Todos os tipos" if t == "Todos os tipos"
