@@ -207,13 +207,25 @@ with tab_bench:
         escolha = st.selectbox("Métrica", list(metricas.keys()))
         col = metricas[escolha]
 
-        d = bi[["sigla", col]].copy().sort_values(col, ascending=False)
+        # Produções e Citações respeitam o slider (somando bench_por_ano nos anos escolhidos);
+        # as demais métricas são totais acumulados que o OpenAlex entrega prontos.
+        por_periodo = col in ("works", "citacoes")
+        if por_periodo:
+            sl = obs["bench_por_ano"]
+            sl = sl[sl["year"].between(*faixa)]
+            d = sl.groupby("sigla", as_index=False)[col].sum().sort_values(col, ascending=False)
+            nota = f"Recorte do período selecionado: {faixa[0]}–{faixa[1]}."
+        else:
+            d = bi[["sigla", col]].copy().sort_values(col, ascending=False)
+            nota = "Total acumulado (métrica de carreira/instituição — não afetada pelo filtro de período)."
+
         ordem = d["sigla"].tolist()  # maior -> menor
         d["Destaque"] = d["sigla"].where(d["sigla"] == "UFTM", "Outras")
         cores = alt.Scale(domain=["UFTM", "Outras"], range=[VERDE, CINZA])
         fmt = ".0%" if col == "oa_share" else ",.2f" if col == "mean_citedness" else ",.0f"
+        titulo_x = escolha if por_periodo else f"{escolha} (total acumulado)"
         base = alt.Chart(d).encode(
-            x=alt.X(f"{col}:Q", title=escolha, axis=alt.Axis(format=fmt)),
+            x=alt.X(f"{col}:Q", title=titulo_x, axis=alt.Axis(format=fmt)),
             y=alt.Y("sigla:N", sort=ordem, title=None),  # ordem decrescente fixa
         )
         barras = base.mark_bar(cornerRadiusEnd=4).encode(
@@ -224,6 +236,7 @@ with tab_bench:
             text=alt.Text(f"{col}:Q", format=fmt)
         )
         st.altair_chart((barras + rotulos).properties(height=380), use_container_width=True)
+        st.caption(nota)
         if col == "mean_citedness":
             st.caption("Referência: a média mundial de impacto é ≈ 1,0. Abaixo de 1,0 = abaixo da média global.")
         if col == "oa_share":
