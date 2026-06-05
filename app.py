@@ -226,8 +226,8 @@ with st.sidebar:
         f"<div style='font-family:{SERIF};font-size:2.15rem;font-weight:700;line-height:1;"
         f"margin:.15rem 0 .3rem'><span style='color:{T['text']}'>Painel</span> "
         f"<span style='color:{T['primary']}'>DAAD</span></div>"
-        f"<p style='color:{T['muted']};font-size:.66rem;line-height:1.5;margin:0 0 1.3rem;"
-        f"text-transform:uppercase;letter-spacing:.04em'>"
+        f"<p style='color:{T['muted']};font-size:.62rem;line-height:1.6;margin:0 0 1.3rem;"
+        f"letter-spacing:.02em'>"
         f"Diretoria de Avaliação e Análise de Dados<br>PROPPG · UFTM</p>",
         unsafe_allow_html=True)
 
@@ -259,9 +259,6 @@ with st.sidebar:
         })
 
     st.divider()
-    if st.button("Recarregar dados", width="stretch"):
-        st.cache_data.clear()
-        st.rerun()
     st.caption(f"Fonte: OpenAlex · ROR 01av3m334 · dados {ymin}–{ymax}")
 
 fraw, fsdg = aplica_filtros(faixa)
