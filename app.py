@@ -24,7 +24,39 @@ ODS_PT = {
     16: "Paz, Justiça e Instituições Eficazes", 17: "Parcerias e Meios de Implementação",
 }
 
-st.set_page_config(page_title="Observatório PROPPG/UFTM", page_icon="🎯", layout="wide")
+st.set_page_config(page_title="Observatório PROPPG/UFTM", page_icon="🌱", layout="wide")
+
+# paleta verde do observatório
+VERDE = "#15803d"        # primário
+VERDE_CLARO = "#4ade80"  # destaque
+VERDE_ESCURO = "#14532d"
+
+st.markdown(
+    """
+    <style>
+      /* cabeçalho em faixa verde */
+      .obs-header {
+        background: linear-gradient(120deg, #166534 0%, #15803d 55%, #22c55e 100%);
+        padding: 1.4rem 1.8rem; border-radius: 16px; margin-bottom: 1.2rem;
+        color: #ffffff; box-shadow: 0 6px 20px rgba(21,128,61,.18);
+      }
+      .obs-header h1 { color:#fff; font-size:1.7rem; margin:0; font-weight:700; }
+      .obs-header p  { color:#dcfce7; margin:.3rem 0 0; font-size:.95rem; }
+      /* cards de métrica arredondados */
+      [data-testid="stMetric"] {
+        background:#f0fdf4; border:1px solid #bbf7d0; border-radius:14px;
+        padding:1rem 1.1rem; box-shadow:0 2px 6px rgba(20,83,45,.06);
+      }
+      [data-testid="stMetricValue"] { color:#15803d; font-weight:700; }
+      [data-testid="stMetricLabel"] { color:#166534; }
+      /* abas com destaque verde */
+      .stTabs [aria-selected="true"] { color:#15803d !important; }
+      .stTabs [data-baseweb="tab-highlight"] { background-color:#15803d !important; }
+      h2, h3 { color:#14532d; }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 
 @st.cache_data
@@ -61,7 +93,15 @@ if so_oa:
 fraw, fsdg = raw[m_raw], sdg[m_sdg]
 
 # ----------------------------------------------------------------------- abas
-st.title("Observatório da Produção Científica — PROPPG/UFTM")
+st.markdown(
+    """
+    <div class="obs-header">
+      <h1>🌱 Observatório da Produção Científica</h1>
+      <p>PROPPG · Universidade Federal do Triângulo Mineiro — dados do OpenAlex</p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 tab_geral, tab_ods, tab_fontes, tab_explorar = st.tabs(
     ["📊 Visão Geral", "🎯 ODS", "📚 Periódicos", "🔎 Explorar"]
 )
@@ -76,23 +116,23 @@ with tab_geral:
 
     st.subheader("Produção por ano")
     por_ano = fraw.groupby("year").size().rename("Produções")
-    st.bar_chart(por_ano)
+    st.bar_chart(por_ano, color=VERDE)
 
     cc1, cc2 = st.columns(2)
     with cc1:
         st.subheader("Por tipo")
-        st.bar_chart(fraw["type"].value_counts())
+        st.bar_chart(fraw["type"].value_counts(), color=VERDE)
     with cc2:
         st.subheader("Acesso aberto por ano")
         oa_ano = fraw.groupby("year")["is_oa"].mean().rename("% OA")
-        st.line_chart(oa_ano)
+        st.line_chart(oa_ano, color=VERDE)
 
 with tab_ods:
     st.subheader("Distribuição pelos 17 ODS")
     g = fsdg.copy()
     g["ODS"] = g["sdg_id"].map(lambda x: f"{int(x)}. {ODS_PT.get(int(x), '')}" if pd.notna(x) else None)
     por_ods = g.groupby("ODS")["work_id"].nunique().sort_values(ascending=True)
-    st.bar_chart(por_ods, horizontal=True)
+    st.bar_chart(por_ods, color=VERDE, horizontal=True)
 
     st.subheader("Evolução temporal — escolha os ODS")
     nomes = [f"{i}. {ODS_PT[i]}" for i in range(1, 18)]
@@ -108,7 +148,7 @@ with tab_fontes:
     st.subheader("Periódicos onde a UFTM mais publica")
     top = (fraw[fraw["source"].notna()]["source"].value_counts().head(20)
            .rename_axis("Periódico").rename("Produções"))
-    st.bar_chart(top, horizontal=True)
+    st.bar_chart(top, color=VERDE, horizontal=True)
 
 with tab_explorar:
     st.subheader("Buscar produções")
