@@ -223,18 +223,19 @@ def filtro_tipo(df, key):
 # ----------------------------------------------------------------- sidebar
 with st.sidebar:
     st.markdown(
-        f"<div style='font-family:{SERIF};font-size:2rem;font-weight:700;line-height:1.02;"
-        f"margin:.1rem 0 .25rem'><span style='color:{T['text']}'>Painel</span> "
+        f"<div style='font-family:{SERIF};font-size:2.15rem;font-weight:700;line-height:1;"
+        f"margin:.15rem 0 .3rem'><span style='color:{T['text']}'>Painel</span> "
         f"<span style='color:{T['primary']}'>DAAD</span></div>"
-        f"<p style='color:{T['muted']};font-size:.76rem;line-height:1.4;margin:0 0 .2rem'>"
-        f"Diretoria de Avaliação e Análise de Dados · PROPPG/UFTM</p>",
+        f"<p style='color:{T['muted']};font-size:.74rem;line-height:1.5;margin:0 0 .4rem;"
+        f"text-transform:uppercase;letter-spacing:.04em'>"
+        f"Diretoria de Avaliação e Análise de Dados<br>PROPPG · UFTM</p>",
         unsafe_allow_html=True)
 
     anos = raw["year"].dropna()
     ymin, ymax = int(anos.min()), int(anos.max())
-    with st.container(border=True):
-        faixa = st.slider("Período", ymin, ymax, (max(ymin, ymax - 9), ymax))
+    faixa = st.slider("Período", ymin, ymax, (max(ymin, ymax - 9), ymax))
 
+    st.divider()
     NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "Impacto Social",
            "ODS", "Pesquisadores", "Colaboração", "Temas", "Onde publicamos",
            "Qualidade das revistas", "Explorar", "Transparência"]
