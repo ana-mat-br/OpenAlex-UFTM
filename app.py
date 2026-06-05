@@ -7,6 +7,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import altair as alt
 import pandas as pd
 import streamlit as st
 
@@ -175,8 +176,25 @@ with tab_bench:
         }
         escolha = st.selectbox("Métrica", list(metricas.keys()))
         col = metricas[escolha]
-        serie = bi.set_index("sigla")[col].sort_values(ascending=True)
-        st.bar_chart(serie, color=VERDE, horizontal=True)
+
+        d = bi[["sigla", col]].copy()
+        d["Destaque"] = d["sigla"].where(d["sigla"] == "UFTM", "Outras")
+        cores = alt.Scale(domain=["UFTM", "Outras"], range=[VERDE, "#bbf7d0"])
+        fmt = ".0%" if col == "oa_share" else ",.2f" if col == "mean_citedness" else ",.0f"
+        barras = (
+            alt.Chart(d)
+            .mark_bar(cornerRadiusEnd=4)
+            .encode(
+                x=alt.X(f"{col}:Q", title=escolha, axis=alt.Axis(format=fmt)),
+                y=alt.Y("sigla:N", sort="-x", title=None),  # ordem decrescente
+                color=alt.Color("Destaque:N", scale=cores, legend=None),
+                tooltip=["sigla", alt.Tooltip(f"{col}:Q", title=escolha, format=fmt)],
+            )
+        )
+        rotulos = barras.mark_text(align="left", dx=4, color="#14532d", fontSize=11).encode(
+            text=alt.Text(f"{col}:Q", format=fmt)
+        )
+        st.altair_chart((barras + rotulos).properties(height=380), use_container_width=True)
         if col == "mean_citedness":
             st.caption("Referência: a média mundial de impacto é ≈ 1,0. Abaixo de 1,0 = abaixo da média global.")
         if col == "oa_share":
@@ -188,9 +206,19 @@ with tab_bench:
                         horizontal=True)
         ba = obs["bench_por_ano"]
         ba = ba[ba["year"].between(2010, 2025)]
-        piv = ba.pivot_table(index="year", columns="sigla", values=eixo, fill_value=0)
-        st.line_chart(piv)
-        st.caption("Fonte: OpenAlex (Institutions API). Dados completos da instituição, não filtrados pela barra lateral.")
+        base = alt.Chart(ba).encode(
+            x=alt.X("year:O", title=None),
+            y=alt.Y(f"{eixo}:Q", title="Produções" if eixo == "works" else "Citações"),
+        )
+        outras = base.transform_filter(alt.datum.sigla != "UFTM").mark_line(
+            color="#cbd5e1", opacity=0.7).encode(detail="sigla:N",
+            tooltip=["sigla", "year", alt.Tooltip(f"{eixo}:Q")])
+        uftm = base.transform_filter(alt.datum.sigla == "UFTM").mark_line(
+            color=VERDE, strokeWidth=3, point=alt.OverlayMarkDef(color=VERDE)).encode(
+            tooltip=["sigla", "year", alt.Tooltip(f"{eixo}:Q")])
+        st.altair_chart((outras + uftm).properties(height=360), use_container_width=True)
+        st.caption("UFTM em verde; demais federais de MG em cinza. "
+                   "Fonte: OpenAlex (Institutions API), dados completos da instituição.")
 
 with tab_colab:
     st.subheader("Colaboração institucional")
