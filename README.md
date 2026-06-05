@@ -19,8 +19,9 @@ acessar, o Streamlit também mostra um endereço "Network URL".
 .venv/bin/python fetch_observatorio.py  # benchmarking, colaboração, pesquisadores, temas (data/*.csv)
 ```
 
-O `fetch_observatorio.py` compara a UFTM com as federais de MG (UFU, UFMG, UFV,
-UFJF, UFSJ) e usa agregações leves do OpenAlex (não baixa todos os works).
+O `fetch_observatorio.py` compara a UFTM com as 11 universidades federais de MG
+(UFMG, UFU, UFV, UFJF, UFSJ, UFOP, UFLA, UFVJM, UNIFAL, UNIFEI) e usa agregações
+leves do OpenAlex (não baixa todos os works).
 
 O painel lê o cache em `data/`, então é rápido. Rode quando quiser dados frescos.
 

@@ -17,10 +17,12 @@ OUT = Path(__file__).parent / "data"
 OUT.mkdir(exist_ok=True)
 
 UFTM = "01av3m334"
-# Federais de Minas Gerais (referência do benchmarking)
+# As 11 universidades federais de Minas Gerais (referência do benchmarking)
 INSTS = {
-    "UFTM": "01av3m334", "UFU": "04x3wvr31", "UFMG": "0176yjw32",
+    "UFTM": "01av3m334", "UFMG": "0176yjw32", "UFU": "04x3wvr31",
     "UFV": "0409dgb37", "UFJF": "04yqw9c44", "UFSJ": "03vrj4p82",
+    "UFOP": "056s65p46", "UFLA": "0122bmm03", "UFVJM": "02gen2282",
+    "UNIFAL": "034vpja60", "UNIFEI": "00235nr42",
 }
 
 
