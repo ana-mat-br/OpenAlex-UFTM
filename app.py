@@ -117,7 +117,7 @@ st.sidebar.caption("Produção científica da UFTM · dados do OpenAlex")
 
 anos = raw["year"].dropna()
 ymin, ymax = int(anos.min()), int(anos.max())
-faixa = st.sidebar.slider("Período", ymin, ymax, (max(ymin, 2010), ymax))
+faixa = st.sidebar.slider("Período", ymin, ymax, (max(ymin, ymax - 9), ymax))  # padrão: últimos 10 anos
 
 tipos = sorted(raw["type"].dropna().unique())
 sel_tipos = st.sidebar.multiselect("Tipo de produção", tipos, default=tipos)
