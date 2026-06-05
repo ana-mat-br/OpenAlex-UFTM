@@ -688,7 +688,8 @@ def render_qualidade():
         return
     st.caption("**Como ler** · As revistas do mundo são divididas em 4 níveis por área, do mais "
                "ao menos influente: **Q1** (as 25% melhores), Q2, Q3 e Q4. Quanto mais pesquisa "
-               "em Q1, mais a UFTM publica nas revistas de ponta. Classificação **Scimago/SJR**.")
+               "em Q1, mais a UFTM publica nas revistas de ponta. A classificação vem do "
+               "**Scimago/SJR**, um ranking mundial e gratuito de revistas científicas.")
     f = fraw[fraw["issn_l"].notna()].copy()
     f["issn"] = f["issn_l"].str.replace("-", "", regex=False).str.upper()
     m = f.merge(sq[["issn", "quartile", "sjr"]], on="issn", how="left")
@@ -773,8 +774,11 @@ def render_transparencia():
         "APC": "Article Processing Charge — taxa que algumas revistas cobram para deixar a "
         "pesquisa aberta. Mostramos a estimativa desse custo.",
         "DOAJ": "Diretório de revistas de acesso aberto confiáveis — um selo de qualidade.",
-        "Quartil (Q1–Q4)": "Nível da revista na sua área: Q1 são as 25% melhores, até Q4. "
-        "Classificação Scimago/SJR.",
+        "Scimago / SJR": "Scimago é um ranking mundial e gratuito de revistas científicas. O "
+        "SJR (SCImago Journal Rank) é a nota de prestígio de cada revista — leva em conta "
+        "quantas vezes ela é citada e o peso de quem a cita. É o que define os quartis.",
+        "Quartil (Q1–Q4)": "Nível da revista na sua área, segundo o Scimago/SJR: Q1 são as 25% "
+        "melhores, depois Q2, Q3 e Q4 (as menos influentes).",
         "ODS": "Os 17 Objetivos de Desenvolvimento Sustentável da ONU (Agenda 2030).",
         "Índice h": "Resume produção e impacto de um pesquisador: h = 30 significa 30 trabalhos "
         "citados pelo menos 30 vezes cada.",
