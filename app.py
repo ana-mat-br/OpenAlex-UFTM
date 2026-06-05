@@ -12,7 +12,6 @@ from pathlib import Path
 import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
-from streamlit_extras.metric_cards import style_metric_cards
 from streamlit_option_menu import option_menu
 
 DATA = Path(__file__).parent / "data"
@@ -27,7 +26,7 @@ T = {
     "green_tint": "#E6F4EA",    # uftmgreentint — fundos de destaque
     "secondary": "#E87722",     # uftmaccent — laranja de acento (2ª série)
     "accent": "#E87722",
-    "bg": "#FAFBFC",            # bgslate — fundo das páginas
+    "bg": "#FAFAF8",            # fundo "papel" (off-white levemente quente)
     "surface": "#FFFFFF",       # cards
     "border": "#EAEAEA",        # rulelight
     "border_med": "#DCDCDC",    # rulemed
@@ -61,19 +60,17 @@ st.markdown(f"""
   .stApp {{ background: {T['bg']}; }}
   .block-container {{ padding-top: 2.2rem; max-width: 1280px; }}
   [data-testid="stSidebar"] {{ background: {T['surface']}; border-right: 1px solid {T['border']}; }}
-  .obs-header {{
-    background: {T['surface']}; border: 1px solid {T['border']};
-    border-left: 4px solid {T['primary']}; padding: 1.1rem 1.4rem;
-    border-radius: 14px; margin-bottom: 1.3rem;
-  }}
-  .obs-header h1 {{ color: {T['text']}; font-size: 1.5rem; margin: 0; }}
-  .obs-header p {{ color: {T['muted']}; margin: .3rem 0 0; font-size: .9rem;
+  .obs-header {{ background: transparent; border: none;
+    border-bottom: 1px solid {T['border']}; padding: .1rem 0 .85rem; margin-bottom: 1.4rem; }}
+  .obs-header h1 {{ color: {T['text']}; font-size: 1.75rem; margin: 0; letter-spacing: -.01em; }}
+  .obs-header p {{ color: {T['muted']}; margin: .4rem 0 0; font-size: .92rem;
     font-family: 'Inter', sans-serif; }}
-  [data-testid="stMetric"] {{ background: {T['surface']}; border: 1px solid {T['border']};
-    border-radius: 12px; padding: 1rem 1.1rem; }}
-  [data-testid="stMetricValue"] {{ color: {T['primary']}; font-weight: 700;
-    font-family: 'Inter', sans-serif; }}
-  [data-testid="stMetricLabel"] {{ color: {T['muted']}; font-weight: 500; }}
+  [data-testid="stMetric"] {{ background: transparent; border: none; border-radius: 0;
+    border-top: 2px solid {T['primary']}; padding: .6rem .1rem 0; }}
+  [data-testid="stMetricValue"] {{ color: {T['text']}; font-weight: 700;
+    font-family: 'Inter', sans-serif; font-size: 2.05rem; letter-spacing: -.02em; }}
+  [data-testid="stMetricLabel"] {{ color: {T['muted']}; font-weight: 600;
+    text-transform: uppercase; letter-spacing: .07em; font-size: .7rem; }}
   a, .stMarkdown a {{ color: {T['primary']}; }}
   hr {{ border-color: {T['border']}; }}
   div[data-baseweb="select"] > div, .stTextInput input {{
@@ -231,10 +228,11 @@ with st.sidebar:
             "container": {"padding": "0.3rem 0", "background-color": T["surface"]},
             "icon": {"color": T["primary"], "font-size": "14px"},
             "nav-link": {"color": T["text_soft"], "font-size": "14px", "font-weight": "500",
-                         "border-radius": "8px", "margin": "1px 4px",
-                         "--hover-color": T["green_tint"]},
-            "nav-link-selected": {"background-color": T["green_tint"], "color": T["primary"],
-                                  "font-weight": "600"},
+                         "border-radius": "6px", "margin": "1px 4px",
+                         "--hover-color": "#F2F2F0"},
+            "nav-link-selected": {"background-color": "#F2F2F0", "color": T["text"],
+                                  "font-weight": "600", "border-left": f"2px solid {T['primary']}",
+                                  "border-radius": "6px"},
         })
 
     st.divider()
@@ -262,14 +260,14 @@ def cabecalho(titulo, sub):
 def render_visao_geral():
     cabecalho("Visão Geral", "A pesquisa da UFTM, em números claros")
     st.markdown(
-        f"<div style='background:{T['green_tint']};border:1px solid {T['border']};"
-        f"border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.2rem;"
-        f"color:{T['text_soft']};font-size:.95rem;line-height:1.5'>"
-        f"<b style='color:{T['primary']}'>O que é este painel.</b> O Painel DAAD é a "
-        f"prestação de contas da pesquisa da UFTM à sociedade. De forma transparente e com "
-        f"dados abertos, mostra o que a universidade produz em ciência e o impacto disso para "
-        f"as pessoas. Os números vêm do <b>OpenAlex</b> (base científica mundial e gratuita) "
-        f"e são atualizados todo mês.</div>", unsafe_allow_html=True)
+        f"<div style='border-left:2px solid {T['primary']};padding:.15rem 0 .15rem 1.1rem;"
+        f"margin:.1rem 0 1.6rem;color:{T['text_soft']};font-size:1.05rem;line-height:1.65;"
+        f"max-width:760px'>"
+        f"O Painel DAAD é a prestação de contas da pesquisa da UFTM à sociedade. De forma "
+        f"transparente e com dados abertos, mostra o que a universidade produz em ciência e o "
+        f"impacto disso para as pessoas. Os números vêm do "
+        f"<b style='color:{T['text']}'>OpenAlex</b> — base científica mundial e gratuita — e são "
+        f"atualizados todo mês.</div>", unsafe_allow_html=True)
     fwci_med = fraw["fwci"].dropna().mean() if "fwci" in fraw else None
     top10 = fraw["top10"].mean() if "top10" in fraw else None
     c1, c2, c3, c4, c5 = st.columns(5)
@@ -279,8 +277,6 @@ def render_visao_geral():
     c4.metric("Top 10%", f"{top10:.0%}" if top10 is not None else "—",
               help="Parte das pesquisas que está entre as 10% mais citadas do mundo na sua área.")
     c5.metric("Acesso aberto", f"{fraw['is_oa'].mean():.0%}" if len(fraw) else "—")
-    style_metric_cards(background_color=T["surface"], border_left_color=T["primary"],
-                       border_color=T["border"], box_shadow=False)
     st.caption(
         "**Como ler estes números** · **Produções**: pesquisas publicadas no período · "
         "**Citações**: vezes que essas pesquisas foram usadas por outros estudos · "
@@ -326,8 +322,6 @@ def render_excelencia():
     c2.metric("% com FWCI > 1", f"{(fw > 1).mean():.0%}" if len(fw) else "—")
     c3.metric("No top 10% mundial", f"{base['top10'].mean():.1%}" if len(base) else "—")
     c4.metric("No top 1% mundial", f"{base['top1'].mean():.1%}" if len(base) else "—")
-    style_metric_cards(background_color=T["surface"], border_left_color=T["primary"],
-                       border_color=T["border"], box_shadow=False)
     st.caption(
         "**Como ler** · Estes números comparam cada pesquisa da UFTM com a média mundial da "
         "sua área. **FWCI 1,0** = exatamente a média do mundo (acima de 1 é acima da média). "
@@ -386,8 +380,6 @@ def render_impacto_social():
               br(fraw["funders"].explode().nunique()) if "funders" in fraw else "—")
     c4.metric("APC estimado (US$)", br(apc_tot) if apc_tot else "—",
               help="Custo de publicação (Article Processing Charges) reportado ao OpenAlex.")
-    style_metric_cards(background_color=T["surface"], border_left_color=T["accent"],
-                       border_color=T["border"], box_shadow=False)
 
     c1, c2 = st.columns(2)
     with c1:
@@ -418,8 +410,6 @@ def render_impacto_social():
         m2.metric("Citações em patentes (total)", br(int(lp["n_patentes"].sum())))
         m3.metric("Citações por patente (média)",
                   br(lp["n_patentes"].mean(), 1) if len(lp) else "—")
-        style_metric_cards(background_color=T["surface"], border_left_color=T["secondary"],
-                           border_color=T["border"], box_shadow=False)
         top = lp.sort_values("n_patentes", ascending=False).head(12).copy()
         top["rotulo"] = top["title"].str.slice(0, 60)
         st.plotly_chart(barra_h(top, "rotulo", "n_patentes", h=440, cor=T["secondary"]),
@@ -468,8 +458,6 @@ def render_ciencia_aberta():
     c4.metric("Em periódico DOAJ", f"{doaj:.0%}" if doaj is not None else "—",
               help="Entre as produções OA, % em periódicos com selo DOAJ (qualidade).")
     c5.metric("APC total (US$)", br(apc.sum()) if len(apc) else "—")
-    style_metric_cards(background_color=T["surface"], border_left_color=T["primary"],
-                       border_color=T["border"], box_shadow=False)
 
     c1, c2 = st.columns(2)
     with c1:
@@ -502,8 +490,6 @@ def render_ciencia_aberta():
     c2.metric("APC médio (US$)", br(pagos["apc_usd"].mean()) if len(pagos) else "—")
     c3.metric("Sem custo para o autor", f"{1 - len(pagos)/max(len(fraw),1):.0%}",
               help="Diamante, verde, bronze e fechado não cobram APC do autor.")
-    style_metric_cards(background_color=T["surface"], border_left_color=T["accent"],
-                       border_color=T["border"], box_shadow=False)
     apc_ano = fraw.groupby("year")["apc_usd"].sum().reset_index()
     fig = go.Figure(go.Bar(x=apc_ano["year"], y=apc_ano["apc_usd"], marker_color=T["accent"],
                            hovertemplate="%{x}: US$ %{y:,.0f}<extra></extra>"))
@@ -579,8 +565,6 @@ def render_colaboracao():
         c1.metric("Internacional", f"{intl:.0%}", help="≥ 2 países distintos.")
         c2.metric("Nacional", f"{nac:.0%}", help="Só Brasil, ≥ 2 instituições.")
         c3.metric("Institucional", f"{inst:.0%}", help="Apenas UFTM.")
-        style_metric_cards(background_color=T["surface"], border_left_color=T["secondary"],
-                           border_color=T["border"], box_shadow=False)
 
     ci = obs.get("colab_instituicoes")
     if ci is None:
@@ -606,8 +590,6 @@ def render_colaboracao():
         m1.metric("Pesquisadores na rede", br(len(nos)))
         m2.metric("Conexões", br(len(arestas)))
         m3.metric("Grupos (comunidades)", br(nos["comunidade"].nunique()))
-        style_metric_cards(background_color=T["surface"], border_left_color=T["secondary"],
-                           border_color=T["border"], box_shadow=False)
         st.plotly_chart(grafo_coautoria(nos, arestas), width="stretch")
         st.caption("Cada nó é um pesquisador da UFTM (tamanho = nº de produções); ligações = "
                    "coautorias. Cores = grupos de colaboração (comunidades); rótulos = os 8 "
@@ -710,8 +692,6 @@ def render_qualidade():
     c4.metric("Cobertura Scimago", f"{cobertura:.0%}",
               help="% das produções em periódico com quartil no Scimago. O restante são "
                    "periódicos fora dessas bases internacionais (ex.: muitos periódicos nacionais).")
-    style_metric_cards(background_color=T["surface"], border_left_color=T["primary"],
-                       border_color=T["border"], box_shadow=False)
 
     qcor = {"Q1": T["primary"], "Q2": "#2563EB", "Q3": T["accent"], "Q4": T["faint"]}
     c1, c2 = st.columns(2)
