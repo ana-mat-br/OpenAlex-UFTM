@@ -219,11 +219,12 @@ with st.sidebar:
 
     pagina = option_menu(
         None,
-        ["Visão Geral", "Excelência", "Benchmarking", "Impacto Social", "Ciência Aberta",
-         "Colaboração", "ODS", "Temas", "Pesquisadores", "Periódicos", "Qualidade", "Explorar"],
+        ["Visão Geral", "Impacto científico", "Comparação", "Impacto Social", "Ciência Aberta",
+         "Colaboração", "ODS", "Temas", "Pesquisadores", "Onde publicamos",
+         "Qualidade das revistas", "Explorar", "Transparência"],
         icons=["speedometer2", "award", "bar-chart-line", "globe-americas", "unlock",
                "diagram-3", "bullseye", "tags", "person-badge", "journal-text",
-               "patch-check", "search"],
+               "patch-check", "search", "info-circle"],
         default_index=0,
         styles={
             "container": {"padding": "0.3rem 0", "background-color": T["surface"]},
@@ -310,12 +311,12 @@ def render_visao_geral():
 
 
 def render_excelencia():
-    cabecalho("Excelência", "Indicadores normalizados por campo (FWCI e percentis mundiais)")
+    cabecalho("Impacto científico", "O quanto a pesquisa da UFTM é reconhecida no mundo")
     if "fwci" not in fraw.columns:
         st.info("Re-colete os dados (fetch_uftm_ods.py) para habilitar FWCI e percentis.")
         return
-    excluir = st.checkbox("Excluir os 2 anos mais recentes (janela FWCI ainda incompleta)",
-                          value=True)
+    excluir = st.checkbox("Não contar os 2 anos mais recentes (pesquisas novas ainda estão "
+                          "recebendo citações)", value=True)
     base = fraw[fraw["year"] <= faixa[1] - 2] if excluir else fraw
     fw = base["fwci"].dropna()
     c1, c2, c3, c4 = st.columns(4)
@@ -326,9 +327,13 @@ def render_excelencia():
     c4.metric("No top 1% mundial", f"{base['top1'].mean():.1%}" if len(base) else "—")
     style_metric_cards(background_color=T["surface"], border_left_color=T["primary"],
                        border_color=T["border"], box_shadow=False)
-    st.caption("FWCI: razão entre citações recebidas e esperadas no campo/ano (fórmula do "
-               "Scopus, publicada nativamente pelo OpenAlex). Normaliza por subfield do "
-               "OpenAlex — comparável, mas não idêntico ao SciVal. Não comparar entre bases.")
+    st.caption(
+        "**Como ler** · Estes números comparam cada pesquisa da UFTM com a média mundial da "
+        "sua área. **FWCI 1,0** = exatamente a média do mundo (acima de 1 é acima da média). "
+        "**Top 10% / Top 1%** = a fatia das pesquisas que está entre as mais citadas do "
+        "planeta — quanto maior, mais reconhecida lá fora.  \n"
+        "_Detalhe técnico: FWCI (Field-Weighted Citation Impact) usa a mesma fórmula do Scopus, "
+        "calculada pelo OpenAlex; valores não são comparáveis entre bases diferentes._")
 
     c1, c2 = st.columns(2)
     with c1:
@@ -361,7 +366,11 @@ def render_excelencia():
 
 
 def render_impacto_social():
-    cabecalho("Impacto Social e Societal", "Para além das citações acadêmicas")
+    cabecalho("Impacto Social", "O alcance da pesquisa da UFTM além da universidade")
+    st.caption("**Como ler** · Aqui vemos o retorno da pesquisa para a sociedade: alinhamento aos "
+               "**ODS** (os objetivos da ONU), quanto vem de **financiamento** público/privado, "
+               "o custo de deixar a pesquisa aberta e — quando ativado — quantas **patentes** "
+               "citam a UFTM.")
     c1, c2, c3, c4 = st.columns(4)
     n_ods = fsdg["work_id"].nunique()
     fin = fraw[fraw["n_grants"] > 0] if "n_grants" in fraw else fraw.iloc[0:0]
@@ -428,10 +437,14 @@ def render_impacto_social():
 
 
 def render_ciencia_aberta():
-    cabecalho("Ciência Aberta", "Acesso aberto, repositório verde, custos de publicação e DOAJ")
+    cabecalho("Ciência Aberta", "Quanto da pesquisa da UFTM qualquer pessoa pode ler de graça")
     if "oa_status" not in fraw.columns:
         st.info("Re-colete os dados (fetch_uftm_ods.py) para habilitar esta aba.")
         return
+    st.caption("**Como ler** · *Acesso aberto* é a pesquisa que você lê sem pagar. **Diamante** = "
+               "grátis para quem lê e para quem publica; **Verde** = cópia gratuita num "
+               "repositório; **Ouro** = aberta, mas a universidade paga uma taxa (APC). "
+               "**DOAJ** é um selo de revista aberta confiável.")
     oa_pt = {"diamond": "Diamante (grátis autor e leitor)", "gold": "Ouro (com APC)",
              "green": "Verde (repositório)", "hybrid": "Híbrido", "bronze": "Bronze",
              "closed": "Fechado"}
@@ -496,11 +509,14 @@ def render_ciencia_aberta():
 
 
 def render_benchmarking():
-    cabecalho("Benchmarking", "UFTM e as 11 universidades federais de Minas Gerais")
+    cabecalho("Comparação", "A UFTM ao lado das 11 universidades federais de Minas Gerais")
     bi = obs.get("bench_instituicoes")
     if bi is None:
         st.info("Rode `python fetch_observatorio.py` para gerar os dados de benchmarking.")
         return
+    st.caption("**Como ler** · Cada barra é uma universidade; a **UFTM aparece em verde** e as "
+               "demais em verde-claro. Escolha o indicador para comparar (quantidade de "
+               "pesquisas, impacto, acesso aberto, etc.).")
     metricas = {
         "Produções": ("works", ",.0f"), "Citações": ("citacoes", ",.0f"),
         "Citações por trabalho": ("cit_por_trabalho", ",.2f"),
@@ -544,7 +560,11 @@ def render_benchmarking():
 
 
 def render_colaboracao():
-    cabecalho("Colaboração", "Parcerias institucionais e internacionalização")
+    cabecalho("Colaboração", "Com quem a UFTM pesquisa — no Brasil e no mundo")
+    st.caption("**Como ler** · *Internacional* = pesquisa feita com pelo menos um país estrangeiro; "
+               "*Nacional* = com outra instituição brasileira; *Institucional* = só UFTM. A **rede** "
+               "no fim mostra quais pesquisadores da UFTM trabalham juntos (cada ponto é um "
+               "pesquisador; as linhas, parcerias).")
     if "is_international" in fraw.columns and len(fraw):
         intl = fraw["is_international"].mean()
         nac = (~fraw["is_international"] & (fraw["n_institutions"] > 1)).mean()
@@ -589,7 +609,11 @@ def render_colaboracao():
 
 
 def render_ods():
-    cabecalho("Objetivos de Desenvolvimento Sustentável", "Classificação automática (Aurora ≥ 0,4)")
+    cabecalho("ODS", "Como a pesquisa da UFTM se conecta à Agenda 2030 da ONU")
+    st.caption("**Como ler** · Os **ODS** são os 17 Objetivos de Desenvolvimento Sustentável da "
+               "ONU (saúde, educação, igualdade, clima...). Mostramos com quais a pesquisa da "
+               "UFTM mais se relaciona. A associação é uma **estimativa por inteligência "
+               "artificial** do OpenAlex — uma aproximação, não uma declaração dos autores.")
     g = fsdg.copy()
     g["ODS"] = g["sdg_id"].map(lambda x: f"{int(x)}. {ODS_PT.get(int(x), '')}"
                                if pd.notna(x) else None)
@@ -614,7 +638,9 @@ def render_ods():
 
 
 def render_temas():
-    cabecalho("Temas", "Áreas de força da UFTM (tópicos do OpenAlex)")
+    cabecalho("Temas", "As áreas e assuntos em que a UFTM mais pesquisa")
+    st.caption("**Como ler** · As grandes áreas do conhecimento (Medicina, Ciências Sociais...) e "
+               "os assuntos específicos mais frequentes nas pesquisas da UFTM.")
     tc = obs.get("temas_campo")
     if tc is None:
         st.info("Rode `python fetch_observatorio.py` para os dados de temas.")
@@ -628,7 +654,11 @@ def render_temas():
 
 
 def render_pesquisadores():
-    cabecalho("Pesquisadores", "Destaques por impacto (OpenAlex Authors)")
+    cabecalho("Pesquisadores", "Os nomes por trás da pesquisa da UFTM")
+    st.caption("**Como ler** · Pesquisadores com vínculo na UFTM, ordenados por **citações** "
+               "(quantas vezes seus trabalhos foram usados por outros). O **índice h** resume "
+               "produção e impacto: um h de 30 significa 30 trabalhos citados ao menos 30 vezes "
+               "cada.")
     ta = obs.get("top_autores")
     if ta is None:
         st.info("Rode `python fetch_observatorio.py` para os dados de pesquisadores.")
@@ -642,18 +672,23 @@ def render_pesquisadores():
 
 
 def render_periodicos():
-    cabecalho("Periódicos", "Onde a UFTM mais publica")
+    cabecalho("Onde publicamos", "As revistas científicas que mais publicam pesquisa da UFTM")
+    st.caption("**Como ler** · Cada barra é uma revista científica (periódico); o tamanho mostra "
+               "quantas pesquisas da UFTM saíram nela no período.")
     top = (fraw[fraw["source"].notna()]["source"].value_counts().head(20)
            .rename_axis("Periódico").reset_index(name="n"))
     st.plotly_chart(barra_h(top, "Periódico", "n", h=540), width="stretch")
 
 
 def render_qualidade():
-    cabecalho("Qualidade de Periódicos", "Quartis Scimago (SJR) das produções em periódico")
+    cabecalho("Qualidade das revistas", "Em que nível estão as revistas onde a UFTM publica")
     sq = obs.get("scimago_quartis")
     if sq is None or "issn_l" not in fraw.columns:
         st.info("Rode `python fetch_scimago.py` para baixar os quartis Scimago.")
         return
+    st.caption("**Como ler** · As revistas do mundo são divididas em 4 níveis por área, do mais "
+               "ao menos influente: **Q1** (as 25% melhores), Q2, Q3 e Q4. Quanto mais pesquisa "
+               "em Q1, mais a UFTM publica nas revistas de ponta. Classificação **Scimago/SJR**.")
     f = fraw[fraw["issn_l"].notna()].copy()
     f["issn"] = f["issn_l"].str.replace("-", "", regex=False).str.upper()
     m = f.merge(sq[["issn", "quartile", "sjr"]], on="issn", how="left")
@@ -705,7 +740,7 @@ def render_qualidade():
 
 
 def render_explorar():
-    cabecalho("Explorar", "Busca nas produções")
+    cabecalho("Explorar", "Procure qualquer pesquisa da UFTM pelo título")
     termo = st.text_input("Filtrar por palavra no título")
     cols = [c for c in ["title", "year", "type", "is_oa", "fwci", "cited_by", "source", "doi"]
             if c in fraw.columns]
@@ -719,13 +754,68 @@ def render_explorar():
                        "producoes_uftm.csv", "text/csv")
 
 
+def render_transparencia():
+    cabecalho("Transparência", "De onde vêm os dados e o que cada termo significa")
+
+    st.subheader("Entenda os termos")
+    glossario = {
+        "Produção / produção científica": "Um trabalho de pesquisa publicado — artigo de "
+        "revista, livro, capítulo, tese, dado etc.",
+        "Citação": "Quando outro estudo usa e referencia uma pesquisa. Mais citações = a "
+        "pesquisa foi mais aproveitada por outros cientistas.",
+        "FWCI (impacto científico)": "Compara as citações de uma pesquisa com a média mundial "
+        "da mesma área e ano. 1,0 = média do mundo; 2,0 = o dobro da média; 0,5 = metade.",
+        "Top 10% / Top 1% mundial": "A fatia de pesquisas que está entre as 10% (ou 1%) mais "
+        "citadas do planeta na sua área. É um sinal de pesquisa de ponta.",
+        "Acesso aberto": "Pesquisa que qualquer pessoa pode ler de graça, sem assinatura.",
+        "Diamante / Verde / Ouro": "Tipos de acesso aberto. Diamante: grátis para ler e para "
+        "publicar. Verde: cópia gratuita num repositório. Ouro: aberta, mas com taxa paga (APC).",
+        "APC": "Article Processing Charge — taxa que algumas revistas cobram para deixar a "
+        "pesquisa aberta. Mostramos a estimativa desse custo.",
+        "DOAJ": "Diretório de revistas de acesso aberto confiáveis — um selo de qualidade.",
+        "Quartil (Q1–Q4)": "Nível da revista na sua área: Q1 são as 25% melhores, até Q4. "
+        "Classificação Scimago/SJR.",
+        "ODS": "Os 17 Objetivos de Desenvolvimento Sustentável da ONU (Agenda 2030).",
+        "Índice h": "Resume produção e impacto de um pesquisador: h = 30 significa 30 trabalhos "
+        "citados pelo menos 30 vezes cada.",
+        "Colaboração internacional": "Pesquisa feita em parceria com pelo menos um país "
+        "estrangeiro.",
+    }
+    for termo, definicao in glossario.items():
+        st.markdown(f"**{termo}** — {definicao}")
+
+    st.divider()
+    st.subheader("De onde vêm os dados (metodologia)")
+    st.markdown(
+        "- **Fonte:** [OpenAlex](https://openalex.org), uma base científica mundial, aberta e "
+        "gratuita. A UFTM é identificada pelo código institucional ROR `01av3m334`.\n"
+        "- **Atualização:** automática, **todo mês**, sem intervenção manual.\n"
+        "- **O que entra:** todas as produções com pelo menos um autor vinculado à UFTM "
+        "indexadas no OpenAlex.\n"
+        "- **Comparação:** com as **11 universidades federais de Minas Gerais**.\n"
+        "- **Qualidade das revistas:** quartis do **Scimago (SJR)**, base pública e gratuita.\n"
+        "- **Patentes:** dados do **The Lens** (ativados quando há credencial de acesso).\n")
+    st.subheader("Limites e cuidados (honestidade dos dados)")
+    st.markdown(
+        "- A associação aos **ODS** é uma **estimativa por inteligência artificial** do OpenAlex, "
+        "não uma classificação declarada pelos autores — leia como aproximação.\n"
+        "- O **FWCI** dos 2 anos mais recentes ainda é provisório (as pesquisas novas seguem "
+        "recebendo citações).\n"
+        "- A cobertura depende do que está indexado no OpenAlex; **periódicos não indexados** "
+        "(muitos nacionais) podem não receber quartil ou impacto.\n"
+        "- Indicadores de impacto **não são comparáveis entre bases diferentes** (ex.: OpenAlex "
+        "vs. Scopus).\n")
+    st.caption("Código aberto e auditável em github.com/ana-mat-br/painel-daad.")
+
+
 PAGINAS = {
-    "Visão Geral": render_visao_geral, "Excelência": render_excelencia,
-    "Benchmarking": render_benchmarking, "Impacto Social": render_impacto_social,
+    "Visão Geral": render_visao_geral, "Impacto científico": render_excelencia,
+    "Comparação": render_benchmarking, "Impacto Social": render_impacto_social,
     "Ciência Aberta": render_ciencia_aberta,
     "Colaboração": render_colaboracao, "ODS": render_ods, "Temas": render_temas,
-    "Pesquisadores": render_pesquisadores, "Periódicos": render_periodicos,
-    "Qualidade": render_qualidade, "Explorar": render_explorar,
+    "Pesquisadores": render_pesquisadores, "Onde publicamos": render_periodicos,
+    "Qualidade das revistas": render_qualidade, "Explorar": render_explorar,
+    "Transparência": render_transparencia,
 }
 _forcar = os.environ.get("OBS_FORCE_PAGE")  # seam de teste (sem efeito em produção)
 PAGINAS.get(_forcar or pagina or "Visão Geral", render_visao_geral)()

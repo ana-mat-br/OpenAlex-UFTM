@@ -10,12 +10,14 @@ colaboração/internacionalização, ODS e impacto social. Visual claro e minima
 
 ## Páginas
 
-Visão Geral · **Excelência** (FWCI e percentis mundiais) · Benchmarking · **Impacto
-Social** (ODS, financiamento, APC) · **Ciência Aberta** (status OA, repositório verde,
-APC, selo DOAJ) · Colaboração · ODS · Temas · Pesquisadores · Periódicos · **Qualidade**
-(quartis Scimago Q1–Q4) · Explorar — navegação por menu lateral (`streamlit-option-menu`).
-A aba **Colaboração** inclui a rede de coautoria interativa dos pesquisadores da UFTM
-(comunidades e centralidade via `networkx`, render em `plotly`).
+Visão Geral · **Impacto científico** (FWCI e percentis mundiais) · **Comparação** (11
+federais de MG) · **Impacto Social** (ODS, financiamento, APC, patentes) · **Ciência
+Aberta** · Colaboração (com rede de coautoria) · ODS · Temas · Pesquisadores · **Onde
+publicamos** · **Qualidade das revistas** (quartis Scimago) · Explorar · **Transparência**
+(glossário + metodologia) — navegação por menu lateral (`streamlit-option-menu`).
+
+Linguagem voltada à **prestação de contas com a sociedade**: cada indicador tem um "como
+ler" em português claro, e a aba Transparência explica os termos e a metodologia.
 
 ## Rodar no seu computador
 
@@ -76,7 +78,7 @@ A marcação de ODS é uma **estimativa automática** do classificador **Aurora/
 OpenAlex (score ≥ 0,4) — indicador probabilístico, não declarado pelos autores. **FWCI** e
 **percentis** são normalizados por campo (metodologia equivalente à do Scopus; valores não
 comparáveis entre bases). Para o FWCI, a janela de citação (ano + 3) fica incompleta nos
-2 anos mais recentes — a aba Excelência permite excluí-los.
+2 anos mais recentes — a aba Impacto científico permite excluí-los.
 
 ## APIs gratuitas no roadmap (impacto social e rankings)
 
