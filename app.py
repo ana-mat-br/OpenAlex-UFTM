@@ -198,13 +198,17 @@ def grafo_coautoria(nos, arestas, h=560):
     return fig
 
 
-def aplica_filtros(faixa, tipos, so_oa):
-    m_raw = raw["year"].between(*faixa) & raw["type"].isin(tipos)
-    m_sdg = sdg["year"].between(*faixa) & sdg["type"].isin(tipos)
-    if so_oa:
-        m_raw &= raw["is_oa"] == True  # noqa: E712
-        m_sdg &= sdg["is_oa"] == True  # noqa: E712
-    return raw[m_raw], sdg[m_sdg]
+def aplica_filtros(faixa):
+    return raw[raw["year"].between(*faixa)], sdg[sdg["year"].between(*faixa)]
+
+
+TIPOS = sorted(raw["type"].dropna().unique())
+
+
+def filtro_tipo(df, key):
+    """Menu suspenso discreto de tipo de produção; devolve o df filtrado."""
+    escolha = st.selectbox("Tipo de produção", ["Todos os tipos"] + TIPOS, key=key)
+    return df if escolha == "Todos os tipos" else df[df["type"] == escolha]
 
 
 # ----------------------------------------------------------------- sidebar
@@ -215,6 +219,11 @@ with st.sidebar:
                 f"Diretoria de Avaliação e Análise de Dados · PROPPG/UFTM</p>",
                 unsafe_allow_html=True)
 
+    anos = raw["year"].dropna()
+    ymin, ymax = int(anos.min()), int(anos.max())
+    faixa = st.slider("Período", ymin, ymax, (max(ymin, ymax - 9), ymax))
+
+    st.divider()
     NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "Impacto Social",
            "ODS", "Pesquisadores", "Colaboração", "Temas", "Onde publicamos",
            "Qualidade das revistas", "Explorar", "Transparência"]
@@ -238,19 +247,12 @@ with st.sidebar:
         })
 
     st.divider()
-    anos = raw["year"].dropna()
-    ymin, ymax = int(anos.min()), int(anos.max())
-    faixa = st.slider("Período", ymin, ymax, (max(ymin, ymax - 9), ymax))
-    tipos = sorted(raw["type"].dropna().unique())
-    sel_tipos = st.multiselect("Tipo de produção", tipos, default=tipos)
-    so_oa = st.checkbox("Apenas acesso aberto", value=False)
-
     if st.button("Recarregar dados", width="stretch"):
         st.cache_data.clear()
         st.rerun()
     st.caption(f"Fonte: OpenAlex · ROR 01av3m334 · dados {ymin}–{ymax}")
 
-fraw, fsdg = aplica_filtros(faixa, sel_tipos, so_oa)
+fraw, fsdg = aplica_filtros(faixa)
 
 
 # ----------------------------------------------------------------- páginas
@@ -268,15 +270,16 @@ def render_visao_geral():
         f"Quanto a UFTM pesquisa, com que impacto e quanto desse trabalho está aberto a todos. "
         f"Dados do <b style='color:{T['text']}'>OpenAlex</b>, atualizados todo mês.</div>",
         unsafe_allow_html=True)
-    fwci_med = fraw["fwci"].dropna().mean() if "fwci" in fraw else None
-    top10 = fraw["top10"].mean() if "top10" in fraw else None
+    fr = filtro_tipo(fraw, "tipo_vg")
+    fwci_med = fr["fwci"].dropna().mean() if "fwci" in fr else None
+    top10 = fr["top10"].mean() if "top10" in fr else None
     c1, c2, c3, c4, c5 = st.columns(5)
-    c1.metric("Produções", br(len(fraw)))
-    c2.metric("Citações", br(int(fraw["cited_by"].sum())))
+    c1.metric("Produções", br(len(fr)))
+    c2.metric("Citações", br(int(fr["cited_by"].sum())))
     c3.metric("FWCI médio", br(fwci_med, 2) if fwci_med else "—")
     c4.metric("Top 10%", f"{top10:.0%}" if top10 is not None else "—",
               help="Parte das pesquisas que está entre as 10% mais citadas do mundo na sua área.")
-    c5.metric("Acesso aberto", f"{fraw['is_oa'].mean():.0%}" if len(fraw) else "—")
+    c5.metric("Acesso aberto", f"{fr['is_oa'].mean():.0%}" if len(fr) else "—")
     st.caption(
         "**Como ler estes números** · **Produções**: pesquisas publicadas no período · "
         "**Citações**: vezes que essas pesquisas foram usadas por outros estudos · "
@@ -285,7 +288,7 @@ def render_visao_geral():
         "planeta · **Acesso aberto**: parte que qualquer pessoa pode ler de graça.")
 
     st.subheader("Produção por ano")
-    por_ano = fraw.groupby("year").size().reset_index(name="n")
+    por_ano = fr.groupby("year").size().reset_index(name="n")
     fig = go.Figure(go.Bar(x=por_ano["year"], y=por_ano["n"], marker_color=T["primary"],
                            hovertemplate="%{x}: %{y}<extra></extra>"))
     st.plotly_chart(fig_layout(fig, 320), width="stretch")
@@ -293,12 +296,12 @@ def render_visao_geral():
     c1, c2 = st.columns(2)
     with c1:
         st.subheader("Por tipo de produção")
-        tp = fraw["type"].value_counts().reset_index()
+        tp = fraw["type"].value_counts().reset_index()  # sempre todos os tipos (visão do mix)
         tp.columns = ["tipo", "n"]
         st.plotly_chart(barra_h(tp.head(10), "tipo", "n", h=360), width="stretch")
     with c2:
         st.subheader("Acesso aberto por ano")
-        oa = fraw.groupby("year")["is_oa"].mean().reset_index()
+        oa = fr.groupby("year")["is_oa"].mean().reset_index()
         fig = go.Figure(go.Scatter(x=oa["year"], y=oa["is_oa"], mode="lines+markers",
                                    line=dict(color=T["accent"], width=3),
                                    hovertemplate="%{x}: %{y:.0%}<extra></extra>"))
@@ -664,7 +667,8 @@ def render_periodicos():
     cabecalho("Onde publicamos", "As revistas científicas que mais publicam pesquisa da UFTM")
     st.caption("**Como ler** · Cada barra é uma revista científica (periódico); o tamanho mostra "
                "quantas pesquisas da UFTM saíram nela no período.")
-    top = (fraw[fraw["source"].notna()]["source"].value_counts().head(20)
+    fr = filtro_tipo(fraw, "tipo_periodicos")
+    top = (fr[fr["source"].notna()]["source"].value_counts().head(20)
            .rename_axis("Periódico").reset_index(name="n"))
     st.plotly_chart(barra_h(top, "Periódico", "n", h=540), width="stretch")
 
@@ -730,10 +734,21 @@ def render_qualidade():
 
 def render_explorar():
     cabecalho("Explorar", "Procure qualquer pesquisa da UFTM pelo título")
-    termo = st.text_input("Filtrar por palavra no título")
+    c1, c2, c3 = st.columns([2, 1, 1])
+    with c1:
+        termo = st.text_input("Filtrar por palavra no título")
+    with c2:
+        tipo = st.selectbox("Tipo de produção", ["Todos os tipos"] + TIPOS, key="tipo_explorar")
+    with c3:
+        so_oa = st.checkbox("Apenas acesso aberto", value=False)
+    f = fraw
+    if tipo != "Todos os tipos":
+        f = f[f["type"] == tipo]
+    if so_oa:
+        f = f[f["is_oa"] == True]  # noqa: E712
     cols = [c for c in ["title", "year", "type", "is_oa", "fwci", "cited_by", "source", "doi"]
-            if c in fraw.columns]
-    tab = fraw[cols].copy()
+            if c in f.columns]
+    tab = f[cols].copy()
     if termo:
         tab = tab[tab["title"].str.contains(termo, case=False, na=False)]
     tab = tab.sort_values("cited_by", ascending=False)
