@@ -31,6 +31,24 @@ st.set_page_config(page_title="Observatório PROPPG/UFTM", layout="wide")
 VERDE = "#15803d"        # primário
 VERDE_CLARO = "#4ade80"  # destaque
 VERDE_ESCURO = "#14532d"
+CINZA = "#94a3b8"        # barras secundárias (não-UFTM) no benchmarking
+
+
+def barra_h(df, cat, val, fmt=",.0f", cor=VERDE, altura=420, titulo_x=None):
+    """Gráfico de barras horizontais em ordem decrescente, com rótulos de valor."""
+    d = df[[cat, val]].copy().sort_values(val, ascending=False)
+    ordem = d[cat].tolist()  # maior -> menor
+    base = alt.Chart(d).encode(
+        x=alt.X(f"{val}:Q", title=titulo_x, axis=alt.Axis(format=fmt)),
+        y=alt.Y(f"{cat}:N", sort=ordem, title=None),
+    )
+    barras = base.mark_bar(cornerRadiusEnd=4, color=cor).encode(
+        tooltip=[alt.Tooltip(f"{cat}:N", title=""), alt.Tooltip(f"{val}:Q", format=fmt)]
+    )
+    rotulos = base.mark_text(align="left", dx=4, color=VERDE_ESCURO, fontSize=11).encode(
+        text=alt.Text(f"{val}:Q", format=fmt)
+    )
+    return (barras + rotulos).properties(height=altura)
 
 st.markdown(
     """
@@ -161,8 +179,8 @@ with tab_ods:
     st.subheader("Distribuição pelos 17 ODS")
     g = fsdg.copy()
     g["ODS"] = g["sdg_id"].map(lambda x: f"{int(x)}. {ODS_PT.get(int(x), '')}" if pd.notna(x) else None)
-    por_ods = g.groupby("ODS")["work_id"].nunique().sort_values(ascending=True)
-    st.bar_chart(por_ods, color=VERDE, horizontal=True)
+    por_ods = g.groupby("ODS")["work_id"].nunique().reset_index(name="Produções")
+    st.altair_chart(barra_h(por_ods, "ODS", "Produções", altura=520), use_container_width=True)
 
     st.subheader("Evolução temporal — escolha os ODS")
     nomes = [f"{i}. {ODS_PT[i]}" for i in range(1, 18)]
@@ -192,7 +210,7 @@ with tab_bench:
         d = bi[["sigla", col]].copy().sort_values(col, ascending=False)
         ordem = d["sigla"].tolist()  # maior -> menor
         d["Destaque"] = d["sigla"].where(d["sigla"] == "UFTM", "Outras")
-        cores = alt.Scale(domain=["UFTM", "Outras"], range=[VERDE, "#bbf7d0"])
+        cores = alt.Scale(domain=["UFTM", "Outras"], range=[VERDE, CINZA])
         fmt = ".0%" if col == "oa_share" else ",.2f" if col == "mean_citedness" else ",.0f"
         base = alt.Chart(d).encode(
             x=alt.X(f"{col}:Q", title=escolha, axis=alt.Axis(format=fmt)),
@@ -238,13 +256,14 @@ with tab_colab:
         st.info("Rode `python fetch_observatorio.py` para gerar os dados de colaboração.")
     else:
         st.caption("Instituições que mais coassinam produções com a UFTM (exceto a própria UFTM).")
-        st.bar_chart(ci.set_index("instituicao")["n"].head(15).sort_values(),
-                     color=VERDE, horizontal=True)
+        st.altair_chart(barra_h(ci.head(15), "instituicao", "n", titulo_x="Coautorias"),
+                        use_container_width=True)
 
         st.subheader("Internacionalização — países parceiros")
         cp = obs["colab_paises"]
         cp_int = cp[cp["pais"] != "Brazil"].head(15)
-        st.bar_chart(cp_int.set_index("pais")["n"].sort_values(), color=VERDE, horizontal=True)
+        st.altair_chart(barra_h(cp_int, "pais", "n", titulo_x="Coautorias"),
+                        use_container_width=True)
         total_int = cp[cp["pais"] != "Brazil"]["n"].sum()
         st.caption(f"{len(cp)-1} países estrangeiros aparecem em coautorias da UFTM "
                    f"(Brasil excluído do gráfico para destacar a colaboração internacional).")
@@ -256,8 +275,8 @@ with tab_pesq:
         st.info("Rode `python fetch_observatorio.py` para gerar os dados de pesquisadores.")
     else:
         st.caption("Top 50 autores com vínculo na UFTM, por total de citações (OpenAlex Authors API).")
-        st.bar_chart(ta.set_index("autor")["citacoes"].head(15).sort_values(),
-                     color=VERDE, horizontal=True)
+        st.altair_chart(barra_h(ta.head(15), "autor", "citacoes", titulo_x="Citações"),
+                        use_container_width=True)
         st.dataframe(
             ta.rename(columns={"autor": "Pesquisador", "works": "Produções",
                                "citacoes": "Citações", "h_index": "Índice h", "i10": "i10"}),
@@ -272,18 +291,18 @@ with tab_temas:
         st.info("Rode `python fetch_observatorio.py` para gerar os dados de temas.")
     else:
         st.caption("Produção por grande campo do conhecimento (classificação de tópicos do OpenAlex).")
-        st.bar_chart(tc.set_index("campo")["n"].head(15).sort_values(),
-                     color=VERDE, horizontal=True)
+        st.altair_chart(barra_h(tc.head(15), "campo", "n", titulo_x="Produções"),
+                        use_container_width=True)
         st.subheader("Tópicos mais frequentes")
         tt = obs["temas_topicos"]
-        st.bar_chart(tt.set_index("topico")["n"].head(20).sort_values(),
-                     color=VERDE, horizontal=True)
+        st.altair_chart(barra_h(tt.head(20), "topico", "n", titulo_x="Produções", altura=520),
+                        use_container_width=True)
 
 with tab_fontes:
     st.subheader("Periódicos onde a UFTM mais publica")
     top = (fraw[fraw["source"].notna()]["source"].value_counts().head(20)
-           .rename_axis("Periódico").rename("Produções"))
-    st.bar_chart(top, color=VERDE, horizontal=True)
+           .rename_axis("Periódico").reset_index(name="Produções"))
+    st.altair_chart(barra_h(top, "Periódico", "Produções", altura=520), use_container_width=True)
 
 with tab_explorar:
     st.subheader("Buscar produções")
