@@ -170,6 +170,5 @@ st.caption(
     f"**Atenção metodológica:** a marcação de ODS é uma *estimativa automática* do classificador "
     f"de IA Aurora/mBERT do OpenAlex (lê título e resumo e atribui um score de 0 a 1 por ODS). "
     f"Só são contadas associações com score ≥ {SCORE_CUTOFF}. É um indicador probabilístico, "
-    f"não uma classificação declarada pelos autores — pode divergir de painéis baseados em "
-    f"classificação manual (ex.: Capivara)."
+    f"não uma classificação declarada pelos autores."
 )
