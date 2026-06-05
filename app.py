@@ -24,7 +24,7 @@ ODS_PT = {
     16: "Paz, Justiça e Instituições Eficazes", 17: "Parcerias e Meios de Implementação",
 }
 
-st.set_page_config(page_title="Observatório PROPPG/UFTM", page_icon="🌱", layout="wide")
+st.set_page_config(page_title="Observatório PROPPG/UFTM", layout="wide")
 
 # paleta verde do observatório
 VERDE = "#15803d"        # primário
@@ -72,7 +72,7 @@ def load():
 raw, sdg = load()
 
 # ---------------------------------------------------------------- barra lateral
-st.sidebar.title("🎯 Observatório PROPPG")
+st.sidebar.title("Observatório PROPPG")
 st.sidebar.caption("Produção científica da UFTM · dados do OpenAlex")
 
 anos = raw["year"].dropna()
@@ -99,14 +99,14 @@ fraw, fsdg = raw[m_raw], sdg[m_sdg]
 st.markdown(
     """
     <div class="obs-header">
-      <h1>🌱 Observatório da Produção Científica</h1>
+      <h1>Observatório da Produção Científica</h1>
       <p>PROPPG · Universidade Federal do Triângulo Mineiro — dados do OpenAlex</p>
     </div>
     """,
     unsafe_allow_html=True,
 )
 tab_geral, tab_ods, tab_fontes, tab_explorar = st.tabs(
-    ["📊 Visão Geral", "🎯 ODS", "📚 Periódicos", "🔎 Explorar"]
+    ["Visão Geral", "ODS", "Periódicos", "Explorar"]
 )
 
 with tab_geral:
@@ -163,7 +163,7 @@ with tab_explorar:
     tab = tab.sort_values("cited_by", ascending=False)
     st.dataframe(tab, use_container_width=True, height=500,
                  column_config={"doi": st.column_config.LinkColumn("DOI")})
-    st.download_button("⬇️ Baixar CSV", tab.to_csv(index=False).encode("utf-8"),
+    st.download_button("Baixar CSV", tab.to_csv(index=False).encode("utf-8"),
                        "producoes_uftm.csv", "text/csv")
 
 # ------------------------------------------------------------------- rodapé
