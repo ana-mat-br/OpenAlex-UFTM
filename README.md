@@ -1,13 +1,3 @@
----
-title: Observatorio DAAD UFTM
-colorFrom: green
-colorTo: gray
-sdk: streamlit
-app_file: app.py
-pinned: false
-license: mit
----
-
 # Observatório DAAD/UFTM
 
 Painel web da produção científica da UFTM (Diretoria de Avaliação e Análise de Dados —
