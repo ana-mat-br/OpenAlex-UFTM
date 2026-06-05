@@ -23,7 +23,7 @@ jobs:
           python-version: "3.12"
 
       - name: Instalar dependências de coleta
-        run: pip install pyalex pandas pyarrow
+        run: pip install pyalex pandas pyarrow networkx
 
       - name: Coletar dados do OpenAlex
         env:
@@ -32,6 +32,7 @@ jobs:
           python fetch_uftm_ods.py
           python fetch_observatorio.py
           python fetch_scimago.py
+          python fetch_colaboracao.py
 
       - name: Commit e push se houver mudanças
         run: |

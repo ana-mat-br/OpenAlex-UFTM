@@ -80,7 +80,7 @@ def load(sig):
 def load_obs(sig):
     nomes = ["bench_instituicoes", "bench_por_ano", "colab_instituicoes",
              "colab_paises", "temas_campo", "temas_topicos", "top_autores",
-             "scimago_quartis"]
+             "scimago_quartis", "rede_autores_nos", "rede_autores_arestas"]
     return {n: (pd.read_csv(DATA / f"{n}.csv") if (DATA / f"{n}.csv").exists() else None)
             for n in nomes}
 
@@ -138,6 +138,42 @@ def linhas_tempo(df, x, y, series, destaque=None, h=360, ytitle=""):
             hovertemplate=str(nome) + " %{x}: %{y:,.0f}<extra></extra>"))
     fig = fig_layout(fig, h)
     fig.update_layout(yaxis_title=ytitle)
+    return fig
+
+
+PALETA_COM = ["#2DD4A7", "#38BDF8", "#F2B441", "#c084fc", "#fb7185", "#a3e635",
+              "#22d3ee", "#f97316", "#e879f9", "#4ade80"]
+
+
+def grafo_coautoria(nos, arestas, h=560):
+    """Rede de coautoria: arestas + nós coloridos por comunidade e dimensionados por produção."""
+    pos = {r.id: (r.x, r.y) for r in nos.itertuples()}
+    ex, ey = [], []
+    for e in arestas.itertuples():
+        if e.origem in pos and e.destino in pos:
+            x0, y0 = pos[e.origem]
+            x1, y1 = pos[e.destino]
+            ex += [x0, x1, None]
+            ey += [y0, y1, None]
+    edge = go.Scatter(x=ex, y=ey, mode="lines", hoverinfo="none",
+                      line=dict(color=T["border"], width=0.6))
+    wmax = max(nos["works"].max(), 1)
+    node = go.Scatter(
+        x=nos["x"], y=nos["y"], mode="markers", hoverinfo="text",
+        text=[f"{r.nome}<br>{r.works} produções · grau {int(r.grau)}" for r in nos.itertuples()],
+        marker=dict(size=[7 + (w / wmax) * 24 for w in nos["works"]],
+                    color=[PALETA_COM[int(c) % len(PALETA_COM)] for c in nos["comunidade"]],
+                    line=dict(color=T["bg"], width=0.6), opacity=0.9))
+    centrais = nos.sort_values("betw", ascending=False).head(8)
+    rotulos = go.Scatter(
+        x=centrais["x"], y=centrais["y"], mode="text",
+        text=[n.split()[-1] for n in centrais["nome"]], hoverinfo="none",
+        textposition="top center", textfont=dict(color=T["text"], size=10))
+    fig = go.Figure([edge, node, rotulos])
+    fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+                      height=h, margin=dict(l=0, r=0, t=0, b=0), showlegend=False,
+                      xaxis=dict(visible=False), yaxis=dict(visible=False),
+                      hoverlabel=dict(bgcolor=T["surface"], font_color=T["text"]))
     return fig
 
 
@@ -475,6 +511,21 @@ def render_colaboracao():
         cp = cp[cp["pais"] != "Brazil"].head(15)
         st.plotly_chart(barra_h(cp, "pais", "n", h=460, cor=T["secondary"]),
                         width="stretch")
+
+    nos = obs.get("rede_autores_nos")
+    arestas = obs.get("rede_autores_arestas")
+    if nos is not None and arestas is not None and len(nos):
+        st.subheader("Rede de coautoria dos pesquisadores da UFTM")
+        m1, m2, m3 = st.columns(3)
+        m1.metric("Pesquisadores na rede", br(len(nos)))
+        m2.metric("Conexões", br(len(arestas)))
+        m3.metric("Grupos (comunidades)", br(nos["comunidade"].nunique()))
+        style_metric_cards(background_color=T["surface"], border_left_color=T["secondary"],
+                           border_color=T["border"], box_shadow=False)
+        st.plotly_chart(grafo_coautoria(nos, arestas), width="stretch")
+        st.caption("Cada nó é um pesquisador da UFTM (tamanho = nº de produções); ligações = "
+                   "coautorias. Cores = grupos de colaboração (comunidades); rótulos = os 8 "
+                   "mais centrais (intermediação). Passe o mouse para ver nomes.")
 
 
 def render_ods():

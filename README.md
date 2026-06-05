@@ -13,6 +13,8 @@ Visão Geral · **Excelência** (FWCI e percentis mundiais) · Benchmarking · *
 Social** (ODS, financiamento, APC) · **Ciência Aberta** (status OA, repositório verde,
 APC, selo DOAJ) · Colaboração · ODS · Temas · Pesquisadores · Periódicos · **Qualidade**
 (quartis Scimago Q1–Q4) · Explorar — navegação por menu lateral (`streamlit-option-menu`).
+A aba **Colaboração** inclui a rede de coautoria interativa dos pesquisadores da UFTM
+(comunidades e centralidade via `networkx`, render em `plotly`).
 
 ## Rodar no seu computador
 
@@ -29,6 +31,7 @@ acessar, o Streamlit também mostra um endereço "Network URL".
 .venv/bin/python fetch_uftm_ods.py      # produção + ODS + FWCI/percentis/OA/DOAJ (data/*.parquet)
 .venv/bin/python fetch_observatorio.py  # benchmarking, colaboração, pesquisadores, temas (data/*.csv)
 .venv/bin/python fetch_scimago.py       # quartis Scimago Q1–Q4 por ISSN (data/scimago_quartis.csv)
+.venv/bin/python fetch_colaboracao.py   # rede de coautoria (data/rede_autores_*.csv)
 ```
 
 O `fetch_observatorio.py` compara a UFTM com as 11 universidades federais de MG
