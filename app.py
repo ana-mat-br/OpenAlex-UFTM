@@ -6,6 +6,7 @@ Rodar:  streamlit run app.py
 """
 from __future__ import annotations
 
+import hashlib
 import os
 from pathlib import Path
 
@@ -221,8 +222,10 @@ with st.sidebar:
              "bullseye", "person-badge", "diagram-3", "tags", "journal-text",
              "patch-check", "search", "info-circle"]
     _override = st.session_state.pop("ir_para", None)  # navegação por link (ex.: rodapé)
+    # key dependente do conteúdo+estilo: força o re-render quando ordem/ícones/visual mudam
+    _menu_sig = hashlib.md5(("|".join(NAV) + "|".join(ICONS) + "estilo-v2").encode()).hexdigest()[:8]
     pagina = option_menu(
-        None, NAV, icons=ICONS, default_index=0, key="navmenu",
+        None, NAV, icons=ICONS, default_index=0, key=f"navmenu-{_menu_sig}",
         manual_select=(NAV.index(_override) if _override in NAV else None),
         styles={
             "container": {"padding": "0.3rem 0", "background-color": T["surface"]},
