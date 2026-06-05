@@ -929,9 +929,15 @@ def render_transparencia():
         "- **Como ler:** **1,0** = exatamente a média mundial · **1,5** = 50% acima · **2,0** = o "
         "dobro · **0,5** = metade.\n"
         "- Para um conjunto (a UFTM, uma área, um pesquisador), usamos a **média** dos FWCI das "
-        "pesquisas. É a mesma fórmula adotada pela Scopus/SciVal; aqui ela é calculada pelo "
-        "OpenAlex, normalizando por subárea — por isso os valores não são comparáveis entre "
-        "bases diferentes.")
+        "pesquisas.\n"
+        "- **Por que não dá para comparar com outras bases?** A fórmula é a mesma da Scopus/SciVal, "
+        "mas o resultado depende de *quais publicações e citações cada base enxerga*. Este painel "
+        "usa o **OpenAlex** (base científica aberta e gratuita); o SciVal usa a **Scopus** (base "
+        "paga da Elsevier). Como cada base indexa um conjunto diferente de trabalhos, mudam tanto "
+        "as **citações contadas** quanto a **“média esperada”** — e a classificação de áreas "
+        "também difere. Por isso um FWCI de 1,2 no OpenAlex não equivale a 1,2 na Scopus. A "
+        "comparação só faz sentido **dentro da mesma base** — é o que fazemos no *Comparação*, "
+        "todo medido em OpenAlex.")
 
     st.markdown("**4. Atualização e reprodutibilidade**")
     st.markdown(
