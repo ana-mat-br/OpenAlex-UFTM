@@ -1,4 +1,4 @@
-"""Observatório DAAD — produção científica da UFTM via OpenAlex.
+"""Painel DAAD — produção científica da UFTM via OpenAlex.
 
 Diretoria de Avaliação e Análise de Dados (DAAD) · PROPPG/UFTM.
 Lê o cache local (data/*.parquet|csv) gerado por fetch_uftm_ods.py e fetch_observatorio.py.
@@ -48,7 +48,7 @@ ODS_PT = {
     16: "Paz, Justiça e Instituições Eficazes", 17: "Parcerias e Meios de Implementação",
 }
 
-st.set_page_config(page_title="Observatório DAAD/UFTM", layout="wide",
+st.set_page_config(page_title="Painel DAAD — UFTM", layout="wide",
                    initial_sidebar_state="expanded")
 
 SERIF = "'Palatino', 'Palatino Linotype', 'Book Antiqua', Georgia, serif"
@@ -212,7 +212,7 @@ def aplica_filtros(faixa, tipos, so_oa):
 # ----------------------------------------------------------------- sidebar
 with st.sidebar:
     st.markdown(f"<h3 style='color:{T['primary']};margin-bottom:0;font-family:{SERIF}'>"
-                f"Observatório DAAD</h3>"
+                f"Painel DAAD</h3>"
                 f"<p style='color:{T['muted']};font-size:.8rem;margin-top:.2rem'>"
                 f"Diretoria de Avaliação e Análise de Dados · PROPPG/UFTM</p>",
                 unsafe_allow_html=True)
@@ -258,7 +258,16 @@ def cabecalho(titulo, sub):
 
 
 def render_visao_geral():
-    cabecalho("Visão Geral", "Produção científica da UFTM")
+    cabecalho("Visão Geral", "A pesquisa da UFTM, em números claros")
+    st.markdown(
+        f"<div style='background:{T['green_tint']};border:1px solid {T['border']};"
+        f"border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.2rem;"
+        f"color:{T['text_soft']};font-size:.95rem;line-height:1.5'>"
+        f"<b style='color:{T['primary']}'>O que é este painel.</b> O Painel DAAD é a "
+        f"prestação de contas da pesquisa da UFTM à sociedade. De forma transparente e com "
+        f"dados abertos, mostra o que a universidade produz em ciência e o impacto disso para "
+        f"as pessoas. Os números vêm do <b>OpenAlex</b> (base científica mundial e gratuita) "
+        f"e são atualizados todo mês.</div>", unsafe_allow_html=True)
     fwci_med = fraw["fwci"].dropna().mean() if "fwci" in fraw else None
     top10 = fraw["top10"].mean() if "top10" in fraw else None
     c1, c2, c3, c4, c5 = st.columns(5)
@@ -270,6 +279,12 @@ def render_visao_geral():
     c5.metric("Acesso aberto", f"{fraw['is_oa'].mean():.0%}" if len(fraw) else "—")
     style_metric_cards(background_color=T["surface"], border_left_color=T["primary"],
                        border_color=T["border"], box_shadow=False)
+    st.caption(
+        "**Como ler estes números** · **Produções**: pesquisas publicadas no período · "
+        "**Citações**: vezes que essas pesquisas foram usadas por outros estudos · "
+        "**FWCI**: impacto comparado à média mundial da área (1,0 = média do mundo; acima de 1 "
+        "é acima da média) · **Top 10%**: fatia das pesquisas entre as 10% mais citadas do "
+        "planeta · **Acesso aberto**: parte que qualquer pessoa pode ler de graça.")
 
     st.subheader("Produção por ano")
     por_ano = fraw.groupby("year").size().reset_index(name="n")
@@ -718,9 +733,11 @@ PAGINAS.get(_forcar or pagina or "Visão Geral", render_visao_geral)()
 # ----------------------------------------------------------------- rodapé
 st.divider()
 st.markdown(f"<div style='text-align:center;color:{T['muted']};font-size:.85rem'>"
-            f"<b style='color:{T['primary']}'>DAAD · PROPPG · UFTM</b> — Observatório da "
-            f"Produção Científica · dados OpenAlex (ROR 01av3m334)</div>",
+            f"<b style='color:{T['primary']}'>Painel DAAD</b> · Diretoria de Avaliação e Análise "
+            f"de Dados · PROPPG/UFTM · dados abertos do OpenAlex (ROR 01av3m334)</div>",
             unsafe_allow_html=True)
-st.caption("A classificação de ODS é estimativa automática do classificador Aurora/mBERT do "
-           "OpenAlex (score ≥ 0,4). FWCI e percentis são indicadores normalizados por campo "
-           "do OpenAlex (metodologia equivalente à do Scopus, valores não comparáveis entre bases).")
+st.caption("Transparência: os números vêm do OpenAlex, base científica mundial e gratuita, "
+           "atualizada automaticamente todo mês. A marcação de ODS é uma estimativa por "
+           "inteligência artificial (não declarada pelos autores). Indicadores de impacto (FWCI, "
+           "percentis) são normalizados por área — comparam cada pesquisa com a média mundial "
+           "do seu campo.")

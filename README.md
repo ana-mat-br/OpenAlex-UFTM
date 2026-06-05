@@ -1,4 +1,4 @@
-# Observatório DAAD/UFTM
+# Painel DAAD — UFTM
 
 Painel web da produção científica da UFTM (Diretoria de Avaliação e Análise de Dados —
 DAAD/PROPPG), com dados do **OpenAlex** (ROR `01av3m334`). Construído em **Streamlit**.
