@@ -217,11 +217,11 @@ with st.sidebar:
                 f"Diretoria de Avaliação e Análise de Dados · PROPPG/UFTM</p>",
                 unsafe_allow_html=True)
 
-    NAV = ["Visão Geral", "Impacto científico", "Comparação", "Impacto Social", "Ciência Aberta",
-           "Colaboração", "ODS", "Temas", "Pesquisadores", "Onde publicamos",
+    NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "Impacto Social",
+           "ODS", "Pesquisadores", "Colaboração", "Temas", "Onde publicamos",
            "Qualidade das revistas", "Explorar", "Transparência"]
-    ICONS = ["speedometer2", "award", "bar-chart-line", "globe-americas", "unlock",
-             "diagram-3", "bullseye", "tags", "person-badge", "journal-text",
+    ICONS = ["speedometer2", "award", "bar-chart-line", "unlock", "globe-americas",
+             "bullseye", "person-badge", "diagram-3", "tags", "journal-text",
              "patch-check", "search", "info-circle"]
     _override = st.session_state.pop("ir_para", None)  # navegação por link (ex.: rodapé)
     pagina = option_menu(
@@ -874,10 +874,10 @@ def render_transparencia():
 
 PAGINAS = {
     "Visão Geral": render_visao_geral, "Impacto científico": render_excelencia,
-    "Comparação": render_benchmarking, "Impacto Social": render_impacto_social,
-    "Ciência Aberta": render_ciencia_aberta,
-    "Colaboração": render_colaboracao, "ODS": render_ods, "Temas": render_temas,
-    "Pesquisadores": render_pesquisadores, "Onde publicamos": render_periodicos,
+    "Comparação": render_benchmarking, "Ciência Aberta": render_ciencia_aberta,
+    "Impacto Social": render_impacto_social, "ODS": render_ods,
+    "Pesquisadores": render_pesquisadores, "Colaboração": render_colaboracao,
+    "Temas": render_temas, "Onde publicamos": render_periodicos,
     "Qualidade das revistas": render_qualidade, "Explorar": render_explorar,
     "Transparência": render_transparencia,
 }
