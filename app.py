@@ -79,7 +79,12 @@ st.markdown(f"""
   /* sidebar mais compacto: menos folga entre slider, divisor e menu */
   [data-testid="stSidebar"] [data-testid="stVerticalBlock"] {{ gap: .5rem; }}
   [data-testid="stSidebar"] hr {{ margin: .35rem 0; }}
-  [data-testid="stSidebar"] [data-testid="stSlider"] {{ padding-bottom: 0; margin-bottom: -.4rem; }}
+  /* slider do Período: rótulo editorial e sem os números mín/máx (limpa o box) */
+  [data-testid="stSidebar"] [data-testid="stSlider"] label {{ text-transform: uppercase;
+    letter-spacing: .08em; font-size: .68rem; color: {T['muted']}; font-weight: 600; }}
+  [data-testid="stSidebar"] [data-testid="stSliderTickBar"],
+  [data-testid="stSidebar"] [data-testid="stSliderTickBarMin"],
+  [data-testid="stSidebar"] [data-testid="stSliderTickBarMax"] {{ display: none; }}
 </style>
 """, unsafe_allow_html=True)
 
@@ -217,20 +222,18 @@ def filtro_tipo(df, key):
 
 # ----------------------------------------------------------------- sidebar
 with st.sidebar:
-    st.markdown(f"<h3 style='color:{T['primary']};margin-bottom:0;font-family:{SERIF}'>"
-                f"Painel DAAD</h3>"
-                f"<p style='color:{T['muted']};font-size:.8rem;margin-top:.2rem'>"
-                f"Diretoria de Avaliação e Análise de Dados · PROPPG/UFTM</p>",
-                unsafe_allow_html=True)
+    st.markdown(
+        f"<div style='font-family:{SERIF};font-size:2rem;font-weight:700;line-height:1.02;"
+        f"margin:.1rem 0 .25rem'><span style='color:{T['text']}'>Painel</span> "
+        f"<span style='color:{T['primary']}'>DAAD</span></div>"
+        f"<p style='color:{T['muted']};font-size:.76rem;line-height:1.4;margin:0 0 .2rem'>"
+        f"Diretoria de Avaliação e Análise de Dados · PROPPG/UFTM</p>",
+        unsafe_allow_html=True)
 
     anos = raw["year"].dropna()
     ymin, ymax = int(anos.min()), int(anos.max())
     with st.container(border=True):
-        st.markdown(f"<div style='font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;"
-                    f"color:{T['muted']};font-weight:600;margin-bottom:-.4rem'>Período</div>",
-                    unsafe_allow_html=True)
-        faixa = st.slider("Período", ymin, ymax, (max(ymin, ymax - 9), ymax),
-                          label_visibility="collapsed")
+        faixa = st.slider("Período", ymin, ymax, (max(ymin, ymax - 9), ymax))
 
     NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "Impacto Social",
            "ODS", "Pesquisadores", "Colaboração", "Temas", "Onde publicamos",
