@@ -1,0 +1,5 @@
+pyalex>=0.15
+pandas>=2.0
+matplotlib>=3.7
+pyarrow>=14
+streamlit>=1.30
