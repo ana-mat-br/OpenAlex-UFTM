@@ -276,7 +276,7 @@ def render_visao_geral():
     c2.metric("Citações", br(int(fraw["cited_by"].sum())))
     c3.metric("FWCI médio", br(fwci_med, 2) if fwci_med else "—")
     c4.metric("Top 10%", f"{top10:.0%}" if top10 is not None else "—",
-              help="Produções entre as 10% mais citadas do mundo no seu campo (percentil normalizado).")
+              help="Parte das pesquisas que está entre as 10% mais citadas do mundo na sua área.")
     c5.metric("Acesso aberto", f"{fraw['is_oa'].mean():.0%}" if len(fraw) else "—")
     style_metric_cards(background_color=T["surface"], border_left_color=T["primary"],
                        border_color=T["border"], box_shadow=False)
@@ -332,8 +332,9 @@ def render_excelencia():
         "sua área. **FWCI 1,0** = exatamente a média do mundo (acima de 1 é acima da média). "
         "**Top 10% / Top 1%** = a fatia das pesquisas que está entre as mais citadas do "
         "planeta — quanto maior, mais reconhecida lá fora.  \n"
-        "_Detalhe técnico: FWCI (Field-Weighted Citation Impact) usa a mesma fórmula do Scopus, "
-        "calculada pelo OpenAlex; valores não são comparáveis entre bases diferentes._")
+        "_Detalhe técnico: FWCI (Field-Weighted Citation Impact) usa a mesma fórmula da Scopus "
+        "(base científica paga), calculada aqui pelo OpenAlex; os valores não são comparáveis "
+        "entre bases diferentes._")
 
     c1, c2 = st.columns(2)
     with c1:
@@ -376,7 +377,8 @@ def render_impacto_social():
     fin = fraw[fraw["n_grants"] > 0] if "n_grants" in fraw else fraw.iloc[0:0]
     apc_tot = fraw["apc_usd"].dropna().sum() if "apc_usd" in fraw else 0
     c1.metric("Produções com ODS", br(n_ods),
-              help="Alinhamento à Agenda 2030 (classificador Aurora ≥ 0,4).")
+              help="Pesquisas ligadas a pelo menos um dos 17 objetivos da ONU, segundo "
+                   "estimativa por inteligência artificial do OpenAlex.")
     c2.metric("Produções financiadas", br(len(fin)),
               f"{len(fin)/max(len(fraw),1):.0%} do total")
     c3.metric("Financiadores distintos",
@@ -422,7 +424,8 @@ def render_impacto_social():
         st.plotly_chart(barra_h(top, "rotulo", "n_patentes", h=440, cor=T["secondary"]),
                         width="stretch")
         st.caption("Patentes (mundiais) que citam produções da UFTM — proxy de impacto em "
-                   "inovação/transferência de tecnologia. Fonte: The Lens (PatCite).")
+                   "inovação e transferência de tecnologia. Fonte: The Lens (base aberta que "
+                   "liga pesquisas a patentes).")
     else:
         st.info(
             "**Patentes ainda não ativadas.** Esta seção acende com dados reais quando um "
@@ -431,9 +434,9 @@ def render_impacto_social():
             "2. Guarde o token como segredo **`LENS_TOKEN`** no GitHub (Settings → Secrets → Actions) "
             "e/ou rode localmente: `LENS_TOKEN=seu_token python fetch_lens.py`.\n"
             "3. Na próxima atualização, patentes que citam a pesquisa da UFTM aparecem aqui.")
-    st.caption("Políticas públicas (Overton) e atenção online (Altmetric) exigem assinatura/chave "
-               "paga e ficam como evolução futura. Lacuna declarada: *Views* do Scopus não têm "
-               "equivalente aberto.")
+    st.caption("Políticas públicas (Overton) e atenção online (Altmetric) exigem assinatura paga "
+               "e ficam como evolução futura. Declaramos também que algumas medidas de bases "
+               "pagas (como número de visualizações) não têm equivalente em dados abertos.")
 
 
 def render_ciencia_aberta():
@@ -520,7 +523,7 @@ def render_benchmarking():
     metricas = {
         "Produções": ("works", ",.0f"), "Citações": ("citacoes", ",.0f"),
         "Citações por trabalho": ("cit_por_trabalho", ",.2f"),
-        "FWCI / Impacto médio (citedness)": ("mean_citedness", ",.2f"),
+        "Impacto médio (citações por trabalho recente)": ("mean_citedness", ",.2f"),
         "No top 10% mundial (%)": ("top10_share", ".1%"),
         "No top 1% mundial (%)": ("top1_share", ".1%"),
         "Colaboração internacional (%)": ("intl_share", ".1%"),
@@ -545,8 +548,10 @@ def render_benchmarking():
         nota = "Total acumulado (não afetado pelo filtro de período)."
     st.plotly_chart(barra_h(d, "sigla", col, h=400, fmt=fmt, destaque="UFTM"),
                     width="stretch")
-    st.caption(nota + ("  Referência mundial: FWCI/citedness ≈ 1,0; top 10% ≈ 10%; top 1% ≈ 1%."
-                       if col in ("mean_citedness", "top10_share", "top1_share") else ""))
+    ref = ("  Referência: no mundo, por definição ~10% das pesquisas estão no top 10% e ~1% no "
+           "top 1% — acima disso é estar acima da média mundial."
+           if col in ("top10_share", "top1_share") else "")
+    st.caption(nota + ref)
 
     st.subheader("Evolução temporal")
     eixo = st.radio("Indicador", ["works", "citacoes"], horizontal=True,
@@ -605,7 +610,7 @@ def render_colaboracao():
         st.plotly_chart(grafo_coautoria(nos, arestas), width="stretch")
         st.caption("Cada nó é um pesquisador da UFTM (tamanho = nº de produções); ligações = "
                    "coautorias. Cores = grupos de colaboração (comunidades); rótulos = os 8 "
-                   "mais centrais (intermediação). Passe o mouse para ver nomes.")
+                   "que mais conectam grupos diferentes. Passe o mouse para ver nomes.")
 
 
 def render_ods():
@@ -658,7 +663,8 @@ def render_pesquisadores():
     st.caption("**Como ler** · Pesquisadores com vínculo na UFTM, ordenados por **citações** "
                "(quantas vezes seus trabalhos foram usados por outros). O **índice h** resume "
                "produção e impacto: um h de 30 significa 30 trabalhos citados ao menos 30 vezes "
-               "cada.")
+               "cada. O **i10** é quantos trabalhos têm pelo menos 10 citações. **ORCID** é o "
+               "identificador único do pesquisador.")
     ta = obs.get("top_autores")
     if ta is None:
         st.info("Rode `python fetch_observatorio.py` para os dados de pesquisadores.")
@@ -702,7 +708,7 @@ def render_qualidade():
     c3.metric("SJR médio", br(cq["sjr"].mean(), 2) if len(cq) else "—")
     c4.metric("Cobertura Scimago", f"{cobertura:.0%}",
               help="% das produções em periódico com quartil no Scimago. O restante são "
-                   "periódicos fora do Scopus/Scimago (ex.: muitos periódicos nacionais).")
+                   "periódicos fora dessas bases internacionais (ex.: muitos periódicos nacionais).")
     style_metric_cards(background_color=T["surface"], border_left_color=T["primary"],
                        border_color=T["border"], box_shadow=False)
 
@@ -736,8 +742,9 @@ def render_qualidade():
     q1j.columns = ["Periódico", "n"]
     if len(q1j):
         st.plotly_chart(barra_h(q1j, "Periódico", "n", h=460), width="stretch")
-    st.caption("Quartil pelo melhor ranking Scimago (SJR Best Quartile, edição 2025), cruzado "
-               "por ISSN. Periódicos fora do Scopus/Scimago não recebem quartil.")
+    st.caption("Usamos o melhor quartil de cada revista no ranking Scimago (edição 2025), "
+               "ligando os dados pelo código de cada revista (ISSN). Revistas fora dessas bases "
+               "internacionais (muitas nacionais) não recebem quartil.")
 
 
 def render_explorar():
@@ -760,6 +767,8 @@ def render_transparencia():
 
     st.subheader("Entenda os termos")
     glossario = {
+        "OpenAlex": "Base de dados científica mundial, aberta e gratuita, que reúne informações "
+        "de publicações, autores e instituições. É a fonte principal deste painel.",
         "Produção / produção científica": "Um trabalho de pesquisa publicado — artigo de "
         "revista, livro, capítulo, tese, dado etc.",
         "Citação": "Quando outro estudo usa e referencia uma pesquisa. Mais citações = a "
@@ -769,8 +778,13 @@ def render_transparencia():
         "Top 10% / Top 1% mundial": "A fatia de pesquisas que está entre as 10% (ou 1%) mais "
         "citadas do planeta na sua área. É um sinal de pesquisa de ponta.",
         "Acesso aberto": "Pesquisa que qualquer pessoa pode ler de graça, sem assinatura.",
-        "Diamante / Verde / Ouro": "Tipos de acesso aberto. Diamante: grátis para ler e para "
-        "publicar. Verde: cópia gratuita num repositório. Ouro: aberta, mas com taxa paga (APC).",
+        "Tipos de acesso aberto": "**Diamante**: grátis para ler e para publicar. **Verde**: "
+        "cópia gratuita guardada num repositório (biblioteca digital). **Ouro**: aberta, mas a "
+        "universidade paga uma taxa (APC). **Bronze**: de graça para ler, mas sem licença livre. "
+        "**Híbrido**: revista paga em que só este artigo foi aberto. **Fechado**: só com "
+        "assinatura.",
+        "Repositório": "Biblioteca digital onde uma cópia gratuita da pesquisa fica guardada e "
+        "disponível para todos (ex.: o repositório institucional da UFTM).",
         "APC": "Article Processing Charge — taxa que algumas revistas cobram para deixar a "
         "pesquisa aberta. Mostramos a estimativa desse custo.",
         "DOAJ": "Diretório de revistas de acesso aberto confiáveis — um selo de qualidade.",
@@ -782,8 +796,16 @@ def render_transparencia():
         "ODS": "Os 17 Objetivos de Desenvolvimento Sustentável da ONU (Agenda 2030).",
         "Índice h": "Resume produção e impacto de um pesquisador: h = 30 significa 30 trabalhos "
         "citados pelo menos 30 vezes cada.",
+        "Índice i10": "Número de trabalhos do pesquisador com pelo menos 10 citações cada.",
         "Colaboração internacional": "Pesquisa feita em parceria com pelo menos um país "
         "estrangeiro.",
+        "ROR": "Research Organization Registry — um código único e gratuito que identifica cada "
+        "instituição no mundo. O da UFTM é 01av3m334.",
+        "ISSN": "Código que identifica unicamente uma revista científica — como um RG da revista.",
+        "DOI": "Endereço permanente de uma publicação na internet: um link que nunca muda e "
+        "sempre leva ao trabalho.",
+        "ORCID": "Identificador único e gratuito de cada pesquisador, que evita confundir "
+        "pessoas com nomes parecidos.",
     }
     for termo, definicao in glossario.items():
         st.markdown(f"**{termo}** — {definicao}")
@@ -807,8 +829,8 @@ def render_transparencia():
         "recebendo citações).\n"
         "- A cobertura depende do que está indexado no OpenAlex; **periódicos não indexados** "
         "(muitos nacionais) podem não receber quartil ou impacto.\n"
-        "- Indicadores de impacto **não são comparáveis entre bases diferentes** (ex.: OpenAlex "
-        "vs. Scopus).\n")
+        "- Indicadores de impacto **não são comparáveis entre bases diferentes** — o OpenAlex e "
+        "as bases científicas pagas contam de formas distintas.\n")
     st.caption("Código aberto e auditável em github.com/ana-mat-br/painel-daad.")
 
 
