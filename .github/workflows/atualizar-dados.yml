@@ -1,0 +1,45 @@
+name: Atualizar dados do OpenAlex
+
+# Roda automaticamente todo dia 1º às 06:00 UTC (03:00 em Brasília)
+# e também pode ser disparado à mão pelo botão "Run workflow" na aba Actions.
+on:
+  schedule:
+    - cron: "0 6 1 * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instalar dependências de coleta
+        run: pip install pyalex pandas pyarrow
+
+      - name: Coletar dados do OpenAlex
+        env:
+          OPENALEX_EMAIL: anapaula.fernandes@uftm.edu.br
+        run: |
+          python fetch_uftm_ods.py
+          python fetch_observatorio.py
+
+      - name: Commit e push se houver mudanças
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          if git diff --staged --quiet; then
+            echo "Sem mudanças nos dados — nada a commitar."
+          else
+            git commit -m "Atualização automática dos dados do OpenAlex [skip ci]"
+            git push
+          fi
