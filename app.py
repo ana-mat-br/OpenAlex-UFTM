@@ -827,8 +827,27 @@ def render_transparencia():
         "- Os dados vêm do [OpenAlex](https://openalex.org), base científica mundial, aberta e "
         "gratuita, que cataloga publicações, autores, instituições e citações.\n"
         "- A produção da UFTM é identificada pelo seu código institucional único "
-        "(**ROR `01av3m334`**): entram todos os trabalhos com pelo menos um autor vinculado à "
+        "(**ROR `01av3m334`**): entram os trabalhos com pelo menos um autor vinculado à "
         "universidade.")
+
+    st.markdown("**Como uma pesquisa chega até o OpenAlex — e por que algumas faltam**")
+    st.markdown(
+        "- O OpenAlex não recebe os dados direto da UFTM. Ele reúne informações de grandes "
+        "fontes abertas, sobretudo o **Crossref** — onde as revistas e editoras registram cada "
+        "publicação ao criar um **DOI** (o endereço permanente do trabalho) — além de PubMed, "
+        "DataCite, DOAJ, ORCID, arXiv, repositórios e outras.\n"
+        "- Na prática: quando uma revista publica um artigo e registra o DOI, o OpenAlex capta "
+        "esse registro. O trabalho é contado como “da UFTM” quando o vínculo do autor com a "
+        "universidade está identificado.\n"
+        "- Por isso, **nem toda a produção é captada**. Costumam ficar de fora: trabalhos **sem "
+        "DOI** ou em veículos que não registram seus dados nessas fontes (parte de periódicos "
+        "locais, anais de eventos, relatórios, alguns livros e materiais de extensão); trabalhos "
+        "em que a **afiliação à UFTM não foi registrada ou reconhecida**; teses e dissertações "
+        "que estão só no repositório, sem DOI; e publicações **muito recentes**, ainda não "
+        "indexadas.\n"
+        "- Em resumo: o painel mostra a parte da produção da UFTM **registrada em bases abertas "
+        "internacionais** — uma fração grande e crescente, mas não 100% de tudo o que a "
+        "universidade produz.")
 
     st.markdown("**2. Fontes complementares**")
     st.markdown(
