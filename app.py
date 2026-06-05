@@ -189,21 +189,20 @@ with tab_bench:
         escolha = st.selectbox("Métrica", list(metricas.keys()))
         col = metricas[escolha]
 
-        d = bi[["sigla", col]].copy()
+        d = bi[["sigla", col]].copy().sort_values(col, ascending=False)
+        ordem = d["sigla"].tolist()  # maior -> menor
         d["Destaque"] = d["sigla"].where(d["sigla"] == "UFTM", "Outras")
         cores = alt.Scale(domain=["UFTM", "Outras"], range=[VERDE, "#bbf7d0"])
         fmt = ".0%" if col == "oa_share" else ",.2f" if col == "mean_citedness" else ",.0f"
-        barras = (
-            alt.Chart(d)
-            .mark_bar(cornerRadiusEnd=4)
-            .encode(
-                x=alt.X(f"{col}:Q", title=escolha, axis=alt.Axis(format=fmt)),
-                y=alt.Y("sigla:N", sort="-x", title=None),  # ordem decrescente
-                color=alt.Color("Destaque:N", scale=cores, legend=None),
-                tooltip=["sigla", alt.Tooltip(f"{col}:Q", title=escolha, format=fmt)],
-            )
+        base = alt.Chart(d).encode(
+            x=alt.X(f"{col}:Q", title=escolha, axis=alt.Axis(format=fmt)),
+            y=alt.Y("sigla:N", sort=ordem, title=None),  # ordem decrescente fixa
         )
-        rotulos = barras.mark_text(align="left", dx=4, color="#14532d", fontSize=11).encode(
+        barras = base.mark_bar(cornerRadiusEnd=4).encode(
+            color=alt.Color("Destaque:N", scale=cores, legend=None),
+            tooltip=["sigla", alt.Tooltip(f"{col}:Q", title=escolha, format=fmt)],
+        )
+        rotulos = base.mark_text(align="left", dx=4, color="#14532d", fontSize=11).encode(
             text=alt.Text(f"{col}:Q", format=fmt)
         )
         st.altair_chart((barras + rotulos).properties(height=380), use_container_width=True)
