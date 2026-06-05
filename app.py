@@ -897,8 +897,3 @@ st.markdown(f"<div style='text-align:center;color:{T['muted']};font-size:.85rem'
             f"<b style='color:{T['primary']}'>Painel DAAD</b> · Diretoria de Avaliação e Análise "
             f"de Dados · PROPPG/UFTM · dados abertos do OpenAlex (ROR 01av3m334)</div>",
             unsafe_allow_html=True)
-st.caption("Transparência: os números vêm do OpenAlex, base científica mundial e gratuita, "
-           "atualizada automaticamente todo mês. A marcação de ODS é uma estimativa por "
-           "inteligência artificial (não declarada pelos autores). Indicadores de impacto (FWCI, "
-           "percentis) são normalizados por área — comparam cada pesquisa com a média mundial "
-           "do seu campo.")
