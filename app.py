@@ -295,6 +295,10 @@ def render_visao_geral():
         "**FWCI**: impacto comparado à média mundial da área (1,0 = média do mundo; acima de 1 "
         "é acima da média) · **Top 10%**: fatia das pesquisas entre as 10% mais citadas do "
         "planeta · **Acesso aberto**: parte que qualquer pessoa pode ler de graça.")
+    if st.button("Por que nem toda a produção aparece? Entenda a cobertura dos dados  →",
+                 type="tertiary", key="cobertura_vg"):
+        st.session_state["ir_para"] = "Transparência"
+        st.rerun()
 
     st.subheader("Produção por ano")
     por_ano = fr.groupby("year").size().reset_index(name="n")
