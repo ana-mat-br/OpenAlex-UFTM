@@ -60,8 +60,15 @@ st.markdown(
 )
 
 
+def _data_sig():
+    """Assinatura (nome, data de modificação) dos arquivos de dados.
+    Serve de chave de cache: se um arquivo muda, o cache é invalidado sozinho."""
+    return tuple(sorted((p.name, p.stat().st_mtime) for p in DATA.glob("*")
+                        if p.suffix in (".parquet", ".csv")))
+
+
 @st.cache_data
-def load():
+def load(sig):
     raw = pd.read_parquet(DATA / "uftm_works_raw.parquet")
     sdg = pd.read_parquet(DATA / "uftm_works_by_sdg.parquet")
     raw["year"] = pd.to_numeric(raw["year"], errors="coerce")
@@ -71,7 +78,7 @@ def load():
 
 
 @st.cache_data
-def load_obs():
+def load_obs(sig):
     """Carrega os agregados de observatório (benchmarking, colaboração, temas, autores)."""
     arquivos = ["bench_instituicoes", "bench_por_ano", "colab_instituicoes",
                 "colab_paises", "temas_campo", "temas_topicos", "top_autores"]
@@ -82,8 +89,9 @@ def load_obs():
     return d
 
 
-raw, sdg = load()
-obs = load_obs()
+_sig = _data_sig()
+raw, sdg = load(_sig)
+obs = load_obs(_sig)
 
 # ---------------------------------------------------------------- barra lateral
 st.sidebar.title("Observatório PROPPG")
@@ -97,6 +105,10 @@ tipos = sorted(raw["type"].dropna().unique())
 sel_tipos = st.sidebar.multiselect("Tipo de produção", tipos, default=tipos)
 
 so_oa = st.sidebar.checkbox("Apenas acesso aberto", value=False)
+
+if st.sidebar.button("Recarregar dados", use_container_width=True):
+    st.cache_data.clear()
+    st.rerun()
 
 st.sidebar.divider()
 st.sidebar.caption("Desenvolvido por **DAAD · PROPPG · UFTM**")
