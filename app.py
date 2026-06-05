@@ -265,7 +265,8 @@ def render_visao_geral():
     c1.metric("Produções", br(len(fraw)))
     c2.metric("Citações", br(int(fraw["cited_by"].sum())))
     c3.metric("FWCI médio", br(fwci_med, 2) if fwci_med else "—")
-    c4.metric("No top 10% mundial", f"{top10:.0%}" if top10 is not None else "—")
+    c4.metric("Top 10%", f"{top10:.0%}" if top10 is not None else "—",
+              help="Produções entre as 10% mais citadas do mundo no seu campo (percentil normalizado).")
     c5.metric("Acesso aberto", f"{fraw['is_oa'].mean():.0%}" if len(fraw) else "—")
     style_metric_cards(background_color=T["surface"], border_left_color=T["primary"],
                        border_color=T["border"], box_shadow=False)
