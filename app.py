@@ -76,6 +76,10 @@ st.markdown(f"""
   hr {{ border-color: {T['border']}; }}
   div[data-baseweb="select"] > div, .stTextInput input {{
     background: {T['surface']}; border-color: {T['border']}; }}
+  /* sidebar mais compacto: menos folga entre slider, divisor e menu */
+  [data-testid="stSidebar"] [data-testid="stVerticalBlock"] {{ gap: .5rem; }}
+  [data-testid="stSidebar"] hr {{ margin: .35rem 0; }}
+  [data-testid="stSidebar"] [data-testid="stSlider"] {{ padding-bottom: 0; margin-bottom: -.4rem; }}
 </style>
 """, unsafe_allow_html=True)
 
