@@ -212,12 +212,38 @@ def aplica_filtros(faixa):
 
 
 TIPOS = sorted(raw["type"].dropna().unique())
+TIPOS_PT = {
+    "article": "Artigo", "book": "Livro", "book-chapter": "Capítulo de livro",
+    "dataset": "Conjunto de dados", "dissertation": "Tese / dissertação",
+    "editorial": "Editorial", "erratum": "Errata", "letter": "Carta", "other": "Outro",
+    "paratext": "Paratexto", "peer-review": "Parecer (revisão por pares)",
+    "preprint": "Preprint", "report": "Relatório", "review": "Revisão",
+}
 
 
-def filtro_tipo(df, key):
-    """Menu suspenso discreto de tipo de produção; devolve o df filtrado."""
-    escolha = st.selectbox("Tipo de produção", ["Todos os tipos"] + TIPOS, key=key)
-    return df if escolha == "Todos os tipos" else df[df["type"] == escolha]
+def tipo_pt(t):
+    return TIPOS_PT.get(t, t)
+
+
+def filtro_tipo(df, key, com_oa=False):
+    """Filtros locais discretos: tipo de produção (traduzido) e, opcionalmente, acesso aberto."""
+    if com_oa:
+        c1, c2 = st.columns([2, 1])
+        with c1:
+            escolha = st.selectbox("Tipo de produção", ["Todos os tipos"] + TIPOS,
+                                   format_func=lambda t: "Todos os tipos" if t == "Todos os tipos"
+                                   else tipo_pt(t), key=key)
+        with c2:
+            so_oa = st.checkbox("Apenas acesso aberto", key=key + "_oa")
+    else:
+        escolha = st.selectbox("Tipo de produção", ["Todos os tipos"] + TIPOS,
+                               format_func=lambda t: "Todos os tipos" if t == "Todos os tipos"
+                               else tipo_pt(t), key=key)
+        so_oa = False
+    out = df if escolha == "Todos os tipos" else df[df["type"] == escolha]
+    if so_oa:
+        out = out[out["is_oa"] == True]  # noqa: E712
+    return out
 
 
 # ----------------------------------------------------------------- sidebar
@@ -279,7 +305,7 @@ def render_visao_geral():
         f"Quanto a UFTM pesquisa, com que impacto e quanto desse trabalho está aberto a todos. "
         f"Dados do <b style='color:{T['text']}'>OpenAlex</b>, atualizados todo mês.</div>",
         unsafe_allow_html=True)
-    fr = filtro_tipo(fraw, "tipo_vg")
+    fr = filtro_tipo(fraw, "tipo_vg", com_oa=True)
     fwci_med = fr["fwci"].dropna().mean() if "fwci" in fr else None
     top10 = fr["top10"].mean() if "top10" in fr else None
     c1, c2, c3, c4, c5 = st.columns(5)
@@ -311,6 +337,7 @@ def render_visao_geral():
         st.subheader("Por tipo de produção")
         tp = fraw["type"].value_counts().reset_index()  # sempre todos os tipos (visão do mix)
         tp.columns = ["tipo", "n"]
+        tp["tipo"] = tp["tipo"].map(tipo_pt)
         st.plotly_chart(barra_h(tp.head(10), "tipo", "n", h=360), width="stretch")
     with c2:
         st.subheader("Acesso aberto por ano")
@@ -680,7 +707,7 @@ def render_periodicos():
     cabecalho("Onde publicamos", "As revistas científicas que mais publicam pesquisa da UFTM")
     st.caption("**Como ler** · Cada barra é uma revista científica (periódico); o tamanho mostra "
                "quantas pesquisas da UFTM saíram nela no período.")
-    fr = filtro_tipo(fraw, "tipo_periodicos")
+    fr = filtro_tipo(fraw, "tipo_periodicos", com_oa=True)
     top = (fr[fr["source"].notna()]["source"].value_counts().head(20)
            .rename_axis("Periódico").reset_index(name="n"))
     st.plotly_chart(barra_h(top, "Periódico", "n", h=540), width="stretch")
@@ -751,7 +778,9 @@ def render_explorar():
     with c1:
         termo = st.text_input("Filtrar por palavra no título")
     with c2:
-        tipo = st.selectbox("Tipo de produção", ["Todos os tipos"] + TIPOS, key="tipo_explorar")
+        tipo = st.selectbox("Tipo de produção", ["Todos os tipos"] + TIPOS, key="tipo_explorar",
+                            format_func=lambda t: "Todos os tipos" if t == "Todos os tipos"
+                            else tipo_pt(t))
     with c3:
         so_oa = st.checkbox("Apenas acesso aberto", value=False)
     f = fraw
@@ -762,11 +791,15 @@ def render_explorar():
     cols = [c for c in ["title", "year", "type", "is_oa", "fwci", "cited_by", "source", "doi"]
             if c in f.columns]
     tab = f[cols].copy()
+    tab["type"] = tab["type"].map(tipo_pt)
     if termo:
         tab = tab[tab["title"].str.contains(termo, case=False, na=False)]
     tab = tab.sort_values("cited_by", ascending=False)
     st.dataframe(tab, width="stretch", height=520,
-                 column_config={"doi": st.column_config.LinkColumn("DOI")})
+                 column_config={"doi": st.column_config.LinkColumn("DOI"),
+                                "type": "Tipo", "title": "Título", "year": "Ano",
+                                "is_oa": "Acesso aberto", "fwci": "FWCI",
+                                "cited_by": "Citações", "source": "Revista"})
     st.download_button("Baixar CSV", tab.to_csv(index=False).encode("utf-8"),
                        "producoes_uftm.csv", "text/csv")
 
