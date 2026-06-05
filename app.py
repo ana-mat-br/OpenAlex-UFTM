@@ -234,7 +234,7 @@ with tab_bench:
                         format_func=lambda x: "Produções" if x == "works" else "Citações",
                         horizontal=True)
         ba = obs["bench_por_ano"]
-        ano_max = int(ba["year"].max())
+        ano_max = min(int(ba["year"].max()), ymax)  # ignora anos futuros vazios do OpenAlex
         ba = ba[ba["year"].between(ano_max - 9, ano_max)]  # últimos 10 anos
         base = alt.Chart(ba).encode(
             x=alt.X("year:O", title=None),
