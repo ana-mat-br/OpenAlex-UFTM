@@ -265,11 +265,9 @@ def render_visao_geral():
         f"<div style='border-left:2px solid {T['primary']};padding:.15rem 0 .15rem 1.1rem;"
         f"margin:.1rem 0 1.6rem;color:{T['text_soft']};font-size:1.05rem;line-height:1.65;"
         f"max-width:760px'>"
-        f"O Painel DAAD é a prestação de contas da pesquisa da UFTM à sociedade. De forma "
-        f"transparente e com dados abertos, mostra o que a universidade produz em ciência e o "
-        f"impacto disso para as pessoas. Os números vêm do "
-        f"<b style='color:{T['text']}'>OpenAlex</b> — base científica mundial e gratuita — e são "
-        f"atualizados todo mês.</div>", unsafe_allow_html=True)
+        f"Quanto a UFTM pesquisa, com que impacto e quanto desse trabalho está aberto a todos. "
+        f"Dados do <b style='color:{T['text']}'>OpenAlex</b>, atualizados todo mês.</div>",
+        unsafe_allow_html=True)
     fwci_med = fraw["fwci"].dropna().mean() if "fwci" in fraw else None
     top10 = fraw["top10"].mean() if "top10" in fraw else None
     c1, c2, c3, c4, c5 = st.columns(5)
@@ -365,7 +363,7 @@ def render_excelencia():
 
 def render_impacto_social():
     cabecalho("Impacto Social", "O alcance da pesquisa da UFTM além da universidade")
-    st.caption("**Como ler** · Aqui vemos o retorno da pesquisa para a sociedade: alinhamento aos "
+    st.caption("**Como ler** · O alcance da pesquisa fora da universidade: alinhamento aos "
                "**ODS** (os objetivos da ONU), quanto vem de **financiamento** público/privado, "
                "o custo de deixar a pesquisa aberta e — quando ativado — quantas **patentes** "
                "citam a UFTM.")
@@ -842,7 +840,7 @@ def render_transparencia():
         "- Todo o código que coleta e monta o painel é **aberto e auditável** em "
         "[github.com/ana-mat-br/painel-daad](https://github.com/ana-mat-br/painel-daad).")
 
-    st.markdown("**5. Limites e cuidados (honestidade dos dados)**")
+    st.markdown("**5. Limites e cuidados**")
     st.markdown(
         "- A associação aos **ODS** é uma **estimativa por inteligência artificial**, não uma "
         "classificação declarada pelos autores — leia como aproximação.\n"
