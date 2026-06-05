@@ -217,15 +217,16 @@ with st.sidebar:
                 f"Diretoria de Avaliação e Análise de Dados · PROPPG/UFTM</p>",
                 unsafe_allow_html=True)
 
+    NAV = ["Visão Geral", "Impacto científico", "Comparação", "Impacto Social", "Ciência Aberta",
+           "Colaboração", "ODS", "Temas", "Pesquisadores", "Onde publicamos",
+           "Qualidade das revistas", "Explorar", "Transparência"]
+    ICONS = ["speedometer2", "award", "bar-chart-line", "globe-americas", "unlock",
+             "diagram-3", "bullseye", "tags", "person-badge", "journal-text",
+             "patch-check", "search", "info-circle"]
+    _override = st.session_state.pop("ir_para", None)  # navegação por link (ex.: rodapé)
     pagina = option_menu(
-        None,
-        ["Visão Geral", "Impacto científico", "Comparação", "Impacto Social", "Ciência Aberta",
-         "Colaboração", "ODS", "Temas", "Pesquisadores", "Onde publicamos",
-         "Qualidade das revistas", "Explorar", "Transparência"],
-        icons=["speedometer2", "award", "bar-chart-line", "globe-americas", "unlock",
-               "diagram-3", "bullseye", "tags", "person-badge", "journal-text",
-               "patch-check", "search", "info-circle"],
-        default_index=0,
+        None, NAV, icons=ICONS, default_index=0, key="navmenu",
+        manual_select=(NAV.index(_override) if _override in NAV else None),
         styles={
             "container": {"padding": "0.3rem 0", "background-color": T["surface"]},
             "icon": {"color": T["primary"], "font-size": "14px"},
@@ -885,6 +886,13 @@ PAGINAS.get(_forcar or pagina or "Visão Geral", render_visao_geral)()
 
 # ----------------------------------------------------------------- rodapé
 st.divider()
+if pagina != "Transparência":
+    _f1, _f2, _f3 = st.columns([1, 2, 1])
+    with _f2:
+        if st.button("Como calculamos cada número?  →  Transparência", key="ir_transp",
+                     width="stretch"):
+            st.session_state["ir_para"] = "Transparência"
+            st.rerun()
 st.markdown(f"<div style='text-align:center;color:{T['muted']};font-size:.85rem'>"
             f"<b style='color:{T['primary']}'>Painel DAAD</b> · Diretoria de Avaliação e Análise "
             f"de Dados · PROPPG/UFTM · dados abertos do OpenAlex (ROR 01av3m334)</div>",
