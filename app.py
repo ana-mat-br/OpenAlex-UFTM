@@ -234,7 +234,8 @@ with tab_bench:
                         format_func=lambda x: "Produções" if x == "works" else "Citações",
                         horizontal=True)
         ba = obs["bench_por_ano"]
-        ba = ba[ba["year"].between(2010, 2025)]
+        ano_max = int(ba["year"].max())
+        ba = ba[ba["year"].between(ano_max - 9, ano_max)]  # últimos 10 anos
         base = alt.Chart(ba).encode(
             x=alt.X("year:O", title=None),
             y=alt.Y(f"{eixo}:Q", title="Produções" if eixo == "works" else "Citações"),
