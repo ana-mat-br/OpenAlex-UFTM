@@ -225,9 +225,13 @@ with st.sidebar:
 
     anos = raw["year"].dropna()
     ymin, ymax = int(anos.min()), int(anos.max())
-    faixa = st.slider("Período", ymin, ymax, (max(ymin, ymax - 9), ymax))
+    with st.container(border=True):
+        st.markdown(f"<div style='font-size:.7rem;text-transform:uppercase;letter-spacing:.07em;"
+                    f"color:{T['muted']};font-weight:600;margin-bottom:-.4rem'>Período</div>",
+                    unsafe_allow_html=True)
+        faixa = st.slider("Período", ymin, ymax, (max(ymin, ymax - 9), ymax),
+                          label_visibility="collapsed")
 
-    st.divider()
     NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "Impacto Social",
            "ODS", "Pesquisadores", "Colaboração", "Temas", "Onde publicamos",
            "Qualidade das revistas", "Explorar", "Transparência"]
