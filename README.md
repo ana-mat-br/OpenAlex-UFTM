@@ -15,8 +15,12 @@ acessar, o Streamlit também mostra um endereço "Network URL".
 ## Atualizar os dados
 
 ```bash
-.venv/bin/python fetch_uftm_ods.py   # rebusca tudo do OpenAlex e regrava data/*.parquet
+.venv/bin/python fetch_uftm_ods.py      # produção + ODS (data/*.parquet)
+.venv/bin/python fetch_observatorio.py  # benchmarking, colaboração, pesquisadores, temas (data/*.csv)
 ```
+
+O `fetch_observatorio.py` compara a UFTM com as federais de MG (UFU, UFMG, UFV,
+UFJF, UFSJ) e usa agregações leves do OpenAlex (não baixa todos os works).
 
 O painel lê o cache em `data/`, então é rápido. Rode quando quiser dados frescos.
 

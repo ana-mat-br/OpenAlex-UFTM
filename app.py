@@ -69,7 +69,20 @@ def load():
     return raw, sdg
 
 
+@st.cache_data
+def load_obs():
+    """Carrega os agregados de observatório (benchmarking, colaboração, temas, autores)."""
+    arquivos = ["bench_instituicoes", "bench_por_ano", "colab_instituicoes",
+                "colab_paises", "temas_campo", "temas_topicos", "top_autores"]
+    d = {}
+    for nome in arquivos:
+        f = DATA / f"{nome}.csv"
+        d[nome] = pd.read_csv(f) if f.exists() else None
+    return d
+
+
 raw, sdg = load()
+obs = load_obs()
 
 # ---------------------------------------------------------------- barra lateral
 st.sidebar.title("Observatório PROPPG")
@@ -105,8 +118,9 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-tab_geral, tab_ods, tab_fontes, tab_explorar = st.tabs(
-    ["Visão Geral", "ODS", "Periódicos", "Explorar"]
+tab_geral, tab_bench, tab_ods, tab_colab, tab_pesq, tab_temas, tab_fontes, tab_explorar = st.tabs(
+    ["Visão Geral", "Benchmarking", "ODS", "Colaboração",
+     "Pesquisadores", "Temas", "Periódicos", "Explorar"]
 )
 
 with tab_geral:
@@ -146,6 +160,85 @@ with tab_ods:
         piv = sub.pivot_table(index="year", columns="ODS", values="work_id",
                               aggfunc="nunique", fill_value=0)
         st.line_chart(piv)
+
+with tab_bench:
+    st.subheader("Benchmarking — UFTM e as federais de Minas Gerais")
+    bi = obs["bench_instituicoes"]
+    if bi is None:
+        st.info("Rode `python fetch_observatorio.py` para gerar os dados de benchmarking.")
+    else:
+        metricas = {
+            "Produções": "works", "Citações": "citacoes",
+            "Citações por trabalho": "cit_por_trabalho",
+            "Impacto médio (citedness 2 anos)": "mean_citedness",
+            "Índice h": "h_index", "Acesso aberto (%)": "oa_share",
+        }
+        escolha = st.selectbox("Métrica", list(metricas.keys()))
+        col = metricas[escolha]
+        serie = bi.set_index("sigla")[col].sort_values(ascending=True)
+        st.bar_chart(serie, color=VERDE, horizontal=True)
+        if col == "mean_citedness":
+            st.caption("Referência: a média mundial de impacto é ≈ 1,0. Abaixo de 1,0 = abaixo da média global.")
+        if col == "oa_share":
+            st.caption("Proporção de produções em acesso aberto.")
+
+        st.subheader("Evolução temporal")
+        eixo = st.radio("Indicador", ["works", "citacoes"],
+                        format_func=lambda x: "Produções" if x == "works" else "Citações",
+                        horizontal=True)
+        ba = obs["bench_por_ano"]
+        ba = ba[ba["year"].between(2010, 2025)]
+        piv = ba.pivot_table(index="year", columns="sigla", values=eixo, fill_value=0)
+        st.line_chart(piv)
+        st.caption("Fonte: OpenAlex (Institutions API). Dados completos da instituição, não filtrados pela barra lateral.")
+
+with tab_colab:
+    st.subheader("Colaboração institucional")
+    ci = obs["colab_instituicoes"]
+    if ci is None:
+        st.info("Rode `python fetch_observatorio.py` para gerar os dados de colaboração.")
+    else:
+        st.caption("Instituições que mais coassinam produções com a UFTM (exceto a própria UFTM).")
+        st.bar_chart(ci.set_index("instituicao")["n"].head(15).sort_values(),
+                     color=VERDE, horizontal=True)
+
+        st.subheader("Internacionalização — países parceiros")
+        cp = obs["colab_paises"]
+        cp_int = cp[cp["pais"] != "Brazil"].head(15)
+        st.bar_chart(cp_int.set_index("pais")["n"].sort_values(), color=VERDE, horizontal=True)
+        total_int = cp[cp["pais"] != "Brazil"]["n"].sum()
+        st.caption(f"{len(cp)-1} países estrangeiros aparecem em coautorias da UFTM "
+                   f"(Brasil excluído do gráfico para destacar a colaboração internacional).")
+
+with tab_pesq:
+    st.subheader("Pesquisadores em destaque")
+    ta = obs["top_autores"]
+    if ta is None:
+        st.info("Rode `python fetch_observatorio.py` para gerar os dados de pesquisadores.")
+    else:
+        st.caption("Top 50 autores com vínculo na UFTM, por total de citações (OpenAlex Authors API).")
+        st.bar_chart(ta.set_index("autor")["citacoes"].head(15).sort_values(),
+                     color=VERDE, horizontal=True)
+        st.dataframe(
+            ta.rename(columns={"autor": "Pesquisador", "works": "Produções",
+                               "citacoes": "Citações", "h_index": "Índice h", "i10": "i10"}),
+            use_container_width=True, height=420, hide_index=True,
+            column_config={"orcid": st.column_config.LinkColumn("ORCID")},
+        )
+
+with tab_temas:
+    st.subheader("Áreas de força da UFTM")
+    tc = obs["temas_campo"]
+    if tc is None:
+        st.info("Rode `python fetch_observatorio.py` para gerar os dados de temas.")
+    else:
+        st.caption("Produção por grande campo do conhecimento (classificação de tópicos do OpenAlex).")
+        st.bar_chart(tc.set_index("campo")["n"].head(15).sort_values(),
+                     color=VERDE, horizontal=True)
+        st.subheader("Tópicos mais frequentes")
+        tt = obs["temas_topicos"]
+        st.bar_chart(tt.set_index("topico")["n"].head(20).sort_values(),
+                     color=VERDE, horizontal=True)
 
 with tab_fontes:
     st.subheader("Periódicos onde a UFTM mais publica")
