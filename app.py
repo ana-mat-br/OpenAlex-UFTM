@@ -914,6 +914,25 @@ def render_transparencia():
         "Aurora), contada quando a confiança é de pelo menos 0,4 (escala de 0 a 1).\n"
         "- **Patentes:** trabalhos da UFTM citados por patentes no mundo, segundo o The Lens.")
 
+    st.markdown("**A fórmula do FWCI, em detalhe**")
+    st.latex(r"\text{FWCI} = \frac{\text{citações que a pesquisa recebeu}}"
+             r"{\text{citações esperadas para pesquisas semelhantes}}")
+    st.markdown(
+        "- **Citações esperadas** = a média de citações de todas as pesquisas semelhantes no "
+        "mundo: mesma **área** (subárea), mesmo **ano** de publicação e mesmo **tipo** de "
+        "documento. É isso que torna o indicador justo entre áreas — comparar um artigo de "
+        "matemática com um de medicina pela citação bruta seria injusto, porque as áreas citam "
+        "em ritmos diferentes.\n"
+        "- **Janela de tempo:** contam-se as citações do ano de publicação **mais os 3 anos "
+        "seguintes**. Por isso os 2 anos mais recentes ficam provisórios (a janela ainda não "
+        "fechou) — e há a opção de excluí-los na aba *Impacto científico*.\n"
+        "- **Como ler:** **1,0** = exatamente a média mundial · **1,5** = 50% acima · **2,0** = o "
+        "dobro · **0,5** = metade.\n"
+        "- Para um conjunto (a UFTM, uma área, um pesquisador), usamos a **média** dos FWCI das "
+        "pesquisas. É a mesma fórmula adotada pela Scopus/SciVal; aqui ela é calculada pelo "
+        "OpenAlex, normalizando por subárea — por isso os valores não são comparáveis entre "
+        "bases diferentes.")
+
     st.markdown("**4. Atualização e reprodutibilidade**")
     st.markdown(
         "- A coleta roda **automaticamente todo mês**, sem intervenção manual; o período "
