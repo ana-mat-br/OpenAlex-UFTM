@@ -223,23 +223,12 @@ PALETA_COM = ["#00983A", "#E87722", "#2563EB", "#7C3AED", "#DB2777", "#0891B2",
               "#65A30D", "#CA8A04", "#DC2626", "#475569", "#0D9488", "#9D174D"]
 
 
-def grafo_coautoria(nos, arestas, h=560):
-    """Rede de coautoria: arestas + nós coloridos por comunidade e dimensionados por produção."""
-    pos = {r.id: (r.x, r.y) for r in nos.itertuples()}
-    ex, ey = [], []
-    for e in arestas.itertuples():
-        if e.origem in pos and e.destino in pos:
-            x0, y0 = pos[e.origem]
-            x1, y1 = pos[e.destino]
-            ex += [x0, x1, None]
-            ey += [y0, y1, None]
-    edge = go.Scatter(x=ex, y=ey, mode="lines", hoverinfo="none", showlegend=False,
-                      line=dict(color=T["border"], width=0.6))
-    wmax = max(nos["works"].max(), 1)
-    tem_grupo = "grupo" in nos.columns
-    traces = [edge]
+def rotular_grupos(nos):
+    """Rótulo de cada comunidade: tema dominante traduzido (tópico > subárea); quando o tema
+    repete, distingue pelo pesquisador central (hub). Retorna DataFrame ordenado por tamanho."""
     tem_topico = "topico" in nos.columns
-    ordem = list(nos["comunidade"].value_counts().index)  # comunidades, maior primeiro
+    tem_grupo = "grupo" in nos.columns
+    ordem = list(nos["comunidade"].value_counts().index)  # maior primeiro
 
     def _base(c):
         sub = nos[nos["comunidade"] == c]
@@ -255,21 +244,45 @@ def grafo_coautoria(nos, arestas, h=560):
     cont = {}
     for b in bases.values():
         cont[b] = cont.get(b, 0) + 1
-    repetidos = {b for b, n in cont.items() if n > 1}  # temas que aparecem em +1 grupo
-    # um traço por comunidade — gera a legenda por área (traduzida); repetidas levam o hub
+    repetidos = {b for b, n in cont.items() if n > 1}
+    linhas = []
     for c in ordem:
         sub = nos[nos["comunidade"] == c]
-        base = bases[c]
-        if base in repetidos:
-            hub = sub.sort_values("betw", ascending=False).iloc[0].nome.split()[-1]
-            base = f"{base} · {hub}"
+        hub = sub.sort_values("betw", ascending=False).iloc[0]["nome"]
+        tema = bases[c]
+        if tema in repetidos:                         # mesmo tema em +1 grupo -> usa o hub
+            tema = f"{tema} · {hub.split()[-1]}"
+        linhas.append({"comunidade": c, "tema": tema, "tamanho": len(sub), "hub": hub,
+                       "cor": PALETA_COM[int(c) % len(PALETA_COM)]})
+    return pd.DataFrame(linhas)
+
+
+def grafo_coautoria(nos, arestas, h=520):
+    """Rede de coautoria: nós coloridos por comunidade, dimensionados por produção. Sem legenda
+    interna (a legenda é a tabela de grupos, legível em qualquer tela); arrastar e zoom ativos."""
+    pos = {r.id: (r.x, r.y) for r in nos.itertuples()}
+    ex, ey = [], []
+    for e in arestas.itertuples():
+        if e.origem in pos and e.destino in pos:
+            x0, y0 = pos[e.origem]
+            x1, y1 = pos[e.destino]
+            ex += [x0, x1, None]
+            ey += [y0, y1, None]
+    edge = go.Scatter(x=ex, y=ey, mode="lines", hoverinfo="none", showlegend=False,
+                      line=dict(color=T["border"], width=0.6))
+    wmax = max(nos["works"].max(), 1)
+    grupos = rotular_grupos(nos)
+    cor_de = dict(zip(grupos["comunidade"], grupos["cor"]))
+    tema_de = dict(zip(grupos["comunidade"], grupos["tema"]))
+    traces = [edge]
+    for c in grupos["comunidade"]:
+        sub = nos[nos["comunidade"] == c]
         traces.append(go.Scatter(
-            x=sub["x"], y=sub["y"], mode="markers", hoverinfo="text", name=str(base),
-            text=[f"{r.nome}<br>{r.works} produções · {int(r.grau)} coautorias na rede"
-                  for r in sub.itertuples()],
+            x=sub["x"], y=sub["y"], mode="markers", hoverinfo="text", showlegend=False,
+            text=[f"<b>{tema_de[c]}</b><br>{r.nome}<br>{r.works} produções · "
+                  f"{int(r.grau)} coautorias na rede" for r in sub.itertuples()],
             marker=dict(size=[7 + (w / wmax) * 24 for w in sub["works"]],
-                        color=PALETA_COM[int(c) % len(PALETA_COM)],
-                        line=dict(color=T["bg"], width=0.6), opacity=0.9)))
+                        color=cor_de[c], line=dict(color=T["bg"], width=0.6), opacity=0.9)))
     centrais = nos.sort_values("betw", ascending=False).head(8)
     traces.append(go.Scatter(
         x=centrais["x"], y=centrais["y"], mode="text", showlegend=False,
@@ -278,9 +291,7 @@ def grafo_coautoria(nos, arestas, h=560):
     fig = go.Figure(traces)
     fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
                       height=h, margin=dict(l=0, r=0, t=0, b=0), separators=",.",
-                      showlegend=True, legend=dict(font=dict(color=T["text"], size=10),
-                      bgcolor="rgba(255,255,255,.65)", itemsizing="constant",
-                      title=dict(text="Grupos (tema dominante)", font=dict(size=11))),
+                      showlegend=False, dragmode="pan",
                       xaxis=dict(visible=False), yaxis=dict(visible=False),
                       hoverlabel=dict(bgcolor=T["surface"], font_color=T["text"]))
     return fig
@@ -747,10 +758,31 @@ def render_colaboracao():
         m1.metric("Pesquisadores na rede", br(len(nos)))
         m2.metric("Conexões", br(len(arestas)))
         m3.metric("Grupos (comunidades)", br(nos["comunidade"].nunique()))
-        st.plotly_chart(grafo_coautoria(nos, arestas), width="stretch")
-        st.caption("Cada nó é um pesquisador da UFTM (tamanho = nº de produções); ligações = "
-                   "coautorias. Cores = grupos de colaboração (comunidades); rótulos = os 8 "
-                   "que mais conectam grupos diferentes. Passe o mouse para ver nomes.")
+        st.plotly_chart(grafo_coautoria(nos, arestas), width="stretch",
+                        config={"responsive": True, "scrollZoom": True, "displaylogo": False})
+        st.caption("Cada ponto é um pesquisador da UFTM (tamanho = nº de produções); as linhas são "
+                   "coautorias. As cores são grupos de colaboração — veja o tema de cada um na "
+                   "lista abaixo. Arraste e use o zoom para explorar; passe o mouse para ver nomes.")
+
+        grupos = rotular_grupos(nos)
+        st.markdown("**Grupos de pesquisa na rede**")
+        cab = (f"<tr style='color:{T['muted']};font-size:.74rem;text-align:left'>"
+               f"<th style='padding:0 12px 4px 0'></th><th style='padding:0 14px 4px 0'>TEMA</th>"
+               f"<th style='padding:0 14px 4px 0'>PESQUISADORES</th>"
+               f"<th style='padding:0 0 4px 0'>PESQUISADOR CENTRAL</th></tr>")
+        linhas = "".join(
+            f"<tr>"
+            f"<td style='padding:3px 12px 3px 0'><span style='display:inline-block;width:11px;"
+            f"height:11px;border-radius:50%;background:{r.cor}'></span></td>"
+            f"<td style='padding:3px 14px 3px 0;color:{T['text']}'>{r.tema}</td>"
+            f"<td style='padding:3px 14px 3px 0;color:{T['text_soft']}'>{r.tamanho}</td>"
+            f"<td style='padding:3px 0;color:{T['text_soft']}'>{r.hub}</td></tr>"
+            for r in grupos.itertuples())
+        st.markdown(f"<table style='font-size:.9rem;border-collapse:collapse'>{cab}{linhas}</table>",
+                    unsafe_allow_html=True)
+        st.caption("Esta lista é a legenda do grafo e funciona em qualquer tela: cada cor é um "
+                   "grupo, o tema vem do assunto mais frequente e o pesquisador central é quem "
+                   "mais conecta os membros.")
 
 
 def render_ods():
