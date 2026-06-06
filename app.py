@@ -401,16 +401,6 @@ def render_excelencia():
         st.plotly_chart(barra_h(s, "field", "fwci", h=360, fmt=".2f"),
                         width="stretch")
 
-    bi = obs.get("bench_instituicoes")
-    if bi is not None and "top10_share" in bi.columns:
-        st.subheader("Excelência comparada — % no top 10% mundial (11 federais de MG)")
-        d = bi[["sigla", "top10_share"]].copy()
-        d["top10_share"] = d["top10_share"] * 100
-        st.plotly_chart(barra_h(d, "sigla", "top10_share", h=380, fmt=".1f",
-                                destaque="UFTM"), width="stretch")
-        st.caption("Percentual de produções entre as 10% mais citadas do mundo no seu campo. "
-                   "Métrica normalizada — total acumulado por instituição (OpenAlex).")
-
 
 def render_patentes():
     cabecalho("Patentes", "Quando a pesquisa da UFTM vira inovação")
