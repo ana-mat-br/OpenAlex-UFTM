@@ -77,6 +77,19 @@ SUBAREA_PT = {
     "Condensed Matter Physics": "Física da Matéria Condensada", "Diversos": "Diversos",
 }
 
+# Tópicos do OpenAlex (EN) -> PT — mais específico que a subárea, distingue melhor os grupos
+TOPICO_PT = {
+    "Trypanosoma species research and implications": "Doença de Chagas",
+    "Health, Nursing, Elderly Care": "Enfermagem e Saúde do Idoso",
+    "Cervical Cancer and HPV Research": "Câncer Cervical e HPV",
+    "Metal complexes synthesis and properties": "Síntese de Complexos Metálicos",
+    "Stroke Rehabilitation and Recovery": "Reabilitação de AVC",
+    "Physical Activity and Health": "Atividade Física e Saúde",
+    "Science and Education Research": "Ensino de Ciências",
+    "Psychology and Mental Health": "Psicologia e Saúde Mental",
+    "Physical Education and Sports Studies": "Educação Física e Esportes",
+}
+
 st.set_page_config(page_title="Painel DAAD — UFTM", layout="wide",
                    initial_sidebar_state="expanded")
 
@@ -225,14 +238,24 @@ def grafo_coautoria(nos, arestas, h=560):
     wmax = max(nos["works"].max(), 1)
     tem_grupo = "grupo" in nos.columns
     traces = [edge]
+    tem_topico = "topico" in nos.columns
     ordem = list(nos["comunidade"].value_counts().index)  # comunidades, maior primeiro
-    bases = {c: (SUBAREA_PT.get(str(nos[nos["comunidade"] == c]["grupo"].iloc[0]),
-                                str(nos[nos["comunidade"] == c]["grupo"].iloc[0]))
-                 if tem_grupo else f"Grupo {int(c) + 1}") for c in ordem}
+
+    def _base(c):
+        sub = nos[nos["comunidade"] == c]
+        topico = str(sub["topico"].iloc[0]) if tem_topico else ""
+        if topico in TOPICO_PT:                       # tópico específico traduzido (preferido)
+            return TOPICO_PT[topico]
+        if tem_grupo:                                 # senão, subárea traduzida
+            g = str(sub["grupo"].iloc[0])
+            return SUBAREA_PT.get(g, g)
+        return f"Grupo {int(c) + 1}"
+
+    bases = {c: _base(c) for c in ordem}
     cont = {}
     for b in bases.values():
         cont[b] = cont.get(b, 0) + 1
-    repetidos = {b for b, n in cont.items() if n > 1}  # áreas que aparecem em +1 grupo
+    repetidos = {b for b, n in cont.items() if n > 1}  # temas que aparecem em +1 grupo
     # um traço por comunidade — gera a legenda por área (traduzida); repetidas levam o hub
     for c in ordem:
         sub = nos[nos["comunidade"] == c]
@@ -242,7 +265,7 @@ def grafo_coautoria(nos, arestas, h=560):
             base = f"{base} · {hub}"
         traces.append(go.Scatter(
             x=sub["x"], y=sub["y"], mode="markers", hoverinfo="text", name=str(base),
-            text=[f"{r.nome}<br>{r.works} produções · grau {int(r.grau)}"
+            text=[f"{r.nome}<br>{r.works} produções · {int(r.grau)} coautorias na rede"
                   for r in sub.itertuples()],
             marker=dict(size=[7 + (w / wmax) * 24 for w in sub["works"]],
                         color=PALETA_COM[int(c) % len(PALETA_COM)],
@@ -257,7 +280,7 @@ def grafo_coautoria(nos, arestas, h=560):
                       height=h, margin=dict(l=0, r=0, t=0, b=0), separators=",.",
                       showlegend=True, legend=dict(font=dict(color=T["text"], size=10),
                       bgcolor="rgba(255,255,255,.65)", itemsizing="constant",
-                      title=dict(text="Grupos (área dominante)", font=dict(size=11))),
+                      title=dict(text="Grupos (tema dominante)", font=dict(size=11))),
                       xaxis=dict(visible=False), yaxis=dict(visible=False),
                       hoverlabel=dict(bgcolor=T["surface"], font_color=T["text"]))
     return fig

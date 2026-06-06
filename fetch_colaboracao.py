@@ -30,7 +30,8 @@ def coletar():
     n_works = Counter()             # pessoa (chave) -> nº de produções na UFTM
     nomes = {}                      # chave -> melhor nome (variante mais completa)
     pares = Counter()               # (a, b) -> nº de coautorias
-    campos = defaultdict(Counter)   # chave -> Counter de grandes áreas (para rotular grupos)
+    campos = defaultdict(Counter)   # chave -> Counter de subáreas (para rotular grupos)
+    topicos = defaultdict(Counter)  # chave -> Counter de tópicos (desambigua subáreas repetidas)
     q = (Works().filter(authorships={"institutions": {"ror": ROR_UFTM}})
          .select(["id", "authorships", "primary_topic"]))
     print(f"works: {q.count()}")
@@ -39,6 +40,7 @@ def coletar():
             pt = w.get("primary_topic") or {}
             campo = ((pt.get("subfield") or {}).get("display_name")  # subárea: mais específica
                      or (pt.get("field") or {}).get("display_name"))
+            topico = pt.get("display_name")
             chaves = []
             for a in (w.get("authorships") or []):
                 rors = {(i.get("ror") or "").rsplit("/", 1)[-1]
@@ -55,16 +57,18 @@ def coletar():
                     nomes[k] = nome
                 if campo:
                     campos[k][campo] += 1
+                if topico:
+                    topicos[k][topico] += 1
             chaves = sorted(set(chaves))
             for k in chaves:
                 n_works[k] += 1
             for a, b in combinations(chaves, 2):
                 pares[(a, b)] += 1
-    return n_works, nomes, pares, campos
+    return n_works, nomes, pares, campos, topicos
 
 
 def main():
-    n_works, nomes, pares, campos = coletar()
+    n_works, nomes, pares, campos, topicos = coletar()
     topo = {a for a, _ in n_works.most_common(TOP_N)}
 
     G = nx.Graph()
@@ -80,14 +84,16 @@ def main():
     grau = dict(G.degree(weight="weight"))
     betw = nx.betweenness_centrality(G, weight="weight")
     comunidades = list(nx.community.greedy_modularity_communities(G, weight="weight"))
-    comuni, area_com = {}, {}
+    comuni, area_com, topico_com = {}, {}, {}
     for i, com in enumerate(comunidades):     # já vêm ordenadas da maior para a menor
         for a in com:
             comuni[a] = i
-        cont = Counter()
+        cs, ct = Counter(), Counter()
         for a in com:
-            cont.update(campos.get(a, {}))
-        area_com[i] = cont.most_common(1)[0][0] if cont else "Diversos"  # subárea crua (EN)
+            cs.update(campos.get(a, {}))
+            ct.update(topicos.get(a, {}))
+        area_com[i] = cs.most_common(1)[0][0] if cs else "Diversos"     # subárea (EN)
+        topico_com[i] = ct.most_common(1)[0][0] if ct else ""           # tópico dominante (EN)
 
     nos = pd.DataFrame([{
         "id": a, "nome": G.nodes[a]["nome"], "works": G.nodes[a]["works"],
@@ -95,6 +101,7 @@ def main():
         "grau": grau.get(a, 0), "betw": round(betw.get(a, 0), 4),
         "comunidade": comuni.get(a, 0),
         "grupo": area_com.get(comuni.get(a, 0), "Diversos"),
+        "topico": topico_com.get(comuni.get(a, 0), ""),
     } for a in G.nodes])
     nos.to_csv(OUT / "rede_autores_nos.csv", index=False)
 
