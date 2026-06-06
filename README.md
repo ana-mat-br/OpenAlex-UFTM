@@ -10,7 +10,9 @@ colaboração/internacionalização, ODS e impacto social. Visual claro e minima
 
 ## Páginas
 
-Visão Geral · **Impacto científico** (FWCI e percentis mundiais) · **Comparação** (federais de MG + pares de porte semelhante no Brasil) · **ODS** · **Financiamento** · **Patentes** · **Ciência Aberta** · Colaboração (com rede de coautoria) · ODS · Temas · Pesquisadores · **Onde
+Visão Geral · **Impacto científico** (FWCI e percentis) · **Comparação** (federais de MG +
+pares de porte no Brasil) · **Ciência Aberta** · **ODS** (impacto social) · **Financiamento** ·
+**Patentes** · Pesquisadores · Colaboração (com rede de coautoria) · Temas · **Onde
 publicamos** · **Qualidade das revistas** (quartis Scimago) · Explorar · **Transparência**
 (glossário + metodologia) — navegação por menu lateral (`streamlit-option-menu`).
 
@@ -37,7 +39,7 @@ LENS_TOKEN=seu_token \
   .venv/bin/python fetch_lens.py        # patentes que citam a UFTM (opcional; token grátis do The Lens)
 ```
 
-### Ativar patentes (Impacto Social)
+### Ativar patentes (aba Patentes)
 
 A seção de patentes usa o **The Lens** (token acadêmico gratuito):
 1. Crie conta em **lens.org** e solicite acesso à **Scholarly API**.
