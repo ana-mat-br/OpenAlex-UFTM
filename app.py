@@ -1116,7 +1116,8 @@ def render_idiomas():
     st.caption("**Como ler** · O idioma de cada trabalho, segundo o OpenAlex. Publicar em "
                "**inglês** amplia o alcance internacional; em **português**, aproxima a pesquisa "
                "da sociedade e da comunidade científica nacional.")
-    lang = fraw["language"].dropna()
+    fr = filtro_tipo(fraw, "tipo_idiomas", com_oa=True)
+    lang = fr["language"].dropna()
     c1, c2, c3 = st.columns(3)
     c1.metric("Em inglês", pct((lang == "en").mean()))
     c2.metric("Em português", pct((lang == "pt").mean()))
@@ -1128,7 +1129,7 @@ def render_idiomas():
     st.plotly_chart(barra_h(comp, "idioma", "n", h=420), width="stretch")
 
     st.subheader("Inglês × português ao longo do tempo")
-    df = fraw.dropna(subset=["language"]).copy()
+    df = fr.dropna(subset=["language"]).copy()
     df["grp"] = df["language"].map(lambda x: "Inglês" if x == "en"
                                    else ("Português" if x == "pt" else "Outros"))
     tot_ano = df.groupby("year")["language"].size()
@@ -1154,8 +1155,8 @@ def render_idiomas():
                "textos curtos ou com muito jargão isso erra bastante. Boa parte desta lista é, "
                "na verdade, inglês ou português mal classificado (ex.: título de física virar "
                "*letão*; título em português virar *italiano*). Leia com ceticismo.")
-    outros = fraw[fraw["language"].notna()
-                  & ~fraw["language"].isin(["en", "pt", "es"])].copy()
+    outros = fr[fr["language"].notna()
+                & ~fr["language"].isin(["en", "pt", "es"])].copy()
     if len(outros):
         outros["Idioma"] = outros["language"].map(lambda x: IDIOMA_PT.get(x, str(x).upper()))
         if "autores_uftm" in outros.columns:
