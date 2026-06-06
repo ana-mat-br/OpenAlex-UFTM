@@ -29,12 +29,8 @@ def bare_doi(d: str) -> str:
 
 def consulta(dois: list[str], tentativas: int = 4) -> dict:
     body = {
-        "query": {"bool": {"must": [
-            {"terms": {"external_ids.value": dois}},
-            {"match": {"has_patent_citations": True}},
-        ]}},
-        "include": ["lens_id", "title", "year_published", "external_ids",
-                    "referenced_by_patent_count"],
+        "query": {"terms": {"doi": dois}},   # campo correto p/ casar DOI no Lens Scholarly
+        "include": ["title", "year_published", "external_ids", "patent_citations_count"],
         "size": len(dois),
     }
     req = urllib.request.Request(
@@ -75,11 +71,13 @@ def main() -> None:
             continue
         achou_total += res.get("total", 0)
         for d in res.get("data", []):
+            n = d.get("patent_citations_count") or 0
+            if n <= 0:                      # só guarda produções realmente citadas por patentes
+                continue
             doi = next((x.get("value") for x in (d.get("external_ids") or [])
                         if x.get("type") == "doi"), None)
             rows.append({"doi": doi, "title": d.get("title"),
-                         "year": d.get("year_published"),
-                         "n_patentes": d.get("referenced_by_patent_count", 0)})
+                         "year": d.get("year_published"), "n_patentes": n})
         print(f"  lote {i // LOTE + 1}/{(len(dois) + LOTE - 1) // LOTE}: "
               f"total={res.get('total')} acumulado={len(rows)}")
         time.sleep(5)  # paga o rate limit do Lens (token gratuito é restrito)

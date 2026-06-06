@@ -372,9 +372,11 @@ with st.sidebar:
 
     anos = raw["year"].dropna()
     ymin, ymax = int(anos.min()), int(anos.max())
-    faixa = st.slider("Período", ymin, ymax, (max(ymin, ymax - 9), ymax))
+    faixa = st.slider("Período dos dados", ymin, ymax, (max(ymin, ymax - 9), ymax))
 
     st.divider()
+    if DATA_COLETA:
+        st.caption(f"Dados coletados em {DATA_COLETA}")
     NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "Impacto Social",
            "Financiamento", "Patentes", "Pesquisadores", "Colaboração", "Temas",
            "Onde publicamos", "Qualidade das revistas", "Publicações por língua", "Explorar",
@@ -450,6 +452,10 @@ def render_visao_geral():
         tp.columns = ["tipo", "n"]
         tp["tipo"] = tp["tipo"].map(tipo_pt)
         st.plotly_chart(barra_h(tp.head(10), "tipo", "n", h=360), width="stretch")
+        st.caption("**Teses e dissertações aparecem pouco** aqui não porque a UFTM produza "
+                   "poucas, mas porque costumam ficar só em repositórios (BDTD, repositório "
+                   "institucional) **sem DOI** — e o OpenAlex capta sobretudo o que tem DOI. "
+                   "Como aumentar essa cobertura está na aba *Transparência*.")
     with c2:
         st.subheader("Citações por ano")
         cit = fr.groupby("year")["cited_by"].sum().reset_index()
@@ -1166,6 +1172,32 @@ def render_transparencia():
         "- Em resumo: o painel mostra a parte da produção da UFTM **registrada em bases abertas "
         "internacionais** — uma fração grande e crescente, mas não 100% de tudo o que a "
         "universidade produz.")
+
+    st.markdown("**Como a UFTM pode aparecer melhor no OpenAlex**")
+    st.markdown(
+        "A cobertura não é fixa — depende de práticas que a universidade controla. Em ordem de "
+        "impacto:\n"
+        "- **DOI para teses e dissertações.** Hoje quase não aparecem (ficam só na BDTD e no "
+        "repositório, sem DOI). Conectar o repositório ao **DataCite** (via IBICT) para emitir "
+        "DOIs faz o OpenAlex passar a captá-las — é a maior alavanca.\n"
+        "- **Padronizar a afiliação.** Os autores devem citar *Universidade Federal do Triângulo "
+        "Mineiro (UFTM)* de forma consistente; afiliação escrita de formas diferentes (ou só do "
+        "hospital/fundação) faz o trabalho não ser reconhecido como da UFTM.\n"
+        "- **ORCID para todos os pesquisadores.** Vincular cada trabalho ao ORCID melhora a "
+        "identificação e evita que uma pessoa seja dividida em vários autores (ou confundida "
+        "com homônimos).\n"
+        "- **Repositório colhível (OAI-PMH / OpenAIRE)** e **Crossref/DataCite** nos periódicos "
+        "próprios da UFTM — assim o que é publicado em casa também entra nas bases abertas.")
+
+    st.markdown("**Os grandes rankings usam estes dados?**")
+    st.markdown(
+        "Em geral **não** — ainda. **THE**, **QS** e **Shanghai (ARWU)** usam bases **pagas** "
+        "(Scopus/Elsevier e Web of Science/Clarivate), não o OpenAlex. A exceção é o **Leiden "
+        "Ranking (CWTS)**, que lançou uma **edição aberta baseada em OpenAlex** (2024), e o "
+        "movimento de avaliação responsável (CoARA/DORA) que empurra nessa direção. "
+        "**Importante:** as táticas acima (DOI, afiliação padronizada, ORCID) melhoram a "
+        "visibilidade **em todas as bases ao mesmo tempo** — OpenAlex, Scopus e Web of Science — "
+        "então ajudam o painel **e** os rankings tradicionais.")
 
     st.markdown("**2. Fontes complementares**")
     st.markdown(
