@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import os
 import time
+import unicodedata
 from collections import Counter
 from pathlib import Path
 
@@ -15,6 +16,27 @@ from pyalex import Authors, Institutions, Works, config
 
 config.email = os.environ.get("OPENALEX_EMAIL", "anapaula.fernandes@uftm.edu.br")
 OUT = Path(__file__).parent / "data"
+
+
+def _chave_autor(nome: str) -> str:
+    """Chave para juntar a mesma pessoa dividida em vários ids do OpenAlex.
+    Normaliza acentos/maiúsculas/hífens e trata abreviação do 1º nome:
+    'Eliane Lages-Silva' == 'E. Lages‐Silva'. Para evitar juntar gente diferente,
+    só usa a inicial quando o sobrenome é COMPOSTO (>= 2 tokens, mais distintivo);
+    com sobrenome de 1 token exige o primeiro nome inteiro."""
+    n = unicodedata.normalize("NFKD", nome or "")
+    n = "".join(c for c in n if not unicodedata.combining(c)).lower()
+    for d in ("-", "‐", "–", "—", "."):
+        n = n.replace(d, " ")
+    toks = n.split()
+    if not toks:
+        return (nome or "").lower()
+    first, sur = toks[0], toks[1:]
+    if len(sur) >= 2:
+        return f"i|{first[0]}|{' '.join(sur)}"
+    if len(sur) == 1:
+        return f"f|{first}|{sur[0]}"
+    return f"s|{first}"
 OUT.mkdir(exist_ok=True)
 
 UFTM = "01av3m334"
@@ -148,12 +170,18 @@ def pesquisadores() -> None:
                         orcids[aid] = au["orcid"]
     df = pd.DataFrame([{"id": a, "autor": nomes[a], "works_uftm": n_works[a],
                         "citacoes_uftm": citac[a], "orcid": orcids.get(a)} for a in n_works])
-    # mescla a mesma pessoa dividida em 2 ids do OpenAlex (mesmo nome) — soma works/citações
+    # mescla a mesma pessoa dividida em vários ids do OpenAlex — soma works/citações
+    df["_key"] = df["autor"].map(_chave_autor)
     df = df.sort_values("works_uftm", ascending=False)
-    df = (df.groupby("autor", as_index=False)
+    # nome de exibição: a variante mais completa (mais longa) de cada pessoa
+    nome_disp = (df.assign(_l=df["autor"].str.len()).sort_values("_l", ascending=False)
+                 .groupby("_key")["autor"].first())
+    df = (df.groupby("_key", as_index=False)
           .agg(works_uftm=("works_uftm", "sum"), citacoes_uftm=("citacoes_uftm", "sum"),
                orcid=("orcid", "first"), id=("id", "first")))
-    df = df.sort_values("citacoes_uftm", ascending=False).head(50).reset_index(drop=True)
+    df["autor"] = df["_key"].map(nome_disp)
+    df = (df.drop(columns="_key").sort_values("citacoes_uftm", ascending=False)
+          .head(50).reset_index(drop=True))
 
     # h-index / i10 de carreira para o top 50 (rótulo deixa claro que é carreira)
     hidx, i10 = {}, {}
