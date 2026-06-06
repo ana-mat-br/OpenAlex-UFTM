@@ -85,3 +85,18 @@ comparáveis entre bases). Para o FWCI, a janela de citação (ano + 3) fica inc
 Crossref, ROR v2, Scimago (quartis Q1–Q4), DOAJ, Unpaywall, ORCID, OpenCitations,
 BIP! Scholar; e para impacto societal: The Lens (patentes), Overton/Sage Policy
 Profiles (políticas públicas) e Altmetric (atenção online).
+
+## Licença
+
+Código sob licença **MIT** (veja `LICENSE`) — uso, adaptação e redistribuição livres,
+mantido o crédito. Os dados exibidos vêm de fontes abertas (OpenAlex, Scimago, AGUIN/UFTM
+etc.), sujeitos aos termos de cada fonte.
+
+## Como citar
+
+O repositório tem um `CITATION.cff` (botão "Cite this repository" no GitHub). Ao publicar um
+*release*, o projeto é arquivado no **Zenodo**, que emite um **DOI** citável:
+
+> Fernandes, A. P. *Painel DAAD — Observatório de produção científica da UFTM*.
+> UFTM/PROPPG/DAAD. https://github.com/ana-mat-br/painel-daad ·
+> https://painel-daad.streamlit.app · ORCID 0000-0002-9974-0230

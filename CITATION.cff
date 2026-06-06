@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+title: "Painel DAAD — Observatório de produção científica da UFTM"
+message: "Se você usar este painel ou seus dados, por favor cite conforme abaixo."
+type: software
+authors:
+  - family-names: Fernandes
+    given-names: Ana Paula
+    affiliation: "Universidade Federal do Triângulo Mineiro (UFTM) — PROPPG/DAAD"
+    email: anapaula.fernandes@uftm.edu.br
+    orcid: "https://orcid.org/0000-0002-9974-0230"
+repository-code: "https://github.com/ana-mat-br/painel-daad"
+url: "https://painel-daad.streamlit.app"
+abstract: >-
+  Painel web (Streamlit) da produção científica da Universidade Federal do
+  Triângulo Mineiro (UFTM), mantido pela Diretoria de Avaliação e Análise de
+  Dados (DAAD/PROPPG). Reúne, a partir de fontes abertas — sobretudo o OpenAlex
+  (ROR 01av3m334) —, indicadores normalizados de impacto (FWCI, percentis
+  top 1%/10%), comparação com universidades federais pares, colaboração e
+  internacionalização, acesso aberto, financiamento, alinhamento aos ODS,
+  patentes e qualidade de periódicos. Voltado à transparência e à prestação de
+  contas à sociedade, com toda a metodologia documentada e dados atualizados
+  automaticamente.
+keywords:
+  - cienciometria
+  - bibliometria
+  - OpenAlex
+  - dados abertos
+  - avaliação da pesquisa
+  - ciência aberta
+  - UFTM
+license: MIT
+version: "1.0.0"
+date-released: "2026-06-06"
