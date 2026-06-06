@@ -1,0 +1,51 @@
+"""Orquestrador da coleta do Painel DAAD.
+
+Roda TODOS os coletores em sequência, no mesmo snapshot do OpenAlex, evitando que os
+arquivos em data/ fiquem dessincronizados (cada um de uma foto diferente da base).
+Carimba a data da coleta em data/coletado_em.txt (mostrada na aba Transparência).
+
+Uso:  python fetch_all.py
+"""
+from __future__ import annotations
+
+import datetime as dt
+from pathlib import Path
+
+import fetch_uftm_ods
+import fetch_observatorio
+import fetch_scimago
+import fetch_colaboracao
+import fetch_lens
+
+OUT = Path(__file__).parent / "data"
+
+
+def main() -> None:
+    print(">> 1/5 works da UFTM (fetch_uftm_ods)")
+    fetch_uftm_ods.main()
+
+    print(">> 2/5 comparação, temas e pesquisadores (fetch_observatorio)")
+    fetch_observatorio.main()
+
+    print(">> 3/5 quartis Scimago (fetch_scimago)")
+    try:
+        fetch_scimago.main()
+    except Exception as e:  # mantém o arquivo anterior se o download falhar
+        print(f"   Scimago falhou, mantém dados anteriores: {e}")
+
+    print(">> 4/5 rede de coautoria (fetch_colaboracao)")
+    fetch_colaboracao.main()
+
+    print(">> 5/5 patentes The Lens (fetch_lens — precisa de LENS_TOKEN)")
+    try:
+        fetch_lens.main()
+    except Exception as e:
+        print(f"   Lens pulado (sem token ou erro): {e}")
+
+    data = dt.datetime.now(dt.timezone.utc).astimezone().strftime("%Y-%m-%d")
+    (OUT / "coletado_em.txt").write_text(data, encoding="utf-8")
+    print(f"OK — coleta sincronizada concluída ({data}).")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,5 +1,5 @@
 work_id,year,type,language,cited_by,is_oa,source,fwci,top10,sdg_id,sdg_name,sdg_score
-https://openalex.org/W2049590994,2001,review,en,925,False,The Lancet Infectious Diseases,10.3307,True,3,Good health and well-being,0.4099999964237213
+https://openalex.org/W2049590994,2001,review,en,926,False,The Lancet Infectious Diseases,10.3313,True,3,Good health and well-being,0.4099999964237213
 https://openalex.org/W2061246349,2011,review,en,912,True,Infection Genetics and Evolution,28.4485,True,3,Good health and well-being,0.7699999809265137
 https://openalex.org/W2078728013,2014,article,en,826,True,Applied Soft Computing,77.7228,True,16,"Peace, Justice and strong institutions",0.75
 https://openalex.org/W2089173136,2013,article,en,577,False,Journal of Molecular Catalysis B Enzymatic,10.9204,True,12,Responsible consumption and production,0.5
@@ -29,15 +29,15 @@ https://openalex.org/W3090519394,2020,article,en,159,False,Journal of environmen
 https://openalex.org/W2598677501,2017,article,en,158,False,JAMA,11.0727,True,3,Good health and well-being,0.800000011920929
 https://openalex.org/W2000700250,2014,article,en,157,True,International Security,51.1244,True,17,Partnerships for the goals,0.4099999964237213
 https://openalex.org/W772493169,2015,article,en,157,True,Industrial Crops and Products,5.3527,True,7,Affordable and clean energy,0.8399999737739563
-https://openalex.org/W1819081776,2015,article,en,148,False,Journal of Biotechnology,5.6439,True,14,Life below water,0.47999998927116394
+https://openalex.org/W1819081776,2015,article,en,149,False,Journal of Biotechnology,5.6439,True,14,Life below water,0.47999998927116394
+https://openalex.org/W2006338259,2009,article,en,144,False,Human Immunology,7.5534,True,3,Good health and well-being,0.6800000071525574
 https://openalex.org/W2996376534,2019,article,en,144,True,Livestock Science,10.6221,True,8,Decent work and economic growth,0.5899999737739563
-https://openalex.org/W2006338259,2009,article,en,143,False,Human Immunology,7.2119,True,3,Good health and well-being,0.6800000071525574
 https://openalex.org/W2795782826,2018,review,en,142,True,Revista da Associação Médica Brasileira,13.4384,True,3,Good health and well-being,0.8199999928474426
 https://openalex.org/W2101796978,2010,article,en,137,True,European Journal of Immunology,10.3237,True,3,Good health and well-being,0.5799999833106995
 https://openalex.org/W2406597311,2016,article,en,132,True,Journal of Cleaner Production,8.2046,True,8,Decent work and economic growth,0.4000000059604645
 https://openalex.org/W2083634206,2011,article,en,129,True,Applied Catalysis A General,2.6556,False,6,Clean water and sanitation,0.8600000143051147
 https://openalex.org/W3087085224,2020,review,en,129,True,Revista da Associação Médica Brasileira,17.3369,True,3,Good health and well-being,0.8600000143051147
-https://openalex.org/W2573315041,2017,article,en,127,True,PLoS neglected tropical diseases,10.5986,True,3,Good health and well-being,0.8700000047683716
+https://openalex.org/W2573315041,2017,article,en,127,True,PLoS neglected tropical diseases,10.599,True,3,Good health and well-being,0.8700000047683716
 https://openalex.org/W2080664816,2007,article,en,126,False,Transplantation Proceedings,6.5683,True,3,Good health and well-being,0.8899999856948853
 https://openalex.org/W1493993724,2013,article,en,125,False,The Journal of Comparative Neurology,4.1887,True,1,No poverty,0.6000000238418579
 https://openalex.org/W2109099721,2014,article,en,125,True,BMC Infectious Diseases,10.1634,True,3,Good health and well-being,0.7900000214576721
@@ -52,15 +52,15 @@ https://openalex.org/W2917150406,2019,article,en,118,True,Health and Quality of 
 https://openalex.org/W2036887639,2012,article,en,117,False,Food Biophysics,3.4341,True,2,Zero hunger,0.6800000071525574
 https://openalex.org/W2888882660,2018,review,en,117,True,Revista Brasileira de Enfermagem,14.0421,True,4,Quality Education,0.5199999809265137
 https://openalex.org/W2027885493,2011,article,pt,116,True,Fisioterapia em Movimento,0.8713,False,3,Good health and well-being,0.46000000834465027
-https://openalex.org/W2523002838,2017,article,en,115,True,Nature Physics,32.0447,True,16,"Peace, Justice and strong institutions",0.6800000071525574
+https://openalex.org/W2523002838,2017,article,en,115,True,Nature Physics,32.045,True,16,"Peace, Justice and strong institutions",0.6800000071525574
 https://openalex.org/W3087046564,2020,article,en,113,False,JACC: Cardiovascular Interventions,10.9158,True,3,Good health and well-being,0.6899999976158142
 https://openalex.org/W642335544,2015,review,pt,111,True,Revista Paulista de Pediatria,4.3407,True,4,Quality Education,0.5400000214576721
 https://openalex.org/W2010344849,2011,review,en,108,True,Revista da Sociedade Brasileira de Medicina Tropical,3.4052,True,3,Good health and well-being,0.8600000143051147
 https://openalex.org/W2752182706,2017,article,en,107,False,Immunological Investigations,10.4016,True,3,Good health and well-being,0.8500000238418579
 https://openalex.org/W1505058377,2011,article,en,106,True,International Journal of Andrology,2.268,False,3,Good health and well-being,0.7900000214576721
-https://openalex.org/W1923779178,2016,article,en,106,True,Chinese Physics C,31.1979,True,7,Affordable and clean energy,0.4699999988079071
+https://openalex.org/W1923779178,2016,article,en,106,True,Chinese Physics C,31.1985,True,7,Affordable and clean energy,0.4699999988079071
 https://openalex.org/W2067039312,2011,article,en,105,False,Archives of Oral Biology,4.695,True,3,Good health and well-being,0.49000000953674316
-https://openalex.org/W3093242181,2020,review,en,105,True,British Journal of Sports Medicine,8.1447,True,4,Quality Education,0.6100000143051147
+https://openalex.org/W3093242181,2020,review,en,105,True,British Journal of Sports Medicine,8.1445,True,4,Quality Education,0.6100000143051147
 https://openalex.org/W2944377776,2019,review,en,104,True,Arquivos de Neuro-Psiquiatria,6.6708,True,10,Reduced inequalities,0.6499999761581421
 https://openalex.org/W3090585326,2020,article,en,99,True,Ciência & Saúde Coletiva,7.6055,True,1,No poverty,0.6399999856948853
 https://openalex.org/W2078337888,2010,article,pt,96,True,Revista Brasileira de Hematologia e Hemoterapia,1.6702,False,3,Good health and well-being,0.5799999833106995
@@ -80,12 +80,12 @@ https://openalex.org/W2019934331,2014,review,en,81,True,BioMed Research Internat
 https://openalex.org/W2995393537,2019,review,en,81,False,European Journal of Neuroscience,4.6976,True,3,Good health and well-being,0.800000011920929
 https://openalex.org/W2004864761,2013,article,en,80,False,Journal of Neurology,5.3384,True,3,Good health and well-being,0.550000011920929
 https://openalex.org/W2589439154,2017,article,en,80,True,Mediators of Inflammation,4.7729,True,3,Good health and well-being,0.7300000190734863
-https://openalex.org/W2685944559,2017,article,lv,80,True,Physics Letters B,20.8776,True,7,Affordable and clean energy,0.7799999713897705
+https://openalex.org/W2685944559,2017,article,lv,80,True,Physics Letters B,20.8778,True,7,Affordable and clean energy,0.7799999713897705
 https://openalex.org/W2909775259,2019,article,en,79,True,Frontiers in Plant Science,8.4571,True,15,Life in Land,0.47999998927116394
 https://openalex.org/W2918813179,2019,article,en,79,True,Revista Brasileira Ginecologia e Obstetrícia,5.4037,True,3,Good health and well-being,0.8600000143051147
+https://openalex.org/W3195648479,2021,article,en,79,False,Sensors and Actuators B Chemical,5.0849,True,6,Clean water and sanitation,0.5699999928474426
 https://openalex.org/W3038811728,2020,article,en,78,False,Industrial Crops and Products,3.3103,True,7,Affordable and clean energy,0.8700000047683716
 https://openalex.org/W3123222097,2021,article,en,78,True,PLoS ONE,6.1865,True,2,Zero hunger,0.6600000262260437
-https://openalex.org/W3195648479,2021,article,en,78,False,Sensors and Actuators B Chemical,5.0844,True,6,Clean water and sanitation,0.5699999928474426
 https://openalex.org/W2101832894,2014,article,en,77,True,Revista Latino-Americana de Enfermagem,6.6809,True,1,No poverty,0.7900000214576721
 https://openalex.org/W2805206613,2018,review,en,76,True,Pathogens and Global Health,4.4025,True,3,Good health and well-being,0.7900000214576721
 https://openalex.org/W2515913200,2016,article,en,75,False,Archives of Oral Biology,10.3371,True,3,Good health and well-being,0.5799999833106995
@@ -144,8 +144,8 @@ https://openalex.org/W3097856281,2020,article,en,44,True,Revista Latino-American
 https://openalex.org/W2767315659,2017,article,pt,43,True,Acta Paulista de Enfermagem,0.0,False,3,Good health and well-being,0.46000000834465027
 https://openalex.org/W3196701536,2021,article,en,43,False,Production Planning & Control,3.7167,True,17,Partnerships for the goals,0.4099999964237213
 https://openalex.org/W3212178180,2021,article,en,43,True,International Journal of Environmental Research and Public Health,7.6211,True,10,Reduced inequalities,0.7400000095367432
+https://openalex.org/W4388049640,2023,review,en,43,True,Jornal de Pediatria,11.7736,True,3,Good health and well-being,0.6800000071525574
 https://openalex.org/W2027157746,2013,article,en,42,True,Polímeros,1.5234,False,6,Clean water and sanitation,0.8799999952316284
-https://openalex.org/W4388049640,2023,review,en,42,True,Jornal de Pediatria,11.8369,True,3,Good health and well-being,0.6800000071525574
 https://openalex.org/W2964465677,2019,article,pt,41,True,Acta Paulista de Enfermagem,10.2196,True,3,Good health and well-being,0.47999998927116394
 https://openalex.org/W3203271538,2021,article,pt,41,True,Cadernos de Saúde Pública,9.4624,True,4,Quality Education,0.8100000023841858
 https://openalex.org/W4289690422,2022,article,en,41,True,Revista Latino-Americana de Enfermagem,17.8436,True,10,Reduced inequalities,0.550000011920929
@@ -160,9 +160,9 @@ https://openalex.org/W2083118459,2000,article,pt,39,True,Revista da Sociedade Br
 https://openalex.org/W2411813545,2010,article,en,39,False,PubMed,0.0,False,3,Good health and well-being,0.8399999737739563
 https://openalex.org/W2742598124,2017,article,en,39,True,Escola Anna Nery,1.9769,False,4,Quality Education,0.7099999785423279
 https://openalex.org/W3111861320,2020,review,en,39,False,Respiratory Medicine,1.7477,False,3,Good health and well-being,0.8799999952316284
+https://openalex.org/W4200378315,2021,review,en,39,False,Topics in Stroke Rehabilitation,1.9924,False,10,Reduced inequalities,0.5699999928474426
 https://openalex.org/W4318199989,2023,article,en,39,True,Pharmaceuticals,10.826,True,3,Good health and well-being,0.8700000047683716
 https://openalex.org/W4377820336,2023,review,en,39,True,Foods,7.3869,True,2,Zero hunger,0.44999998807907104
-https://openalex.org/W4200378315,2021,review,en,38,False,Topics in Stroke Rehabilitation,1.9912,False,10,Reduced inequalities,0.5699999928474426
 https://openalex.org/W4285809719,2022,review,en,38,True,Anais Brasileiros de Dermatologia,6.1519,True,3,Good health and well-being,0.6800000071525574
 https://openalex.org/W4283159782,2022,article,en,37,True,Current Research in Food Science,4.9207,True,2,Zero hunger,0.6600000262260437
 https://openalex.org/W4313311794,2022,article,en,37,True,Nucleic Acids Research,2.8586,True,15,Life in Land,0.5
@@ -172,7 +172,7 @@ https://openalex.org/W3129641081,2021,article,en,36,True,The Science of The Tota
 https://openalex.org/W3195086030,2021,review,en,36,True,PLoS ONE,4.3433,True,2,Zero hunger,0.7200000286102295
 https://openalex.org/W4221136434,2022,article,en,35,True,Journal of Exercise Science & Fitness,7.8178,True,3,Good health and well-being,0.6700000166893005
 https://openalex.org/W2915083176,2019,article,en,34,True,Revista da Escola de Enfermagem da USP,3.6012,True,1,No poverty,0.5199999809265137
-https://openalex.org/W4396834820,2024,article,en,34,False,American Journal of Cardiovascular Drugs,10.3767,True,3,Good health and well-being,0.8399999737739563
+https://openalex.org/W4396834820,2024,article,en,34,False,American Journal of Cardiovascular Drugs,10.3473,True,3,Good health and well-being,0.8399999737739563
 https://openalex.org/W3141402046,2020,article,pt,33,True,Fisioterapia e Pesquisa,3.5586,True,3,Good health and well-being,0.5
 https://openalex.org/W4293715384,2022,review,en,33,True,Frontiers in Pharmacology,6.9809,True,3,Good health and well-being,0.8700000047683716
 https://openalex.org/W4387345493,2023,article,en,33,False,Separation and Purification Technology,3.6269,True,7,Affordable and clean energy,0.8700000047683716
@@ -188,7 +188,7 @@ https://openalex.org/W4396656821,2024,article,en,29,True,Philosophical Transacti
 https://openalex.org/W2524807718,2016,article,en,28,True,Texto & Contexto - Enfermagem,0.818,False,5,Gender equality,0.7300000190734863
 https://openalex.org/W4318167490,2023,article,en,28,True,Revista da Sociedade Brasileira de Medicina Tropical,5.3187,True,17,Partnerships for the goals,0.5799999833106995
 https://openalex.org/W3034820752,2020,article,en,27,False,Biomarkers,1.7877,False,3,Good health and well-being,0.8199999928474426
-https://openalex.org/W4281747529,2022,article,en,27,False,Life Sciences,3.7542,True,3,Good health and well-being,0.5799999833106995
+https://openalex.org/W4281747529,2022,article,en,27,False,Life Sciences,3.7541,True,3,Good health and well-being,0.5799999833106995
 https://openalex.org/W4296034320,2022,review,en,27,False,OMICS A Journal of Integrative Biology,2.3388,False,3,Good health and well-being,0.6100000143051147
 https://openalex.org/W4310951891,2022,review,en,27,False,European Journal of Applied Physiology,3.3584,True,5,Gender equality,0.550000011920929
 https://openalex.org/W4390145776,2023,article,en,27,False,The Science of The Total Environment,3.0901,True,6,Clean water and sanitation,0.8500000238418579
@@ -212,8 +212,8 @@ https://openalex.org/W3008637009,2020,article,en,18,True,South African Journal o
 https://openalex.org/W3007872388,2019,article,pt,17,True,VínculorevistadoNesme,1.4285,False,4,Quality Education,0.6399999856948853
 https://openalex.org/W4312058871,2022,article,en,16,False,International Journal of Biological Macromolecules,1.7877,False,12,Responsible consumption and production,0.550000011920929
 https://openalex.org/W4391898170,2024,article,en,16,True,Journal of Biogeography,13.3222,True,13,Climate action,0.6100000143051147
-https://openalex.org/W4396769251,2024,article,en,16,True,Nutrients,10.8706,True,3,Good health and well-being,0.4399999976158142
-https://openalex.org/W4405442156,2024,review,en,16,False,Water Research,3.5208,True,6,Clean water and sanitation,0.8299999833106995
+https://openalex.org/W4396769251,2024,article,en,16,True,Nutrients,10.8478,True,3,Good health and well-being,0.4399999976158142
+https://openalex.org/W4405442156,2024,review,en,16,False,Water Research,3.5134,True,6,Clean water and sanitation,0.8299999833106995
 https://openalex.org/W4226020420,2022,article,en,15,True,Revista Brasileira de Enfermagem,1.5899,False,13,Climate action,0.8500000238418579
 https://openalex.org/W4399662831,2024,article,en,15,False,Metabolism,4.4524,True,2,Zero hunger,0.4699999988079071
 https://openalex.org/W4403295344,2024,article,en,15,True,BMC Psychology,8.3557,True,13,Climate action,0.4099999964237213
@@ -229,7 +229,7 @@ https://openalex.org/W4390886009,2024,review,en,10,True,Immuno,2.0883,False,3,Go
 https://openalex.org/W4409739024,2025,review,en,9,True,Journal of Agricultural and Food Chemistry,12.6375,True,2,Zero hunger,0.8399999737739563
 https://openalex.org/W4410195162,2025,article,en,7,False,Journal of environmental chemical engineering,2.7308,False,6,Clean water and sanitation,0.7799999713897705
 https://openalex.org/W3042630238,2020,article,en,5,True,International Journal of Advanced Engineering Research and Science,0.2973,False,2,Zero hunger,0.699999988079071
-https://openalex.org/W4384661559,2023,review,en,5,True,Translational Sports Medicine,0.969,False,4,Quality Education,0.6600000262260437
+https://openalex.org/W4384661559,2023,review,en,5,True,Translational Sports Medicine,0.9666,False,4,Quality Education,0.6600000262260437
 https://openalex.org/W1999986344,1996,article,en,250,False,Science,27.124,True,7,Affordable and clean energy,0.47999998927116394
 https://openalex.org/W2092762319,1996,letter,en,139,False,The Lancet,4.7293,True,2,Zero hunger,0.4699999988079071
 https://openalex.org/W2058760208,2002,article,en,135,False,Critical Care Medicine,1.6805,False,3,Good health and well-being,0.7200000286102295
@@ -240,7 +240,7 @@ https://openalex.org/W2075307511,2001,article,en,105,True,Memórias do Instituto
 https://openalex.org/W2050822458,2004,article,en,102,True,Memórias do Instituto Oswaldo Cruz,4.4337,True,13,Climate action,0.4099999964237213
 https://openalex.org/W2088905882,2004,article,en,102,False,International Journal for Parasitology,3.6372,True,3,Good health and well-being,0.6000000238418579
 https://openalex.org/W2302266575,2016,article,en,102,True,AGE,6.1233,True,3,Good health and well-being,0.8299999833106995
-https://openalex.org/W2107037104,2001,article,en,100,True,Sao Paulo Medical Journal,1.2916,False,3,Good health and well-being,0.7699999809265137
+https://openalex.org/W2107037104,2001,article,en,101,True,Sao Paulo Medical Journal,1.2913,False,3,Good health and well-being,0.7699999809265137
 https://openalex.org/W2063666766,2005,article,en,96,True,Scandinavian Journal of Immunology,3.0791,True,3,Good health and well-being,0.6399999856948853
 https://openalex.org/W2111938996,1998,article,en,92,True,Medical Mycology,4.8479,True,2,Zero hunger,0.5299999713897705
 https://openalex.org/W2047803881,2011,article,pt,89,True,Revista da Sociedade Brasileira de Medicina Tropical,5.4082,True,3,Good health and well-being,0.8100000023841858
@@ -298,7 +298,7 @@ https://openalex.org/W2101498470,2009,article,en,61,True,Memórias do Instituto 
 https://openalex.org/W2020807326,2005,article,en,60,False,Parasitology,1.3884,False,3,Good health and well-being,0.4399999976158142
 https://openalex.org/W2103379923,2015,review,en,60,False,International Journal of Sports Medicine,5.533,True,3,Good health and well-being,0.6000000238418579
 https://openalex.org/W2135347149,2012,article,en,60,True,Revista Brasileira de Hematologia e Hemoterapia,1.7415,False,3,Good health and well-being,0.8600000143051147
-https://openalex.org/W2774237557,2017,review,en,60,False,Pain Management Nursing,3.0809,True,4,Quality Education,0.550000011920929
+https://openalex.org/W2774237557,2017,review,en,60,False,Pain Management Nursing,3.081,True,4,Quality Education,0.550000011920929
 https://openalex.org/W2792699637,2018,article,en,60,True,Clinical Science,4.5998,True,3,Good health and well-being,0.8899999856948853
 https://openalex.org/W2019714799,2013,article,en,59,True,Process Biochemistry,4.8563,True,6,Clean water and sanitation,0.6600000262260437
 https://openalex.org/W2587839880,2017,article,en,59,True,International Journal of Molecular Sciences,3.7775,True,3,Good health and well-being,0.5699999928474426
@@ -439,6 +439,7 @@ https://openalex.org/W1965922901,2011,article,pt,37,True,Ciência & Saúde Colet
 https://openalex.org/W1967445152,2011,article,pt,37,True,Revista da Escola de Enfermagem da USP,2.8546,True,3,Good health and well-being,0.7699999809265137
 https://openalex.org/W1967569016,2012,article,en,37,True,Immunology,2.8839,True,3,Good health and well-being,0.6200000047683716
 https://openalex.org/W2095578707,2012,article,en,37,True,International Archives of Otorhinolaryngology,0.2895,False,3,Good health and well-being,0.6299999952316284
+https://openalex.org/W2332065183,2014,article,en,37,False,Industrial & Engineering Chemistry Research,4.5071,True,6,Clean water and sanitation,0.4699999988079071
 https://openalex.org/W2620053711,2017,article,en,37,True,Revista da Escola de Enfermagem da USP,5.3138,True,5,Gender equality,0.46000000834465027
 https://openalex.org/W2624824574,2017,article,en,37,True,Journal of Dietary Supplements,1.2643,False,2,Zero hunger,0.5400000214576721
 https://openalex.org/W2736781643,2017,article,en,37,True,Revista Brasileira de Reumatologia (English Edition),5.1951,True,3,Good health and well-being,0.8700000047683716
@@ -447,7 +448,6 @@ https://openalex.org/W3000297414,2019,article,en,37,True,Sao Paulo Medical Journ
 https://openalex.org/W3025235379,2020,article,en,37,False,Immunological Investigations,3.9411,True,3,Good health and well-being,0.8100000023841858
 https://openalex.org/W2044979840,2015,article,en,36,True,Brazilian Oral Research,3.5918,True,6,Clean water and sanitation,0.4699999988079071
 https://openalex.org/W2064931633,2006,review,en,36,False,Current Opinion in Obstetrics & Gynecology,1.3792,False,3,Good health and well-being,0.8500000238418579
-https://openalex.org/W2332065183,2014,article,en,36,False,Industrial & Engineering Chemistry Research,4.4153,True,6,Clean water and sanitation,0.4699999988079071
 https://openalex.org/W2481718545,2016,article,en,36,True,Clinical Medicine Insights Oncology,6.4756,True,3,Good health and well-being,0.8799999952316284
 https://openalex.org/W2618279819,2017,article,en,36,True,Mediators of Inflammation,2.4431,False,3,Good health and well-being,0.6700000166893005
 https://openalex.org/W2886359330,2018,article,en,36,False,Electrochimica Acta,1.4393,False,7,Affordable and clean energy,0.8799999952316284
@@ -666,7 +666,9 @@ https://openalex.org/W3026052652,2020,article,en,20,True,Cretaceous Research,2.4
 https://openalex.org/W3095520023,2020,review,en,20,True,Revista gaúcha de enfermagem,1.2213,False,4,Quality Education,0.75
 https://openalex.org/W3101833084,2020,article,en,20,False,Journal of Food Process Engineering,2.5937,False,7,Affordable and clean energy,0.7300000190734863
 https://openalex.org/W3103361396,2020,article,en,20,False,European Journal of Obstetrics & Gynecology and Reproductive Biology,0.9364,False,3,Good health and well-being,0.7200000286102295
+https://openalex.org/W3129421383,2021,article,en,20,False,Journal of the Brazilian Society of Mechanical Sciences and Engineering,0.849,False,7,Affordable and clean energy,0.4699999988079071
 https://openalex.org/W3152900553,2021,article,en,20,True,Frontiers in Public Health,3.8106,True,5,Gender equality,0.47999998927116394
+https://openalex.org/W3159839246,2021,article,en,20,False,Expert Systems with Applications,2.1161,False,17,Partnerships for the goals,0.46000000834465027
 https://openalex.org/W3163104758,2021,article,en,20,True,Applied Physiology Nutrition and Metabolism,1.1882,False,4,Quality Education,0.4099999964237213
 https://openalex.org/W3183966601,2021,article,en,20,False,Applied Physiology Nutrition and Metabolism,1.7569,False,3,Good health and well-being,0.800000011920929
 https://openalex.org/W4226212739,2022,article,pt,20,True,Cogitare Enfermagem,6.3716,True,3,Good health and well-being,0.41999998688697815
@@ -680,9 +682,7 @@ https://openalex.org/W2652091374,2017,article,en,19,True,Journal of Stroke and C
 https://openalex.org/W272874896,2013,article,en,19,False,PubMed,2.0609,False,3,Good health and well-being,0.75
 https://openalex.org/W2953662131,2019,article,en,19,True,Heliyon,1.4788,False,3,Good health and well-being,0.699999988079071
 https://openalex.org/W3045586440,2020,article,en,19,False,The Journal of Vascular Access,1.4244,False,3,Good health and well-being,0.5400000214576721
-https://openalex.org/W3129421383,2021,article,en,19,False,Journal of the Brazilian Society of Mechanical Sciences and Engineering,0.8487,False,7,Affordable and clean energy,0.4699999988079071
 https://openalex.org/W3148706444,2021,article,en,19,False,European Journal of Pharmaceutical Sciences,1.5209,False,6,Clean water and sanitation,0.49000000953674316
-https://openalex.org/W3159839246,2021,article,en,19,False,Expert Systems with Applications,2.1159,False,17,Partnerships for the goals,0.46000000834465027
 https://openalex.org/W4295765256,2022,article,en,19,True,Diversity,2.711,False,14,Life below water,0.8999999761581421
 https://openalex.org/W4323036259,2023,review,en,19,False,Maternal and Child Health Journal,11.1516,True,8,Decent work and economic growth,0.6200000047683716
 https://openalex.org/W4361009869,2023,article,en,19,True,Nanomaterials,1.1256,False,6,Clean water and sanitation,0.4399999976158142
@@ -762,6 +762,7 @@ https://openalex.org/W3211704723,2021,article,en,15,True,Nutrients,1.5794,False,
 https://openalex.org/W4206123024,2022,article,en,15,True,Research Society and Development,6.5936,True,1,No poverty,0.5799999833106995
 https://openalex.org/W4220803903,2022,article,en,15,True,Journal of Materials Science,0.7309,False,7,Affordable and clean energy,0.8199999928474426
 https://openalex.org/W4221037337,2022,article,en,15,True,Journal of Alloys and Compounds,1.063,False,7,Affordable and clean energy,0.5199999809265137
+https://openalex.org/W4224101413,2022,review,en,15,True,International Journal of Nursing Studies Advances,3.0541,True,4,Quality Education,0.5199999809265137
 https://openalex.org/W4285170077,2022,article,pt,15,True,Cadernos Brasileiros de Terapia Ocupacional ,5.6517,True,5,Gender equality,0.46000000834465027
 https://openalex.org/W4292590327,2022,article,en,15,True,Frontiers in Immunology,2.0373,False,3,Good health and well-being,0.7799999713897705
 https://openalex.org/W4303696592,2022,review,en,15,True,International Journal of Environmental Research and Public Health,1.1439,False,3,Good health and well-being,0.8299999833106995
@@ -783,7 +784,6 @@ https://openalex.org/W3157176950,2021,article,en,14,True,Rev Rene,6.6155,True,4,
 https://openalex.org/W3176236415,2021,article,en,14,False,Journal of Biomolecular Structure and Dynamics,0.5813,False,3,Good health and well-being,0.8199999928474426
 https://openalex.org/W3205387383,2021,article,en,14,True,Revista de Saúde Pública,0.8488,False,3,Good health and well-being,0.8600000143051147
 https://openalex.org/W4220958906,2022,article,en,14,False,Aquatic Toxicology,2.0333,False,14,Life below water,0.7300000190734863
-https://openalex.org/W4224101413,2022,review,en,14,True,International Journal of Nursing Studies Advances,3.0546,True,4,Quality Education,0.5199999809265137
 https://openalex.org/W4319004856,2023,article,en,14,True,Journal of Fungi,2.0352,False,3,Good health and well-being,0.8199999928474426
 https://openalex.org/W4361215166,2023,article,en,14,True,Sustainability,2.0545,False,1,No poverty,0.4399999976158142
 https://openalex.org/W4386390939,2023,article,en,14,False,Molecular Diversity,3.5722,True,2,Zero hunger,0.4699999988079071
@@ -833,7 +833,7 @@ https://openalex.org/W4281765254,2022,article,en,11,False,Biochimica et Biophysi
 https://openalex.org/W4293041735,2022,article,en,11,True,Revista da Sociedade Brasileira de Medicina Tropical,0.8066,False,11,Sustainable cities and communities,0.6399999856948853
 https://openalex.org/W4309648211,2022,article,en,11,False,European Journal of Nutrition,1.6247,False,2,Zero hunger,0.5299999713897705
 https://openalex.org/W4312158513,2022,article,en,11,False,Food Control,0.868,False,9,"Industry, innovation and infrastructure",0.6000000238418579
-https://openalex.org/W4391679928,2024,article,en,11,False,ACS Applied Materials & Interfaces,1.1649,False,7,Affordable and clean energy,0.6700000166893005
+https://openalex.org/W4391679928,2024,article,en,11,False,ACS Applied Materials & Interfaces,1.163,False,7,Affordable and clean energy,0.6700000166893005
 https://openalex.org/W4396834541,2024,article,en,11,False,The Science of The Total Environment,4.6448,True,15,Life in Land,0.699999988079071
 https://openalex.org/W2011600848,2014,article,en,10,False,Geoheritage,3.4441,True,11,Sustainable cities and communities,0.6499999761581421
 https://openalex.org/W2047171245,2013,article,en,10,False,Journal of Electromyography and Kinesiology,1.4111,False,3,Good health and well-being,0.7300000190734863
@@ -862,7 +862,8 @@ https://openalex.org/W4386475911,2023,review,en,10,True,Life Sciences,2.8796,Tru
 https://openalex.org/W4387671499,2023,article,en,10,True,Frontiers in Immunology,2.0286,False,3,Good health and well-being,0.8299999833106995
 https://openalex.org/W4392755834,2024,article,en,10,True,Exploration of Immunology,2.1621,False,3,Good health and well-being,0.7599999904632568
 https://openalex.org/W4396776721,2024,article,en,10,True,Histopathology,2.0902,False,17,Partnerships for the goals,0.5099999904632568
-https://openalex.org/W4407015355,2025,review,en,10,False,Current Nutrition Reports,5.9749,True,2,Zero hunger,0.8600000143051147
+https://openalex.org/W4403893269,2024,article,en,10,True,Pharmaceutics,4.1953,True,3,Good health and well-being,0.7599999904632568
+https://openalex.org/W4407015355,2025,review,en,10,False,Current Nutrition Reports,5.8812,True,2,Zero hunger,0.8600000143051147
 https://openalex.org/W2318976837,2014,article,pt,9,True,O Mundo da Saúde,0.0,False,2,Zero hunger,0.6600000262260437
 https://openalex.org/W2772548869,2017,article,en,9,True,Escola Anna Nery,5.2935,True,4,Quality Education,0.4399999976158142
 https://openalex.org/W2890629127,2018,article,en,9,False,Ameghiniana,0.8648,False,14,Life below water,0.6200000047683716
@@ -878,7 +879,6 @@ https://openalex.org/W4378716467,2023,article,en,9,True,Interface - Comunicaçã
 https://openalex.org/W4386319225,2023,article,en,9,False,Toxicon,2.6683,True,15,Life in Land,0.5299999713897705
 https://openalex.org/W4390614338,2024,article,en,9,True,Journal of Fungi,1.888,False,3,Good health and well-being,0.8799999952316284
 https://openalex.org/W4399852102,2024,article,en,9,True,Progress in Neuro-Psychopharmacology and Biological Psychiatry,2.1754,False,2,Zero hunger,0.4000000059604645
-https://openalex.org/W4403893269,2024,article,en,9,True,Pharmaceutics,3.8712,True,3,Good health and well-being,0.7599999904632568
 https://openalex.org/W4406633897,2025,article,en,9,False,Journal of Water Process Engineering,5.7642,True,6,Clean water and sanitation,0.8500000238418579
 https://openalex.org/W2083906285,2013,article,en,8,False,RSC Advances,0.6516,False,7,Affordable and clean energy,0.8100000023841858
 https://openalex.org/W2603396250,2015,article,en,8,False,,0.0,False,3,Good health and well-being,0.5
@@ -916,37 +916,38 @@ https://openalex.org/W4386473893,2023,article,en,7,True,Food Materials Research,
 https://openalex.org/W4387337279,2023,article,en,7,False,BioEnergy Research,0.7416,False,7,Affordable and clean energy,0.5299999713897705
 https://openalex.org/W4393033029,2024,article,en,7,True,IEEE Access,0.6428,False,7,Affordable and clean energy,0.8100000023841858
 https://openalex.org/W4394601130,2024,article,pt,7,True,Brazilian Journal of Implantology and Health Sciences,4.3771,True,3,Good health and well-being,0.8500000238418579
-https://openalex.org/W4401793847,2024,review,en,7,False,Molecular and Cellular Biochemistry,1.4438,False,3,Good health and well-being,0.8799999952316284
+https://openalex.org/W4401793847,2024,review,en,7,False,Molecular and Cellular Biochemistry,1.441,False,3,Good health and well-being,0.8799999952316284
 https://openalex.org/W4401853200,2024,review,en,7,False,NeuroToxicology,2.8322,True,2,Zero hunger,0.5199999809265137
+https://openalex.org/W4412791569,2025,review,en,7,True,International Journal of Cardiology,6.0411,True,2,Zero hunger,0.5299999713897705
 https://openalex.org/W2981733308,2019,article,en,6,True,Radiologia Brasileira,0.436,False,2,Zero hunger,0.7200000286102295
 https://openalex.org/W3113495142,2020,article,en,6,False,Gene,0.2968,False,3,Good health and well-being,0.49000000953674316
 https://openalex.org/W4285412432,2022,article,en,6,True,Revista Brasileira de Enfermagem,1.0618,False,1,No poverty,0.6200000047683716
 https://openalex.org/W4290518058,2022,article,en,6,True,Bulletin of Materials Science,0.3472,False,2,Zero hunger,0.6700000166893005
 https://openalex.org/W4309268419,2022,article,pt,6,True,Revista de Enfermagem da UFSM,0.8823,False,3,Good health and well-being,0.699999988079071
-https://openalex.org/W4323527261,2023,article,en,6,True,Dalton Transactions,0.3543,False,6,Clean water and sanitation,0.800000011920929
+https://openalex.org/W4323527261,2023,article,en,6,True,Dalton Transactions,0.3539,False,6,Clean water and sanitation,0.800000011920929
 https://openalex.org/W4365815948,2023,article,en,6,False,Computers in Biology and Medicine,1.1303,False,17,Partnerships for the goals,0.5199999809265137
 https://openalex.org/W4376610590,2023,article,en,6,True,Revista da Associação Médica Brasileira,3.5216,True,3,Good health and well-being,0.5199999809265137
 https://openalex.org/W4385879409,2023,article,en,6,True,Clinical Interventions in Aging,1.463,False,3,Good health and well-being,0.800000011920929
 https://openalex.org/W4387468956,2023,article,pt,6,True,Revista Latino-Americana de Enfermagem,1.2281,False,3,Good health and well-being,0.699999988079071
 https://openalex.org/W4389398483,2023,article,en,6,False,Ceramics International,0.5835,False,7,Affordable and clean energy,0.7300000190734863
-https://openalex.org/W4391687164,2024,review,en,6,False,Pain Management Nursing,3.3246,True,3,Good health and well-being,0.5400000214576721
+https://openalex.org/W4391687164,2024,review,en,6,False,Pain Management Nursing,3.3163,True,3,Good health and well-being,0.5400000214576721
 https://openalex.org/W4403645313,2024,article,en,6,False,Clinical Transplantation,1.8528,False,3,Good health and well-being,0.800000011920929
-https://openalex.org/W4406445759,2025,review,en,6,False,Neuroscience,4.8568,True,2,Zero hunger,0.7200000286102295
+https://openalex.org/W4406445759,2025,review,en,6,False,Neuroscience,4.8454,True,2,Zero hunger,0.7200000286102295
 https://openalex.org/W4408566877,2025,article,en,6,False,Toxicon,8.6538,True,13,Climate action,0.8399999737739563
 https://openalex.org/W4409430669,2025,review,en,6,True,Future Microbiology,6.0458,True,2,Zero hunger,0.5
-https://openalex.org/W4412791569,2025,review,en,6,True,International Journal of Cardiology,5.7256,True,2,Zero hunger,0.5299999713897705
 https://openalex.org/W2144591887,2003,letter,en,5,False,Nutrition,0.0,False,6,Clean water and sanitation,0.800000011920929
 https://openalex.org/W2955930469,2019,article,en,5,True,Floresta e Ambiente,0.2897,False,15,Life in Land,0.5600000023841858
 https://openalex.org/W3209491298,2021,article,en,5,True,ABCS Health Sciences,0.2161,False,3,Good health and well-being,0.800000011920929
 https://openalex.org/W4293569828,2022,article,en,5,True,Jornal de Pediatria,0.5594,False,2,Zero hunger,0.7400000095367432
 https://openalex.org/W4307368015,2022,article,en,5,True,Enfermería Global,0.3134,False,3,Good health and well-being,0.46000000834465027
+https://openalex.org/W4312848298,2022,article,pt,5,True,Enfermagem em Foco,1.7882,False,4,Quality Education,0.7699999809265137
 https://openalex.org/W4361267223,2023,article,en,5,False,Journal of Water Process Engineering,0.4863,False,7,Affordable and clean energy,0.5600000023841858
 https://openalex.org/W4383711270,2023,article,en,5,True,The Journal of Physical Chemistry B,0.7601,False,3,Good health and well-being,0.6299999952316284
 https://openalex.org/W4387079505,2023,article,en,5,False,Nutrition,0.8452,False,2,Zero hunger,0.8100000023841858
 https://openalex.org/W4390690582,2024,article,en,5,False,International Journal of Biological Macromolecules,2.0011,False,1,No poverty,0.699999988079071
 https://openalex.org/W4392283581,2024,article,en,5,True,PLoS ONE,1.8688,False,3,Good health and well-being,0.800000011920929
 https://openalex.org/W4400621109,2024,article,en,5,False,Nutrition Metabolism and Cardiovascular Diseases,2.6042,False,2,Zero hunger,0.7699999809265137
-https://openalex.org/W4405348581,2024,review,en,5,False,Drug Metabolism and Personalized Therapy,2.1014,False,3,Good health and well-being,0.6299999952316284
+https://openalex.org/W4405348581,2024,review,en,5,False,Drug Metabolism and Personalized Therapy,2.0976,False,3,Good health and well-being,0.6299999952316284
 https://openalex.org/W4405422904,2024,article,en,5,True,Beilstein Journal of Nanotechnology,0.84,False,3,Good health and well-being,0.8199999928474426
 https://openalex.org/W4405698847,2024,review,en,5,True,Biomolecules,2.3752,False,15,Life in Land,0.4699999988079071
 https://openalex.org/W4406760688,2025,article,en,5,True,Metabolites,3.1273,True,3,Good health and well-being,0.5799999833106995
@@ -960,6 +961,7 @@ https://openalex.org/W4290710952,2022,article,en,4,True,Revista de Nutrição,0.
 https://openalex.org/W4387442521,2023,article,en,4,False,Sport Sciences for Health,0.9813,False,3,Good health and well-being,0.44999998807907104
 https://openalex.org/W4388590438,2023,article,en,4,False,Journal of Thermal Analysis and Calorimetry,0.4131,False,7,Affordable and clean energy,0.8199999928474426
 https://openalex.org/W4389318626,2023,article,en,4,True,Revista Brasileira de Enfermagem,1.1837,False,3,Good health and well-being,0.8600000143051147
+https://openalex.org/W4390015979,2023,article,en,4,False,Journal of Biomolecular Structure and Dynamics,0.5733,False,14,Life below water,0.8799999952316284
 https://openalex.org/W4391534945,2023,article,en,4,True,ABCD Arquivos Brasileiros de Cirurgia Digestiva (São Paulo),1.0352,False,3,Good health and well-being,0.7900000214576721
 https://openalex.org/W4393181943,2024,article,en,4,False,Alcohol and Alcoholism,1.7299,False,3,Good health and well-being,0.6800000071525574
 https://openalex.org/W4395662961,2024,article,pt,4,True,Brazilian Journal of Implantology and Health Sciences,2.8412,True,3,Good health and well-being,0.8500000238418579
@@ -983,9 +985,10 @@ https://openalex.org/W4396660338,2024,article,pt,3,True,Revista do Colégio Bras
 https://openalex.org/W4399428447,2024,article,en,3,False,Journal of Water Process Engineering,0.5454,False,7,Affordable and clean energy,0.6700000166893005
 https://openalex.org/W4403289501,2024,article,pt,3,True,Brazilian Journal of Health Review,1.4942,False,3,Good health and well-being,0.8399999737739563
 https://openalex.org/W4405529477,2024,article,en,3,True,Pharmaceutics,0.7558,False,3,Good health and well-being,0.8399999737739563
+https://openalex.org/W4406087332,2024,article,pt,3,True,Revista Enfermagem UERJ,1.0298,False,4,Quality Education,0.5299999713897705
 https://openalex.org/W4406121377,2025,review,en,3,False,Lasers in Medical Science,3.5174,True,2,Zero hunger,0.5099999904632568
 https://openalex.org/W4407199534,2025,review,en,3,True,PLoS ONE,3.1493,False,4,Quality Education,0.6399999856948853
-https://openalex.org/W4408080360,2025,review,en,3,False,Environmental Research,1.114,False,6,Clean water and sanitation,0.7200000286102295
+https://openalex.org/W4408080360,2025,review,en,3,False,Environmental Research,1.1087,False,6,Clean water and sanitation,0.7200000286102295
 https://openalex.org/W4409628412,2025,article,en,3,False,International Journal of Biological Macromolecules,2.1566,False,3,Good health and well-being,0.5899999737739563
 https://openalex.org/W4410074923,2025,article,en,3,False,Electrochimica Acta,2.8073,False,6,Clean water and sanitation,0.6299999952316284
 https://openalex.org/W4410547325,2025,review,en,3,True,International Journal of Molecular Sciences,1.8341,False,3,Good health and well-being,0.8299999833106995
@@ -1192,6 +1195,7 @@ https://openalex.org/W2468808090,2016,review,en,23,True,Brazilian Journal of Nep
 https://openalex.org/W2556957507,2016,article,en,23,True,Parasite Immunology,1.5423,False,3,Good health and well-being,0.4300000071525574
 https://openalex.org/W2756900179,2017,article,pt,23,True,Psicologia Ciência e Profissão,1.3864,False,5,Gender equality,0.6100000143051147
 https://openalex.org/W2793809411,2018,article,en,23,False,Science & Sports,4.1393,True,3,Good health and well-being,0.550000011920929
+https://openalex.org/W2888161727,2018,article,en,23,False,Transfusion Medicine,1.3904,False,3,Good health and well-being,0.8500000238418579
 https://openalex.org/W2900581346,2018,article,en,23,True,Revista Brasileira Ginecologia e Obstetrícia,3.0145,True,3,Good health and well-being,0.7799999713897705
 https://openalex.org/W2902782469,2018,article,en,23,True,Revista Latino-Americana de Enfermagem,2.1254,False,14,Life below water,0.41999998688697815
 https://openalex.org/W2954818642,2019,article,en,23,False,Journal of Clinical Nursing,1.3677,False,10,Reduced inequalities,0.5699999928474426
@@ -1215,7 +1219,6 @@ https://openalex.org/W2598844471,2017,article,en,22,True,Revista de Saúde Públ
 https://openalex.org/W2611516521,2017,article,en,22,True,The Journal of Chemical Physics,1.8297,False,7,Affordable and clean energy,0.8999999761581421
 https://openalex.org/W2792898229,2018,article,en,22,True,Journal of Nuclear Cardiology,1.9468,False,3,Good health and well-being,0.550000011920929
 https://openalex.org/W2800416481,2018,article,en,22,True,Journal of Cancer Research and Therapeutics,0.7547,False,3,Good health and well-being,0.8500000238418579
-https://openalex.org/W2888161727,2018,article,en,22,False,Transfusion Medicine,1.3902,False,3,Good health and well-being,0.8500000238418579
 https://openalex.org/W2910688137,2019,article,en,22,True,Biophysical Journal,1.1108,False,9,"Industry, innovation and infrastructure",0.5
 https://openalex.org/W1059229845,2015,article,en,21,True,Annals of Operations Research,3.4544,True,8,Decent work and economic growth,0.4300000071525574
 https://openalex.org/W1967939600,2012,article,pt,21,True,Revista Brasileira de Epidemiologia,0.6828,False,3,Good health and well-being,0.8100000023841858
@@ -1227,6 +1230,7 @@ https://openalex.org/W2000597827,2012,article,en,21,True,Brazilian Journal of An
 https://openalex.org/W2001721973,1999,article,en,21,True,Sao Paulo Medical Journal,0.0,False,3,Good health and well-being,0.7099999785423279
 https://openalex.org/W2061754411,2014,article,en,21,False,Archives of Gynecology and Obstetrics,0.2677,False,3,Good health and well-being,0.8500000238418579
 https://openalex.org/W2079494469,2013,article,en,21,True,PLoS ONE,1.4269,False,3,Good health and well-being,0.7400000095367432
+https://openalex.org/W2082898803,2009,article,en,21,False,Annals of Diagnostic Pathology,0.3813,False,3,Good health and well-being,0.8799999952316284
 https://openalex.org/W2113217770,2011,article,en,21,False,Pacing and Clinical Electrophysiology,1.8027,False,3,Good health and well-being,0.8299999833106995
 https://openalex.org/W2126993677,2013,article,en,21,False,PubMed,0.5634,False,10,Reduced inequalities,0.7799999713897705
 https://openalex.org/W2519127568,2016,article,en,21,True,Immunology,1.4011,False,3,Good health and well-being,0.7900000214576721
@@ -1367,7 +1371,7 @@ https://openalex.org/W3004277120,2020,article,en,16,False,Materials Letters,1.14
 https://openalex.org/W3018485102,2020,article,en,16,False,Medical Mycology,2.07,False,3,Good health and well-being,0.5699999928474426
 https://openalex.org/W3024025198,2020,article,en,16,False,Journal of Dairy Research,1.7292,False,2,Zero hunger,0.4699999988079071
 https://openalex.org/W3081086350,2020,article,en,16,True,PLoS ONE,3.2591,True,3,Good health and well-being,0.5600000023841858
-https://openalex.org/W4323846858,2023,article,en,16,True,International Journal of Environmental Research and Public Health,2.967,True,17,Partnerships for the goals,0.47999998927116394
+https://openalex.org/W4323846858,2023,article,en,16,True,International Journal of Environmental Research and Public Health,2.9642,True,17,Partnerships for the goals,0.47999998927116394
 https://openalex.org/W4363650845,2023,review,en,16,True,Viruses,2.9953,True,3,Good health and well-being,0.8399999737739563
 https://openalex.org/W1963985841,2007,article,en,15,False,Annals of Diagnostic Pathology,0.3913,False,3,Good health and well-being,0.8299999833106995
 https://openalex.org/W1984390577,2011,article,en,15,False,Journal of Electromyography and Kinesiology,1.0729,False,3,Good health and well-being,0.7799999713897705
@@ -1433,7 +1437,7 @@ https://openalex.org/W2886213457,2018,article,en,14,False,Journal of Fluorine Ch
 https://openalex.org/W2951424493,2019,article,en,14,True,Mediators of Inflammation,0.8861,False,3,Good health and well-being,0.7599999904632568
 https://openalex.org/W2968954917,2019,article,en,14,True,PubMed,0.7095,False,4,Quality Education,0.5600000023841858
 https://openalex.org/W2968954917,2019,article,en,14,True,PubMed,0.7095,False,3,Good health and well-being,0.4399999976158142
-https://openalex.org/W3036263159,2020,article,en,14,False,Pain Management,1.4438,False,3,Good health and well-being,0.800000011920929
+https://openalex.org/W3036263159,2020,article,en,14,False,Pain Management,1.4439,False,3,Good health and well-being,0.800000011920929
 https://openalex.org/W3043939711,2020,article,en,14,False,American Journal of Reproductive Immunology,1.3788,False,3,Good health and well-being,0.8299999833106995
 https://openalex.org/W3083528448,2020,article,en,14,False,Journal of Bodywork and Movement Therapies,2.1389,False,4,Quality Education,0.7400000095367432
 https://openalex.org/W3087305492,2020,article,en,14,True,Annals of Clinical Microbiology and Antimicrobials,0.3089,False,1,No poverty,0.7099999785423279
@@ -1544,6 +1548,7 @@ https://openalex.org/W2014176324,2012,article,pt,10,True,Educar em Revista,1.947
 https://openalex.org/W2060696066,2008,article,pt,10,True,Brazilian Journal of Anesthesiology,0.6177,False,3,Good health and well-being,0.8199999928474426
 https://openalex.org/W2092439128,2009,article,en,10,True,Nephron Experimental Nephrology,0.8836,False,3,Good health and well-being,0.699999988079071
 https://openalex.org/W2164892121,2014,article,en,10,False,PubMed,4.0918,True,1,No poverty,0.8100000023841858
+https://openalex.org/W2268209637,2015,article,en,10,True,Sao Paulo Medical Journal,0.5153,False,3,Good health and well-being,0.7799999713897705
 https://openalex.org/W2390663167,2016,article,pt,10,True,Revista Brasileira de Educação Física e Esporte,4.2336,True,4,Quality Education,0.6200000047683716
 https://openalex.org/W2436381119,2016,article,en,10,True,Revista Paulista de Pediatria (English Edition),1.542,False,3,Good health and well-being,0.8500000238418579
 https://openalex.org/W2590503328,2017,article,en,10,True,Journal of Physical Education,4.7766,True,1,No poverty,0.4099999964237213
@@ -1579,7 +1584,7 @@ https://openalex.org/W4288368505,2022,article,en,10,False,Euphytica,1.7435,False
 https://openalex.org/W4292566766,2022,article,en,10,True,Microorganisms,0.8662,False,14,Life below water,0.8600000143051147
 https://openalex.org/W4297493964,2022,review,en,10,True,Seminars in Cell and Developmental Biology,1.0115,False,3,Good health and well-being,0.699999988079071
 https://openalex.org/W4302276200,2022,article,en,10,True,Anais da Academia Brasileira de Ciências,1.8541,False,3,Good health and well-being,0.7799999713897705
-https://openalex.org/W4312095454,2022,article,en,10,True,Journal of Inorganic Biochemistry,1.0401,False,3,Good health and well-being,0.6700000166893005
+https://openalex.org/W4312095454,2022,article,en,10,True,Journal of Inorganic Biochemistry,1.04,False,3,Good health and well-being,0.6700000166893005
 https://openalex.org/W4315630954,2023,article,en,10,True,IEEE Latin America Transactions,1.2543,False,7,Affordable and clean energy,0.8999999761581421
 https://openalex.org/W4323353116,2023,review,en,10,False,Fitoterapia,2.4832,False,12,Responsible consumption and production,0.41999998688697815
 https://openalex.org/W4396532678,2024,article,en,10,True,Journal of Personalized Medicine,3.7375,True,3,Good health and well-being,0.8100000023841858
@@ -1596,6 +1601,7 @@ https://openalex.org/W2207507612,2015,article,en,9,True,Genome Announcements,0.4
 https://openalex.org/W2288147892,2015,article,pt,9,True,Brazilian Journal of Kinanthropometry and Human Performance,1.4803,False,3,Good health and well-being,0.5099999904632568
 https://openalex.org/W2470590740,2016,article,en,9,False,Sports Coaching Review,1.1706,False,5,Gender equality,0.46000000834465027
 https://openalex.org/W2602607442,2017,article,en,9,True,Revista Brasileira de Recursos Hídricos,0.3082,False,6,Clean water and sanitation,0.8399999737739563
+https://openalex.org/W2612613562,2017,article,en,9,False,Gynecologic and Obstetric Investigation,1.0822,False,3,Good health and well-being,0.5299999713897705
 https://openalex.org/W2737458536,2017,book,en,9,False,,3.7241,False,3,Good health and well-being,0.4399999976158142
 https://openalex.org/W2765162782,2017,article,en,9,True,Radiologia Brasileira,1.6409,False,2,Zero hunger,0.6899999976158142
 https://openalex.org/W2767664012,2017,article,en,9,False,The Journal of Maternal-Fetal & Neonatal Medicine,0.5002,False,3,Good health and well-being,0.8299999833106995
@@ -1705,6 +1711,8 @@ https://openalex.org/W4287009080,2022,article,en,7,True,Pflügers Archiv - Europ
 https://openalex.org/W4293531336,2022,article,en,7,False,Life Sciences,1.1768,False,3,Good health and well-being,0.8600000143051147
 https://openalex.org/W4297445419,2022,article,en,7,True,Surgical Neurology International,0.9403,False,3,Good health and well-being,0.8799999952316284
 https://openalex.org/W4308255097,2022,article,en,7,True,The International Journal of Cardiovascular Imaging,1.0973,False,3,Good health and well-being,0.7699999809265137
+https://openalex.org/W4319835377,2023,article,en,7,True,Geographical Research,0.7993,False,11,Sustainable cities and communities,0.46000000834465027
+https://openalex.org/W4319835377,2023,article,en,7,True,Geographical Research,0.7993,False,13,Climate action,0.46000000834465027
 https://openalex.org/W4376133660,2023,article,en,7,False,Journal of Nuclear Cardiology,1.444,False,3,Good health and well-being,0.8299999833106995
 https://openalex.org/W4387449777,2023,article,en,7,False,Pharmacological Reports,1.4092,False,3,Good health and well-being,0.6200000047683716
 https://openalex.org/W4392194861,2024,article,en,7,True,International Journal of Performance Analysis in Sport,3.1398,True,5,Gender equality,0.41999998688697815
@@ -1748,6 +1756,7 @@ https://openalex.org/W4289202610,2022,article,pt,6,True,Revista Brasileira de Ed
 https://openalex.org/W4309990409,2022,article,en,6,False,Brazilian Journal of Chemical Engineering,0.3771,False,6,Clean water and sanitation,0.7099999785423279
 https://openalex.org/W4310559162,2022,book-chapter,en,6,False,Elsevier eBooks,2.5897,False,7,Affordable and clean energy,0.4099999964237213
 https://openalex.org/W4312221325,2022,article,en,6,False,Immunobiology,0.7839,False,3,Good health and well-being,0.5199999809265137
+https://openalex.org/W4318475164,2023,article,en,6,True,Brazilian Journal of Medical and Biological Research,0.9901,False,10,Reduced inequalities,0.7400000095367432
 https://openalex.org/W4368274265,2023,article,pt,6,True,Acta Paulista de Enfermagem,1.8293,False,3,Good health and well-being,0.4399999976158142
 https://openalex.org/W4378716852,2023,article,pt,6,True,Interface - Comunicação Saúde Educação,2.5736,False,5,Gender equality,0.699999988079071
 https://openalex.org/W4379794827,2023,article,en,6,False,The Journal of Chemical Physics,1.1634,False,7,Affordable and clean energy,0.6800000071525574
@@ -1798,10 +1807,12 @@ https://openalex.org/W4391275168,2024,article,pt,5,True,Revista Brasileira de At
 https://openalex.org/W4399425025,2024,article,en,5,True,Revista Latino-Americana de Enfermagem,9.4604,True,4,Quality Education,0.7200000286102295
 https://openalex.org/W4399529805,2024,article,en,5,True,The Journal of Infection in Developing Countries,0.7568,False,3,Good health and well-being,0.6499999761581421
 https://openalex.org/W4401916177,2024,article,en,5,False,Pest Management Science,1.0551,False,2,Zero hunger,0.5
-https://openalex.org/W4406358937,2024,review,en,5,False,The Journal of Strength and Conditioning Research,2.1075,False,5,Gender equality,0.5699999928474426
+https://openalex.org/W4406358937,2024,review,en,5,False,The Journal of Strength and Conditioning Research,2.1038,False,5,Gender equality,0.5699999928474426
 https://openalex.org/W4407056515,2025,article,en,5,False,Wear,3.171,True,1,No poverty,0.7400000095367432
+https://openalex.org/W1866833168,2015,article,en,4,False,Hemoglobin,0.1718,False,14,Life below water,0.8700000047683716
 https://openalex.org/W2045742919,2008,article,en,4,False,Retina,0.0,False,6,Clean water and sanitation,0.6200000047683716
 https://openalex.org/W2759166549,2017,article,pt,4,True,Revista do Serviço Público,0.0,False,16,"Peace, Justice and strong institutions",0.6899999976158142
+https://openalex.org/W2889410679,2018,article,en,4,False,Nephrology,0.3667,False,3,Good health and well-being,0.8500000238418579
 https://openalex.org/W2904945969,2018,article,en,4,True,Annals of Microbiology,0.252,False,16,"Peace, Justice and strong institutions",0.4699999988079071
 https://openalex.org/W2907144914,2018,article,en,4,True,Revista de la Facultad de Medicina,0.9059,False,4,Quality Education,0.75
 https://openalex.org/W2999728511,2019,article,en,4,True,Revista Virtual de Química,0.0996,False,12,Responsible consumption and production,0.49000000953674316
@@ -1848,12 +1859,12 @@ https://openalex.org/W4393094375,2024,article,en,4,True,Forests,2.1561,False,12,
 https://openalex.org/W4396903241,2024,article,en,4,True,International Journal of Circuit Theory and Applications,1.1834,False,7,Affordable and clean energy,0.8399999737739563
 https://openalex.org/W4399020432,2024,article,en,4,False,Supportive Care in Cancer,0.9962,False,3,Good health and well-being,0.7400000095367432
 https://openalex.org/W4399847457,2024,article,en,4,True,BMC Public Health,3.2044,True,4,Quality Education,0.8999999761581421
-https://openalex.org/W4402266177,2024,review,en,4,False,Coronary Artery Disease,2.0002,False,3,Good health and well-being,0.8600000143051147
+https://openalex.org/W4402266177,2024,review,en,4,False,Coronary Artery Disease,1.9954,False,3,Good health and well-being,0.8600000143051147
 https://openalex.org/W4403150643,2024,article,en,4,True,Comparative Biochemistry and Physiology Part B Biochemistry and Molecular Biology,1.7237,False,14,Life below water,0.8899999856948853
 https://openalex.org/W4404885735,2024,article,en,4,True,BMC Microbiology,1.2946,False,2,Zero hunger,0.5699999928474426
 https://openalex.org/W4407219435,2025,review,en,4,True,American Journal of Obstetrics and Gynecology,5.7728,True,2,Zero hunger,0.7200000286102295
 https://openalex.org/W4407456629,2025,article,en,4,False,IEEE Transactions on Vehicular Technology,3.9285,True,13,Climate action,0.41999998688697815
-https://openalex.org/W4407670064,2025,review,en,4,True,Pain Management,4.3655,True,3,Good health and well-being,0.4300000071525574
+https://openalex.org/W4407670064,2025,review,en,4,True,Pain Management,4.3471,True,3,Good health and well-being,0.4300000071525574
 https://openalex.org/W4408759564,2025,review,en,4,False,Journal of Gastrointestinal Cancer,4.3545,True,3,Good health and well-being,0.5099999904632568
 https://openalex.org/W4409832277,2025,article,en,4,False,Clinical & Translational Oncology,3.061,True,5,Gender equality,0.49000000953674316
 https://openalex.org/W4410545722,2025,article,en,4,True,International Breastfeeding Journal,4.5904,True,5,Gender equality,0.4000000059604645
@@ -1881,7 +1892,6 @@ https://openalex.org/W4313474627,2022,article,es,3,True,Investigações em Ensin
 https://openalex.org/W4366133823,2023,review,en,3,False,Journal of Bodywork and Movement Therapies,1.8157,False,3,Good health and well-being,0.44999998807907104
 https://openalex.org/W4382775162,2023,article,en,3,True,Pathogens,1.7194,False,3,Good health and well-being,0.800000011920929
 https://openalex.org/W4388221136,2023,article,en,3,True,Sclerosis,0.7041,False,12,Responsible consumption and production,0.5199999809265137
-https://openalex.org/W4390015979,2023,article,en,3,False,Journal of Biomolecular Structure and Dynamics,0.4315,False,14,Life below water,0.8799999952316284
 https://openalex.org/W4390510069,2024,article,en,3,True,BMC Sports Science Medicine and Rehabilitation,1.1213,False,3,Good health and well-being,0.8399999737739563
 https://openalex.org/W4391772541,2024,article,en,3,False,Menopause The Journal of The North American Menopause Society,2.7303,False,5,Gender equality,0.5099999904632568
 https://openalex.org/W4396925661,2024,book-chapter,en,3,True,Pharmaceutical science.,3.2549,True,3,Good health and well-being,0.5099999904632568
@@ -1927,7 +1937,7 @@ https://openalex.org/W4377694229,2023,article,en,2,True,Menopause The Journal of
 https://openalex.org/W4385761790,2023,article,en,2,True,Estudos de Psicologia (Campinas),0.8549,False,5,Gender equality,0.5099999904632568
 https://openalex.org/W4386703969,2023,editorial,en,2,False,Anti-Inflammatory & Anti-Allergy Agents in Medicinal Chemistry,0.4052,False,3,Good health and well-being,0.8500000238418579
 https://openalex.org/W4388228561,2023,article,en,2,False,Journal of Intensive Care Medicine,0.3878,False,3,Good health and well-being,0.8399999737739563
-https://openalex.org/W4388914603,2023,review,en,2,False,Journal of PeriAnesthesia Nursing,0.5893,False,3,Good health and well-being,0.5699999928474426
+https://openalex.org/W4388914603,2023,review,en,2,False,Journal of PeriAnesthesia Nursing,0.5885,False,3,Good health and well-being,0.5699999928474426
 https://openalex.org/W4389898129,2023,article,en,2,True,Revista Brasileira de Engenharia Agrícola e Ambiental,0.1372,False,15,Life in Land,0.6800000071525574
 https://openalex.org/W4391542187,2024,article,pt,2,True,Brazilian Journal of Implantology and Health Sciences,2.0449,False,3,Good health and well-being,0.7900000214576721
 https://openalex.org/W4392404017,2024,article,en,2,True,Revista da Associação Médica Brasileira,1.0054,False,3,Good health and well-being,0.8100000023841858
@@ -1944,12 +1954,12 @@ https://openalex.org/W4402825481,2024,article,en,2,False,Journal of Physical Act
 https://openalex.org/W4403337665,2024,article,pt,2,True,Brazilian Journal of Implantology and Health Sciences,1.6022,False,3,Good health and well-being,0.7599999904632568
 https://openalex.org/W4403645866,2024,book-chapter,en,2,False,Interdisciplinary cancer research,4.5186,True,2,Zero hunger,0.550000011920929
 https://openalex.org/W4403966757,2024,article,en,2,False,Chemistry and Physics of Lipids,0.4372,False,2,Zero hunger,0.4399999976158142
+https://openalex.org/W4404588195,2024,article,en,2,True,Haematologica,0.7641,False,3,Good health and well-being,0.8500000238418579
 https://openalex.org/W4405450486,2024,article,en,2,True,Revista gaúcha de enfermagem,1.3237,False,4,Quality Education,0.5199999809265137
 https://openalex.org/W4405515312,2024,article,en,2,True,Cuadernos de Educación y Desarrollo,0.9888,False,4,Quality Education,0.41999998688697815
-https://openalex.org/W4405945949,2024,article,en,2,True,International Journal of Environmental Research and Public Health,0.9744,False,3,Good health and well-being,0.4699999988079071
-https://openalex.org/W4406087332,2024,article,pt,2,True,Revista Enfermagem UERJ,0.7042,False,4,Quality Education,0.5299999713897705
+https://openalex.org/W4405945949,2024,article,en,2,True,International Journal of Environmental Research and Public Health,0.9723,False,3,Good health and well-being,0.4699999988079071
 https://openalex.org/W4407083072,2025,article,en,2,True,Revista do Instituto de Medicina Tropical de São Paulo,2.1449,False,3,Good health and well-being,0.4300000071525574
-https://openalex.org/W4407734694,2025,article,en,2,True,The Brazilian Journal of Infectious Diseases,2.0453,False,3,Good health and well-being,0.7200000286102295
+https://openalex.org/W4407734694,2025,article,en,2,True,The Brazilian Journal of Infectious Diseases,2.034,False,3,Good health and well-being,0.7200000286102295
 https://openalex.org/W4407767819,2025,article,en,2,False,Clinical & Translational Oncology,1.3595,False,2,Zero hunger,0.49000000953674316
 https://openalex.org/W4410401494,2025,article,en,2,True,International Journal of Molecular Sciences,3.0858,False,3,Good health and well-being,0.6399999856948853
 https://openalex.org/W4411987800,2025,review,en,2,False,Journal of Diabetes and its Complications,2.0661,False,2,Zero hunger,0.6000000238418579
@@ -1983,7 +1993,7 @@ https://openalex.org/W4388641524,2023,article,en,1,True,Revista Brasileira de En
 https://openalex.org/W4390060636,2023,article,pt,1,True,Ciência & Trópico,0.9146,False,4,Quality Education,0.6800000071525574
 https://openalex.org/W4391031737,2024,article,en,1,False,Journal of Biomolecular Structure and Dynamics,0.4872,False,2,Zero hunger,0.6200000047683716
 https://openalex.org/W4391353209,2024,article,en,1,False,Pharmacogenomics,0.4301,False,3,Good health and well-being,0.699999988079071
-https://openalex.org/W4399849274,2023,article,pt,1,True,Reflexão e Ação,0.9042,False,4,Quality Education,0.5400000214576721
+https://openalex.org/W4399849274,2023,article,pt,1,True,Reflexão e Ação,0.9032,False,4,Quality Education,0.5400000214576721
 https://openalex.org/W4399892535,2024,article,es,1,True,Cogitare Enfermagem,0.5829,False,3,Good health and well-being,0.5199999809265137
 https://openalex.org/W4400583860,2024,article,pt,1,True,Dialogia,1.0225,False,4,Quality Education,0.7300000190734863
 https://openalex.org/W4400618757,2024,article,en,1,True,World Neurosurgery,0.3681,False,3,Good health and well-being,0.5199999809265137
@@ -2019,7 +2029,7 @@ https://openalex.org/W7125590453,2026,article,en,1,True,Proceedings of the Natio
 https://openalex.org/W7126229843,2026,article,en,1,True,Annals of Medicine,8.0589,True,17,Partnerships for the goals,0.48083004355430603
 https://openalex.org/W7128033928,2025,article,en,1,False,European Heart Journal,0.9221,False,3,Good health and well-being,0.6896554827690125
 https://openalex.org/W7129021977,2026,article,en,1,True,Cadernos de Saúde Pública,15.2993,True,13,Climate action,0.6335630416870117
-https://openalex.org/W7133317583,2026,article,en,1,True,Journal of Prevention,12.9786,True,1,No poverty,0.7060094475746155
+https://openalex.org/W7133317583,2026,article,en,1,True,Journal of Prevention,12.8433,True,1,No poverty,0.7060094475746155
 https://openalex.org/W2058828926,2008,article,en,63,False,Cardiology,2.2185,False,3,Good health and well-being,0.8700000047683716
 https://openalex.org/W2319664356,1999,article,en,53,False,Journal of Hypertension,1.4121,False,3,Good health and well-being,0.8600000143051147
 https://openalex.org/W2153001476,2006,article,en,47,True,Hypertension,4.528,True,3,Good health and well-being,0.6800000071525574
@@ -2056,7 +2066,6 @@ https://openalex.org/W2032390584,1989,article,pt,20,True,Revista da Sociedade Br
 https://openalex.org/W2034362854,2014,article,en,20,True,Escola Anna Nery,2.0007,False,3,Good health and well-being,0.6200000047683716
 https://openalex.org/W2059164139,2010,article,pt,20,True,Educação e Pesquisa,27.255,True,4,Quality Education,0.4099999964237213
 https://openalex.org/W2064741570,2004,article,pt,20,True,Revista de Nutrição,0.2062,False,3,Good health and well-being,0.8199999928474426
-https://openalex.org/W2082898803,2009,article,en,20,False,Annals of Diagnostic Pathology,0.3703,False,3,Good health and well-being,0.8799999952316284
 https://openalex.org/W2181924277,2021,article,en,20,True,Journal of Data Science,0.9799,False,3,Good health and well-being,0.7799999713897705
 https://openalex.org/W4252652267,2015,review,en,20,True,Revista Paulista de Pediatria (English Edition),1.4354,False,10,Reduced inequalities,0.8100000023841858
 https://openalex.org/W45590766,2015,review,pt,20,True,Revista Paulista de Pediatria,1.7084,False,10,Reduced inequalities,0.8199999928474426
@@ -2273,7 +2282,6 @@ https://openalex.org/W2141728852,2010,article,pt,9,True,Journal of Human Growth 
 https://openalex.org/W2150803708,2015,article,pt,9,True,Revista Enfermagem UERJ,1.9268,False,1,No poverty,0.5899999737739563
 https://openalex.org/W2154894948,2015,article,en,9,True,Materials Research,0.1404,False,7,Affordable and clean energy,0.8600000143051147
 https://openalex.org/W2171747125,2011,article,pt,9,False,,1.2274,False,3,Good health and well-being,0.6100000143051147
-https://openalex.org/W2268209637,2015,article,en,9,True,Sao Paulo Medical Journal,0.5153,False,3,Good health and well-being,0.7799999713897705
 https://openalex.org/W2462225160,2015,article,pt,9,True,Revista Brasileira de Ciências Ambientais,0.543,False,6,Clean water and sanitation,0.49000000953674316
 https://openalex.org/W2513312616,2016,article,es,9,True,polemica,3.1223,True,1,No poverty,0.7799999713897705
 https://openalex.org/W2519374289,2016,article,pt,9,True,DEMETRA Alimentação Nutrição & Saúde,0.4341,False,5,Gender equality,0.41999998688697815
@@ -2320,7 +2328,6 @@ https://openalex.org/W2171342234,2012,article,pt,8,True,Escola Anna Nery,0.0,Fal
 https://openalex.org/W2422175421,2016,article,en,8,True,Mediators of Inflammation,0.3114,False,3,Good health and well-being,0.6700000166893005
 https://openalex.org/W2559340349,2016,article,en,8,False,Injury,1.4158,False,3,Good health and well-being,0.4399999976158142
 https://openalex.org/W2606886656,2017,article,en,8,True,Nauplius,1.1149,False,14,Life below water,0.8899999856948853
-https://openalex.org/W2612613562,2017,article,en,8,False,Gynecologic and Obstetric Investigation,1.0821,False,3,Good health and well-being,0.5299999713897705
 https://openalex.org/W2727414260,2017,article,pt,8,True,Acta Paulista de Enfermagem,1.5815,False,3,Good health and well-being,0.8100000023841858
 https://openalex.org/W2761687755,2017,article,en,8,True,PLoS ONE,0.8508,False,6,Clean water and sanitation,0.41999998688697815
 https://openalex.org/W2765172682,2017,article,en,8,True,Fisioterapia em Movimento,0.8205,False,5,Gender equality,0.4000000059604645
@@ -2376,7 +2383,7 @@ https://openalex.org/W3120280904,2020,article,pt,7,True,The Journal of the Food 
 https://openalex.org/W3129549297,2021,article,pt,7,True,Ciência & Saúde Coletiva,1.382,False,3,Good health and well-being,0.7300000190734863
 https://openalex.org/W3154390468,2021,article,en,7,False,Tissue and Cell,0.7094,False,3,Good health and well-being,0.8399999737739563
 https://openalex.org/W3156630762,2021,article,en,7,True,International Journal of Environmental Research and Public Health,0.485,False,1,No poverty,0.46000000834465027
-https://openalex.org/W3162375914,2020,article,pt,7,True,Americanae (AECID Library),3.3135,True,10,Reduced inequalities,0.6000000238418579
+https://openalex.org/W3162375914,2020,article,pt,7,True,Americanae (AECID Library),3.3136,True,10,Reduced inequalities,0.6000000238418579
 https://openalex.org/W3173884069,2021,article,en,7,False,Soil Research,0.9548,False,15,Life in Land,0.7699999809265137
 https://openalex.org/W3174124082,2021,article,pt,7,True,Psicologia & Sociedade,1.1866,False,5,Gender equality,0.7599999904632568
 https://openalex.org/W4205732727,2022,article,en,7,True,Journal of Immunology Research,1.097,False,3,Good health and well-being,0.7799999713897705
@@ -2476,11 +2483,10 @@ https://openalex.org/W4225481334,2022,article,en,5,False,Zootaxa,2.0131,False,14
 https://openalex.org/W4247265928,2019,book,en,5,False,,0.3763,False,2,Zero hunger,0.5099999904632568
 https://openalex.org/W4281624331,2022,article,pt,5,True,Research Society and Development,1.3316,False,14,Life below water,0.41999998688697815
 https://openalex.org/W4283385035,2021,article,en,5,True,Revista Brasileira de Medicina do Trabalho,0.7273,False,2,Zero hunger,0.7799999713897705
-https://openalex.org/W4318475164,2023,article,en,5,True,Brazilian Journal of Medical and Biological Research,0.8561,False,10,Reduced inequalities,0.7400000095367432
 https://openalex.org/W4323339084,2023,article,en,5,True,Revista Brasileira Ginecologia e Obstetrícia,1.3497,False,8,Decent work and economic growth,0.41999998688697815
 https://openalex.org/W4379984594,2023,article,en,5,False,IEEE Journal of Emerging and Selected Topics in Power Electronics,0.8967,False,7,Affordable and clean energy,0.8899999856948853
 https://openalex.org/W4390143707,2023,review,en,5,False,Journal of Nephrology,0.8977,False,3,Good health and well-being,0.8600000143051147
-https://openalex.org/W4392563701,2024,article,en,5,False,Prostaglandins & Other Lipid Mediators,1.0549,False,3,Good health and well-being,0.8799999952316284
+https://openalex.org/W4392563701,2024,article,en,5,False,Prostaglandins & Other Lipid Mediators,1.0524,False,3,Good health and well-being,0.8799999952316284
 https://openalex.org/W4392868561,2024,article,en,5,True,Acta Botanica Brasilica,4.9262,True,15,Life in Land,0.5600000023841858
 https://openalex.org/W1893680823,2015,article,pt,4,True,ABCS Health Sciences,0.0,False,3,Good health and well-being,0.8199999928474426
 https://openalex.org/W2068570232,2007,article,pt,4,True,Revista da Sociedade Brasileira de Medicina Tropical,0.4661,False,3,Good health and well-being,0.800000011920929
@@ -2858,8 +2864,6 @@ https://openalex.org/W3101780185,2020,article,pt,6,True,Revista Eletrônica de E
 https://openalex.org/W3167624077,2021,article,en,6,True,Research Society and Development,0.5456,False,15,Life in Land,0.6200000047683716
 https://openalex.org/W3195015224,2021,article,pt,6,True,Educação em Revista,3.3314,True,10,Reduced inequalities,0.75
 https://openalex.org/W3197175937,2021,article,en,6,True,Nurse Educator,0.5942,False,3,Good health and well-being,0.8199999928474426
-https://openalex.org/W4319835377,2023,article,en,6,True,Geographical Research,0.695,False,11,Sustainable cities and communities,0.46000000834465027
-https://openalex.org/W4319835377,2023,article,en,6,True,Geographical Research,0.695,False,13,Climate action,0.46000000834465027
 https://openalex.org/W1554828672,2010,article,pt,5,True,Revista de Salud Pública,0.0,False,2,Zero hunger,0.6399999856948853
 https://openalex.org/W1627354294,2008,article,pt,5,True,Revista Brasileira de Reumatologia,0.0,False,3,Good health and well-being,0.5
 https://openalex.org/W1662618963,2005,article,es,5,True,Americanae (AECID Library),0.0,False,15,Life in Land,0.46000000834465027
@@ -3005,7 +3009,7 @@ https://openalex.org/W2898197838,2018,article,pt,4,True,Brazilian Journal of Ane
 https://openalex.org/W2909092479,2018,article,pt,4,True,Revista de Enfermagem UFPE on line,0.9059,False,3,Good health and well-being,0.5400000214576721
 https://openalex.org/W2921507243,2019,article,en,4,True,Salud Mental,0.0,False,10,Reduced inequalities,0.6000000238418579
 https://openalex.org/W2946236954,2019,article,en,4,False,International Journal of Nursing Practice,2.3134,False,6,Clean water and sanitation,0.4099999964237213
-https://openalex.org/W2948576360,2019,article,en,4,True,Journal of Hydroinformatics,0.5259,False,11,Sustainable cities and communities,0.7099999785423279
+https://openalex.org/W2948576360,2019,article,en,4,True,Journal of Hydroinformatics,0.526,False,11,Sustainable cities and communities,0.7099999785423279
 https://openalex.org/W2970825881,2019,article,en,4,True,Genetics and Molecular Research,1.1574,False,2,Zero hunger,0.5400000214576721
 https://openalex.org/W2981982503,2019,article,pt,4,True,Rev Rene,0.6752,False,3,Good health and well-being,0.75
 https://openalex.org/W2989677930,2019,article,pt,4,True,"GEPROS. Gestão da Produção, Operações e Sistemas",0.0636,False,7,Affordable and clean energy,0.75
@@ -3060,7 +3064,6 @@ https://openalex.org/W1493776729,2015,article,en,3,False,,0.3946,False,7,Afforda
 https://openalex.org/W1534399042,2011,article,en,3,True,Scandinavian Journal of Immunology,0.3172,False,3,Good health and well-being,0.800000011920929
 https://openalex.org/W1681195680,2012,article,pt,3,True,Ciência Cuidado e Saúde,0.0,False,3,Good health and well-being,0.6800000071525574
 https://openalex.org/W1811030691,2014,article,pt,3,True,"Portuguese National Funding Agency for Science, Research and Technology (RCAAP Project by FCT)",0.0,False,4,Quality Education,0.6399999856948853
-https://openalex.org/W1866833168,2015,article,en,3,False,Hemoglobin,0.1696,False,14,Life below water,0.8700000047683716
 https://openalex.org/W1908566562,2010,article,pt,3,False,,0.0,False,17,Partnerships for the goals,0.41999998688697815
 https://openalex.org/W1971495055,2012,article,en,3,False,Fetal and Pediatric Pathology,0.4108,False,3,Good health and well-being,0.8500000238418579
 https://openalex.org/W1971843763,2014,article,pt,3,True,Revista Eletrônica de Enfermagem,2.0424,False,8,Decent work and economic growth,0.4300000071525574
@@ -3089,7 +3092,6 @@ https://openalex.org/W2782196170,2017,review,en,3,True,Archive of Urological Res
 https://openalex.org/W2783132169,2017,article,es,3,True,Revista Colombiana de Ciencias Hortícolas,0.3821,False,15,Life in Land,0.44999998807907104
 https://openalex.org/W2794854644,2017,article,pt,3,True,LA Referencia (Red Federada de Repositorios Institucionales de Publicaciones Científicas),0.5127,False,3,Good health and well-being,0.6899999976158142
 https://openalex.org/W2888018704,2018,article,pt,3,True,Química Nova,0.308,False,2,Zero hunger,0.6899999976158142
-https://openalex.org/W2889410679,2018,article,en,3,False,Nephrology,0.3667,False,3,Good health and well-being,0.8500000238418579
 https://openalex.org/W2896142715,2012,article,en,3,True,Journal of Food Science and Engineering,0.2627,False,6,Clean water and sanitation,0.7799999713897705
 https://openalex.org/W2896327070,2018,article,pt,3,True,Revista de Enfermagem e Atenção à Saúde,0.0943,False,3,Good health and well-being,0.6600000262260437
 https://openalex.org/W2904387951,2017,article,es,3,False,Junguiana,0.3225,False,15,Life in Land,0.699999988079071
@@ -3141,7 +3143,6 @@ https://openalex.org/W4297859364,2022,article,pt,3,True,Conjecturas,1.7873,False
 https://openalex.org/W4302275513,2022,article,pt,3,True,Revista Latino-Americana de Enfermagem,0.8823,False,3,Good health and well-being,0.5899999737739563
 https://openalex.org/W4307182504,2022,article,en,3,True,Phytotaxa,0.6299,False,15,Life in Land,0.47999998927116394
 https://openalex.org/W4312727971,2022,article,pt,3,True,Revista gaúcha de enfermagem,0.8031,False,4,Quality Education,0.8199999928474426
-https://openalex.org/W4312848298,2022,article,pt,3,True,Enfermagem em Foco,1.7883,False,4,Quality Education,0.7699999809265137
 https://openalex.org/W4313143459,2022,article,en,3,True,Journal of Mining and Metallurgy A Mining,0.2984,False,9,"Industry, innovation and infrastructure",0.4300000071525574
 https://openalex.org/W4318616050,2023,article,en,3,True,PeerJ,0.6141,False,3,Good health and well-being,0.7699999809265137
 https://openalex.org/W4318700392,2022,article,pt,3,True,Revista Enfermagem UERJ,0.5789,False,3,Good health and well-being,0.699999988079071
@@ -3255,11 +3256,11 @@ https://openalex.org/W4386926162,2023,article,en,2,True,Concilium,0.6636,False,3
 https://openalex.org/W4388083656,2023,article,en,2,True,Revista Brasileira de Ciência Tecnologia e Inovação,0.6821,False,14,Life below water,0.5400000214576721
 https://openalex.org/W4389333864,2023,article,en,2,True,Hearts,0.4094,False,3,Good health and well-being,0.8100000023841858
 https://openalex.org/W4389473965,2023,article,pt,2,True,Revista Brasileira de Enfermagem,0.5975,False,3,Good health and well-being,0.6899999976158142
-https://openalex.org/W4389495196,2023,article,en,2,True,Revista Brasileira de Enfermagem,0.5336,False,3,Good health and well-being,0.8500000238418579
+https://openalex.org/W4389495196,2023,article,en,2,True,Revista Brasileira de Enfermagem,0.5329,False,3,Good health and well-being,0.8500000238418579
 https://openalex.org/W4389669814,2023,article,en,2,False,The Journal of Strength and Conditioning Research,0.7183,False,3,Good health and well-being,0.47999998927116394
 https://openalex.org/W4389882965,2023,article,pt,2,True,Revista Enfermagem UERJ,1.1007,False,3,Good health and well-being,0.8199999928474426
-https://openalex.org/W4390058102,2023,article,en,2,False,Immunotherapy,0.3074,False,3,Good health and well-being,0.8100000023841858
-https://openalex.org/W4391514898,2024,article,en,2,False,Journal of PeriAnesthesia Nursing,1.0927,False,3,Good health and well-being,0.699999988079071
+https://openalex.org/W4390058102,2023,article,en,2,False,Immunotherapy,0.307,False,3,Good health and well-being,0.8100000023841858
+https://openalex.org/W4391514898,2024,article,en,2,False,Journal of PeriAnesthesia Nursing,1.0906,False,3,Good health and well-being,0.699999988079071
 https://openalex.org/W4392544981,2024,article,pt,2,True,Recital - Revista de Educação Ciência e Tecnologia de Almenara/MG,3.0559,True,3,Good health and well-being,0.8299999833106995
 https://openalex.org/W4392940430,2023,article,pt,2,True,Revista Eletrônica de Educação,1.8293,False,4,Quality Education,0.7200000286102295
 https://openalex.org/W4394740355,2023,article,en,2,True,PubMed,0.7375,False,3,Good health and well-being,0.8199999928474426
@@ -3281,7 +3282,7 @@ https://openalex.org/W4406150602,2025,article,en,2,False,Aquatic Sciences,4.1603
 https://openalex.org/W4407722713,2025,article,en,2,False,Prostaglandins & Other Lipid Mediators,2.1772,False,3,Good health and well-being,0.7200000286102295
 https://openalex.org/W4408231010,2025,article,en,2,True,Sustainability Science and Technology,0.8514,False,2,Zero hunger,0.6000000238418579
 https://openalex.org/W4408231010,2025,article,en,2,True,Sustainability Science and Technology,0.8514,False,12,Responsible consumption and production,0.4099999964237213
-https://openalex.org/W4408723975,2025,article,en,2,True,Memórias do Instituto Oswaldo Cruz,1.1817,False,3,Good health and well-being,0.8299999833106995
+https://openalex.org/W4408723975,2025,article,en,2,True,Memórias do Instituto Oswaldo Cruz,1.1762,False,3,Good health and well-being,0.8299999833106995
 https://openalex.org/W4409588326,2025,article,en,2,True,Clinical Pharmacology & Therapeutics,2.7915,False,14,Life below water,0.800000011920929
 https://openalex.org/W4410199249,2025,article,en,2,False,Journal of Bodywork and Movement Therapies,2.4419,False,3,Good health and well-being,0.5699999928474426
 https://openalex.org/W4410857509,2025,review,en,2,False,AIDS Care,3.6118,True,3,Good health and well-being,0.6100000143051147
@@ -3485,7 +3486,7 @@ https://openalex.org/W4307544261,2022,article,pt,2,True,Revista de Pesquisa Cuid
 https://openalex.org/W4308984208,2022,article,en,2,True,Ciência & Saúde Coletiva,0.2016,False,16,"Peace, Justice and strong institutions",0.6800000071525574
 https://openalex.org/W4311451729,2022,article,pt,2,True,Temas em Educação e Saúde,0.5882,False,4,Quality Education,0.8199999928474426
 https://openalex.org/W4312969095,2022,article,pt,2,True,Revista gaúcha de enfermagem,0.2384,False,3,Good health and well-being,0.4099999964237213
-https://openalex.org/W4313829533,2023,article,pt,2,True,Revista da Associação Médica Brasileira,0.4042,False,3,Good health and well-being,0.8299999833106995
+https://openalex.org/W4313829533,2023,article,pt,2,True,Revista da Associação Médica Brasileira,0.4038,False,3,Good health and well-being,0.8299999833106995
 https://openalex.org/W4315881547,2022,article,pt,2,True,Revista Enfermagem UERJ,0.406,False,3,Good health and well-being,0.41999998688697815
 https://openalex.org/W4321384421,2022,article,es,2,True,Revista Bioética,0.406,False,16,"Peace, Justice and strong institutions",0.5899999737739563
 https://openalex.org/W4324366457,2023,article,en,2,False,Sport Sciences for Health,0.4046,False,3,Good health and well-being,0.6700000166893005
@@ -3498,14 +3499,14 @@ https://openalex.org/W4385336534,2023,article,en,2,False,Comparative Biochemistr
 https://openalex.org/W4385641823,2023,article,en,2,True,Revista Brasileira de Enfermagem,0.6821,False,4,Quality Education,0.6399999856948853
 https://openalex.org/W4386645982,2023,article,pt,2,True,Perspectivas da Educação Matemática,1.1007,False,4,Quality Education,0.7699999809265137
 https://openalex.org/W4386832201,2023,article,pt,2,True,Psicologia USP,1.8293,False,4,Quality Education,0.46000000834465027
-https://openalex.org/W4386945973,2023,review,en,2,False,Microbial Pathogenesis,0.2873,False,17,Partnerships for the goals,0.5099999904632568
+https://openalex.org/W4386945973,2023,review,en,2,False,Microbial Pathogenesis,0.2867,False,17,Partnerships for the goals,0.5099999904632568
 https://openalex.org/W4388103098,2023,article,pt,2,True,Acta Paulista de Enfermagem,0.5496,False,2,Zero hunger,0.5199999809265137
 https://openalex.org/W4388320154,2023,article,en,2,True,Revista Latino-Americana de Enfermagem,0.8654,False,8,Decent work and economic growth,0.4399999976158142
 https://openalex.org/W4388420211,2023,review,en,2,True,Cancers,0.4744,False,3,Good health and well-being,0.7799999713897705
 https://openalex.org/W4389299634,2023,review,en,2,True,Anais da Academia Brasileira de Ciências,0.3553,False,17,Partnerships for the goals,0.41999998688697815
 https://openalex.org/W4389802952,2023,article,en,2,True,PubMed,0.3594,False,3,Good health and well-being,0.8799999952316284
 https://openalex.org/W4389923062,2023,review,en,2,True,International Journal of Molecular Sciences,0.4839,False,3,Good health and well-being,0.75
-https://openalex.org/W4389935934,2023,review,en,2,True,Therapeutic Hypothermia and Temperature Management,0.4544,False,3,Good health and well-being,0.6399999856948853
+https://openalex.org/W4389935934,2023,review,en,2,True,Therapeutic Hypothermia and Temperature Management,0.454,False,3,Good health and well-being,0.6399999856948853
 https://openalex.org/W4389980034,2023,article,en,2,False,Menopause The Journal of The North American Menopause Society,0.3402,False,3,Good health and well-being,0.5099999904632568
 https://openalex.org/W4390245428,2023,article,en,2,True,Environmental Quality Management,0.218,False,6,Clean water and sanitation,0.8600000143051147
 https://openalex.org/W4391448768,2024,article,en,2,True,Frontiers in Public Health,0.7042,False,1,No poverty,0.4699999988079071
@@ -3582,7 +3583,7 @@ https://openalex.org/W4376871880,2023,article,pt,1,True,Revista da Associação 
 https://openalex.org/W4378473737,2023,article,pt,1,True,Revista Triângulo,2.011,False,4,Quality Education,0.8700000047683716
 https://openalex.org/W4379336228,2023,review,en,1,False,Journal of Clinical Oncology,0.2699,False,3,Good health and well-being,0.7400000095367432
 https://openalex.org/W4381435897,2023,article,en,1,True,Renewable Energy and Power Quality Journal,0.1246,False,7,Affordable and clean energy,0.8899999856948853
-https://openalex.org/W4382344904,2023,article,en,1,False,Sports Biomechanics,0.2279,False,10,Reduced inequalities,0.550000011920929
+https://openalex.org/W4382344904,2023,article,en,1,False,Sports Biomechanics,0.227,False,10,Reduced inequalities,0.550000011920929
 https://openalex.org/W4383888372,2023,article,en,1,False,Journal of Bodywork and Movement Therapies,0.2375,False,3,Good health and well-being,0.6299999952316284
 https://openalex.org/W4383907501,2023,article,en,1,True,JOURNAL OF CURRENT GLAUCOMA PRACTICE,0.2293,False,4,Quality Education,0.5099999904632568
 https://openalex.org/W4384407837,2023,article,en,1,True,Trials,0.2047,False,3,Good health and well-being,0.7099999785423279
@@ -3651,20 +3652,19 @@ https://openalex.org/W4402681443,2024,article,en,1,True,Biomedicines,0.356,False
 https://openalex.org/W4404246537,2024,article,pt,1,True,Texto & Contexto - Enfermagem,0.5829,False,3,Good health and well-being,0.550000011920929
 https://openalex.org/W4404356819,2024,article,en,1,True,Tissue and Cell,0.49,False,2,Zero hunger,0.5
 https://openalex.org/W4404470888,2024,article,pt,1,True,CADERNOS DE PESQUISA PENSAMENTO EDUCACIONAL,1.0225,False,4,Quality Education,0.6700000166893005
-https://openalex.org/W4404588195,2024,article,en,1,True,Haematologica,0.3831,False,3,Good health and well-being,0.8500000238418579
-https://openalex.org/W4404641125,2024,article,en,1,True,Journal of Clinical Ultrasound,0.5,False,3,Good health and well-being,0.8299999833106995
+https://openalex.org/W4404641125,2024,article,en,1,True,Journal of Clinical Ultrasound,0.4989,False,3,Good health and well-being,0.8299999833106995
 https://openalex.org/W4404713175,2024,review,en,1,True,Einstein (São Paulo),0.263,False,5,Gender equality,0.4099999964237213
 https://openalex.org/W4404918441,2024,article,en,1,False,Biomass Conversion and Biorefinery,0.1767,False,2,Zero hunger,0.44999998807907104
 https://openalex.org/W4405757993,2024,article,en,1,True,Pharmaceutics,0.2519,False,3,Good health and well-being,0.75
 https://openalex.org/W4406101875,2024,article,pt,1,True,Revista de Gestão e Secretariado (Management and Administrative Professional Review),1.0225,False,17,Partnerships for the goals,0.5600000023841858
 https://openalex.org/W4406537731,2025,article,en,1,True,Fish Physiology and Biochemistry,2.0117,False,14,Life below water,0.6800000071525574
 https://openalex.org/W4407087118,2025,article,en,1,False,Placenta,1.441,False,2,Zero hunger,0.8399999737739563
-https://openalex.org/W4407110039,2025,article,en,1,True,International Journal of Food Sciences and Nutrition,0.8287,False,2,Zero hunger,0.8199999928474426
+https://openalex.org/W4407110039,2025,article,en,1,True,International Journal of Food Sciences and Nutrition,0.8251,False,2,Zero hunger,0.8199999928474426
 https://openalex.org/W4407216751,2025,article,en,1,False,Molecular Diversity,1.0213,False,2,Zero hunger,0.6800000071525574
 https://openalex.org/W4407294034,2025,article,en,1,True,International Journal of Women s Health,1.1092,False,3,Good health and well-being,0.5099999904632568
 https://openalex.org/W4407869095,2025,article,en,1,False,Biomedical Signal Processing and Control,1.2249,False,10,Reduced inequalities,0.4699999988079071
 https://openalex.org/W4408050156,2025,article,en,1,True,Small Ruminant Research,1.6987,False,2,Zero hunger,0.8100000023841858
-https://openalex.org/W4408224961,2025,article,en,1,False,Computers in Biology and Medicine,0.5771,False,2,Zero hunger,0.6600000262260437
+https://openalex.org/W4408224961,2025,article,en,1,False,Computers in Biology and Medicine,0.5737,False,2,Zero hunger,0.6600000262260437
 https://openalex.org/W4408466714,2025,article,en,1,True,The Journal of Creative Behavior,1.6259,False,5,Gender equality,0.6299999952316284
 https://openalex.org/W4408537143,2025,review,en,1,False,Neurosurgical Review,1.2703,False,9,"Industry, innovation and infrastructure",0.6000000238418579
 https://openalex.org/W4409479523,2025,review,en,1,False,Reproductive Sciences,1.6559,False,2,Zero hunger,0.800000011920929
@@ -7365,5 +7365,7 @@ https://openalex.org/W7163168244,2026,article,pt,0,True,Revista Pesquisa em Fisi
 https://openalex.org/W7163325636,2026,article,en,0,True,Brazilian Journal of Microbiology,0.0,True,14,Life below water,0.7821293473243713
 https://openalex.org/W7163551910,2025,article,pt,0,True,DOAJ (DOAJ: Directory of Open Access Journals),0.0,False,16,"Peace, Justice and strong institutions",0.4130941927433014
 https://openalex.org/W7163556839,2026,article,,0,True,RECIMA21 - Revista Científica Multidisciplinar - ISSN 2675-6218,0.0,True,16,"Peace, Justice and strong institutions",0.45913511514663696
+https://openalex.org/W7163662622,2026,article,en,0,True,Current Issues in Molecular Biology,0.0,True,14,Life below water,0.7384558320045471
+https://openalex.org/W7163701850,2026,article,en,0,False,Clinical Nursing Research,0.0,True,3,Good health and well-being,0.5456600785255432
 https://openalex.org/W807231,2013,article,en,0,False,British Journal of Obstetrics and Gynaecology,0.0,False,14,Life below water,0.5699999928474426
 https://openalex.org/W95254367,2010,book-chapter,en,0,False,,0.0,False,3,Good health and well-being,0.800000011920929

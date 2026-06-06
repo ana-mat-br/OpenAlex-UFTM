@@ -29,12 +29,7 @@ jobs:
         env:
           OPENALEX_EMAIL: anapaula.fernandes@uftm.edu.br
           LENS_TOKEN: ${{ secrets.LENS_TOKEN }}  # opcional: ativa patentes (Impacto Social)
-        run: |
-          python fetch_uftm_ods.py
-          python fetch_observatorio.py
-          python fetch_scimago.py
-          python fetch_colaboracao.py
-          python fetch_lens.py
+        run: python fetch_all.py
 
       - name: Commit e push se houver mudanças
         run: |

@@ -152,6 +152,8 @@ def pesquisadores() -> None:
          .select(["id", "cited_by_count", "authorships"]))
     for page in q.paginate(per_page=200, n_max=None):
         for w in page:
+            if len(w.get("authorships") or []) >= 100:   # megacolaboração: não atribui a indivíduos
+                continue
             c = w.get("cited_by_count", 0) or 0
             vistos = set()
             for a in (w.get("authorships") or []):

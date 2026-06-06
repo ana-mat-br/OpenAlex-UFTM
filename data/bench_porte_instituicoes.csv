@@ -1,11 +1,11 @@
 sigla,instituicao,ror,works,citacoes,h_index,i10,mean_citedness,oa_share,top10_share,top1_share,intl_share,nac_share,inst_share,cit_por_trabalho
-UFTM,Universidade Federal do Triângulo Mineiro,01av3m334,12817,249539,126,6752,0.891,0.776,0.1009,0.0069,0.194,0.7381,0.068,19.47
-UFERSA,Universidade Federal Rural do Semi-Árido,05x2svh05,12778,174299,95,5028,0.971,0.7661,0.085,0.0032,0.1413,0.8142,0.0446,13.64
-UNIR,Universidade Federal de Rondônia,02842cb31,12651,113681,117,2759,1.032,0.799,0.0866,0.0086,0.1926,0.6762,0.1312,8.99
-UFGD,Universidade Federal da Grande Dourados,0310smc09,13104,202149,112,5648,1.31,0.7969,0.0959,0.005,0.2124,0.6592,0.1284,15.43
-UNIPAMPA,Universidade Federal do Pampa,003qt4p19,14848,210914,126,5459,0.799,0.7464,0.1102,0.0057,0.1791,0.7509,0.07,14.2
-UFCSPA,Universidade Federal de Ciências da Saúde de Porto Alegre,00x0nkm13,10433,296172,142,7826,1.409,0.6916,0.15,0.012,0.2946,0.6796,0.0258,28.39
-UNIVASF,Universidade Federal do Vale do São Francisco,00devjr72,10321,144659,106,3903,0.722,0.7865,0.1088,0.0053,0.1824,0.7716,0.046,14.02
-UFRB,Universidade Federal do Recôncavo da Bahia,057mvv518,10304,101975,92,2820,0.615,0.8009,0.1158,0.0044,0.1551,0.7374,0.1075,9.9
-UFFS,Universidade Federal da Fronteira Sul,03z9wm572,9868,102617,97,2604,1.139,0.7823,0.0983,0.0055,0.1536,0.731,0.1155,10.4
-UFRA,Universidade Federal Rural da Amazônia,02j71c790,8430,116799,96,2980,0.969,0.7884,0.1043,0.0074,0.2224,0.7591,0.0186,13.86
+UFTM,Universidade Federal do Triângulo Mineiro,01av3m334,12819,249596,126,6753,0.893,0.7759,0.1012,0.0069,0.1941,0.7379,0.0679,19.47
+UFERSA,Universidade Federal Rural do Semi-Árido,05x2svh05,12782,174368,95,5029,0.97,0.7661,0.0853,0.0032,0.1412,0.8142,0.0445,13.64
+UNIR,Universidade Federal de Rondônia,02842cb31,12656,113753,117,2759,1.034,0.799,0.0868,0.0086,0.1926,0.6763,0.1311,8.99
+UFGD,Universidade Federal da Grande Dourados,0310smc09,13109,202199,112,5651,1.309,0.797,0.0963,0.0049,0.2126,0.6591,0.1284,15.42
+UNIPAMPA,Universidade Federal do Pampa,003qt4p19,14856,210975,126,5460,0.799,0.7465,0.1104,0.0058,0.1791,0.7509,0.07,14.2
+UFCSPA,Universidade Federal de Ciências da Saúde de Porto Alegre,00x0nkm13,10436,296238,142,7827,1.412,0.6917,0.1507,0.012,0.2947,0.6795,0.0258,28.39
+UNIVASF,Universidade Federal do Vale do São Francisco,00devjr72,10323,144737,106,3907,0.723,0.7868,0.1094,0.0054,0.1823,0.7717,0.046,14.02
+UFRB,Universidade Federal do Recôncavo da Bahia,057mvv518,10316,102024,92,2822,0.616,0.8009,0.1158,0.0044,0.1551,0.7374,0.1075,9.89
+UFFS,Universidade Federal da Fronteira Sul,03z9wm572,9873,102649,97,2604,1.14,0.7824,0.0983,0.0054,0.1535,0.731,0.1154,10.4
+UFRA,Universidade Federal Rural da Amazônia,02j71c790,8431,116856,96,2980,0.97,0.7885,0.1042,0.0074,0.2224,0.7591,0.0186,13.86

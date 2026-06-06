@@ -37,6 +37,8 @@ def coletar():
     print(f"works: {q.count()}")
     for page in q.paginate(per_page=200, n_max=None):
         for w in page:
+            if len(w.get("authorships") or []) >= 100:   # megacolaboração: ignora na rede
+                continue
             pt = w.get("primary_topic") or {}
             campo = ((pt.get("subfield") or {}).get("display_name")  # subárea: mais específica
                      or (pt.get("field") or {}).get("display_name"))

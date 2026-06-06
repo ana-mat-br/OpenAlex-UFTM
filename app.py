@@ -18,6 +18,20 @@ from streamlit_option_menu import option_menu
 DATA = Path(__file__).parent / "data"
 SCORE_CUTOFF = 0.4
 
+
+def _data_coleta():
+    f = DATA / "coletado_em.txt"
+    if f.exists():
+        try:
+            a, m, d = f.read_text(encoding="utf-8").strip().split("-")
+            return f"{d}/{m}/{a}"
+        except Exception:
+            return None
+    return None
+
+
+DATA_COLETA = _data_coleta()
+
 # paleta UFTM — clara e minimalista (verde #00983A de destaque)
 T = {
     "primary": "#00983A",       # uftmgreen — destaques, links, títulos
@@ -492,7 +506,16 @@ def render_excelencia():
         fig = fig_layout(fig, 360)
         fig.add_hline(y=1.0, line_dash="dash", line_color=T["muted"],
                       annotation_text="média mundial", annotation_font_color=T["muted"])
+        if len(s):
+            ya = int(s["year"].max())          # marca os 2 anos mais recentes como provisórios
+            fig.add_vrect(x0=ya - 1.5, x1=ya + 0.5, fillcolor=T["muted"], opacity=0.08,
+                          line_width=0, annotation_text="provisório",
+                          annotation_position="top left",
+                          annotation_font=dict(color=T["muted"], size=10))
         st.plotly_chart(fig, width="stretch")
+        st.caption("Os 2 anos mais recentes são **provisórios**: pesquisas novas quase não foram "
+                   "citadas ainda, e o FWCI fica instável (poucas citações geram valores enormes). "
+                   "Use o filtro acima para excluí-los.")
     with c2:
         st.subheader("FWCI médio por grande área")
         s = (base.dropna(subset=["fwci", "field"]).groupby("field")
@@ -506,13 +529,18 @@ def render_excelencia():
 
     st.subheader("Trabalhos por área — o que está por trás de cada número")
     sel = st.selectbox("Área", s["field"].tolist(), key="area_trabalhos")
-    wl = base[base["field"] == sel].sort_values("fwci", ascending=False)
+    wl = base[base["field"] == sel].sort_values("fwci", ascending=False).copy()
+    trunc = (wl["autores_truncados"] if "autores_truncados" in wl.columns
+             else pd.Series(False, index=wl.index))
     show = wl[["title", "year", "fwci", "cited_by"]].copy()
     if "autores_uftm" in wl.columns:
-        show["autores"] = wl["autores_uftm"].map(
-            lambda L: ", ".join(map(str, L)) if hasattr(L, "__len__") and len(L) else "—")
+        show["autores"] = [
+            "megacolaboração (100+ autores)" if t
+            else (", ".join(map(str, L)) if hasattr(L, "__len__") and len(L) else "—")
+            for L, t in zip(wl["autores_uftm"], trunc)]
     if "n_autores" in wl.columns:
-        show["n_autores"] = wl["n_autores"]
+        show["n_autores"] = [f"{int(n)}+" if t else br(int(n))
+                             for n, t in zip(wl["n_autores"], trunc)]
     show = show.rename(columns={"title": "Título", "year": "Ano", "fwci": "FWCI",
                                 "cited_by": "Citações", "autores": "Autores UFTM",
                                 "n_autores": "Nº autores"})
@@ -1193,8 +1221,11 @@ def render_transparencia():
 
     st.markdown("**4. Atualização e reprodutibilidade**")
     st.markdown(
+        ("- **Última coleta dos dados: " + DATA_COLETA + "**.\n" if DATA_COLETA else "") +
         "- A coleta roda **automaticamente todo mês**, sem intervenção manual; o período "
         "aparece no topo de cada página e pode ser ajustado na barra lateral.\n"
+        "- Todos os dados são coletados na **mesma rodada** (um único `fetch_all.py`), no mesmo "
+        "instante da base — então as páginas falam do mesmo retrato do OpenAlex.\n"
         "- Todo o código que coleta e monta o painel é **aberto e auditável** em "
         "[github.com/ana-mat-br/painel-daad](https://github.com/ana-mat-br/painel-daad).")
 

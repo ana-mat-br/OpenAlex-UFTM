@@ -46,10 +46,16 @@ def fetch_works() -> pd.DataFrame:
             countries = sorted({c for a in auth for c in (a.get("countries") or [])})
             inst_rors = {(i.get("ror") or "").rsplit("/", 1)[-1]
                          for a in auth for i in (a.get("institutions") or []) if i.get("ror")}
-            autores_uftm = [(a.get("author") or {}).get("display_name") for a in auth
-                            if ROR_UFTM in {(i.get("ror") or "").rsplit("/", 1)[-1]
-                                            for i in (a.get("institutions") or [])}
-                            and (a.get("author") or {}).get("display_name")]
+            # Megacolaboração: o OpenAlex trunca a lista de autores em 100, então len==100
+            # significa 100+ autores. Aí a atribuição individual à UFTM é não-confiável
+            # (desambiguação) e irrelevante (UFTM é 1 entre centenas) — não guardamos os nomes,
+            # para não vazar "fantasmas".
+            truncado = len(auth) >= 100
+            autores_uftm = [] if truncado else [
+                (a.get("author") or {}).get("display_name") for a in auth
+                if ROR_UFTM in {(i.get("ror") or "").rsplit("/", 1)[-1]
+                                for i in (a.get("institutions") or [])}
+                and (a.get("author") or {}).get("display_name")]
             oa = work.get("open_access") or {}
             apc = (work.get("apc_paid") or work.get("apc_list") or {}) or {}
             funder_list = work.get("funders") or []
@@ -88,6 +94,7 @@ def fetch_works() -> pd.DataFrame:
                 "is_paratext": bool(work.get("is_paratext")),
                 "autores_uftm": autores_uftm,
                 "n_autores": len(auth),
+                "autores_truncados": truncado,
                 "sdgs": sdgs,
             })
         print(f"  baixados {len(rows)}...")
