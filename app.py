@@ -404,6 +404,13 @@ with st.sidebar:
                                   "font-weight": "700"},
         })
 
+    st.divider()
+    st.markdown(
+        f"<div style='font-size:.6rem;color:{T['primary']};margin:.5rem 0 .3rem;"
+        f"letter-spacing:.02em'>DOI <a href='https://doi.org/10.5281/zenodo.20572857' "
+        f"target='_blank' style='color:{T['primary']};text-decoration:none'>"
+        f"10.5281/zenodo.20572857</a></div>", unsafe_allow_html=True)
+
 fraw, fsdg = aplica_filtros(faixa)
 
 
