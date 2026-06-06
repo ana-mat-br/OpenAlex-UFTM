@@ -11,6 +11,7 @@ from __future__ import annotations
 import json
 import os
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
@@ -26,7 +27,7 @@ def bare_doi(d: str) -> str:
     return str(d).replace("https://doi.org/", "").strip().lower()
 
 
-def consulta(dois: list[str]) -> dict:
+def consulta(dois: list[str], tentativas: int = 4) -> dict:
     body = {
         "query": {"bool": {"must": [
             {"terms": {"external_ids.value": dois}},
@@ -39,8 +40,19 @@ def consulta(dois: list[str]) -> dict:
     req = urllib.request.Request(
         URL, data=json.dumps(body).encode(),
         headers={"Authorization": f"Bearer {TOKEN}", "Content-Type": "application/json"})
-    with urllib.request.urlopen(req, timeout=90) as r:
-        return json.load(r)
+    for tent in range(tentativas):
+        try:
+            with urllib.request.urlopen(req, timeout=120) as r:
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            # 429 = rate limit do Lens: espera o tempo pedido (Retry-After) ou backoff
+            if e.code == 429 and tent < tentativas - 1:
+                espera = int(e.headers.get("Retry-After", 0)) or 30 * (tent + 1)
+                print(f"    429 (rate limit) — aguardando {espera}s e tentando de novo...")
+                time.sleep(espera)
+                continue
+            raise
+    return {}
 
 
 def main() -> None:
@@ -70,15 +82,18 @@ def main() -> None:
                          "n_patentes": d.get("referenced_by_patent_count", 0)})
         print(f"  lote {i // LOTE + 1}/{(len(dois) + LOTE - 1) // LOTE}: "
               f"total={res.get('total')} acumulado={len(rows)}")
-        time.sleep(1.2)
+        time.sleep(5)  # paga o rate limit do Lens (token gratuito é restrito)
 
-    df = pd.DataFrame(rows).dropna(subset=["doi"]).drop_duplicates("doi")
+    df = pd.DataFrame(rows)
+    if "doi" in df.columns:
+        df = df.dropna(subset=["doi"]).drop_duplicates("doi")
+    if len(df) == 0:
+        print("Nenhuma produção citada por patentes encontrada (ou rate limit persistente) — "
+              "mantém o arquivo anterior, se houver. A aba Patentes seguirá 'em implantação'.")
+        return
     df.to_csv(OUT / "lens_patentes.csv", index=False)
-    if achou_total == 0:
-        print("AVISO: nenhum resultado — verifique o token ou o campo de consulta "
-              "(external_ids.value).")
     print(f"produções citadas por patentes: {len(df)} | "
-          f"citações em patentes (soma): {int(df['n_patentes'].sum()) if len(df) else 0}")
+          f"citações em patentes (soma): {int(df['n_patentes'].sum())}")
 
 
 if __name__ == "__main__":
