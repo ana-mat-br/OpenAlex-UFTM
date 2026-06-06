@@ -537,23 +537,21 @@ def render_financiamento():
                "(ex.: CAPES, CNPq, FAPEMIG). Nem toda pesquisa registra isso, então é um **piso** "
                "do que é financiado, não o total.")
 
-    c1, c2 = st.columns(2)
-    with c1:
-        st.subheader("Principais financiadores")
-        f = fraw["funders"].explode().dropna().value_counts().head(15).reset_index()
-        f.columns = ["financiador", "n"]
-        if len(f):
-            st.plotly_chart(barra_h(f, "financiador", "n", h=460, cor=T["accent"]),
-                            width="stretch")
-    with c2:
-        st.subheader("Produção financiada ao longo do tempo")
-        ev = fraw.assign(fin=fraw["n_grants"] > 0).groupby("year")["fin"].mean().reset_index()
-        fig = go.Figure(go.Scatter(x=ev["year"], y=ev["fin"], mode="lines+markers",
-                                   line=dict(color=T["primary"], width=3),
-                                   hovertemplate="%{x}: %{y:.0%}<extra></extra>"))
-        fig = fig_layout(fig, 460)
-        fig.update_yaxes(tickformat=".0%")
-        st.plotly_chart(fig, width="stretch")
+    st.subheader("Principais financiadores")
+    f = fraw["funders"].explode().dropna().value_counts().head(15).reset_index()
+    f.columns = ["financiador", "n"]
+    if len(f):
+        st.plotly_chart(barra_h(f, "financiador", "n", h=480, cor=T["accent"]), width="stretch")
+
+    st.subheader("Produção financiada ao longo do tempo")
+    ev = fraw.assign(fin=fraw["n_grants"] > 0).groupby("year")["fin"].mean().reset_index()
+    fig = go.Figure(go.Scatter(x=ev["year"], y=ev["fin"], mode="lines+markers",
+                               line=dict(color=T["primary"], width=3), fill="tozeroy",
+                               fillcolor="rgba(0,152,58,.06)",
+                               hovertemplate="%{x}: %{y:.0%}<extra></extra>"))
+    fig = fig_layout(fig, 320)
+    fig.update_yaxes(tickformat=".0%")
+    st.plotly_chart(fig, width="stretch")
 
     st.divider()
     st.subheader("Custos de publicação (APC)")
