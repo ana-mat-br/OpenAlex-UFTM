@@ -342,14 +342,15 @@ def render_visao_geral():
         tp["tipo"] = tp["tipo"].map(tipo_pt)
         st.plotly_chart(barra_h(tp.head(10), "tipo", "n", h=360), width="stretch")
     with c2:
-        st.subheader("Acesso aberto por ano")
-        oa = fr.groupby("year")["is_oa"].mean().reset_index()
-        fig = go.Figure(go.Scatter(x=oa["year"], y=oa["is_oa"], mode="lines+markers",
+        st.subheader("Citações por ano")
+        cit = fr.groupby("year")["cited_by"].sum().reset_index()
+        fig = go.Figure(go.Scatter(x=cit["year"], y=cit["cited_by"], mode="lines+markers",
                                    line=dict(color=T["accent"], width=3),
-                                   hovertemplate="%{x}: %{y:.0%}<extra></extra>"))
-        fig = fig_layout(fig, 360)
-        fig.update_yaxes(tickformat=".0%")
-        st.plotly_chart(fig, width="stretch")
+                                   fill="tozeroy", fillcolor="rgba(232,119,34,.08)",
+                                   hovertemplate="%{x}: %{y:,.0f} citações<extra></extra>"))
+        st.plotly_chart(fig_layout(fig, 360), width="stretch")
+        st.caption("Citações acumuladas pelas pesquisas publicadas em cada ano. Os anos mais "
+                   "recentes tendem a ser menores — ainda estão recebendo citações.")
 
 
 def render_excelencia():
