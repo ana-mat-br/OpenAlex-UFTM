@@ -377,7 +377,7 @@ with st.sidebar:
     st.divider()
     if DATA_COLETA:
         st.markdown(
-            f"<div style='font-size:.6rem;color:{T['primary']};margin:-.3rem 0 .2rem;"
+            f"<div style='font-size:.6rem;color:{T['primary']};margin:.5rem 0 .3rem;"
             f"letter-spacing:.02em'>Dados coletados em {DATA_COLETA}</div>",
             unsafe_allow_html=True)
     NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "Impacto Social",
