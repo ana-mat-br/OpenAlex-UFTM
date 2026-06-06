@@ -49,6 +49,14 @@ def _intl_share(ror: str) -> float:
     return intl / max(total, 1)
 
 
+def _inst_share(ror: str) -> float:
+    """Proporção de works só institucionais (1 instituição distinta)."""
+    g = Works().filter(institutions={"ror": ror}).group_by("institutions_distinct_count").get()
+    total = sum(x["count"] for x in g)
+    single = sum(x["count"] for x in g if str(x["key"]) == "1")
+    return single / max(total, 1)
+
+
 def benchmarking_grupo(insts: dict, prefixo: str) -> None:
     linhas, series = [], []
     for sigla, ror in insts.items():
@@ -58,6 +66,8 @@ def benchmarking_grupo(insts: dict, prefixo: str) -> None:
         top10 = _share_true(ror, "citation_normalized_percentile.is_in_top_10_percent")
         top1 = _share_true(ror, "citation_normalized_percentile.is_in_top_1_percent")
         intl = _intl_share(ror)  # colaboração internacional (>= 2 países)
+        instc = _inst_share(ror)  # só institucional (1 instituição)
+        nac = max(0.0, 1 - instc - intl)  # nacional = ≥2 instituições, só Brasil
         linhas.append({
             "sigla": sigla, "instituicao": inst["display_name"], "ror": ror,
             "works": inst["works_count"], "citacoes": inst["cited_by_count"],
@@ -67,6 +77,8 @@ def benchmarking_grupo(insts: dict, prefixo: str) -> None:
             "top10_share": round(top10, 4),
             "top1_share": round(top1, 4),
             "intl_share": round(intl, 4),
+            "nac_share": round(nac, 4),
+            "inst_share": round(instc, 4),
             "cit_por_trabalho": round(inst["cited_by_count"] / max(inst["works_count"], 1), 2),
         })
         for c in inst.get("counts_by_year", []):

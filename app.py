@@ -561,6 +561,8 @@ def render_benchmarking():
         "No top 10% mundial (%)": ("top10_share", ".1%"),
         "No top 1% mundial (%)": ("top1_share", ".1%"),
         "Colaboração internacional (%)": ("intl_share", ".1%"),
+        "Colaboração nacional (%)": ("nac_share", ".1%"),
+        "Colaboração só institucional (%)": ("inst_share", ".1%"),
         "Acesso aberto (%)": ("oa_share", ".1%"),
         "Índice h": ("h_index", ",.0f"),
         "Índice i10": ("i10", ",.0f"),
