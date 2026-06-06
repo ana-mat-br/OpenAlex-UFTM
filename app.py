@@ -269,10 +269,10 @@ with st.sidebar:
     faixa = st.slider("Período", ymin, ymax, (max(ymin, ymax - 9), ymax))
 
     st.divider()
-    NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "ODS",
+    NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "Impacto Social",
            "Financiamento", "Patentes", "Pesquisadores", "Colaboração", "Temas",
            "Onde publicamos", "Qualidade das revistas", "Explorar", "Transparência"]
-    ICONS = ["speedometer2", "award", "bar-chart-line", "unlock", "bullseye",
+    ICONS = ["speedometer2", "award", "bar-chart-line", "unlock", "globe-americas",
              "cash-coin", "lightbulb", "person-badge", "diagram-3", "tags",
              "journal-text", "patch-check", "search", "info-circle"]
     _override = st.session_state.pop("ir_para", None)  # navegação por link (ex.: rodapé)
@@ -456,14 +456,12 @@ def render_ciencia_aberta():
     verde = fraw["in_repository"].mean() if "in_repository" in fraw.columns else None
     oa_works = fraw[fraw["is_oa"] == True]  # noqa: E712
     doaj = oa_works["in_doaj"].mean() if "in_doaj" in fraw.columns and len(oa_works) else None
-    apc = fraw["apc_usd"].dropna()
-    c1, c2, c3, c4, c5 = st.columns(5)
+    c1, c2, c3, c4 = st.columns(4)
     c1.metric("Acesso aberto", f"{oa:.0%}")
     c2.metric("Diamante (sem custo)", f"{diam:.0%}", help="Grátis para autor e leitor.")
     c3.metric("Via verde (repositório)", f"{verde:.0%}" if verde is not None else "—")
     c4.metric("Em periódico DOAJ", f"{doaj:.0%}" if doaj is not None else "—",
               help="Entre as produções OA, % em periódicos com selo DOAJ (qualidade).")
-    c5.metric("APC total (US$)", br(apc.sum()) if len(apc) else "—")
 
     c1, c2 = st.columns(2)
     with c1:
@@ -487,25 +485,11 @@ def render_ciencia_aberta():
         fig = fig_layout(fig, 360)
         fig.update_yaxes(tickformat=".0%")
         st.plotly_chart(fig, width="stretch")
-
-    st.subheader("Custos de publicação (APC)")
-    pagos = fraw[fraw["apc_usd"] > 0]
-    c1, c2, c3 = st.columns(3)
-    c1.metric("Produções com APC", br(len(pagos)),
-              f"{len(pagos)/max(len(fraw),1):.0%} do total")
-    c2.metric("APC médio (US$)", br(pagos["apc_usd"].mean()) if len(pagos) else "—")
-    c3.metric("Sem custo para o autor", f"{1 - len(pagos)/max(len(fraw),1):.0%}",
-              help="Diamante, verde, bronze e fechado não cobram APC do autor.")
-    apc_ano = fraw.groupby("year")["apc_usd"].sum().reset_index()
-    fig = go.Figure(go.Bar(x=apc_ano["year"], y=apc_ano["apc_usd"], marker_color=T["accent"],
-                           hovertemplate="%{x}: US$ %{y:,.0f}<extra></extra>"))
-    st.plotly_chart(fig_layout(fig, 300), width="stretch")
-    st.caption("APC = Article Processing Charge reportado ao OpenAlex — estimativa do gasto com "
-               "publicação em acesso aberto pago (não inclui acordos transformativos/descontos).")
+    st.caption("O custo de publicar em acesso aberto (APC) fica na aba **Financiamento**.")
 
 
 def render_financiamento():
-    cabecalho("Financiamento", "Quem banca a pesquisa da UFTM")
+    cabecalho("Financiamento", "De onde vem o dinheiro da pesquisa — e quanto custa publicá-la em aberto")
     if "n_grants" not in fraw.columns or not len(fraw):
         st.info("Re-colete os dados (fetch_uftm_ods.py).")
         return
@@ -541,6 +525,26 @@ def render_financiamento():
         fig = fig_layout(fig, 460)
         fig.update_yaxes(tickformat=".0%")
         st.plotly_chart(fig, width="stretch")
+
+    st.divider()
+    st.subheader("Custos de publicação (APC)")
+    st.caption("**Como ler** · Algumas revistas cobram uma taxa (**APC**) para deixar a pesquisa "
+               "aberta a todos. Aqui está a estimativa desse gasto da UFTM.")
+    apc = fraw["apc_usd"].dropna()
+    pagos = fraw[fraw["apc_usd"] > 0]
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("APC total estimado (US$)", br(apc.sum()) if len(apc) else "—")
+    c2.metric("Produções com APC", br(len(pagos)),
+              f"{len(pagos)/max(len(fraw),1):.0%} do total")
+    c3.metric("APC médio (US$)", br(pagos["apc_usd"].mean()) if len(pagos) else "—")
+    c4.metric("Sem custo para o autor", f"{1 - len(pagos)/max(len(fraw),1):.0%}",
+              help="Diamante, verde, bronze e fechado não cobram APC do autor.")
+    apc_ano = fraw.groupby("year")["apc_usd"].sum().reset_index()
+    fig = go.Figure(go.Bar(x=apc_ano["year"], y=apc_ano["apc_usd"], marker_color=T["accent"],
+                           hovertemplate="%{x}: US$ %{y:,.0f}<extra></extra>"))
+    st.plotly_chart(fig_layout(fig, 320), width="stretch")
+    st.caption("APC = Article Processing Charge reportado ao OpenAlex — estimativa do gasto com "
+               "publicação em acesso aberto pago (não inclui acordos transformativos/descontos).")
 
 
 def render_benchmarking():
@@ -657,7 +661,7 @@ def render_colaboracao():
 
 
 def render_ods():
-    cabecalho("ODS", "A contribuição da UFTM para a sociedade, pelos Objetivos da ONU")
+    cabecalho("Impacto Social", "A contribuição da UFTM para a sociedade — pelos Objetivos da ONU (ODS)")
     st.caption("**Como ler** · Os **ODS** são os 17 Objetivos de Desenvolvimento Sustentável da "
                "ONU (saúde, educação, igualdade, clima...) — uma forma de ver o **impacto social** "
                "da pesquisa. Mostramos com quais a UFTM mais se relaciona. A associação é uma "
@@ -1069,7 +1073,7 @@ def render_transparencia():
 PAGINAS = {
     "Visão Geral": render_visao_geral, "Impacto científico": render_excelencia,
     "Comparação": render_benchmarking, "Ciência Aberta": render_ciencia_aberta,
-    "ODS": render_ods, "Financiamento": render_financiamento,
+    "Impacto Social": render_ods, "Financiamento": render_financiamento,
     "Patentes": render_patentes,
     "Pesquisadores": render_pesquisadores, "Colaboração": render_colaboracao,
     "Temas": render_temas, "Onde publicamos": render_periodicos,
