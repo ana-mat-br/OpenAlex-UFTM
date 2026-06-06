@@ -148,6 +148,11 @@ def pesquisadores() -> None:
                         orcids[aid] = au["orcid"]
     df = pd.DataFrame([{"id": a, "autor": nomes[a], "works_uftm": n_works[a],
                         "citacoes_uftm": citac[a], "orcid": orcids.get(a)} for a in n_works])
+    # mescla a mesma pessoa dividida em 2 ids do OpenAlex (mesmo nome) — soma works/citações
+    df = df.sort_values("works_uftm", ascending=False)
+    df = (df.groupby("autor", as_index=False)
+          .agg(works_uftm=("works_uftm", "sum"), citacoes_uftm=("citacoes_uftm", "sum"),
+               orcid=("orcid", "first"), id=("id", "first")))
     df = df.sort_values("citacoes_uftm", ascending=False).head(50).reset_index(drop=True)
 
     # h-index / i10 de carreira para o top 50 (rótulo deixa claro que é carreira)

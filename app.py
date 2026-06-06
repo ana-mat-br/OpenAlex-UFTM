@@ -661,17 +661,13 @@ def render_colaboracao():
     if ci is None:
         st.info("Rode `python fetch_observatorio.py` para os dados de colaboração.")
         return
-    c1, c2 = st.columns(2)
-    with c1:
-        st.subheader("Instituições parceiras")
-        st.plotly_chart(barra_h(ci.head(15), "instituicao", "n", h=460),
-                        width="stretch")
-    with c2:
-        st.subheader("Países parceiros (exceto Brasil)")
-        cp = obs["colab_paises"]
-        cp = cp[cp["pais"] != "Brazil"].head(15)
-        st.plotly_chart(barra_h(cp, "pais", "n", h=460, cor=T["secondary"]),
-                        width="stretch")
+    st.subheader("Instituições parceiras")
+    st.plotly_chart(barra_h(ci.head(15), "instituicao", "n", h=480), width="stretch")
+
+    st.subheader("Países parceiros (exceto Brasil)")
+    cp = obs["colab_paises"]
+    cp = cp[cp["pais"] != "Brazil"].head(15)
+    st.plotly_chart(barra_h(cp, "pais", "n", h=480, cor=T["secondary"]), width="stretch")
 
     nos = obs.get("rede_autores_nos")
     arestas = obs.get("rede_autores_arestas")
