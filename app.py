@@ -1099,9 +1099,11 @@ def render_qualidade():
         st.dataframe(jt[cols].rename(columns=ren), hide_index=True, width="stretch", height=440)
         st.caption("**CiteScore (análogo)** = citações médias em 2 anos por trabalho (OpenAlex), "
                    "aproximação **aberta** do CiteScore. **Estilo Qualis** = estrato A1–B4 pelo "
-                   "**percentil dentro da área Scopus** (mesma regra da CAPES, mas sobre a métrica "
-                   "aberta) — é uma **aproximação, não o Qualis oficial**. " +
-                   ("As colunas oficiais vêm da planilha Scopus importada."
+                   "**percentil dentro da área Scopus** (regra da CAPES, mas sobre a métrica "
+                   "aberta). É **aproximação, não o Qualis oficial**: como usa percentil, ~metade "
+                   "das revistas de cada área cai em A1–A4, e a janela de 2 anos (vs. ~4 do "
+                   "CiteScore) tende a deixar o estrato **um pouco mais otimista** que o oficial. " +
+                   ("Colunas oficiais: planilha Scopus importada."
                     if tem_ofi else "O CiteScore/Qualis **oficiais** exigem a planilha paga da "
                     "Scopus (login) — fora do alcance automático."))
 
@@ -1147,7 +1149,11 @@ def render_idiomas():
                "costuma indicar maior internacionalização da pesquisa.")
 
     st.subheader("Publicações em outros idiomas")
-    st.caption("Produções que **não** estão em inglês, português ou espanhol.")
+    st.caption("Produções que **não** estão em inglês, português ou espanhol. **Atenção:** o "
+               "idioma é **detectado automaticamente** pelo OpenAlex a partir do título — em "
+               "textos curtos ou com muito jargão isso erra bastante. Boa parte desta lista é, "
+               "na verdade, inglês ou português mal classificado (ex.: título de física virar "
+               "*letão*; título em português virar *italiano*). Leia com ceticismo.")
     outros = fraw[fraw["language"].notna()
                   & ~fraw["language"].isin(["en", "pt", "es"])].copy()
     if len(outros):
