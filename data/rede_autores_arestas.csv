@@ -1,568 +1,567 @@
 origem,destino,peso
-A5070218751,A5040471458,50
-A5070218751,A5066604363,17
-A5070218751,A5078424647,24
-A5070218751,A5003024169,3
-A5022495039,A5037786772,32
-A5022495039,A5052739469,10
-A5022495039,A5101701471,44
-A5022495039,A5071518040,6
-A5022495039,A5038661968,6
-A5022495039,A5058366668,8
-A5022495039,A5036987924,28
-A5022495039,A5044568307,7
-A5022495039,A5029355343,3
-A5022495039,A5056356335,3
-A5022495039,A5078424647,3
-A5022495039,A5110503698,2
-A5022495039,A5024307390,6
-A5022495039,A5027034276,3
-A5022495039,A5000429300,4
-A5022495039,A5103363766,2
-A5022495039,A5047021803,2
-A5022495039,A5070805963,5
-A5041195200,A5011685116,18
-A5041195200,A5051596155,21
-A5041195200,A5079367966,6
-A5041195200,A5100655078,4
-A5041195200,A5074708962,8
-A5041195200,A5091269988,5
-A5041195200,A5042302781,2
-A5041195200,A5015502750,5
-A5041195200,A5038225422,2
-A5041195200,A5110118193,3
-A5041195200,A5024326383,5
-A5041195200,A5110517622,2
-A5041195200,A5108397499,2
-A5091774258,A5032502976,25
-A5091774258,A5047021803,2
-A5091774258,A5049493540,9
-A5091774258,A5103228857,6
-A5091774258,A5058366668,10
-A5091774258,A5103363766,2
-A5091774258,A5002961117,3
-A5091774258,A5070327059,2
-A5091774258,A5085120015,3
-A5091774258,A5046520410,2
-A5038661968,A5037786772,2
-A5038661968,A5032502976,4
-A5038661968,A5049493540,3
-A5038661968,A5103228857,2
-A5038661968,A5002961117,2
-A5038661968,A5072438285,3
-A5036987924,A5058366668,9
-A5036987924,A5070327059,10
-A5036987924,A5037630236,11
-A5036987924,A5069962038,15
-A5036987924,A5101701471,16
-A5036987924,A5070805963,14
-A5036987924,A5029355343,5
-A5036987924,A5056356335,5
-A5036987924,A5078424647,2
-A5036987924,A5037786772,6
-A5036987924,A5071518040,6
-A5036987924,A5044568307,2
-A5036987924,A5024307390,5
-A5036987924,A5022806000,2
-A5056356335,A5024326383,5
-A5056356335,A5002737724,18
-A5056356335,A5079367966,55
-A5056356335,A5100655078,69
-A5056356335,A5029355343,38
-A5056356335,A5042302781,22
-A5056356335,A5053709982,14
-A5056356335,A5018936499,11
-A5056356335,A5054519106,8
-A5056356335,A5075387240,3
-A5056356335,A5110118193,3
-A5056356335,A5001766474,5
-A5056356335,A5040195967,4
-A5056356335,A5011685116,7
-A5056356335,A5003387908,4
-A5056356335,A5074136202,5
-A5056356335,A5085120015,6
-A5056356335,A5028654789,2
-A5056356335,A5024026302,3
-A5056356335,A5018828113,2
-A5056356335,A5058692078,2
-A5056356335,A5030187085,4
-A5056356335,A5051596155,3
-A5056356335,A5038225422,2
-A5056356335,A5078424647,2
-A5056356335,A5069962038,2
-A5056356335,A5070805963,2
-A5056356335,A5087413321,3
-A5056356335,A5074708962,2
-A5086884754,A5005455476,18
-A5086884754,A5101485993,12
-A5086884754,A5102757088,29
-A5086884754,A5058692078,26
-A5086884754,A5082564678,8
-A5086884754,A5088509139,5
-A5086884754,A5085120015,3
-A5086884754,A5029717976,6
-A5086884754,A5017365821,3
-A5086884754,A5074708962,2
-A5034198739,A5051772910,51
-A5034198739,A5089618972,18
-A5034198739,A5030542267,14
-A5034198739,A5085863842,54
-A5034198739,A5086875966,4
-A5034198739,A5074708962,28
-A5034198739,A5015502750,9
-A5034198739,A5020443904,3
-A5034198739,A5069962038,3
-A5034198739,A5053709982,3
-A5034198739,A5032145517,2
-A5074708962,A5015502750,10
-A5074708962,A5085863842,8
-A5074708962,A5051772910,3
-A5074708962,A5102755852,7
-A5074708962,A5017365821,4
-A5074708962,A5054519106,5
-A5074708962,A5079367966,4
-A5074708962,A5102757088,4
-A5074708962,A5053709982,2
-A5074708962,A5004073657,2
-A5014731706,A5021551853,3
-A5014731706,A5079367966,6
-A5014731706,A5077166735,2
-A5014731706,A5032145517,2
-A5014731706,A5108397499,5
-A5014731706,A5002961117,2
-A5014731706,A5049493540,2
-A5014731706,A5085120015,2
-A5014731706,A5071327924,4
-A5051772910,A5089618972,8
-A5051772910,A5030542267,10
-A5051772910,A5085863842,12
-A5051772910,A5086875966,4
-A5051772910,A5015502750,6
-A5051772910,A5032145517,4
-A5051772910,A5067710226,3
-A5051772910,A5069962038,2
-A5078424647,A5040471458,31
-A5078424647,A5066604363,23
-A5078424647,A5072438285,7
-A5078424647,A5021551853,2
-A5078424647,A5030187085,2
-A5078424647,A5029355343,2
-A5078424647,A5032502976,4
-A5078424647,A5049493540,4
-A5078424647,A5050687912,2
-A5078424647,A5058692078,2
-A5018828113,A5049097750,3
-A5018828113,A5038225422,10
-A5018828113,A5110517622,5
-A5018828113,A5018936499,2
-A5018828113,A5075387240,3
-A5018828113,A5079367966,6
-A5018828113,A5100655078,7
-A5018828113,A5110118193,3
-A5018828113,A5077166735,5
-A5018828113,A5102757088,2
-A5032502976,A5103228857,24
-A5032502976,A5046520410,10
-A5032502976,A5035350983,27
-A5032502976,A5030184137,10
-A5032502976,A5047021803,3
-A5032502976,A5049493540,56
-A5032502976,A5103363766,6
-A5032502976,A5040471458,3
-A5032502976,A5002961117,2
-A5032502976,A5037630236,2
-A5032502976,A5040288608,2
-A5032502976,A5005455476,2
-A5032502976,A5101485993,2
-A5017314580,A5082564678,5
-A5017314580,A5046520410,9
-A5017314580,A5058499092,11
-A5017314580,A5084927335,17
-A5017314580,A5014327448,2
-A5017314580,A5056730974,3
-A5040195967,A5001766474,20
-A5040195967,A5100655078,5
-A5040195967,A5065161212,2
-A5040195967,A5008762321,2
-A5037786772,A5101701471,25
-A5037786772,A5058366668,3
-A5037786772,A5024307390,2
-A5037786772,A5000429300,2
-A5037786772,A5044568307,2
-A5011685116,A5051596155,18
-A5011685116,A5079367966,8
-A5011685116,A5100655078,10
-A5011685116,A5091269988,4
-A5011685116,A5110118193,2
-A5011685116,A5003387908,2
-A5011685116,A5029355343,2
-A5011685116,A5030187085,3
-A5011685116,A5074136202,2
-A5011685116,A5085120015,3
-A5011685116,A5024326383,3
-A5011685116,A5102965331,2
-A5059982114,A5008230762,3
-A5059982114,A5017365821,4
-A5059982114,A5054519106,2
-A5059982114,A5102757088,21
-A5059982114,A5005455476,17
-A5059982114,A5088509139,2
-A5059982114,A5058692078,9
-A5059982114,A5101485993,5
-A5059982114,A5029717976,4
-A5059982114,A5085120015,2
-A5072920336,A5001589467,16
-A5072920336,A5029099574,32
-A5072920336,A5058182015,5
-A5040288608,A5049493540,4
-A5058499092,A5046520410,2
-A5058499092,A5081691156,11
-A5058499092,A5080381055,2
-A5058499092,A5084927335,7
-A5058499092,A5026990828,6
-A5084927335,A5020443904,17
-A5084927335,A5044568307,7
-A5084927335,A5046520410,6
-A5084927335,A5026990828,7
-A5084927335,A5014327448,2
-A5084927335,A5056730974,9
-A5084927335,A5000429300,2
-A5083811946,A5001766474,3
-A5083811946,A5002902079,12
-A5083811946,A5065161212,10
-A5083811946,A5010510640,2
-A5083811946,A5008245057,3
-A5075387240,A5091269988,13
-A5075387240,A5110118193,26
-A5075387240,A5079367966,8
-A5075387240,A5100655078,8
-A5075387240,A5018936499,2
-A5075387240,A5038225422,3
-A5075387240,A5110517622,2
-A5075387240,A5108397499,4
-A5040471458,A5066604363,21
-A5040471458,A5072438285,2
-A5040471458,A5050687912,2
-A5037630236,A5058366668,3
-A5037630236,A5070327059,15
-A5037630236,A5030184137,3
-A5037630236,A5012639919,4
-A5037630236,A5069962038,2
-A5037630236,A5044568307,4
-A5037630236,A5003387908,3
-A5037630236,A5103363766,2
-A5037630236,A5049493540,2
-A5067710226,A5030542267,24
-A5067710226,A5100655078,2
-A5067710226,A5086875966,11
-A5067710226,A5032145517,2
-A5079367966,A5038225422,18
-A5079367966,A5110517622,7
-A5079367966,A5054519106,40
-A5079367966,A5100655078,96
-A5079367966,A5002737724,2
-A5079367966,A5017365821,14
-A5079367966,A5008230762,6
-A5079367966,A5030187085,11
-A5079367966,A5102965331,5
-A5079367966,A5018936499,15
-A5079367966,A5012639919,2
-A5079367966,A5051596155,6
-A5079367966,A5053709982,8
-A5079367966,A5110118193,7
-A5079367966,A5029355343,8
-A5079367966,A5042302781,6
-A5079367966,A5003387908,8
-A5079367966,A5074136202,15
-A5079367966,A5085120015,9
-A5079367966,A5028654789,2
-A5079367966,A5024326383,5
-A5079367966,A5044568307,5
-A5079367966,A5102755852,8
-A5079367966,A5088509139,2
-A5079367966,A5102757088,2
-A5079367966,A5091269988,3
-A5079367966,A5069962038,4
-A5079367966,A5004073657,4
-A5079367966,A5077166735,2
-A5079367966,A5087413321,3
-A5085120015,A5008230762,9
-A5085120015,A5015502750,4
-A5085120015,A5018936499,10
-A5085120015,A5029717976,9
-A5085120015,A5101485993,10
-A5085120015,A5100655078,11
-A5085120015,A5102757088,5
-A5085120015,A5003387908,3
-A5085120015,A5074136202,3
-A5085120015,A5029355343,3
-A5085120015,A5030187085,4
-A5085120015,A5051596155,3
-A5085120015,A5054519106,4
-A5085120015,A5002961117,3
-A5085120015,A5049493540,3
-A5085120015,A5058366668,3
-A5005455476,A5101485993,16
-A5005455476,A5102757088,10
-A5005455476,A5058692078,12
-A5005455476,A5029717976,10
-A5005455476,A5082564678,2
-A5029717976,A5008230762,14
-A5029717976,A5015502750,3
-A5029717976,A5018936499,18
-A5029717976,A5101485993,32
-A5029717976,A5100655078,9
-A5029717976,A5102757088,21
-A5029717976,A5058692078,3
-A5065161212,A5002902079,13
-A5065161212,A5029099574,4
-A5065161212,A5001766474,4
-A5001589467,A5029099574,13
-A5001589467,A5058182015,2
-A5025363397,A5030542267,5
-A5025363397,A5088509139,6
-A5026990828,A5081691156,3
-A5026990828,A5020443904,3
-A5026990828,A5014327448,2
-A5026990828,A5082564678,2
-A5002902079,A5001766474,2
-A5002902079,A5029099574,2
-A5051596155,A5100655078,5
-A5051596155,A5091269988,5
-A5051596155,A5042302781,2
-A5051596155,A5110118193,3
-A5051596155,A5102965331,2
-A5051596155,A5029355343,2
-A5051596155,A5030187085,3
-A5050979460,A5072438285,19
-A5050979460,A5000429300,23
-A5050979460,A5047021803,6
-A5050979460,A5044568307,8
-A5050979460,A5002961117,3
-A5050979460,A5040434328,2
-A5073185876,A5069962038,4
-A5073185876,A5032145517,3
-A5032145517,A5030542267,4
-A5032145517,A5086875966,2
-A5032145517,A5069962038,2
-A5030187085,A5110517622,2
-A5030187085,A5074136202,20
-A5030187085,A5044568307,17
-A5030187085,A5003387908,5
-A5030187085,A5029355343,3
-A5030187085,A5100655078,7
-A5030187085,A5015307372,18
-A5102965331,A5110517622,7
-A5102965331,A5050687912,7
-A5102965331,A5038225422,3
-A5102965331,A5088509139,3
-A5023329910,A5061821165,3
-A5054519106,A5100655078,23
-A5054519106,A5017365821,18
-A5054519106,A5008230762,5
-A5054519106,A5018936499,10
-A5054519106,A5053709982,2
-A5054519106,A5015502750,4
-A5054519106,A5102757088,6
-A5054519106,A5038225422,5
-A5054519106,A5110118193,3
-A5054519106,A5074136202,4
-A5081691156,A5014327448,2
-A5081691156,A5080381055,2
-A5086875966,A5030542267,26
-A5086875966,A5085863842,4
-A5080381055,A5020443904,9
-A5101485993,A5008230762,19
-A5101485993,A5015502750,5
-A5101485993,A5018936499,18
-A5101485993,A5100655078,15
-A5101485993,A5102757088,22
-A5101485993,A5058692078,4
-A5008465727,A5061821165,17
-A5030184137,A5049493540,4
-A5030184137,A5103228857,3
-A5030184137,A5055875598,5
-A5030184137,A5001395168,5
-A5030184137,A5024307390,5
-A5030184137,A5072768597,13
-A5030184137,A5002961117,4
-A5030184137,A5071327924,2
-A5030184137,A5022806000,2
-A5030184137,A5071518040,2
-A5030184137,A5052739469,2
-A5024326383,A5053709982,3
-A5024326383,A5100655078,4
-A5024326383,A5050687912,2
-A5024326383,A5020443904,2
-A5070327059,A5058366668,25
-A5070327059,A5069962038,5
-A5070327059,A5049493540,3
-A5070327059,A5040434328,4
-A5070327059,A5103363766,2
-A5069962038,A5102757088,2
-A5069962038,A5070805963,7
-A5069962038,A5012639919,3
-A5069962038,A5003387908,3
-A5069962038,A5029355343,2
-A5085887308,A5008762321,7
-A5000429300,A5044568307,17
-A5000429300,A5047021803,16
-A5000429300,A5072438285,6
-A5000429300,A5002961117,2
-A5000429300,A5040434328,2
-A5001766474,A5100655078,7
-A5012639919,A5003387908,11
-A5012639919,A5071327924,7
-A5014327448,A5082564678,11
-A5014327448,A5102755852,2
-A5014327448,A5020443904,10
-A5072768597,A5001395168,39
-A5072768597,A5024307390,58
-A5072768597,A5022806000,7
-A5072768597,A5070805963,18
-A5072768597,A5071518040,17
-A5072768597,A5110503698,10
-A5072768597,A5103363766,2
-A5072768597,A5002961117,9
-A5072768597,A5088509139,4
-A5072768597,A5047021803,3
-A5008762321,A5100655078,2
-A5110118193,A5091269988,15
-A5110118193,A5100655078,6
-A5110118193,A5018936499,3
-A5110118193,A5038225422,11
-A5110118193,A5044568307,3
-A5110118193,A5110517622,2
-A5110118193,A5108397499,4
-A5042302781,A5002737724,5
-A5042302781,A5029355343,8
-A5042302781,A5053709982,4
-A5042302781,A5100655078,10
-A5042302781,A5016250125,3
-A5053709982,A5002737724,12
-A5053709982,A5029355343,14
-A5053709982,A5100655078,2
-A5053709982,A5015502750,2
-A5053709982,A5030542267,3
-A5053709982,A5085863842,3
-A5001395168,A5024307390,17
-A5001395168,A5110503698,4
-A5001395168,A5002961117,4
-A5001395168,A5070805963,5
-A5029099574,A5058182015,4
-A5018918302,A5014425691,3
-A5027034276,A5072438285,7
-A5027034276,A5052739469,2
-A5046520410,A5049493540,6
-A5046520410,A5103228857,3
-A5046520410,A5056730974,2
-A5046520410,A5035350983,2
-A5070805963,A5022806000,3
-A5070805963,A5071518040,4
-A5070805963,A5110503698,5
-A5070805963,A5024307390,15
-A5070805963,A5029355343,2
-A5070805963,A5088509139,2
-A5070805963,A5101701471,5
-A5077166735,A5066604363,2
-A5077166735,A5049097750,13
-A5077166735,A5030542267,3
-A5077166735,A5050687912,3
-A5077166735,A5102757088,3
-A5015502750,A5008230762,5
-A5015502750,A5018936499,5
-A5015502750,A5100655078,2
-A5015502750,A5017365821,8
-A5015502750,A5085863842,2
-A5015502750,A5004073657,2
-A5015502750,A5102755852,3
-A5018936499,A5008230762,30
-A5018936499,A5100655078,39
-A5018936499,A5102757088,8
-A5018936499,A5038225422,2
-A5018936499,A5029355343,4
-A5066604363,A5072438285,4
-A5066604363,A5049097750,10
-A5066604363,A5012124878,3
-A5066604363,A5050687912,4
-A5066604363,A5003024169,3
-A5004073657,A5102755852,26
-A5021551853,A5072438285,2
-A5100655078,A5008230762,17
-A5100655078,A5102757088,6
-A5100655078,A5002737724,3
-A5100655078,A5038225422,11
-A5100655078,A5029355343,12
-A5100655078,A5003387908,5
-A5100655078,A5074136202,13
-A5100655078,A5028654789,2
-A5100655078,A5030542267,2
-A5100655078,A5087413321,3
-A5058366668,A5101701471,2
-A5058366668,A5103363766,4
-A5058366668,A5040434328,7
-A5058366668,A5022806000,4
-A5058366668,A5047021803,3
-A5058366668,A5055875598,2
-A5016250125,A5029355343,4
-A5016250125,A5087413321,2
-A5072438285,A5071518040,3
-A5072438285,A5044568307,3
-A5072438285,A5002961117,5
-A5072438285,A5040434328,2
-A5085863842,A5030542267,11
-A5085863842,A5058980125,2
-A5044568307,A5047021803,12
-A5044568307,A5074136202,4
-A5044568307,A5101701471,2
-A5044568307,A5002961117,2
-A5044568307,A5040434328,2
-A5088509139,A5102757088,2
-A5088509139,A5024307390,4
-A5049097750,A5050687912,15
-A5049097750,A5030542267,5
-A5049097750,A5012124878,3
-A5002961117,A5040434328,19
-A5002961117,A5071518040,9
-A5002961117,A5049493540,5
-A5002961117,A5024307390,2
-A5002961117,A5055875598,2
-A5002961117,A5043425176,2
-A5002961117,A5022806000,2
-A5003024169,A5012124878,5
-A5074136202,A5003387908,13
-A5074136202,A5029355343,2
-A5074136202,A5091269988,2
-A5012124878,A5050687912,28
-A5091269988,A5038225422,3
-A5002737724,A5029355343,32
-A5058182015,A5050118042,3
-A5103363766,A5024307390,2
-A5047021803,A5071518040,2
-A5047021803,A5024307390,2
-A5056730974,A5058692078,3
-A5020443904,A5082564678,4
-A5020443904,A5089618972,2
-A5035350983,A5049493540,8
-A5040434328,A5049493540,2
-A5017365821,A5102757088,5
-A5017365821,A5058692078,6
-A5052739469,A5022806000,6
-A5052739469,A5101701471,3
-A5071518040,A5022806000,3
-A5071518040,A5110503698,9
-A5071518040,A5024307390,8
-A5082564678,A5046085237,48
-A5082564678,A5058692078,11
-A5058692078,A5029355343,2
-A5058692078,A5102757088,5
-A5028654789,A5058980125,16
-A5110503698,A5101701471,2
-A5110503698,A5024307390,2
-A5038225422,A5110517622,13
-A5038225422,A5102757088,2
-A5101701471,A5024307390,4
-A5071327924,A5003387908,6
-A5024307390,A5022806000,7
-A5003387908,A5029355343,2
-A5049493540,A5103228857,22
+i|r|vicente ferreira,i|d|mara dos santos tavares,2
+i|r|vicente ferreira,i|f|aparecida dias,4
+f|scsv|tanaka,f|fb|vito,33
+f|scsv|tanaka,i|h|moraes souza,11
+f|scsv|tanaka,f|acdm|carneiro,29
+f|scsv|tanaka,i|f|bernadelli de vito,2
+i|j|cesar de souza inacio goncalves,i|r|valentim gelamo,3
+i|j|cesar de souza inacio goncalves,i|m|s da luz,12
+i|j|cesar de souza inacio goncalves,i|d|carneiro ferreira,14
+i|j|cesar de souza inacio goncalves,i|g|roger pointer malpass,2
+i|m|torreglosa ruiz,i|b|dias miranda parreira,10
+i|m|torreglosa ruiz,i|b|ferreira goulart,9
+i|m|torreglosa ruiz,i|s|riul da silva,12
+i|m|torreglosa ruiz,i|m|carvalho paschoini,16
+i|m|torreglosa ruiz,f|divanice|contim,30
+i|m|torreglosa ruiz,i|m|paula custodio silva,17
+i|m|torreglosa ruiz,i|k|faria de oliveira,14
+i|m|torreglosa ruiz,f|joilson|meneguci,3
+i|m|torreglosa ruiz,i|c|jose freire oliveira,5
+i|m|torreglosa ruiz,i|w|francisco rodrigues,5
+i|m|torreglosa ruiz,i|j|bonolo do amaral rocha,6
+i|m|torreglosa ruiz,i|s|regina ribeiro chavaglia,6
+i|m|torreglosa ruiz,i|g|de araujo pereira,2
+i|m|torreglosa ruiz,f|elizabeth|barichello,5
+i|m|torreglosa ruiz,i|a|cristina nicolussi,2
+f|elizabeth|barichello,i|m|helena barbosa,58
+f|elizabeth|barichello,i|m|marques dos santos felix,17
+f|elizabeth|barichello,i|a|lucia de assis simoes,2
+f|elizabeth|barichello,i|a|cristina nicolussi,7
+f|elizabeth|barichello,i|k|faria de oliveira,15
+f|elizabeth|barichello,i|v|jose haas,5
+f|elizabeth|barichello,i|l|aparecida ferreira,2
+f|elizabeth|barichello,f|divanice|contim,6
+f|elizabeth|barichello,i|j|bonolo do amaral rocha,2
+f|elizabeth|barichello,i|d|ferreira da cunha,4
+f|elizabeth|barichello,i|s|regina ribeiro chavaglia,8
+f|elizabeth|barichello,i|h|hemiko iwamoto,2
+f|elizabeth|barichello,i|k|goncalves do nascimento,2
+f|elizabeth|barichello,i|m|paula custodio silva,4
+f|aluizio|prata,f|dalmo|correia,13
+f|aluizio|prata,f|virmondes|rodrigues,7
+f|aluizio|prata,i|h|moraes souza,2
+f|aluizio|prata,i|l|de almeida silva teixeira,6
+f|aluizio|prata,i|m|leon silva vergara,9
+f|aluizio|prata,i|v|jose dias da silva,5
+f|aluizio|prata,i|e|lages silva,3
+f|aluizio|prata,i|l|eduardo ramırez,2
+f|aluizio|prata,i|m|antonia dos reis,2
+i|l|euripedes andrade silva,i|k|ferreira paim,19
+i|l|euripedes andrade silva,i|m|leon silva vergara,22
+i|l|euripedes andrade silva,f|marcos|silva,10
+i|l|euripedes andrade silva,f|virmondes|rodrigues,8
+i|l|euripedes andrade silva,i|a|luiz pedrosa,4
+i|l|euripedes andrade silva,i|c|jose freire oliveira,7
+i|l|euripedes andrade silva,i|e|lages silva,2
+i|l|euripedes andrade silva,i|f|bernadelli de vito,2
+i|l|euripedes andrade silva,i|f|rodrigues helmo,3
+i|l|euripedes andrade silva,i|h|moraes souza,3
+i|l|euripedes andrade silva,i|w|francisco rodrigues,2
+i|l|euripedes andrade silva,i|a|de paula rogerio,3
+i|s|aparecida de lima pereira,f|virmondes|rodrigues,14
+i|s|aparecida de lima pereira,i|d|bertulucci rocha rodrigues,19
+i|s|aparecida de lima pereira,i|m|antonia dos reis,6
+i|s|aparecida de lima pereira,i|v|de paula antunes teixeira,7
+i|s|aparecida de lima pereira,i|r|margarida etchebehere,8
+i|s|aparecida de lima pereira,i|s|jorge adad,4
+i|s|aparecida de lima pereira,i|a|paula espindula,6
+i|d|seithi kato,i|d|fernando bovolenta ovigli,3
+i|c|gomez hernandez,i|a|luiz pedrosa,3
+i|c|gomez hernandez,i|e|lages silva,6
+i|c|gomez hernandez,i|l|eduardo ramırez,8
+i|c|gomez hernandez,f|marcos|silva,8
+i|c|gomez hernandez,f|virmondes|rodrigues,11
+i|c|gomez hernandez,i|c|jose freire oliveira,3
+i|c|gomez hernandez,i|j|reis machado,3
+i|c|gomez hernandez,i|f|rodrigues helmo,2
+i|c|gomez hernandez,i|f|bernadelli de vito,2
+i|c|gomez hernandez,i|h|moraes souza,2
+i|v|de paula antunes teixeira,i|c|lourencini cavellani,35
+i|v|de paula antunes teixeira,i|j|reis machado,5
+i|v|de paula antunes teixeira,i|m|antonia dos reis,54
+i|v|de paula antunes teixeira,i|r|rosa miranda correa,32
+i|v|de paula antunes teixeira,f|virmondes|rodrigues,2
+i|v|de paula antunes teixeira,i|d|bertulucci rocha rodrigues,4
+i|v|de paula antunes teixeira,i|a|paula espindula,35
+i|v|de paula antunes teixeira,i|l|aparecida pascucci sande de souza,8
+i|v|de paula antunes teixeira,i|d|ferreira da cunha,7
+i|v|de paula antunes teixeira,i|v|modesto dos santos,6
+i|v|de paula antunes teixeira,f|dalmo|correia,2
+i|v|de paula antunes teixeira,i|f|rodrigues helmo,5
+i|v|de paula antunes teixeira,i|l|penna rocha,10
+i|v|de paula antunes teixeira,i|m|falangola accioly,2
+i|v|de paula antunes teixeira,i|j|emilio lazo chica,2
+i|v|de paula antunes teixeira,i|s|jorge adad,2
+f|afonso|pelli,f|virmondes|rodrigues,4
+f|afonso|pelli,f|marcos|silva,3
+f|afonso|pelli,i|c|jose freire oliveira,3
+f|afonso|pelli,i|a|dias paiva,2
+i|a|bernadete trovo de marqui,i|m|aparecida spadotto balarin,7
+i|a|bernadete trovo de marqui,i|m|paula custodio silva,3
+i|a|bernadete trovo de marqui,i|v|jose haas,2
+i|a|bernadete trovo de marqui,i|m|de fatima borges,4
+i|e|lages silva,f|dalmo|correia,14
+i|e|lages silva,i|a|luiz pedrosa,16
+i|e|lages silva,i|l|eduardo ramırez,32
+i|e|lages silva,f|marcos|silva,7
+i|e|lages silva,f|virmondes|rodrigues,8
+i|e|lages silva,i|c|jose freire oliveira,4
+i|e|lages silva,i|j|reis machado,4
+i|e|lages silva,i|v|jose dias da silva,4
+i|e|lages silva,i|m|leon silva vergara,4
+i|e|lages silva,i|k|ferreira paim,3
+i|e|lages silva,i|g|de araujo pereira,3
+i|e|lages silva,i|d|bertulucci rocha rodrigues,3
+i|e|lages silva,i|m|aurelho de lima,4
+i|e|lages silva,i|v|modesto dos santos,3
+i|l|aparecida kauchakje pedrosa,i|v|jose haas,5
+i|l|aparecida kauchakje pedrosa,i|l|aparecida ferreira,2
+i|l|aparecida kauchakje pedrosa,i|b|ferreira goulart,2
+f|beatriz|gaydeczka,i|a|mario karwoski,3
+f|beatriz|gaydeczka,i|a|claudia granato,5
+f|beatriz|gaydeczka,i|g|roger pointer malpass,4
+f|beatriz|gaydeczka,i|m|hitomi okura,2
+i|s|regina ribeiro chavaglia,i|h|hemiko iwamoto,2
+i|s|regina ribeiro chavaglia,f|divanice|contim,6
+i|s|regina ribeiro chavaglia,i|a|cristina nicolussi,3
+i|s|regina ribeiro chavaglia,i|k|faria de oliveira,4
+i|s|regina ribeiro chavaglia,i|k|goncalves do nascimento,9
+i|s|regina ribeiro chavaglia,i|m|helena barbosa,17
+i|s|regina ribeiro chavaglia,i|a|da silva santos,3
+i|s|regina ribeiro chavaglia,i|l|aparecida ferreira,9
+i|s|regina ribeiro chavaglia,i|v|jose haas,2
+i|f|rodrigues helmo,i|j|reis machado,15
+i|f|rodrigues helmo,i|l|penna rocha,9
+i|f|rodrigues helmo,i|m|antonia dos reis,14
+i|f|rodrigues helmo,i|r|margarida etchebehere,4
+i|f|rodrigues helmo,i|r|rosa miranda correa,14
+i|f|rodrigues helmo,f|marcos|silva,11
+i|f|rodrigues helmo,f|virmondes|rodrigues,10
+i|f|rodrigues helmo,i|c|jose freire oliveira,6
+i|f|rodrigues helmo,i|f|bernadelli de vito,3
+i|f|rodrigues helmo,i|h|moraes souza,4
+i|f|rodrigues helmo,i|k|ferreira paim,3
+i|f|rodrigues helmo,i|w|francisco rodrigues,3
+i|f|rodrigues helmo,i|d|bertulucci rocha rodrigues,4
+i|f|rodrigues helmo,i|f|aparecida dias,3
+i|f|rodrigues helmo,i|l|aparecida ferreira,3
+i|f|rodrigues helmo,i|m|de fatima borges,2
+i|f|rodrigues helmo,i|b|ferreira goulart,3
+i|f|rodrigues helmo,i|l|resende rodrigues,3
+i|c|lourencini cavellani,i|j|reis machado,2
+i|c|lourencini cavellani,i|m|antonia dos reis,11
+i|c|lourencini cavellani,i|r|rosa miranda correa,26
+i|c|lourencini cavellani,i|a|paula espindula,12
+i|c|lourencini cavellani,i|l|penna rocha,10
+i|c|lourencini cavellani,i|l|aparecida pascucci sande de souza,2
+i|c|lourencini cavellani,i|d|mara dos santos tavares,2
+i|g|de araujo pereira,i|f|carolina camargo,17
+i|g|de araujo pereira,i|h|hemiko iwamoto,12
+i|g|de araujo pereira,i|i|aparecida porcatti de walsh,7
+i|g|de araujo pereira,i|f|bernadelli de vito,4
+i|g|de araujo pereira,i|h|moraes souza,19
+i|g|de araujo pereira,f|divanice|contim,7
+i|g|de araujo pereira,f|virmondes|rodrigues,5
+i|g|de araujo pereira,i|s|riul da silva,4
+i|g|de araujo pereira,i|a|da silva santos,3
+i|g|de araujo pereira,i|l|augusto alves garcia,8
+i|g|de araujo pereira,i|j|bonolo do amaral rocha,2
+i|g|de araujo pereira,i|m|paula custodio silva,2
+i|g|de araujo pereira,i|l|aparecida ferreira,2
+i|g|de araujo pereira,i|m|pereira rezende,2
+i|h|cristina figueiredo frizzo,i|l|aparecida ferreira,2
+i|m|paula custodio silva,f|divanice|contim,47
+i|m|paula custodio silva,i|j|bonolo do amaral rocha,26
+i|m|paula custodio silva,i|s|elaine malaguti toffano,3
+i|m|paula custodio silva,i|b|ferreira goulart,3
+i|m|paula custodio silva,i|k|goncalves do nascimento,2
+i|m|paula custodio silva,i|k|faria de oliveira,5
+i|r|junio de oliveira,i|p|i s maia,7
+i|c|bosquiero papini,f|sheilla|tribess,3
+i|c|bosquiero papini,i|a|christian ribeiro andaki,5
+i|c|bosquiero papini,i|j|eidi sasaki,3
+i|m|s da luz,i|r|valentim gelamo,3
+i|m|s da luz,i|d|carneiro ferreira,10
+i|m|s da luz,i|r|s silva,2
+i|m|s da luz,i|k|graciele dos santos,3
+i|m|antoniazi michelin,i|e|fernando candido murta,55
+i|m|antoniazi michelin,i|f|lera orsatti,11
+i|m|antoniazi michelin,i|s|jorge adad,8
+i|m|antoniazi michelin,i|r|simoes nomelini,12
+i|m|antoniazi michelin,i|f|carolina ribeiro dias,2
+i|m|antoniazi michelin,i|r|margarida etchebehere,2
+i|m|antoniazi michelin,i|j|emilio lazo chica,3
+i|d|carneiro ferreira,i|g|roger pointer malpass,4
+i|d|carneiro ferreira,i|j|aparecido moreto,2
+i|d|carneiro ferreira,i|r|valentim gelamo,4
+i|f|aparecida dias,i|p|cristina dos santos ferreira,23
+i|f|aparecida dias,i|v|jose haas,4
+i|f|aparecida dias,i|d|mara dos santos tavares,59
+i|f|aparecida dias,i|l|resende rodrigues,9
+i|f|aparecida dias,i|m|sousa pegorari,6
+i|f|aparecida dias,i|l|aparecida ferreira,5
+i|f|aparecida dias,i|m|pereira rezende,2
+i|f|aparecida dias,i|b|dias miranda parreira,3
+i|f|aparecida dias,f|joilson|meneguci,4
+i|f|aparecida dias,i|g|fiori marchiori,8
+i|f|aparecida dias,i|s|riul da silva,2
+i|f|aparecida dias,i|m|de fatima borges,2
+f|joilson|meneguci,f|sheilla|tribess,24
+f|joilson|meneguci,i|j|eidi sasaki,23
+f|joilson|meneguci,i|j|sindra virtuoso junior,31
+f|joilson|meneguci,i|a|da silva santos,7
+f|joilson|meneguci,i|l|marina scatena,2
+f|joilson|meneguci,i|h|moraes souza,2
+f|joilson|meneguci,f|divanice|contim,3
+f|joilson|meneguci,i|c|jose freire oliveira,2
+f|joilson|meneguci,i|w|francisco rodrigues,2
+f|joilson|meneguci,i|d|mara dos santos tavares,4
+f|joilson|meneguci,i|e|lacerda mendes,2
+f|joilson|meneguci,i|a|paula espindula,2
+i|d|mara dos santos tavares,i|p|cristina dos santos ferreira,25
+i|d|mara dos santos tavares,i|m|sousa pegorari,10
+i|d|mara dos santos tavares,i|l|resende rodrigues,25
+i|d|mara dos santos tavares,i|g|fiori marchiori,27
+i|d|mara dos santos tavares,i|v|jose haas,10
+i|d|mara dos santos tavares,i|h|hemiko iwamoto,3
+i|d|mara dos santos tavares,i|a|lucia de assis simoes,6
+i|d|mara dos santos tavares,i|j|sindra virtuoso junior,3
+i|d|mara dos santos tavares,i|l|aparecida ferreira,2
+i|d|mara dos santos tavares,i|s|riul da silva,2
+i|d|mara dos santos tavares,i|r|rosa miranda correa,2
+i|a|paula espindula,i|l|aparecida pascucci sande de souza,11
+i|a|paula espindula,i|c|jose freire oliveira,2
+i|a|paula espindula,i|w|francisco rodrigues,2
+i|a|paula espindula,i|r|rosa miranda correa,6
+i|a|paula espindula,i|m|falangola accioly,3
+i|a|paula espindula,i|l|penna rocha,3
+i|a|paula espindula,i|m|antonia dos reis,5
+i|l|fernanda rodrigues martinho fernandes,i|i|aparecida porcatti de walsh,2
+i|l|fernanda rodrigues martinho fernandes,i|l|aparecida pascucci sande de souza,11
+i|l|fernanda rodrigues martinho fernandes,i|l|jorge patrizzi,2
+i|l|fernanda rodrigues martinho fernandes,f|eduardo|crema,2
+i|l|fernanda rodrigues martinho fernandes,f|dernival|bertoncello,10
+i|l|fernanda rodrigues martinho fernandes,f|karina|pereira,2
+i|m|antonia dos reis,f|marcos|silva,23
+i|m|antonia dos reis,i|j|reis machado,53
+i|m|antonia dos reis,i|r|margarida etchebehere,5
+i|m|antonia dos reis,i|r|rosa miranda correa,51
+i|m|antonia dos reis,i|l|penna rocha,37
+i|m|antonia dos reis,f|virmondes|rodrigues,8
+i|m|antonia dos reis,i|d|bertulucci rocha rodrigues,12
+i|m|antonia dos reis,i|m|carvalho paschoini,2
+i|m|antonia dos reis,i|d|ferreira da cunha,2
+i|m|antonia dos reis,i|s|jorge adad,4
+i|m|antonia dos reis,i|m|leon silva vergara,2
+i|m|antonia dos reis,f|dalmo|correia,3
+i|m|antonia dos reis,i|j|emilio lazo chica,2
+i|m|antonia dos reis,i|o|barbosa neto,3
+i|m|antonia dos reis,i|v|jose dias da silva,2
+i|m|antonia dos reis,i|v|modesto dos santos,4
+f|sheilla|tribess,i|j|eidi sasaki,17
+f|sheilla|tribess,i|j|sindra virtuoso junior,50
+i|m|aurelho de lima,i|v|modesto dos santos,9
+i|m|aurelho de lima,i|m|leon silva vergara,2
+i|m|aurelho de lima,i|l|eduardo ramırez,4
+i|m|aurelho de lima,i|m|de fatima borges,6
+f|marcos|silva,i|j|reis machado,52
+f|marcos|silva,i|r|margarida etchebehere,2
+f|marcos|silva,i|r|rosa miranda correa,15
+f|marcos|silva,f|virmondes|rodrigues,96
+f|marcos|silva,i|d|bertulucci rocha rodrigues,23
+f|marcos|silva,i|c|botelho miguel,3
+f|marcos|silva,i|c|jose freire oliveira,69
+f|marcos|silva,f|dalmo|correia,11
+f|marcos|silva,i|k|ferreira paim,5
+f|marcos|silva,i|m|leon silva vergara,4
+f|marcos|silva,i|j|aparecido moreto,5
+f|marcos|silva,i|r|valentim gelamo,7
+f|marcos|silva,i|l|eduardo ramırez,8
+f|marcos|silva,i|l|penna rocha,9
+f|marcos|silva,i|w|francisco rodrigues,12
+f|marcos|silva,i|v|jose dias da silva,7
+f|marcos|silva,i|s|de castro soares,10
+f|marcos|silva,i|f|bernadelli de vito,13
+f|marcos|silva,i|f|lera orsatti,2
+f|marcos|silva,i|m|vinicius campos souza,2
+f|marcos|silva,i|p|i s maia,2
+f|marcos|silva,i|j|emilio lazo chica,2
+f|marcos|silva,i|m|de fatima borges,2
+f|marcos|silva,i|h|moraes souza,7
+f|marcos|silva,i|a|de paula rogerio,5
+f|marcos|silva,i|l|de almeida silva teixeira,3
+i|s|elaine malaguti toffano,f|divanice|contim,10
+i|s|elaine malaguti toffano,i|a|cristina nicolussi,6
+i|s|elaine malaguti toffano,i|r|euripedes da silveira,2
+i|s|elaine malaguti toffano,i|v|jose haas,2
+i|f|carolina camargo,i|h|hemiko iwamoto,16
+i|f|carolina camargo,i|l|augusto alves garcia,24
+i|f|carolina camargo,i|a|da silva santos,13
+i|f|carolina camargo,f|divanice|contim,4
+i|f|carolina camargo,i|j|bonolo do amaral rocha,2
+i|f|carolina camargo,i|i|aparecida porcatti de walsh,2
+i|f|carolina camargo,i|l|aparecida ferreira,2
+i|f|carolina camargo,i|m|pereira rezende,2
+f|divanice|contim,i|j|bonolo do amaral rocha,33
+f|divanice|contim,i|b|ferreira goulart,8
+f|divanice|contim,i|c|jose freire oliveira,3
+f|divanice|contim,i|w|francisco rodrigues,3
+f|divanice|contim,i|k|goncalves do nascimento,2
+f|divanice|contim,i|a|da silva santos,2
+f|divanice|contim,i|r|euripedes da silveira,3
+f|divanice|contim,i|a|lucia de assis simoes,3
+f|divanice|contim,i|h|hemiko iwamoto,2
+f|divanice|contim,i|k|faria de oliveira,5
+i|m|pereira rezende,i|l|aparecida ferreira,19
+i|m|pereira rezende,i|b|ferreira goulart,7
+i|m|pereira rezende,i|b|dias miranda parreira,4
+i|m|pereira rezende,i|a|da silva santos,2
+i|m|pereira rezende,i|l|augusto alves garcia,2
+i|r|simoes nomelini,i|b|martins tavares murta,10
+i|r|simoes nomelini,i|e|fernando candido murta,51
+i|r|simoes nomelini,i|f|lera orsatti,10
+i|r|simoes nomelini,i|s|jorge adad,3
+i|r|simoes nomelini,i|r|margarida etchebehere,7
+i|r|simoes nomelini,i|l|ronan marquez ferreira de souza,4
+i|r|simoes nomelini,i|m|vinicius campos souza,3
+i|r|simoes nomelini,i|m|carvalho paschoini,2
+i|f|scorsolini comin,i|s|martins barroso,3
+i|j|eidi sasaki,i|o|barbosa neto,2
+i|j|eidi sasaki,i|j|sindra virtuoso junior,21
+i|j|eidi sasaki,i|a|da silva santos,4
+i|j|eidi sasaki,i|g|ribeiro da mota,10
+i|j|eidi sasaki,i|a|christian ribeiro andaki,3
+i|j|eidi sasaki,i|e|lacerda mendes,4
+i|k|ferreira paim,i|m|leon silva vergara,23
+i|k|ferreira paim,f|virmondes|rodrigues,6
+i|k|ferreira paim,i|a|luiz pedrosa,5
+i|k|ferreira paim,i|s|de castro soares,2
+i|k|ferreira paim,i|c|jose freire oliveira,3
+i|k|ferreira paim,i|h|moraes souza,3
+i|k|ferreira paim,i|w|francisco rodrigues,2
+i|b|martins tavares murta,i|e|fernando candido murta,24
+i|b|martins tavares murta,i|s|jorge adad,2
+i|b|martins tavares murta,f|dernival|bertoncello,3
+i|f|lera orsatti,i|l|ronan marquez ferreira de souza,4
+i|f|lera orsatti,i|e|fernando candido murta,14
+i|f|lera orsatti,i|g|vannucchi portari,7
+i|f|lera orsatti,i|g|ribeiro da mota,5
+i|f|lera orsatti,i|o|barbosa neto,3
+i|f|lera orsatti,i|m|vinicius campos souza,25
+i|f|lera orsatti,i|j|emilio lazo chica,3
+i|a|de paula rogerio,i|c|jose freire oliveira,5
+i|a|de paula rogerio,i|j|emilio lazo chica,3
+i|a|de paula rogerio,f|virmondes|rodrigues,6
+i|a|de paula rogerio,i|m|leon silva vergara,5
+i|a|de paula rogerio,i|e|lacerda mendes,2
+i|a|de paula rogerio,i|f|bernadelli de vito,2
+i|a|de paula rogerio,f|dernival|bertoncello,2
+i|d|ferreira da cunha,i|g|vannucchi portari,6
+i|d|ferreira da cunha,i|v|modesto dos santos,6
+i|d|ferreira da cunha,f|virmondes|rodrigues,2
+i|d|ferreira da cunha,i|m|leon silva vergara,4
+i|d|ferreira da cunha,i|k|faria de oliveira,2
+i|d|ferreira da cunha,i|m|helena barbosa,4
+f|karina|pereira,i|i|aparecida porcatti de walsh,7
+f|karina|pereira,i|s|gomes novais shimano,6
+f|karina|pereira,f|dernival|bertoncello,3
+f|karina|pereira,i|l|aparecida pascucci sande de souza,2
+i|l|augusto alves garcia,i|a|da silva santos,25
+i|l|augusto alves garcia,i|h|hemiko iwamoto,6
+i|l|augusto alves garcia,i|l|aparecida ferreira,3
+i|c|jose freire oliveira,f|virmondes|rodrigues,55
+i|c|jose freire oliveira,i|c|botelho miguel,18
+i|c|jose freire oliveira,i|j|emilio lazo chica,14
+i|c|jose freire oliveira,i|s|de castro soares,22
+i|c|jose freire oliveira,i|w|francisco rodrigues,38
+i|c|jose freire oliveira,i|d|bertulucci rocha rodrigues,8
+i|c|jose freire oliveira,i|j|reis machado,13
+i|c|jose freire oliveira,i|l|eduardo ramırez,3
+i|c|jose freire oliveira,i|j|aparecido moreto,4
+i|c|jose freire oliveira,i|r|valentim gelamo,5
+i|c|jose freire oliveira,i|f|bernadelli de vito,5
+i|c|jose freire oliveira,i|r|guillermo nascimento ferreira,3
+i|c|jose freire oliveira,i|v|jose dias da silva,2
+i|c|jose freire oliveira,i|h|moraes souza,4
+i|c|jose freire oliveira,f|dalmo|correia,2
+i|c|jose freire oliveira,i|k|faria de oliveira,2
+i|c|jose freire oliveira,i|m|carvalho paschoini,2
+i|c|jose freire oliveira,i|s|jorge adad,2
+i|d|ferreira moreira lobato,i|s|gomes novais shimano,2
+i|d|ferreira moreira lobato,f|dernival|bertoncello,9
+i|k|faria de oliveira,i|a|cristina nicolussi,3
+i|k|faria de oliveira,i|k|goncalves do nascimento,5
+i|k|faria de oliveira,i|m|helena barbosa,18
+i|k|faria de oliveira,i|m|carvalho paschoini,7
+i|k|faria de oliveira,i|m|marques dos santos felix,5
+i|k|faria de oliveira,i|w|francisco rodrigues,2
+i|m|hitomi okura,i|a|claudia granato,16
+i|m|hitomi okura,i|g|roger pointer malpass,13
+i|a|lucia de assis simoes,i|b|ferreira goulart,8
+i|a|lucia de assis simoes,i|m|helena barbosa,2
+i|a|lucia de assis simoes,i|l|resende rodrigues,2
+i|a|lucia de assis simoes,i|s|riul da silva,2
+i|a|lucia de assis simoes,i|b|dias miranda parreira,4
+i|j|reis machado,i|r|margarida etchebehere,5
+i|j|reis machado,i|r|rosa miranda correa,31
+i|j|reis machado,i|l|penna rocha,27
+i|j|reis machado,f|virmondes|rodrigues,22
+i|j|reis machado,i|d|bertulucci rocha rodrigues,11
+i|j|reis machado,i|l|eduardo ramırez,3
+i|j|reis machado,i|v|jose dias da silva,3
+i|j|reis machado,i|f|bernadelli de vito,2
+i|j|reis machado,f|dalmo|correia,4
+i|j|reis machado,i|l|de almeida silva teixeira,2
+i|j|reis machado,i|w|francisco rodrigues,4
+i|l|marina scatena,i|a|da silva santos,2
+i|l|marina scatena,i|m|de fatima borges,3
+i|a|luiz pedrosa,i|l|eduardo ramırez,13
+i|a|luiz pedrosa,i|m|leon silva vergara,6
+i|a|luiz pedrosa,f|dalmo|correia,3
+i|a|luiz pedrosa,f|virmondes|rodrigues,3
+i|a|luiz pedrosa,i|f|bernadelli de vito,2
+i|r|rosa miranda correa,i|r|margarida etchebehere,5
+i|r|rosa miranda correa,i|l|penna rocha,38
+i|r|rosa miranda correa,i|m|carvalho paschoini,2
+i|v|modesto dos santos,i|m|leon silva vergara,4
+i|v|modesto dos santos,i|l|eduardo ramırez,3
+i|v|modesto dos santos,i|s|jorge adad,4
+i|l|resende rodrigues,i|h|hemiko iwamoto,2
+i|l|resende rodrigues,i|p|cristina dos santos ferreira,6
+i|l|resende rodrigues,i|b|ferreira goulart,10
+i|l|resende rodrigues,i|l|aparecida ferreira,3
+i|l|resende rodrigues,i|b|dias miranda parreira,2
+i|l|resende rodrigues,i|m|sousa pegorari,2
+i|m|leon silva vergara,f|virmondes|rodrigues,11
+i|m|leon silva vergara,i|l|de almeida silva teixeira,4
+i|m|leon silva vergara,i|e|lacerda mendes,8
+i|m|leon silva vergara,i|s|jorge adad,12
+i|m|leon silva vergara,f|dalmo|correia,5
+i|m|leon silva vergara,i|s|de castro soares,2
+i|m|leon silva vergara,i|r|margarida etchebehere,5
+i|m|leon silva vergara,i|e|fernando candido murta,2
+i|m|vinicius campos souza,i|l|ronan marquez ferreira de souza,2
+i|m|vinicius campos souza,i|g|vannucchi portari,3
+f|eduardo|crema,i|s|jorge adad,7
+f|eduardo|crema,f|virmondes|rodrigues,8
+f|eduardo|crema,i|a|augusto da silva,26
+f|eduardo|crema,i|r|margarida etchebehere,3
+i|l|aparecida ferreira,i|m|helena barbosa,9
+i|l|aparecida ferreira,i|m|marques dos santos felix,4
+i|l|aparecida ferreira,i|v|jose haas,4
+i|l|aparecida ferreira,i|m|de fatima borges,2
+i|l|aparecida ferreira,i|a|da silva santos,5
+i|l|aparecida ferreira,i|a|cristina nicolussi,2
+f|dalmo|correia,f|virmondes|rodrigues,18
+f|dalmo|correia,i|v|jose dias da silva,10
+f|dalmo|correia,i|l|eduardo ramırez,3
+f|dalmo|correia,i|d|bertulucci rocha rodrigues,5
+f|dalmo|correia,i|l|de almeida silva teixeira,2
+f|dalmo|correia,i|o|barbosa neto,3
+i|i|aparecida porcatti de walsh,f|dernival|bertoncello,17
+i|i|aparecida porcatti de walsh,i|l|jorge patrizzi,17
+i|i|aparecida porcatti de walsh,i|m|sousa pegorari,7
+i|i|aparecida porcatti de walsh,i|m|falangola accioly,9
+i|i|aparecida porcatti de walsh,i|s|gomes novais shimano,7
+i|m|carvalho paschoini,i|b|dias miranda parreira,5
+i|m|carvalho paschoini,f|virmondes|rodrigues,4
+i|m|carvalho paschoini,i|m|aparecida spadotto balarin,3
+i|m|carvalho paschoini,i|s|riul da silva,2
+i|m|carvalho paschoini,i|a|borges peixoto,4
+i|m|carvalho paschoini,i|w|francisco rodrigues,2
+i|m|carvalho paschoini,i|e|fernando candido murta,3
+i|m|carvalho paschoini,i|l|ronan marquez ferreira de souza,2
+i|a|dias paiva,i|w|francisco rodrigues,4
+i|a|dias paiva,i|s|de castro soares,3
+f|acdm|carneiro,f|fb|vito,38
+f|acdm|carneiro,i|h|moraes souza,15
+f|acdm|carneiro,i|f|bernadelli de vito,2
+i|e|fernando candido murta,i|s|jorge adad,28
+i|e|fernando candido murta,i|r|margarida etchebehere,9
+i|e|fernando candido murta,f|dernival|bertoncello,3
+i|e|fernando candido murta,i|j|emilio lazo chica,3
+i|e|fernando candido murta,i|l|ronan marquez ferreira de souza,2
+i|g|ribeiro da mota,i|o|barbosa neto,16
+i|g|ribeiro da mota,i|v|jose dias da silva,3
+i|g|ribeiro da mota,i|e|lacerda mendes,15
+i|g|ribeiro da mota,i|a|christian ribeiro andaki,3
+i|j|bonolo do amaral rocha,i|b|ferreira goulart,3
+i|j|aparecido moreto,i|r|valentim gelamo,21
+i|j|aparecido moreto,i|p|i s maia,2
+i|m|marques dos santos felix,i|m|helena barbosa,39
+i|m|marques dos santos felix,i|k|goncalves do nascimento,4
+i|m|marques dos santos felix,i|v|jose haas,5
+i|k|goncalves do nascimento,i|m|helena barbosa,10
+i|v|jose haas,i|p|cristina dos santos ferreira,3
+i|v|jose haas,i|s|riul da silva,3
+i|v|jose haas,i|m|helena barbosa,13
+i|v|jose haas,i|a|cristina nicolussi,2
+i|s|riul da silva,i|b|dias miranda parreira,15
+i|s|riul da silva,i|b|ferreira goulart,3
+i|s|riul da silva,i|m|aparecida spadotto balarin,4
+i|p|donizete colombo,i|d|fernando bovolenta ovigli,17
+i|m|aparecida spadotto balarin,f|virmondes|rodrigues,2
+i|h|moraes souza,f|virmondes|rodrigues,14
+i|h|moraes souza,i|l|de almeida silva teixeira,2
+i|h|moraes souza,i|f|bernadelli de vito,22
+i|h|moraes souza,i|w|francisco rodrigues,3
+i|h|moraes souza,f|fb|vito,18
+i|g|jose luvizutto,i|l|aparecida pascucci sande de souza,48
+i|l|ronan marquez ferreira de souza,i|m|de fatima borges,2
+i|l|ronan marquez ferreira de souza,i|a|borges peixoto,4
+i|m|falangola accioly,i|l|jorge patrizzi,3
+i|m|falangola accioly,i|m|sousa pegorari,2
+f|regina|simoes,i|w|wey moreira,15
+i|a|claudia granato,i|g|roger pointer malpass,32
+i|a|augusto da silva,f|virmondes|rodrigues,4
+i|a|augusto da silva,i|r|margarida etchebehere,2
+i|a|augusto da silva,i|s|jorge adad,2
+i|d|bertulucci rocha rodrigues,f|virmondes|rodrigues,43
+i|d|bertulucci rocha rodrigues,i|j|emilio lazo chica,2
+i|d|bertulucci rocha rodrigues,i|r|margarida etchebehere,4
+i|d|bertulucci rocha rodrigues,i|s|jorge adad,5
+i|d|bertulucci rocha rodrigues,i|f|bernadelli de vito,4
+i|a|cristina nicolussi,i|m|helena barbosa,7
+i|a|cristina nicolussi,i|b|ferreira goulart,4
+i|j|sindra virtuoso junior,i|a|da silva santos,2
+i|j|sindra virtuoso junior,i|e|lacerda mendes,2
+i|a|da silva santos,i|r|euripedes da silveira,9
+i|a|da silva santos,i|h|hemiko iwamoto,2
+i|l|eduardo ramırez,f|virmondes|rodrigues,8
+i|l|eduardo ramırez,i|v|jose dias da silva,3
+i|b|ferreira goulart,i|b|dias miranda parreira,25
+i|b|ferreira goulart,i|h|hemiko iwamoto,3
+i|c|botelho miguel,f|virmondes|rodrigues,2
+i|c|botelho miguel,i|w|francisco rodrigues,35
+i|c|botelho miguel,i|j|emilio lazo chica,13
+i|c|botelho miguel,i|s|de castro soares,6
+i|l|de almeida silva teixeira,f|virmondes|rodrigues,8
+i|l|jorge patrizzi,i|l|aparecida pascucci sande de souza,5
+i|l|jorge patrizzi,i|m|sousa pegorari,9
+i|l|jorge patrizzi,i|s|gomes novais shimano,11
+i|l|aparecida pascucci sande de souza,f|dernival|bertoncello,4
+i|e|lacerda mendes,i|a|christian ribeiro andaki,28
+i|e|lacerda mendes,i|o|barbosa neto,3
+i|s|jorge adad,i|r|margarida etchebehere,10
+i|s|jorge adad,f|virmondes|rodrigues,4
+i|s|jorge adad,i|j|emilio lazo chica,2
+i|h|hemiko iwamoto,i|m|helena barbosa,3
+i|s|de castro soares,i|j|emilio lazo chica,4
+i|s|de castro soares,i|w|francisco rodrigues,8
+i|s|de castro soares,f|virmondes|rodrigues,6
+i|p|cristina dos santos ferreira,i|m|sousa pegorari,3
+i|m|de fatima borges,f|virmondes|rodrigues,7
+i|m|de fatima borges,i|o|barbosa neto,2
+i|v|jose dias da silva,i|o|barbosa neto,6
+i|v|jose dias da silva,f|virmondes|rodrigues,6
+i|l|penna rocha,i|r|margarida etchebehere,3
+i|o|barbosa neto,f|virmondes|rodrigues,2
+i|f|bernadelli de vito,f|virmondes|rodrigues,15
+i|f|bernadelli de vito,i|w|francisco rodrigues,2
+i|w|francisco rodrigues,i|j|emilio lazo chica,14
+i|w|francisco rodrigues,f|virmondes|rodrigues,8
+i|j|emilio lazo chica,f|virmondes|rodrigues,8
+i|j|emilio lazo chica,i|r|margarida etchebehere,2
+i|g|fiori marchiori,i|m|sousa pegorari,2
+i|s|gomes novais shimano,i|m|sousa pegorari,2

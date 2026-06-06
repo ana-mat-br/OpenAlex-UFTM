@@ -1,135 +1,134 @@
-id,nome,works,x,y,grau,betw,comunidade
-A5070218751,Sheilla Tribess,63,0.4022,-0.1829,94,0.0,6
-A5022495039,Divanice Contim,106,0.2191,0.4399,174,0.0528,1
-A5041195200,Mário León Silva-Vergara,60,-0.3031,-0.2396,83,0.0125,0
-A5091774258,Leiner Resende Rodriguês,56,0.4398,0.3035,64,0.038,7
-A5038661968,Jurema Ribeiro Luiz Gonçalves,30,0.466,0.545,22,0.0109,7
-A5036987924,Mariana Torreglosa Ruiz,107,0.1792,0.3156,136,0.0095,1
-A5056356335,Carlo José Freire Oliveira,155,-0.1191,-0.0801,314,0.2324,0
-A5086884754,Vicente de Paula Antunes Teixeira,75,0.1141,-0.393,112,0.0035,5
-A5034198739,Eddie Fernando Cândido Murta,165,-0.4023,-0.3808,189,0.0094,3
-A5074708962,Sheila Jorge Adad,88,-0.3053,-0.3973,89,0.0268,3
-A5014731706,Maria de Fátima Borges,57,0.091,-0.0011,28,0.0667,0
-A5051772910,Rosekeila Simões Nomelini,62,-0.4631,-0.4114,103,0.0004,3
-A5078424647,Joilson Meneguci,60,0.3059,-0.0234,110,0.0718,6
-A5018828113,Valdo José Dias da Silva,43,-0.2711,-0.3192,48,0.0212,0
-A5032502976,Darlene Mara dos Santos Tavares,191,0.4622,0.2369,182,0.0569,7
-A5017314580,Lislei Jorge Patrizzi,47,0.3851,0.0225,47,0.0039,4
-A5040195967,Jéferson Aparecido Moreto,46,-0.5398,-0.1011,33,0.0285,2
-A5037786772,Jesislei Bonolo do Amaral Rocha,34,0.2525,0.5702,74,0.006,1
-A5011685116,Leonardo Eurípedes Andrade-Silva,29,-0.1923,-0.1197,84,0.015,0
-A5059982114,Vicente de Paula Antunes Teixeira,51,0.0779,-0.4745,69,0.0213,5
-A5072920336,Ana Cláudia Granato,55,-0.992,0.2231,53,0.0,2
-A5040288608,Ricardo Vicente Ferreira,38,-0.0012,0.5018,6,0.0,7
-A5058499092,Suraya Gomes Novais Shimano,35,0.1903,0.2119,39,0.0123,4
-A5084927335,Isabel Aparecida Porcatti de Walsh,70,0.2497,0.0728,74,0.0175,4
-A5083811946,M. S. da Luz,54,-0.5543,-0.0247,30,0.0288,2
-A5075387240,Luı́s Eduardo Ramı́rez,43,-0.2922,-0.1126,72,0.002,0
-A5040471458,Jair Sindra Virtuoso Júnior,95,0.3804,-0.1117,109,0.0052,6
-A5037630236,Sueli Riul da Silva,65,0.2807,0.2864,51,0.0489,1
-A5067710226,Markus Vinícius Campos Souza,31,-0.5812,-0.5034,42,0.0074,3
-A5079367966,Virmondes Rodrigues,213,-0.1486,-0.1561,416,0.0384,0
-A5085120015,Fernanda Rodrígues Helmo,34,0.0335,-0.1067,115,0.0724,0
-A5005455476,Camila Lourencini Cavellani,46,0.1773,-0.3998,87,0.0219,5
-A5029717976,Laura Penna Rocha,44,-0.0141,-0.3663,129,0.001,5
-A5065161212,Deusmaque Carneiro Ferreira,42,-0.6989,0.1764,33,0.0135,2
-A5001589467,Mônica Hitomi Okura,37,-1.0,0.319,31,0.0,2
-A5025363397,Guilherme Vannucchi Portari,35,-0.098,-0.5561,11,0.0,5
-A5026990828,Karina Pereira,35,0.1117,0.1448,23,0.011,4
-A5002902079,Júlio César de Souza Inácio Gonçalves,32,-0.5734,0.2702,29,0.0577,2
-A5051596155,Kennio Ferreira‐Paim,36,-0.2489,-0.1734,73,0.0152,0
-A5050979460,Luan Augusto Alves Garcia,53,0.0983,0.5085,61,0.0,8
-A5073185876,Alberto Borges Peixoto,84,0.106,-0.2727,7,0.0,1
-A5032145517,Luís Ronan Marquez Ferreira de Souza,38,-0.3387,-0.3387,21,0.04,3
-A5030187085,Hélio Moraes‐Souza,94,-0.1505,0.0903,99,0.0195,0
-A5102965331,Mário León Silva-Vergara,37,-0.2745,-0.1986,29,0.0014,0
-A5023329910,Danilo Seithi Kato,36,0.7593,0.301,3,0.0,9
-A5054519106,Denise Bertulucci Rocha Rodrigues,56,-0.1541,-0.2741,139,0.0072,0
-A5081691156,Nuno Miguel Lopes de Oliveira,30,-0.0154,0.3421,18,0.005,4
-A5086875966,Marcelo A. S. Carneiro,30,-0.5856,-0.3651,51,0.0013,3
-A5080381055,Daniel Ferreira Moreira Lobato,33,-0.164,0.2885,13,0.0019,4
-A5101485993,Rosana Rosa Miranda Corrêa,62,0.0355,-0.2976,160,0.0041,5
-A5008465727,Pedro Donizete Colombo,51,0.0267,0.7626,17,0.0,9
-A5030184137,Vanderlei José Haas,82,0.502,0.475,60,0.0205,1
-A5024326383,Alexandre de Paula Rogério,38,-0.1169,-0.2379,29,0.0355,0
-A5070327059,Bibiane Dias Miranda Parreira,51,0.2821,0.3827,66,0.0007,1
-A5069962038,Marina Carvalho Paschoini,35,0.0286,0.0737,56,0.0784,1
-A5085887308,Ronaldo Junio de Oliveira,52,-0.7858,-0.6262,7,0.0,2
-A5000429300,Fernanda Carolina Camargo,67,0.0879,0.4536,74,0.0284,8
-A5001766474,Rogério Valentim Gelamo,83,-0.4773,-0.0007,41,0.1115,2
-A5012639919,Marly Aparecida Spadotto Balarin,33,0.1663,0.1105,27,0.0004,0
-A5014327448,Luciane Fernanda Rodrigues Martinho Fernandes,61,0.1287,-0.1095,31,0.0317,4
-A5072768597,Maria Helena Barbosa,154,0.4297,0.4286,180,0.0003,1
-A5008762321,Pedro I. S. Maia,62,-0.7454,-0.5074,11,0.0315,2
-A5110118193,Eliane Lages-Silva,48,-0.2677,-0.075,94,0.025,0
-A5042302781,Siomar de Castro Soares,117,-0.0434,-0.1724,62,0.0023,0
-A5053709982,Javier Emílio Lazo Chica,45,-0.2062,-0.1989,72,0.0249,0
-A5001395168,Márcia Marques dos Santos Félix,42,0.5242,0.4373,74,0.0,1
-A5029099574,Geoffroy Roger Pointer Malpass,61,-0.9301,0.2571,55,0.0567,2
-A5018918302,Fabio Scorsolini‐Comin,159,0.908,0.1086,3,0.0,10
-A5027034276,Rodrigo Eurípedes da Silveira,34,0.2452,0.7298,12,0.0042,8
-A5108397499,Marcus Aurelho de Lima,35,-0.2848,0.1026,15,0.0004,0
-A5046520410,Maycon Sousa Pegorari,34,0.5309,0.131,42,0.0445,7
-A5070805963,Karoline Faria de Oliveira,39,0.3025,0.3315,87,0.0351,1
-A5077166735,Octávio Barbosa Neto,32,-0.1328,-0.4908,33,0.0513,6
-A5015502750,Renata Margarida Etchebehere,61,-0.2392,-0.3868,75,0.0571,3
-A5018936499,Juliana Reis Machado,74,-0.0844,-0.2561,177,0.002,0
-A5066604363,Jeffer Eidi Sasaki,107,0.2504,-0.2088,87,0.0387,6
-A5004073657,Alex Augusto da Silva,37,-0.554,-0.2684,34,0.0015,3
-A5021551853,Lúcia Marina Scatena,59,0.596,0.0185,7,0.0074,8
-A5100655078,Marcos Silva,173,-0.1602,-0.1911,417,0.0697,0
-A5058366668,Bethânia Ferreira Goulart,68,0.3274,0.4373,83,0.0079,1
-A5024026302,Rhainer Guillermo Nascimento Ferreira,50,-0.5702,0.347,3,0.0,0
-A5016250125,Aline Dias Paiva,35,0.3122,-0.3053,9,0.0004,0
-A5072438285,Álvaro da Silva Santos,75,0.2429,0.3375,63,0.0167,8
-A5085863842,Márcia Antoniazi Michelin,78,-0.3719,-0.4941,96,0.0153,3
-A5044568307,Gilberto de Araújo Pereira,80,0.0382,0.2783,97,0.036,8
-A5008245057,Kássia Graciele dos Santos,62,-0.0674,-0.6076,3,0.0,2
-A5088509139,Daniel Ferreira da Cunha,42,0.1767,-0.097,30,0.0261,5
-A5049097750,Gustavo Ribeiro da Mota,147,-0.0511,-0.4612,49,0.0046,6
-A5002961117,Lúcia Aparecida Ferreira,88,0.2617,0.4474,82,0.1027,1
-A5003024169,Camila Bosquiero Papini,37,0.441,-0.5578,11,0.0145,6
-A5010510640,R.S. Silva,39,-0.5772,-0.7244,2,0.0,2
-A5074136202,Fernanda Bernadelli De Vito,40,-0.1414,-0.0032,83,0.0081,0
-A5012124878,Alynne Christian Ribeiro Andaki,51,0.1144,-0.4817,39,0.0006,6
-A5091269988,André Luiz Pedrosa,32,-0.211,-0.227,50,0.001,0
-A5002737724,Camila Botelho Miguel,34,-0.0872,-0.0909,72,0.0,0
-A5058182015,Beatriz Gaydeczka,30,-0.8793,-0.05,14,0.0431,2
-A5103363766,Ana Lúcia de Assis Simões,30,0.5403,0.509,22,0.0207,1
-A5047021803,Helena Hemiko Iwamoto,38,0.1778,0.4749,51,0.0126,8
-A5014425691,Sabrina Martins Barroso,56,0.7333,0.5298,3,0.0,10
-A5056730974,Marilita Falângola Accioly,37,0.5155,-0.1091,17,0.0278,4
-A5008230762,Marlene Antônia dos Reis,74,-0.07,-0.3163,108,0.0,0
-A5030542267,Fábio Lera Orsatti,96,-0.4359,-0.4771,107,0.0151,3
-A5050118042,Acir Mário Karwoski,48,-0.5304,-0.6201,3,0.0,2
-A5020443904,Dernival Bertoncello,89,-0.0218,-0.0062,50,0.0319,4
-A5087413321,Afonso Pelli,77,-0.0185,-0.5248,11,0.0059,0
-A5035350983,Gianna Fiori Marchiori,33,0.6406,0.257,37,0.0,7
-A5040434328,Marina Pereira Rezende,34,0.2097,0.5709,40,0.0147,1
-A5017365821,Sanívia Aparecida de Lima Pereira,39,-0.1081,-0.3987,62,0.0,5
-A5052739469,Silmara Elaine Malaguti Toffano,40,0.2238,0.7565,23,0.0023,1
-A5071518040,Suzel Regina Ribeiro Chaváglia,69,0.3804,0.5312,69,0.0047,1
-A5082564678,Luciane Aparecida Pascucci Sande de Souza,98,0.2735,-0.3173,91,0.0203,4
-A5050687912,Edmar Lacerda Mendes,86,0.0112,-0.3531,63,0.0264,6
-A5058692078,Ana Paula Espíndula,70,0.1779,-0.3525,85,0.0455,5
-A5061821165,Daniel Fernando Bovolenta Ovigli,46,0.2187,0.6709,20,0.0001,9
-A5028654789,Marcos de Lucca Moreira Gomes,30,0.2819,-0.4473,22,0.0175,11
-A5110503698,Kleiton Gonçalves do Nascimento,31,0.5326,0.5715,34,0.0034,1
-A5038225422,Dalmo Correia,91,-0.3177,-0.1974,85,0.0185,0
-A5101701471,Maria Paula Custódio Silva,47,0.2527,0.5176,103,0.0054,1
-A5046085237,Gustavo José Luvizutto,111,0.3161,-0.4776,48,0.0,4
-A5102757088,Marlene Antônia dos Reis,99,0.0148,-0.3741,155,0.0188,5
-A5102755852,Eduardo Crema,57,-0.442,-0.2462,46,0.0201,3
-A5058980125,Fernanda Carolina Ribeiro Dias,38,0.3203,-0.5954,18,0.0,11
-A5015307372,FB Vito,52,-0.3294,0.2661,18,0.0,0
-A5071327924,Alessandra Bernadete Trovó de Marqui,55,0.3162,0.1261,19,0.0002,0
-A5055875598,Leila Aparecida Kauchakje Pedrosa,32,0.622,0.7592,9,0.0004,1
-A5110517622,Áluízio Prata,78,-0.4161,-0.1451,40,0.0036,0
-A5024307390,Elizabeth Barichello,92,0.3893,0.4163,139,0.0146,1
-A5043425176,Heloísa Cristina Figueiredo Frizzo,30,-0.4867,0.5983,2,0.0,1
-A5003387908,Sarah Cristina Sato Vaz Tanaka,30,0.0075,0.0401,65,0.0028,0
-A5049493540,Flávia Aparecida Dias,78,0.4064,0.267,133,0.0144,7
-A5022806000,Adriana Cristina Nicolussi,52,0.4037,0.6355,36,0.0186,1
-A5089618972,Beatriz Martins Tavares‐Murta,30,-0.6057,-0.3743,28,0.0,3
-A5029355343,Wellington Francisco Rodrigues,78,-0.0168,-0.0509,150,0.0455,0
-A5103228857,Pollyana Cristina dos Santos Ferreira,38,0.5578,0.2763,60,0.0043,7
+id,nome,works,x,y,grau,betw,comunidade,grupo
+i|r|vicente ferreira,Ricardo Vicente Ferreira,38,-0.44,0.4983,6,0.0,8,General Health Professions
+f|scsv|tanaka,SCSV Tanaka,37,0.4914,0.4323,75,0.0,5,General Health Professions
+i|j|cesar de souza inacio goncalves,Júlio César de Souza Inácio Gonçalves,35,0.0142,-0.7564,31,0.0228,2,Materials Chemistry
+i|m|torreglosa ruiz,Mariângela Torreglosa Ruiz,118,-0.3559,-0.0131,142,0.0046,1,General Health Professions
+f|elizabeth|barichello,Elizabeth Barichello,92,-0.3835,-0.257,139,0.0156,1,General Health Professions
+f|aluizio|prata,Áluízio Prata,78,0.0933,0.424,49,0.0051,0,Epidemiology
+i|l|euripedes andrade silva,Leonardo Eurípedes Andrade-Silva,31,0.1498,0.2551,85,0.004,0,Epidemiology
+i|s|aparecida de lima pereira,Sanívia Aparecida de Lima Pereira,39,0.3105,0.0483,64,0.0,0,Epidemiology
+i|d|seithi kato,Danilo Seithi Kato,46,-0.3655,0.5167,3,0.0,9,Education
+i|c|gomez hernandez,César Gómez‐Hernández,32,0.2302,0.3035,48,0.0087,0,Epidemiology
+i|v|de paula antunes teixeira,Vicente de Paula Antunes Teixeira,126,0.2372,-0.0435,218,0.0353,4,Epidemiology
+f|afonso|pelli,Afonso Pelli,78,-0.2079,0.2484,12,0.0065,0,Epidemiology
+i|a|bernadete trovo de marqui,Alessandra Bernadete Trovó de Marqui,55,-0.4404,0.3049,16,0.0009,1,General Health Professions
+i|e|lages silva,Eliane Lages-Silva,66,0.1161,0.3345,120,0.0129,0,Epidemiology
+i|l|aparecida kauchakje pedrosa,Leila Aparecida Kauchakje Pedrosa,33,-0.3946,-0.5597,9,0.0005,1,General Health Professions
+f|beatriz|gaydeczka,Beatriz Gaydeczka,30,0.426,-0.9242,14,0.0427,2,Materials Chemistry
+i|s|regina ribeiro chavaglia,Suzel Regina Ribeiro Chaváglia,69,-0.4933,-0.2599,69,0.0041,1,General Health Professions
+i|f|rodrigues helmo,Fernanda Rodrígues Helmo,35,0.0311,0.0512,124,0.0362,4,Epidemiology
+i|c|lourencini cavellani,Camila Lourencini Cavellani,46,0.1799,-0.1036,100,0.0317,4,Epidemiology
+i|g|de araujo pereira,Gilberto de Araújo Pereira,81,-0.1375,0.0256,99,0.0354,5,General Health Professions
+i|h|cristina figueiredo frizzo,Heloísa Cristina Figueiredo Frizzo,31,-0.9264,-0.2333,2,0.0,1,General Health Professions
+i|m|paula custodio silva,Maria Paula Custódio Silva,55,-0.5199,-0.0752,112,0.0051,1,General Health Professions
+i|r|junio de oliveira,Ronaldo Junio de Oliveira,52,-0.6455,-0.396,7,0.0,2,Materials Chemistry
+i|c|bosquiero papini,Camila Bosquiero Papini,38,-0.5948,0.555,11,0.0143,7,Physiology
+i|m|s da luz,M. S. da Luz,58,-0.0802,-0.6281,30,0.0286,2,Materials Chemistry
+i|m|antoniazi michelin,Márcia Antoniazi Michelin,79,0.5388,0.2639,93,0.0143,3,Epidemiology
+i|d|carneiro ferreira,Deusmaque Carneiro Ferreira,42,0.024,-0.6296,34,0.0478,2,Materials Chemistry
+i|f|aparecida dias,Flávia Aparecida Dias,81,-0.3066,0.0331,134,0.014,8,General Health Professions
+f|joilson|meneguci,Joilson Meneguci,60,-0.3985,0.2472,111,0.0406,7,Physiology
+i|d|mara dos santos tavares,Darlene Mara dos Santos Tavares,195,-0.3015,-0.0241,182,0.0405,8,General Health Professions
+i|a|paula espindula,Ana Paula Espíndula,71,0.2297,-0.1316,87,0.0306,4,Epidemiology
+i|l|fernanda rodrigues martinho fernandes,Luciane Fernanda Rodrigues Martinho Fernandes,61,0.5716,-0.3706,29,0.0151,6,Neurology
+i|m|antonia dos reis,Marlene Antônia dos Reis,175,0.1781,0.0509,305,0.043,4,Epidemiology
+f|sheilla|tribess,Sheilla Tribess,63,-0.581,0.3624,94,0.0,7,Physiology
+i|m|aurelho de lima,Marcus Aurelho de Lima,36,0.1672,0.5203,25,0.0001,4,Epidemiology
+f|marcos|silva,Marcos Silva,173,0.1012,0.1223,438,0.1168,0,Epidemiology
+i|s|elaine malaguti toffano,Silmara Elaine Malaguti Toffano,40,-0.7257,-0.1715,23,0.0022,1,General Health Professions
+i|f|carolina camargo,Fernanda Carolina Camargo,70,-0.337,-0.0536,82,0.0243,5,General Health Professions
+f|divanice|contim,Divanice Contim,109,-0.4474,-0.0669,177,0.0504,1,General Health Professions
+i|m|pereira rezende,Marina Pereira Rezende,34,-0.5863,-0.1182,40,0.0132,1,General Health Professions
+i|r|simoes nomelini,Rosekeila Simões Nomelini,63,0.4592,0.3058,102,0.0004,3,Epidemiology
+i|f|scorsolini comin,Fabio Scorsolini‐Comin,160,0.2167,-0.963,3,0.0,11,Clinical Psychology
+i|j|eidi sasaki,Jeffer Eidi Sasaki,108,-0.473,0.3598,87,0.0382,7,Physiology
+i|k|ferreira paim,Kennio Ferreira‐Paim,36,0.1674,0.3314,74,0.0084,0,Epidemiology
+i|b|martins tavares murta,Beatriz Martins Tavares‐Murta,38,0.6271,0.1919,39,0.0027,3,Epidemiology
+i|f|lera orsatti,Fábio Lera Orsatti,98,0.3258,0.3923,84,0.0016,3,Epidemiology
+i|a|de paula rogerio,Alexandre de Paula Rogério,42,0.2698,0.1786,33,0.0227,0,Epidemiology
+i|d|ferreira da cunha,Daniel Ferreira da Cunha,42,0.0334,-0.0059,37,0.0149,4,Epidemiology
+f|karina|pereira,Karina Pereira,35,0.6285,-0.3339,20,0.0067,6,Neurology
+i|l|augusto alves garcia,Luan Augusto Alves Garcia,53,-0.4456,-0.0265,68,0.0,5,General Health Professions
+i|c|jose freire oliveira,Carlo José Freire Oliveira,155,0.0453,0.1007,314,0.1875,0,Epidemiology
+i|d|ferreira moreira lobato,Daniel Ferreira Moreira Lobato,33,0.5599,-0.4826,11,0.0,6,Neurology
+i|k|faria de oliveira,Karoline Faria de Oliveira,39,-0.3201,-0.1751,87,0.0274,1,General Health Professions
+i|m|hitomi okura,Mônica Hitomi Okura,37,0.3955,-0.5336,31,0.0,2,Materials Chemistry
+i|a|lucia de assis simoes,Ana Lúcia de Assis Simões,37,-0.5792,-0.1762,29,0.011,1,General Health Professions
+i|j|reis machado,Juliana Reis Machado,99,0.149,0.096,261,0.0269,0,Epidemiology
+i|l|marina scatena,Lúcia Marina Scatena,62,-0.1311,0.57,7,0.0036,4,Epidemiology
+i|a|luiz pedrosa,André Luiz Pedrosa,33,0.199,0.4509,55,0.0025,0,Epidemiology
+i|r|rosa miranda correa,Rosana Rosa Miranda Corrêa,85,0.1506,-0.0079,222,0.005,4,Epidemiology
+i|f|carolina ribeiro dias,Fernanda Carolina Ribeiro Dias,39,1.0,0.0918,2,0.0,3,Epidemiology
+i|v|modesto dos santos,Vitorino Modesto dos Santos,31,0.2803,0.2548,39,0.0,4,Epidemiology
+i|l|resende rodrigues,Leiner Resende Rodriguês,56,-0.3058,-0.1179,64,0.032,8,General Health Professions
+i|m|leon silva vergara,Mário León Silva-Vergara,107,0.1418,0.294,134,0.0151,0,Epidemiology
+i|m|vinicius campos souza,Markus Vinícius Campos Souza,32,0.4235,0.5252,35,0.0142,3,Epidemiology
+f|eduardo|crema,Eduardo Crema,57,0.3048,-0.1128,46,0.0088,3,Epidemiology
+i|l|aparecida ferreira,Lúcia Aparecida Ferreira,88,-0.436,-0.1538,80,0.097,1,General Health Professions
+f|dalmo|correia,Dalmo Correia,91,0.0938,0.2701,98,0.0157,0,Epidemiology
+i|i|aparecida porcatti de walsh,Isabel Aparecida Porcatti de Walsh,71,0.2816,-0.2478,75,0.012,6,Neurology
+i|m|carvalho paschoini,Marina Carvalho Paschoini,35,-0.1431,0.1634,56,0.081,1,General Health Professions
+i|a|dias paiva,Aline Dias Paiva,42,-0.195,0.5509,9,0.0006,0,Epidemiology
+f|acdm|carneiro,ACDM Carneiro,41,0.4662,0.3844,84,0.0,5,General Health Professions
+i|e|fernando candido murta,Eddie Fernando Cândido Murta,165,0.4535,0.2312,194,0.0082,3,Epidemiology
+i|g|ribeiro da mota,Gustavo Ribeiro da Mota,152,-0.2017,0.3289,52,0.0044,7,Physiology
+i|j|bonolo do amaral rocha,Jesislei Bonolo do Amaral Rocha,34,-0.5181,-0.0228,74,0.0035,1,General Health Professions
+i|j|aparecido moreto,Jéferson Aparecido Moreto,46,-0.0068,-0.2757,34,0.0618,2,Materials Chemistry
+i|m|marques dos santos felix,Márcia Marques dos Santos Félix,42,-0.3272,-0.387,74,0.0,1,General Health Professions
+i|k|goncalves do nascimento,Kleiton Gonçalves do Nascimento,31,-0.5024,-0.3965,34,0.0043,1,General Health Professions
+i|v|jose haas,Vanderlei José Haas,82,-0.4284,-0.2211,60,0.0226,1,General Health Professions
+i|s|riul da silva,Sueli Riul da Silva,65,-0.4602,0.0862,49,0.0377,1,General Health Professions
+i|p|donizete colombo,Pedro Donizete Colombo,51,0.4404,0.6522,17,0.0,9,Education
+i|m|aparecida spadotto balarin,Marly Aparecida Spadotto Balarin,33,-0.3816,0.3773,16,0.0003,1,General Health Professions
+i|r|s silva,Ricardo S. Silva,40,0.6575,-0.4553,2,0.0,2,Materials Chemistry
+i|h|moraes souza,Hélio Moraes‐Souza,97,0.202,0.2563,131,0.0205,5,General Health Professions
+i|g|jose luvizutto,Gustavo José Luvizutto,112,0.442,-0.5375,48,0.0,6,Neurology
+i|l|ronan marquez ferreira de souza,Luís Ronan Marquez Ferreira de Souza,41,0.1714,0.5684,20,0.02,3,Epidemiology
+i|m|falangola accioly,Marilita Falângola Accioly,38,0.381,-0.3356,19,0.0462,6,Neurology
+f|regina|simoes,Regina Simões,33,0.5917,-0.6589,15,0.0,10,Education
+i|a|claudia granato,Ana Cláudia Granato,55,0.4241,-0.7617,53,0.0,2,Materials Chemistry
+i|a|augusto da silva,Alex Augusto da Silva,37,0.213,-0.199,34,0.0012,3,Epidemiology
+i|d|bertulucci rocha rodrigues,Denise Bertulucci Rocha Rodrigues,59,0.2077,0.1182,147,0.0014,0,Epidemiology
+i|a|cristina nicolussi,Adriana Cristina Nicolussi,53,-0.5762,-0.3103,36,0.0135,1,General Health Professions
+i|j|sindra virtuoso junior,Jair Sindra Virtuoso Júnior,96,-0.5431,0.3052,109,0.004,7,Physiology
+i|a|da silva santos,Álvaro da Silva Santos,103,-0.5158,0.0796,79,0.0259,5,General Health Professions
+i|l|eduardo ramırez,Luı́s Eduardo Ramı́rez,43,0.1662,0.3734,90,0.0068,0,Epidemiology
+i|a|mario karwoski,Acir Mário Karwoski,48,0.434,-0.8835,3,0.0,2,Materials Chemistry
+i|b|ferreira goulart,Bethânia Ferreira Goulart,68,-0.4744,-0.126,88,0.0031,1,General Health Professions
+i|c|botelho miguel,Camila Botelho Miguel,39,0.0116,0.1825,77,0.0018,0,Epidemiology
+i|l|de almeida silva teixeira,Luciana de Almeida Silva Teixeira,43,-0.0007,0.363,27,0.0113,0,Epidemiology
+i|g|vannucchi portari,Guilherme Vannucchi Portari,37,0.3837,0.329,16,0.0,3,Epidemiology
+i|l|jorge patrizzi,Lislei Jorge Patrizzi,47,0.2771,-0.3673,47,0.0037,6,Neurology
+i|p|i s maia,Pedro I. S. Maia,63,-0.365,-0.4607,11,0.0485,2,Materials Chemistry
+i|r|euripedes da silveira,Rodrigo Eurípedes da Silveira,39,-0.7983,0.0607,14,0.0046,5,General Health Professions
+i|l|aparecida pascucci sande de souza,Luciane Aparecida Pascucci Sande de Souza,98,0.4088,-0.3763,91,0.0202,6,Neurology
+i|r|valentim gelamo,Rogério Valentim Gelamo,93,0.0457,-0.3186,43,0.0757,2,Materials Chemistry
+i|e|lacerda mendes,Edmar Lacerda Mendes,86,-0.2514,0.4156,64,0.0178,7,Physiology
+f|fb|vito,FB Vito,52,0.433,0.4245,89,0.0,5,General Health Professions
+i|d|fernando bovolenta ovigli,Daniel Fernando Bovolenta Ovigli,47,0.2569,0.5156,20,0.0001,9,Education
+i|r|guillermo nascimento ferreira,Rhainer Guillermo Nascimento Ferreira,50,0.5214,-0.279,3,0.0,0,Epidemiology
+i|s|jorge adad,Sheila Jorge Adad,88,0.3719,0.1544,99,0.0435,3,Epidemiology
+i|a|christian ribeiro andaki,Alynne Christian Ribeiro Andaki,51,-0.4428,0.4601,39,0.0005,7,Physiology
+i|w|wey moreira,Wagner Wey Moreira,64,0.6281,-0.5397,15,0.0,10,Education
+i|h|hemiko iwamoto,Helena Hemiko Iwamoto,38,-0.357,-0.1269,53,0.0223,5,General Health Professions
+i|s|de castro soares,Siomar de Castro Soares,118,-0.0024,0.247,63,0.0021,0,Epidemiology
+i|b|dias miranda parreira,Bibiane Dias Miranda Parreira,51,-0.4854,0.0049,68,0.0004,1,General Health Professions
+i|p|cristina dos santos ferreira,Pollyana Cristina dos Santos Ferreira,39,-0.2486,-0.0651,60,0.0022,8,General Health Professions
+i|m|helena barbosa,Maria Helena Barbosa,155,-0.3685,-0.3055,180,0.0002,1,General Health Professions
+i|m|de fatima borges,Maria de Fátima Borges,63,-0.1109,0.3511,32,0.0991,4,Epidemiology
+i|v|jose dias da silva,Valdo José Dias da Silva,43,0.0222,0.3138,51,0.0244,0,Epidemiology
+i|l|penna rocha,Laura Penna Rocha,46,0.203,-0.0002,146,0.0006,4,Epidemiology
+i|o|barbosa neto,Octávio Barbosa Neto,39,-0.1027,0.2377,40,0.0424,7,Physiology
+i|f|bernadelli de vito,Fernanda Bernadelli De Vito,40,0.205,0.1983,82,0.0482,0,Epidemiology
+i|w|francisco rodrigues,Wellington Francisco Rodrigues,78,-0.0396,0.1454,151,0.0487,0,Epidemiology
+i|j|emilio lazo chica,Javier Emílio Lazo Chica,45,0.1708,0.1764,77,0.0527,0,Epidemiology
+i|g|fiori marchiori,Gianna Fiori Marchiori,33,-0.3879,0.0577,37,0.0,8,General Health Professions
+f|virmondes|rodrigues,Virmondes Rodrigues,215,0.1111,0.1735,445,0.0281,0,Epidemiology
+i|r|margarida etchebehere,Renata Margarida Etchebehere,61,0.343,0.1081,76,0.0421,3,Epidemiology
+i|s|martins barroso,Sabrina Martins Barroso,56,0.6018,-0.7881,3,0.0,11,Clinical Psychology
+i|k|graciele dos santos,Kássia Graciele dos Santos,63,-0.702,-0.3179,3,0.0,2,Materials Chemistry
+f|dernival|bertoncello,Dernival Bertoncello,89,0.5226,-0.2081,51,0.0129,6,Neurology
+i|g|roger pointer malpass,Geoffroy Roger Pointer Malpass,61,0.3308,-0.7367,55,0.0564,2,Materials Chemistry
+i|a|borges peixoto,Alberto Borges Peixoto,84,-0.0771,0.7043,8,0.0,3,Epidemiology
+i|s|gomes novais shimano,Suraya Gomes Novais Shimano,35,0.4514,-0.295,28,0.0146,6,Neurology
+i|m|sousa pegorari,Maycon Sousa Pegorari,34,-0.0198,-0.2016,43,0.0519,8,General Health Professions

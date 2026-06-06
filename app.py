@@ -48,6 +48,35 @@ ODS_PT = {
     16: "Paz, Justiça e Instituições Eficazes", 17: "Parcerias e Meios de Implementação",
 }
 
+# Subáreas do OpenAlex (EN) -> PT, para rotular os grupos da rede de coautoria
+SUBAREA_PT = {
+    "Epidemiology": "Epidemiologia", "General Health Professions": "Profissões da Saúde",
+    "Materials Chemistry": "Química de Materiais", "Neurology": "Neurologia",
+    "Physiology": "Fisiologia", "Education": "Educação",
+    "Clinical Psychology": "Psicologia Clínica", "Infectious Diseases": "Doenças Infecciosas",
+    "Immunology and Allergy": "Imunologia e Alergia", "Immunology": "Imunologia",
+    "Cardiology and Cardiovascular Medicine": "Cardiologia", "Oncology": "Oncologia",
+    "Public Health, Environmental and Occupational Health": "Saúde Pública",
+    "Surgery": "Cirurgia", "Obstetrics and Gynecology": "Obstetrícia e Ginecologia",
+    "Pediatrics, Perinatology and Child Health": "Pediatria", "Microbiology": "Microbiologia",
+    "Parasitology": "Parasitologia", "Pharmacology": "Farmacologia",
+    "Pharmacology (medical)": "Farmacologia", "Nursing": "Enfermagem", "Dentistry": "Odontologia",
+    "Nutrition and Dietetics": "Nutrição", "Psychiatry and Mental Health": "Psiquiatria e Saúde Mental",
+    "Genetics": "Genética", "Cell Biology": "Biologia Celular", "Ecology": "Ecologia",
+    "Plant Science": "Botânica", "Endocrinology": "Endocrinologia", "Pathology": "Patologia",
+    "Radiology, Nuclear Medicine and Imaging": "Radiologia e Imagem",
+    "Physical Therapy, Sports Therapy and Rehabilitation": "Fisioterapia e Reabilitação",
+    "Sociology and Political Science": "Sociologia e Ciência Política",
+    "Social Sciences": "Ciências Sociais", "Health Policy": "Políticas de Saúde",
+    "Biotechnology": "Biotecnologia", "Food Science": "Ciência de Alimentos",
+    "General Medicine": "Medicina Geral", "Anatomy": "Anatomia", "Gastroenterology": "Gastroenterologia",
+    "Geriatrics and Gerontology": "Geriatria e Gerontologia", "Veterinary": "Veterinária",
+    "Veterinary (miscellaneous)": "Veterinária", "Biochemistry": "Bioquímica",
+    "Molecular Biology": "Biologia Molecular", "Linguistics and Language": "Linguística",
+    "History": "História", "Philosophy": "Filosofia", "Law": "Direito",
+    "Condensed Matter Physics": "Física da Matéria Condensada", "Diversos": "Diversos",
+}
+
 st.set_page_config(page_title="Painel DAAD — UFTM", layout="wide",
                    initial_sidebar_state="expanded")
 
@@ -178,7 +207,7 @@ def linhas_tempo(df, x, y, series, destaque=None, h=360, ytitle=""):
 
 
 PALETA_COM = ["#00983A", "#E87722", "#2563EB", "#7C3AED", "#DB2777", "#0891B2",
-              "#65A30D", "#CA8A04", "#DC2626", "#475569"]
+              "#65A30D", "#CA8A04", "#DC2626", "#475569", "#0D9488", "#9D174D"]
 
 
 def grafo_coautoria(nos, arestas, h=560):
@@ -191,24 +220,45 @@ def grafo_coautoria(nos, arestas, h=560):
             x1, y1 = pos[e.destino]
             ex += [x0, x1, None]
             ey += [y0, y1, None]
-    edge = go.Scatter(x=ex, y=ey, mode="lines", hoverinfo="none",
+    edge = go.Scatter(x=ex, y=ey, mode="lines", hoverinfo="none", showlegend=False,
                       line=dict(color=T["border"], width=0.6))
     wmax = max(nos["works"].max(), 1)
-    node = go.Scatter(
-        x=nos["x"], y=nos["y"], mode="markers", hoverinfo="text",
-        text=[f"{r.nome}<br>{r.works} produções · grau {int(r.grau)}" for r in nos.itertuples()],
-        marker=dict(size=[7 + (w / wmax) * 24 for w in nos["works"]],
-                    color=[PALETA_COM[int(c) % len(PALETA_COM)] for c in nos["comunidade"]],
-                    line=dict(color=T["bg"], width=0.6), opacity=0.9))
+    tem_grupo = "grupo" in nos.columns
+    traces = [edge]
+    ordem = list(nos["comunidade"].value_counts().index)  # comunidades, maior primeiro
+    bases = {c: (SUBAREA_PT.get(str(nos[nos["comunidade"] == c]["grupo"].iloc[0]),
+                                str(nos[nos["comunidade"] == c]["grupo"].iloc[0]))
+                 if tem_grupo else f"Grupo {int(c) + 1}") for c in ordem}
+    cont = {}
+    for b in bases.values():
+        cont[b] = cont.get(b, 0) + 1
+    repetidos = {b for b, n in cont.items() if n > 1}  # áreas que aparecem em +1 grupo
+    # um traço por comunidade — gera a legenda por área (traduzida); repetidas levam o hub
+    for c in ordem:
+        sub = nos[nos["comunidade"] == c]
+        base = bases[c]
+        if base in repetidos:
+            hub = sub.sort_values("betw", ascending=False).iloc[0].nome.split()[-1]
+            base = f"{base} · {hub}"
+        traces.append(go.Scatter(
+            x=sub["x"], y=sub["y"], mode="markers", hoverinfo="text", name=str(base),
+            text=[f"{r.nome}<br>{r.works} produções · grau {int(r.grau)}"
+                  for r in sub.itertuples()],
+            marker=dict(size=[7 + (w / wmax) * 24 for w in sub["works"]],
+                        color=PALETA_COM[int(c) % len(PALETA_COM)],
+                        line=dict(color=T["bg"], width=0.6), opacity=0.9)))
     centrais = nos.sort_values("betw", ascending=False).head(8)
-    rotulos = go.Scatter(
-        x=centrais["x"], y=centrais["y"], mode="text",
+    traces.append(go.Scatter(
+        x=centrais["x"], y=centrais["y"], mode="text", showlegend=False,
         text=[n.split()[-1] for n in centrais["nome"]], hoverinfo="none",
-        textposition="top center", textfont=dict(color=T["text"], size=10))
-    fig = go.Figure([edge, node, rotulos])
+        textposition="top center", textfont=dict(color=T["text"], size=10)))
+    fig = go.Figure(traces)
     fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-                      height=h, margin=dict(l=0, r=0, t=0, b=0), showlegend=False,
-                      separators=",.", xaxis=dict(visible=False), yaxis=dict(visible=False),
+                      height=h, margin=dict(l=0, r=0, t=0, b=0), separators=",.",
+                      showlegend=True, legend=dict(font=dict(color=T["text"], size=10),
+                      bgcolor="rgba(255,255,255,.65)", itemsizing="constant",
+                      title=dict(text="Grupos (área dominante)", font=dict(size=11))),
+                      xaxis=dict(visible=False), yaxis=dict(visible=False),
                       hoverlabel=dict(bgcolor=T["surface"], font_color=T["text"]))
     return fig
 
@@ -857,7 +907,8 @@ def render_explorar():
                             format_func=lambda t: "Todos os tipos" if t == "Todos os tipos"
                             else tipo_pt(t))
     with c3:
-        so_oa = st.checkbox("Apenas acesso aberto", value=False)
+        st.markdown("<div style='height:1.8rem'></div>", unsafe_allow_html=True)
+        so_oa = st.toggle("Apenas acesso aberto", key="oa_explorar")
     f = fraw
     if tipo != "Todos os tipos":
         f = f[f["type"] == tipo]
@@ -869,7 +920,7 @@ def render_explorar():
     tab["type"] = tab["type"].map(tipo_pt)
     if termo:
         tab = tab[tab["title"].str.contains(termo, case=False, na=False)]
-    tab = tab.sort_values("cited_by", ascending=False)
+    tab = tab.sort_values(["year", "cited_by"], ascending=[False, False])
     st.dataframe(tab, width="stretch", height=520,
                  column_config={"doi": st.column_config.LinkColumn("DOI"),
                                 "type": "Tipo", "title": "Título", "year": "Ano",
