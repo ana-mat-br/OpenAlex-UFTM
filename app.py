@@ -729,32 +729,6 @@ def render_ods():
         fig.update_layout(showlegend=True, legend=dict(font=dict(color=T["text"], size=10)))
         st.plotly_chart(fig, width="stretch")
 
-    op = obs.get("ods_por_instituicao")
-    if op is not None and len(op):
-        st.subheader("ODS comparado com os pares")
-        st.caption("**Como ler** · Mostra **onde a UFTM se dedica mais (ou menos) que os pares** "
-                   "em cada objetivo, em pontos percentuais. Barra à **direita (verde)** = a UFTM "
-                   "concentra mais pesquisa nesse ODS do que a média das federais comparadas; à "
-                   "**esquerda (cinza)** = menos. Pares: federais de MG e de porte semelhante.")
-        u = op[op["sigla"] == "UFTM"].set_index("sdg_id")["share"]
-        par = op[op["sigla"] != "UFTM"].groupby("sdg_id")["share"].mean()
-        d = pd.DataFrame({"uftm": u, "pares": par}).fillna(0)
-        d["delta"] = (d["uftm"] - d["pares"]) * 100
-        d = d.reset_index()
-        d["sdg_id"] = pd.to_numeric(d["sdg_id"], errors="coerce")
-        d["ODS"] = d["sdg_id"].map(lambda x: f"{int(x)}. {ODS_PT.get(int(x), '')}"
-                                   if pd.notna(x) else None)
-        d = d.dropna(subset=["ODS"]).sort_values("delta")
-        cores = [T["primary"] if v >= 0 else T["muted"] for v in d["delta"]]
-        fig = go.Figure(go.Bar(
-            x=d["delta"], y=d["ODS"], orientation="h", marker_color=cores,
-            text=d["delta"], texttemplate="%{text:+.1f}", textposition="outside",
-            textfont=dict(color=T["text"], size=10), cliponaxis=False,
-            hovertemplate="%{y}: %{x:+.1f} pontos percentuais vs. pares<extra></extra>"))
-        fig = fig_layout(fig, 560)
-        fig.add_vline(x=0, line_color=T["border_med"])
-        st.plotly_chart(fig, width="stretch")
-
 
 def render_temas():
     cabecalho("Temas", "As áreas e assuntos em que a UFTM mais pesquisa")
