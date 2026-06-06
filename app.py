@@ -563,6 +563,7 @@ def render_benchmarking():
         "Colaboração internacional (%)": ("intl_share", ".1%"),
         "Acesso aberto (%)": ("oa_share", ".1%"),
         "Índice h": ("h_index", ",.0f"),
+        "Índice i10": ("i10", ",.0f"),
     }
     metricas = {k: v for k, v in metricas.items() if v[0] in bi.columns}
     escolha = st.selectbox("Métrica", list(metricas.keys()))
