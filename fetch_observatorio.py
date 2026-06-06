@@ -7,6 +7,7 @@ from __future__ import annotations
 
 import os
 import time
+from collections import Counter
 from pathlib import Path
 
 import pandas as pd
@@ -122,19 +123,45 @@ def temas() -> None:
 
 
 def pesquisadores() -> None:
-    autores = []
-    q = (Authors()
-         .filter(affiliations={"institution": {"ror": UFTM}})
-         .sort(cited_by_count="desc"))
-    for a in q.get(per_page=50):
-        ss = a.get("summary_stats", {})
-        autores.append({
-            "autor": a["display_name"], "works": a["works_count"],
-            "citacoes": a["cited_by_count"], "h_index": ss.get("h_index"),
-            "i10": ss.get("i10_index"), "orcid": a.get("orcid"),
-        })
-    pd.DataFrame(autores).to_csv(OUT / "top_autores.csv", index=False)
-    print(f"pesquisadores: {len(autores)} autores")
+    """Pesquisadores ANCORADOS na UFTM: conta, a partir dos works da UFTM, quem os assina
+    estando afiliado à UFTM, e as citações *desses* works (não a carreira inteira)."""
+    n_works, citac, nomes, orcids = Counter(), Counter(), {}, {}
+    q = (Works().filter(authorships={"institutions": {"ror": UFTM}})
+         .select(["id", "cited_by_count", "authorships"]))
+    for page in q.paginate(per_page=200, n_max=None):
+        for w in page:
+            c = w.get("cited_by_count", 0) or 0
+            vistos = set()
+            for a in (w.get("authorships") or []):
+                rors = {(i.get("ror") or "").rsplit("/", 1)[-1]
+                        for i in (a.get("institutions") or [])}
+                if UFTM not in rors:
+                    continue
+                au = a.get("author") or {}
+                aid = (au.get("id") or "").rsplit("/", 1)[-1]
+                if aid and aid not in vistos:
+                    vistos.add(aid)
+                    n_works[aid] += 1
+                    citac[aid] += c
+                    nomes[aid] = au.get("display_name") or aid
+                    if au.get("orcid"):
+                        orcids[aid] = au["orcid"]
+    df = pd.DataFrame([{"id": a, "autor": nomes[a], "works_uftm": n_works[a],
+                        "citacoes_uftm": citac[a], "orcid": orcids.get(a)} for a in n_works])
+    df = df.sort_values("citacoes_uftm", ascending=False).head(50).reset_index(drop=True)
+
+    # h-index / i10 de carreira para o top 50 (rótulo deixa claro que é carreira)
+    hidx, i10 = {}, {}
+    for aid in df["id"]:
+        try:
+            ss = (Authors()[f"https://openalex.org/{aid}"].get("summary_stats") or {})
+            hidx[aid], i10[aid] = ss.get("h_index"), ss.get("i10_index")
+        except Exception:
+            hidx[aid], i10[aid] = None, None
+        time.sleep(0.2)
+    df["h_index"], df["i10"] = df["id"].map(hidx), df["id"].map(i10)
+    df.drop(columns=["id"]).to_csv(OUT / "top_autores.csv", index=False)
+    print(f"pesquisadores ancorados na UFTM: {len(df)}")
 
 
 def ods_perfil() -> None:

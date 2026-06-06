@@ -766,19 +766,20 @@ def render_temas():
 
 def render_pesquisadores():
     cabecalho("Pesquisadores", "Os nomes por trás da pesquisa da UFTM")
-    st.caption("**Como ler** · Pesquisadores com vínculo na UFTM, ordenados por **citações** "
-               "(quantas vezes seus trabalhos foram usados por outros). O **índice h** resume "
-               "produção e impacto: um h de 30 significa 30 trabalhos citados ao menos 30 vezes "
-               "cada. O **i10** é quantos trabalhos têm pelo menos 10 citações. **ORCID** é o "
-               "identificador único do pesquisador.")
     ta = obs.get("top_autores")
-    if ta is None:
+    if ta is None or "citacoes_uftm" not in ta.columns:
         st.info("Rode `python fetch_observatorio.py` para os dados de pesquisadores.")
         return
-    st.plotly_chart(barra_h(ta.head(15), "autor", "citacoes", h=460), width="stretch")
+    st.caption("**Como ler** · Pesquisadores **que assinam trabalhos com afiliação à UFTM**, "
+               "ordenados pelas **citações das produções feitas na UFTM** (não pela carreira "
+               "inteira). *Produções (UFTM)* = nº desses trabalhos. O **índice h** e o **i10** "
+               "são de **carreira** (todo o histórico do pesquisador, em qualquer instituição); "
+               "**ORCID** é o identificador único.")
+    st.plotly_chart(barra_h(ta.head(15), "autor", "citacoes_uftm", h=460), width="stretch")
     st.dataframe(
-        ta.rename(columns={"autor": "Pesquisador", "works": "Produções",
-                           "citacoes": "Citações", "h_index": "Índice h", "i10": "i10"}),
+        ta.rename(columns={"autor": "Pesquisador", "works_uftm": "Produções (UFTM)",
+                           "citacoes_uftm": "Citações (na UFTM)",
+                           "h_index": "Índice h (carreira)", "i10": "i10 (carreira)"}),
         width="stretch", height=420, hide_index=True,
         column_config={"orcid": st.column_config.LinkColumn("ORCID")})
 
