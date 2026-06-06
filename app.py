@@ -367,7 +367,7 @@ def render_excelencia():
         f"<div style='border-left:2px solid {T['primary']};padding:.15rem 0 .15rem 1.1rem;"
         f"margin:.1rem 0 1.1rem;color:{T['text_soft']};font-size:1.02rem;line-height:1.6;"
         f"max-width:840px'>O <b style='color:{T['text']}'>FWCI (Field-Weighted Citation "
-        f"Impact)</b> é o indicador-padrão de impacto **normalizado por área**, definido pelo "
+        f"Impact)</b> é o indicador-padrão de impacto <b>normalizado por área</b>, definido pelo "
         f"<b>Snowball Metrics</b> (consórcio internacional de universidades) e adotado pela "
         f"Scopus/SciVal. Compara as citações de uma pesquisa com a média mundial de pesquisas "
         f"semelhantes: <b style='color:{T['text']}'>1,0 = a média do mundo</b>; acima de 1, "
