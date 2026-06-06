@@ -993,6 +993,19 @@ def render_qualidade():
                "ao menos influente: **Q1** (as 25% melhores), Q2, Q3 e Q4. Quanto mais pesquisa "
                "em Q1, mais a UFTM publica nas revistas de ponta. A classificação vem do "
                "**Scimago/SJR**, um ranking mundial e gratuito de revistas científicas.")
+    with st.expander("Scimago × Qualis (CAPES) — qual a diferença?"):
+        st.markdown(
+            "Este painel usa o **Scimago/SJR**; a CAPES usa o **Qualis** para avaliar a "
+            "pós-graduação. São relacionados (ambos derivam da Scopus), mas diferentes:\n"
+            "- **Indicador:** Scimago usa o **SJR** (prestígio, estilo PageRank); o **novo "
+            "Qualis** (desde 2019) usa o **percentil do CiteScore** (Scopus) / Fator de Impacto.\n"
+            "- **Estratos:** Scimago tem **4 quartis**; o Qualis tem **8** (A1–A4, B1–B4, +C), "
+            "em faixas de 12,5% de percentil.\n"
+            "- **Propósito:** Scimago é um ranking **mundial e aberto** de revistas (por isso o "
+            "usamos — e permite comparar com pares de outros países); o Qualis é **brasileiro** e "
+            "ligado à avaliação da CAPES.\n"
+            "- **Correspondência aproximada** (não oficial; os indicadores diferem): "
+            "Q1 ≈ A1–A2 · Q2 ≈ A3–A4 · Q3 ≈ B1–B2 · Q4 ≈ B3–B4.")
     f = fraw[fraw["issn_l"].notna()].copy()
     f["issn"] = f["issn_l"].str.replace("-", "", regex=False).str.upper()
     m = f.merge(sq[["issn", "quartile", "sjr"]], on="issn", how="left")
