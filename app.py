@@ -441,6 +441,25 @@ def render_ciencia_aberta():
     if "oa_status" not in fraw.columns:
         st.info("Re-colete os dados (fetch_uftm_ods.py) para habilitar esta aba.")
         return
+    st.markdown(
+        f"<div style='border-left:2px solid {T['primary']};padding:.15rem 0 .15rem 1.1rem;"
+        f"margin:.1rem 0 1.1rem;color:{T['text_soft']};font-size:1.02rem;line-height:1.6;"
+        f"max-width:840px'><b style='color:{T['text']}'>Ciência Aberta</b> é tornar todo o "
+        f"processo de pesquisa — não só o artigo final — transparente, acessível e reutilizável "
+        f"por qualquer pessoa (definição da <b>UNESCO</b>, base dos cursos de Ciência Aberta da "
+        f"USP). Vai além das publicações: inclui dados, código, métodos e avaliação abertos. "
+        f"Aqui medimos a dimensão que os dados do OpenAlex permitem — o "
+        f"<b style='color:{T['text']}'>acesso aberto às publicações</b>.</div>",
+        unsafe_allow_html=True)
+    with st.expander("As dimensões da Ciência Aberta (Recomendação da UNESCO, 2021)"):
+        st.markdown(
+            "- **Conhecimento científico aberto** — acesso aberto a publicações, **dados "
+            "abertos**, **código/software aberto** e hardware aberto.\n"
+            "- **Infraestruturas abertas** — repositórios, plataformas e serviços compartilhados.\n"
+            "- **Engajamento aberto da sociedade** — ciência cidadã e diálogo com a sociedade.\n"
+            "- **Diálogo com outros sistemas de conhecimento** — saberes tradicionais e locais.\n\n"
+            "*Este painel cobre, por ora, o **acesso aberto às publicações**; as demais dimensões "
+            "ainda não têm métrica consolidada em bases abertas.*")
     st.caption("**Como ler** · *Acesso aberto* é a pesquisa que você lê sem pagar. **Diamante** = "
                "grátis para quem lê e para quem publica; **Verde** = cópia gratuita num "
                "repositório; **Ouro** = aberta, mas a universidade paga uma taxa (APC). "
