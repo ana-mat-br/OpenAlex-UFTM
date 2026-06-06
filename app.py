@@ -175,7 +175,7 @@ def load_obs(sig):
              "bench_porte_instituicoes", "bench_porte_por_ano", "colab_instituicoes",
              "colab_paises", "temas_campo", "temas_topicos", "top_autores",
              "scimago_quartis", "rede_autores_nos", "rede_autores_arestas",
-             "lens_patentes", "ods_por_instituicao"]
+             "lens_patentes", "ods_por_instituicao", "portfolio_uftm"]
     return {n: (pd.read_csv(DATA / f"{n}.csv") if (DATA / f"{n}.csv").exists() else None)
             for n in nomes}
 
@@ -562,17 +562,45 @@ def render_excelencia():
 
 
 def render_patentes():
-    cabecalho("Patentes", "Quando a pesquisa da UFTM vira inovação")
-    st.caption("**Como ler** · Mostra quantas **patentes no mundo citam** pesquisas da UFTM — "
-               "um sinal de que o conhecimento gerado aqui chega à indústria e gera inovação "
-               "(transferência de tecnologia). Fonte: The Lens.")
+    cabecalho("Patentes", "O que a UFTM patenteou — e quando a pesquisa vira inovação")
+
+    pf = obs.get("portfolio_uftm")
+    if pf is not None and len(pf):
+        st.subheader("Portfólio tecnológico da UFTM")
+        st.caption("**Como ler** · Patentes e softwares **depositados pela UFTM**, segundo a "
+                   "Agência UFTM de Inovação (AGUIN). *Situação*: **PEDIDA** (em análise no INPI) "
+                   "ou **CONCEDIDA**.")
+        tipo_u = pf["tipo"].astype(str).str.upper()
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("Patentes", br(int((tipo_u == "PATENTE").sum())))
+        c2.metric("Softwares registrados", br(int((tipo_u == "SOFTWARE").sum())))
+        c3.metric("Concedidas",
+                  br(int((pf["situacao"].astype(str).str.upper() == "CONCEDIDA").sum())))
+        c4.metric("Áreas", br(pf["area"].nunique()))
+        por_area = (pf["area"].fillna("Sem área").value_counts()
+                    .rename_axis("área").reset_index(name="n"))
+        st.plotly_chart(barra_h(por_area, "área", "n", h=340), width="stretch")
+        tsel = st.selectbox("Tipo", ["Todos", "Patente", "Software"], key="tipo_portfolio")
+        tab = pf if tsel == "Todos" else pf[tipo_u == tsel.upper()]
+        cols = [c for c in ["titulo", "tipo", "area", "situacao", "registro", "inventores"]
+                if c in tab.columns]
+        disp = tab[cols].rename(columns={
+            "titulo": "Título", "tipo": "Tipo", "area": "Área", "situacao": "Situação",
+            "registro": "Registro (INPI)", "inventores": "Inventores"})
+        st.dataframe(disp, hide_index=True, width="stretch", height=420)
+        st.caption("Fonte: Agência UFTM de Inovação (AGUIN) · aguin.uftm.edu.br.")
+        st.divider()
+
+    st.subheader("Pesquisas da UFTM citadas por patentes")
+    st.caption("**Como ler** · Diferente do portfólio acima (patentes *da* UFTM), aqui é "
+               "**impacto**: quantas **patentes no mundo citam** pesquisas da UFTM — sinal de que "
+               "o conhecimento gerado aqui chegou à indústria. Fonte: The Lens.")
     lp = obs.get("lens_patentes")
     if lp is not None and len(lp):
         m1, m2, m3 = st.columns(3)
         m1.metric("Produções citadas por patentes", br(len(lp)))
         m2.metric("Citações em patentes (total)", br(int(lp["n_patentes"].sum())))
         m3.metric("Citações por patente (média)", br(lp["n_patentes"].mean(), 1))
-        st.subheader("Pesquisas da UFTM mais citadas por patentes")
         top = lp.sort_values("n_patentes", ascending=False).head(15).copy()
         top["rotulo"] = top["title"].fillna("(sem título)").str.slice(0, 60)
         st.plotly_chart(barra_h(top, "rotulo", "n_patentes", h=480, cor=T["secondary"]),
@@ -580,19 +608,9 @@ def render_patentes():
         st.caption("Cada barra é uma pesquisa da UFTM e o número de patentes (no mundo) que a "
                    "citam. Quanto mais citações em patentes, maior o uso prático do conhecimento.")
     else:
-        st.info("As **patentes que citam a pesquisa da UFTM** aparecerão aqui — um indicador de "
-                "impacto em inovação e transferência de tecnologia para a sociedade. "
-                "**Recurso em implantação.**")
-        with st.expander("Para administradores do painel — como ativar"):
-            st.markdown(
-                "Usa o **The Lens** (token acadêmico gratuito):\n"
-                "1. Crie conta em lens.org e solicite acesso à **Scholarly API**.\n"
-                "2. Guarde o token como segredo **`LENS_TOKEN`** no GitHub "
-                "(Settings → Secrets → Actions), ou rode local: "
-                "`LENS_TOKEN=seu_token python fetch_lens.py`.\n"
-                "3. Na próxima atualização mensal, as patentes aparecem nesta aba.")
-    st.caption("Outros sinais de impacto fora da academia — citações em **políticas públicas** "
-               "e **atenção na mídia** — dependem de bases pagas e ficam como evolução futura.")
+        st.info("As patentes que citam a pesquisa da UFTM aparecerão aqui — recurso em implantação.")
+    st.caption("Outros sinais de impacto fora da academia — citações em **políticas públicas** e "
+               "**atenção na mídia** — dependem de bases pagas e ficam como evolução futura.")
 
 
 def render_ciencia_aberta():

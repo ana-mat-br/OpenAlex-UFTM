@@ -16,6 +16,7 @@ import fetch_observatorio
 import fetch_scimago
 import fetch_colaboracao
 import fetch_lens
+import fetch_aguin_patentes
 
 OUT = Path(__file__).parent / "data"
 
@@ -36,11 +37,17 @@ def main() -> None:
     print(">> 4/5 rede de coautoria (fetch_colaboracao)")
     fetch_colaboracao.main()
 
-    print(">> 5/5 patentes The Lens (fetch_lens — precisa de LENS_TOKEN)")
+    print(">> 5/6 patentes The Lens (fetch_lens — precisa de LENS_TOKEN)")
     try:
         fetch_lens.main()
     except Exception as e:
         print(f"   Lens pulado (sem token ou erro): {e}")
+
+    print(">> 6/6 portfólio de patentes da UFTM (AGUIN)")
+    try:
+        fetch_aguin_patentes.main()
+    except Exception as e:
+        print(f"   AGUIN pulado (mantém dados anteriores): {e}")
 
     data = dt.datetime.now(dt.timezone.utc).astimezone().strftime("%Y-%m-%d")
     (OUT / "coletado_em.txt").write_text(data, encoding="utf-8")

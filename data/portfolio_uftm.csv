@@ -1,0 +1,321 @@
+tipo,area,situacao,titulo,titulares,registro,inventores,descricao,vantagens,aplicacao,observacoes
+SOFTWARE,SAÚDE,,MEMOREX,"UFTM
+FAPEMIG",512019002627-6,Sabrina Martins Barroso,"Software desenvolvido para Sistema Operacional Android e Windows. Pretende auxiliar na manutenção de capacidades cognitivas de planejamento, percepção visual e memória.","- Baixo custo;
+- Pode ser utilizado de forma individual;
+- Resultados de pesquisa apoiam sua efetividade.",O campo de aplicação abrange tanto a área industrial quanto a área acadêmica.,
+SOFTWARE,GESTÃO,,Autenticador Off-line de Documentos através de Smartphones,"UFTM
+IFTM",512019001505-3,"Jonas Bruno da Silva Morais
+David Calhau Jorge","Permite a autenticação de um documento (textual) através de um Qr-Code inserido no documento contendo todo o seu teor compactado e criptografado e que pode ser apresentado ao usuário para comparação, permitindo sua validação quanto a adulteração indevida. Pretende coibir falsificações, leitura não autorizada de documentos, alterações indevidas e cria uma forma mais prática de verificar autenticidade de um documento.","- Utilização deste software inibe falsificação e adulteração de documentos emitidos;
+- Maior segurança em relação aos seus documentos emitidos;
+- Gera maior segurança na tramitação de documentos.",É utilizado por empresas e instituições que emitam documentos e estejam preocupadas em coibir falsificação ou adulteração dos mesmos.,
+SOFTWARE,GESTÃO,,FISCALITO TI CONECTA,,,,,,,NÃO POSSUI PDF DISPONÍVEL; SOMENTE VÍDEO DEMONSTRATIVO
+SOFTWARE,GESTÃO,,Uso da Técnica de Mineração de Dados como uma Ferramenta de Gestão da Evasão no Ensino Superior.,UFTM,512019001162-7,"Alan Lopes Melo
+Julio C. de S. I. Gonçalves",O software desenvolvido será utilizado para fornecer uma listagem dos alunos com tendência à evasão para se possibilitar trabalhar esses alunos e reverter essa tendência. Com base nos dados existentes de registro e controle acadêmico foi criada uma rede neural artificial capaz de indicar os alunos com tendência a evasão.,"- Possível prevenção de evasão de alunos de instituição de ensino superior;
+- Acompanhamento de alunos com tendência a evasão;
+- Diminuir perda de receita referente a evasão de alunos.",Instituições de ensino superior com objetivo de identificação dos alunos com tendência a evasão no Ensino Superior.,
+SOFTWARE,ENGENHARIAS,,LEISHCARE,UFTM,BR5120190000455,"Gerson dos Santos Fonseca Jr
+David Calhau Jorge","É um aplicativo para smatphones com sistema operacional Android, que tem como objetivo realizar o acompanhamento de pacientes com Leishmaniose principalmente em áreas endêmicas. As principais funções são: cadastro de pacientes, cadastro de consultas, fotografia das lesões com auxílio do enquadramento, criação de imagens padronizadas, cálculo de escore clínico e compartilhamento de informações.","- Padronização das fotografias, visando acompanhamento das lesões;
+- Cálculo simples e rápido do escore clínico de Leishmaniose visceral;
+- Manual técnico de áreas endêmicas e sobre doença;
+- Cadastro simplificado, organizado dos pacientes possibilitando compartilhamento de informações.","É utilizado prioritariamente na área da saúde, por profissionais que necessitam trocar informações com especialistas, não presentes no local da endemia.",
+SOFTWARE,ENGENHARIAS,,EletrocardioDroid,UFTM,BR 51 2018 000308-7,"João Paulo Folador
+David Calhau Jorge","O software foi desenvolvido como aplicação (App) para dispositivos móveis. Possui uma área de processamento de imagens, onde o usuário faz amostragem de uma imagem a partir do telefone sob um exame de eletrocardiograma (ECG) impresso. No receptor esse mesmo sinal é reconstruído, sendo possível a análise do profissional habilitado e orientação para o atendimento mais rápido a um problema que necessite de urgência.","- Capaz de filtrar e compactar o sinal, previamente ao envio, caso o paciente esteja sofrendo de arritmia cardíaca;
+- Capacidade de transmissão de dados clínicos a distância por meio de SMS;
+- Profissional que realiza o exame, pode estar distante de um médico responsável;
+- Agilizar e facilitar atendimento em áreas carentes.",Destinado para a área da saúde (cardiologia).,
+SOFTWARE,ENGENHARIAS,,DUNAMATH,UFTM,,,,,,NÃO POSSUI PDF DISPONÍVEL; SOMENTE VÍDEO DEMONSTRATIVO
+SOFTWARE,ENGENHARIAS,,Navegador Termovisão,UFTM,BR 51 2020 000228-5,"Willian Baunier deZelo
+David Calhau Jorge
+Vinicius Abrão da Silva Marques","O software foi desenvolvido em python utilizando a placa de controle Raspberry Pi, para navegação manual e autônoma nos mais diversos cenários, podendo ser aplicado em ambientes hostis ao ser humano. O software ainda conta com uma visão térmica que foi desenvolvida para utilização de hardware de baixo custo para diminuir os custos de produção para aplicação. O software possui uma interface intuitiva, com comunicação por wi-fi, sendo mostrada algumas informações entre o explorador e a central.","- Pode ser usado em uma pré-avaliação de ambientes perigosos (incêndios, lugares com gases nocivos, confinamentos, entre outros);
+- Viabiliza a economia de recursos na construção de protótipos;
+- Possui interface simples e intuitiva","Exploração e avaliação de ambientes e equipamentos industriais, utilizado pelo corpo de bombeiros em situações de incêndios.",
+SOFTWARE,ENGENHARIAS,,PERT - Programa de estruturas reticulares total,UFTM,BR 51 2017 000585-0,"Julio Augusto Borges
+Luciano Gobo S. Leite","O software foi desenvolvido em C++ para solucionar o problema do Cálculo de esforços e deslocamentos em estruturas de barras reticulares (vigas, pórtico plano, treliça plana, grelha, pórtico espacial e treliça espacial). O cálculo é executado segundo o método de análise matricial. O software apresenta entrada e saídas gráficas, gerando diagramas de esforços, apresentando os resultados em tabelas e a vista da estrutura deformada. A entrada é toda visual, sendo os dados inseridos e o desenho gerado em seguida.","- O programa é preciso;
+- Software amigável, fácil de se utilizar;
+- Visualiza e imprime todos os resultados.",Cálculo de esforços para o dimensionamento de estruturas de engenharia civil.,
+SOFTWARE,ENGENHARIAS,,TRANSMISSOR DE TEMPERATURA MULTICANAL COM COMUNICAÇÃO RS485 - MODBUS - 8 CANAIS,UFTM,BR512019000047-1,"Antônio Carlos Lemos Jr
+Mário Sérgio da Luz",O software desenvolvido será utilizado para configurar e monitorar os parâmetros de uma placa eletrônica projetada para mensurar a força eletromotriz de termopares comerciais. O problema que o Software pretende solucionar é permitir que os usuários consigam configurar os parâmetros e monitorar os dados mensurados pela placa eletrônica de forma simples e intuitiva.,"- Configuração de forma rápida e exata dos parâmetros que serão utilizados para mensurar as temperaturas e realizar controle discreto delas; 
+- Pode ser utilizado em computador que tenha pelo menos uma porta USB, o software pode ser utilizado em uma gama muito grande de dispositivos. ",O público alvo para o software são pessoas ou empresas que necessitem mensurar temperatura e realizar controle discreto utilizando valores previamente configurados para temperaturas de controle. ,
+SOFTWARE,ENGENHARIAS,,PEIQ – Projetando Equipamentos da Indústria Química,UFTM,512019002278-5,"Giselle M. de Lima
+Kássia G. dos Santos","O software permite o projeto de equipamentos da indústria para a separação sólido-fluido no campo gravitacional (câmara de separação, elutriadores e separadores) e no campo centrífugo (ciclones, hidrociclones e centrífugas). O aplicativo foi concebido para permitir a resolução de diferentes problemas de projeto. Para tal, empregou-se o uso de estudos de caso da literatura para validação da eficiência e precisão do aplicativo na predição dos dados de","- Pode ser utilizado por professores e alunos como ferramenta de ensino e aprendizagem;
+- Permite ao usuário simular situações industriais;
+- Pode ser utilizado por profissionais de engenharia, em etapas de projeto de separação de particulados ou propor melhorias na eficiência do processo.","Acadêmicos e professores dos cursos de Engenharia Química, de Alimentos, de Produção, de Processo e Ambiental. Uso em disciplinas como Operações Unitárias, Tratamento de Resíduos, Tratamento de Água etc. Profissionais da indústria ligados à área de engenharia, com aplicações práticas que envolvem separação de material particulado presente em fluido, líquido ou gasoso.",
+SOFTWARE,ENGENHARIAS,,ZigBee BLE Industry,UFTM,BR 51 2020 000210-2,"Gustavo O. Martins
+David Calhau Jorge","O presente software tem como objetivo monitoramento de variáveis de processo analógicas (4-20mA), através de protótipos que utilizam rede de comunicação industrial sem fio (ZigBee e Bluetooth). Estes dados podem ser adquiridos de qualquer instrumentoanalógico que possua sinal de 4-20mA, independente da marca ou modelo do mesmo.","- Monitoramento de sensores instalados em locais de difícil acesso.
+- Pode ser utilizado em qualquer smartphone com sistema operacional Android.
+- Redução da exposição do colaborador aos riscos inerentes às plantas industriais.","Indústrias de produção em geral:
+- Químicas
+- Automobilísticas
+- Siderúrgicas
+- Alimentícias
+- Metalúrgicas
+- Petrolíferas",
+SOFTWARE,ENGENHARIAS,,CANAIS,UFTM,BR 51 2020 000133-5,"João O. Timoteo
+Dennis H. R. Alves
+Stênio de S. Venâncio","Software desenvolvido para dimensionamento e análise de canais prismáticos em regime uniforme. Pretende dar suporte remoto para análise de escoamentos em campo e laboratório, com utilização em plataforma WEB.","- Facilidade de entrada de parâmetros;
+- Permite análise expedita de escoamento hidráulico em qualquer localidade apenas com conexão à internet;
+- Rápido retorno de seus resultados.","O campo de aplicação abrange discentes, técnicos e engenheiros.",
+SOFTWARE,ENGENHARIAS,,Projeto de Elutriadores utilizando linguagem de programação Java para Android,UFTM,BR 51 2018 000325-7,"Bruno de Camargo
+Vinícius Santos Ricci
+Kássia Graciele dos Santos","Software desenvolvido para Sistema Operacional Android por meio de linguagem de programação JAVA. Possui uma rotina computacional simples e otimizada, além de uma interface bastante amigável e intuitiva para cálculo e projeto de Elutriadores em operação individual ou em série.","- Fácil operação no manuseio do software, obtendo com rapidez e facilidade seus resultados;
+- Caracteriza-se por possuir uma interface bastante simples e limpa;
+- Obtenção de resultados precisos e confiáveis com praticidade.",O campo de aplicação abrange tanto a área industrial quanto a área acadêmica.,
+SOFTWARE,ENGENHARIAS,,Cálculo de volume molar e pressão de operação de sistemas puros utilizando software livre SCILAB,UFTM,BR 51 2018 000262-5,"Bruno de Camargo
+Davi Leonardo de Souza","Software funciona em computadores com o compilador Scilab instalado, sendo bem intuitivo e instrutivo. Possui a finalidade de calcular o volume molar e a pressão de operação de sistemas puros termodinâmicos, abordando para isso amplas opções de equacionamentos. Aplica-se no setor educacional como uma alternativa para disciplinas como Termodinâmica e Programação, ambas voltadas particularmente para Engenharia Química.","- Fácil utilização para aplicação didática das disciplinas Termodinâmica e Programação com foco na área de Engenharia Química;
+- Software compilado em Scilab, bastante intuitivo e que agrega mais praticidade no ensino das disciplinas de Termodinâmica e Programação.","Alternativa para ensino de Termodinâmica, possuindo abordagens simples quando comparada à usual. É aplicada também para ensino de programação em linguagem Scilab, uma vez que se utiliza laços, tomadas de decisões, entradas e equacionamentos. complexos em uma mesma rotina computacional",
+SOFTWARE,ENGENHARIAS,,Software para monitoramento de Sistemas de Proteção Catódica por corrente impressa utilizando dispositivos móveis,UFTM,BR 51 2018 000307-9,"Victor de Oliveira Jacome
+Marcos Massao Shimano","O software, que foi desenvolvido para dispositivos móveis, monitora sistemas de proteção catódica por corrente impressa. Este utiliza de leituras em bancos de dados pré-existentes e informa imediatamente ao usuário os possíveis problemas encontrados por meio de notificações e alarmes. Contendo uma interface gráfica interativa, integração com GoogleMapsTM e permitindo a utilização da localização via GPS é possível realizar consultas relativas ao status das variáveis medidas pelos retificadores.","- Interface gráfica interativa, permitindo consultas instantâneas com poucos toques no aplicativo;
+- Gestão eficaz e portátil do sistema de proteção catódica;
+- Redução no tempo de resposta em possíveis anomalias;
+- Auxilia colaboradores na localização e manutenção de retificadores;
+- Informa, por meio de notificações e alarmes, o usuário em casos de problemas no sistema.",Empresas que possuem ou administram dutos protegidos por sistemas de proteção catódica por corrente impressa.,
+SOFTWARE,ENGENHARIAS,,Whatsapp Bot - Fiscalizando CPFs da base de dados do auxílio emergencial,UFTM,BR 51 2020 001486-0,Elder V. de P. Sobrinho,"Em um mundo repleto de informação, o poder público deve ser transparente e possibilitar a fiscalização das ações. Portanto, para evitar fraudes ou mesmo o uso indevido de recursos financeiros, a informação do poder público deve ser acessada de forma simples e rápida. Nesse contexto, a plataforma Whatsapp é uma das mais difundidas e acessíveis, alcançando diversos setores de sociedade. Então, foi criado um ""bot"" de auto atendimento, vinculado à plataforma do Whatsapp e ao portal da transparência, que permite ao cidadão consultar fácil e rapidamente quem são os beneficiados pelos recursos do auxilio emergencial e, portanto, possibilita a fiscalização das ações públicas. O software foi desenvolvido em Python.","- Consulta simples e rápida;
+- Plataforma acessível;
+- Possibilita a fiscalização das ações públicas.",Fiscalização da distribuição de recursos financeiros relacionados ao auxílio emergencial.,
+PATENTE,SAÚDE,,Biovidros Puros e Nanoestruturados,"UFTM
+UFAL",BR 10 2024008956-1,"Rodrigo Cesar Rosa
+Anielle C. A. Silva","A invenção trata-se do desenvolvimento de biovidros puros e nanoestruturados. Esses biovidros são compostos biocompatíveis com ou sem dopagem de metais ou não metais, utilizados em dispositivos e tratamentos na saúde humana e animal, especialmente na reparação e regeneração de tecidos. Eles impedem a adesão de microrganismos e bactérias, atuam na cicatrização tecidual inicial, são citotóxicos adequados, biocompatíveis e têm ação antimicrobiana. Suas propriedades ópticas, estruturais e morfológicas, assim como suas vantagens biológicas, foram investigadas e confirmadas.","- Ferramenta biocompatível, de baixo custo, com elevado rendimento e reprodutibilidade;
+- Ao serem implantados no organismo, impede a adesão de microrganismos e bactérias, evitando a contaminação e infecção, sem interferir no processo de cicatrização, reparação e/ou regeneração tecidual.","A invenção remete ao campo técnico da biomedicina e biotecnologia, apresentando o desenvolvimento de biovidros puros e nanoestruturados, para uso em dispositivos e tratamentos nas áreas de saúde humana e animal, com possibilidades de favorecer o processo de reparação e regeneração tecidual..",
+PATENTE,SAÚDE,,NOVO MÉTODO DE MICROENCAPSULAÇÃO POR GELIFICAÇÃO IÔNICA CONTENDO BIOATIVOS E NANOPARTÍCULAS/NANO COMPÓSITOS,"UFTM
+UFAL",BR 10 2024 005829,"Rodrigo Rosa
+(grupos de pesquisadores da UFTM e UFAL)","A presente invenção pertence ao campo biotecnológico, na área de produção de medicamentos com utilidade à saúde pública, se concentrando no campo químico-farmacêutico. São propostas microesferas de composições diversas, juntamente com o processo de obtenção, composições farmacêuticas e usos. A produção dessas microesferas está ligada à utilização de compostos bioativos diversos padronizados em conjunto de nanopartículas, seguido pela técnica de gelificação iônica, apresentando-se em forma de esferas.","- Utilização de compostos em uma matriz intermediária de revestimento de bioativos que contêm excepientes farmacêuticos inertes, atóxicos, de baixo custo, estáveis com característica reológica para sólidos farmacêuticos e de liberação gastrorresistente;
+- Praticidade e abrangência populacional para o consumo do produto.",Este produto está situado e concentrado nas áreas alimentícia e farmacêutica.,
+PATENTE,SAÚDE,,Nanocristais e Nanocompósitos Biocompatíveis de Simonkolleite e Óxidode Zinco Puros e Dopados Conjugados com Produtos Naturais e seu Uso como Agentes Teranósticos,"UFTM
+UFAL",BR102024005705-8,"Rodrigo Rosa
+(grupos de pesquisadores da UFTM e UFAL)","Trata-se de uma invenção no campo do desenvolvimento e uso de nanocristais e nanocompósitos biocompatíveis a base de simonkolleite e óxido de zinco puros e dopados conjugados com produtos naturais e seu uso como como agentes teranósticos com potencial propriedades, antimicrobianas, antitumorais, leishmanicidas e luminescentes que podem ser utilizados na forma tópica para o controle da proliferação de bactérias e protozoários.","- Atividade antimicrobiana para o tratamento de infecções e atividade antitumoral para o tratamento e diagnóstico de diversos tipos de cânceres;
+- Intensificação do processo de reparação e integração tecidual;
+- Podem ser associados a extrato de plantas e potencializar a sua atividade terapêutica.",Esta invenção pode ser aplicada tanto na área de odontologia e ortopedia quanto no uso de tratamentos internos e uso tópico (tratamento de feridas)..,
+PATENTE,SAÚDE,,Desenvolvimento de Nanocompósitos Biocompatíveis contendo Nanocristais de Titanato de Sódio puros e dopados com Prata e Nanocristais de Óxido de Prata para diversas aplicações,"UFTM
+UFAL",BR102024005101-7,"Rodrigo Rosa
+(grupos de pesquisadores da UFTM e UFAL)","O desenvolvimento de novos materiais biocompatíveis e com atividade antimicrobiana é de suma importância para diversos tratamentos na área médica. Esta inovação demonstra que o nanocompósito contendo nanocristais de titanato de sódio dopado com prata/európio e nanocristais de prata apresentou elevada biocompatibilidade in vitro e in vivo, sendo mais biocompatível que os nanocristais de titanato de sódio.","- A presença da luminescência nestes nanomateriais possibilita o seu rastreamento em ensaios biológicos via microscopia de fluorescência;
+- Além da biocompatibilidade e atividades antimicrobiana e antiparasitária, destaca-se a luminescência dos nanomateriais como característica adicional para sua aplicabilidade.","Os nanomateriais apresentaram atividades antimicrobianas interessantes possibilitando o seu uso tanto em humanos e animais, nos tratamentos internos e tópicos (tratamento de feridas), potencial utilização na esterilização de ambientes, dispositivos médico-odontológicos e utensílios, além de seu potencial leishmanicida aplicado puro ou agregado à fármacos.",
+PATENTE,SAÚDE,,SENSORES ELETROQUÍMICOS NÃO ENZIMÁTICOS PARA DETECÇÃO DE GLICOSE EM AMOSTRAS DE SALIVA,"UFTM
+FAPEMIG",BR 10 2020 012146 4,"Rogério Valentim Gelamo
+Robson Tadeu Soares
+Marília Alves Caetano
+Gabriel de Moraes","Por meio do uso de sensores eletroquímicos em plataforma flexível de eletrodos de filme fino de cobre é possível medir os níveis de glicose através da saliva, sem a necessidade de utilização de enzimas nos sensores.","- Medição rápida, com menor limite de detecção que os sensores atuais;
+- Plataforma flexível e descartável, sem necessidade de lesões ao organismo humano pois as medidas são feitas através da saliva.",Sensores de glicose para diabéticos.,POSSUI FOTO/ILUSTRAÇÃO
+PATENTE,SAÚDE,,Processo de desenvolvimento e especialização de células dendríticas autólogas,"UFTM
+FAPEMIG",PI 0905536-3,"Eddie Fernando C. Murta
+Márcia A. Michelin","Consiste em um novo processo de maturação de células específicas do sistema imune para serem utilizadas contra todos os tipos de tumores. Para tanto, esse processo é baseado na capacidade de ativação do sistema imune do próprio paciente e em diferenciação in vitro destas células para posterior sensibilização com antígenos tumorais, também provenientes do próprio paciente, sendo as células dendríticas maduras utilizadas no combate aos tumores.","- Evita rejeição heteróloga, utilizando células do próprio paciente;
+- Pode ser utilizado no tratamento de todos os tipos de tumores;
+- Método alternativo aos tratamentos tradicionais que podem ser mais agressivos ao paciente.","Área da saúde, com ênfase em oncologia, destinado ao tratamento experimental de diversos tipos de câncer.",POSSUI FOTO/ILUSTRAÇÃO
+PATENTE,SAÚDE,,"Instrumento de fortalecimento cervical 
+",UFTM,BR 10 2021 010231-4 ,"Andréa L. P. Gasparini 
+Marcos M. Shimano 
+Lais O. de Almeida 
+Larissa Giovanna de O. Araujo ","Instrumento específico para o treinamento da musculatura da coluna cervical visando complementar e servir como resistência para os movimentos do pescoço durante a intervenção fisioterapêutica para indivíduos com dor cervical. Para a melhora da força e redução da fatigabilidade dos músculos do pescoço é recomendado que se façam exercícios de fortalecimento geral, exercícios com cargas externas para treino de força e resistência dos músculos flexores e extensores cervicais, atividades estas conquistadas pelo instrumento cervical de fortalecimento idealizado.","- Instrumento barato para produção; 
+- Fácil adaptação a diferentes pacientes; 
+- Confortável durante sua utilização; 
+- Permite de forma eficaz a oferta de carga progressiva individual para o fortalecimento muscular idealizado. ","Pessoas com dor cervical. 
+",
+PATENTE,SAÚDE,,"Pessoas com dor cervical. 
+Aparelho para reabilitação sensorial com uso do som",UFTM,BR 10 2021 008565 7,"Hugo B. Oliveira
+Luciane F. R. M. Fernandes","A invenção refere-se a um aparelho para reabilitação sensorial com o uso do som. O aparelho é capaz de produzir um feedback auditivo a partir das vibrações geradas pelo toque da mão sobre diferentes texturas fixadas à superfície do dispositivo. A invenção objetiva auxiliar fisioterapeutas, terapeutas ocupacionais e profissionais da saúde na reabilitação de pacientes com alterações na sensibilidade ao toque devido a lesões nervosas.","- O invento apresenta características superiores de saniticidade e robustez estrutural. Além disso, permite o contato direto da mão do usuário com a superfície do equipamento.
+- Equipamento leve, portátil e de baixo custo de produção. Pode ser utilizado por vários pacientes, com uso temporário ou de curta duração.","Essa invenção possui o potencial de ser comercializada para clínicas, para hospitais e para os pacientes que possuem a sensibilidade das mãos afetada devido a lesões nervosas.",POSSUI FOTO/ILUSTRAÇÃO
+PATENTE,SAÚDE,,"Método de preparo de um biossensor eletroquímico para diagnóstico rápido e específico do vírus da dengue 
+","UFTM
+UFU
+FAPEMIG",BR 10 2018 072649 8 ,"Ana Graci B. Madurro 
+Ana Paula S. Terra 
+David N. Silva Teixeira 
+Jussara V. da Silva ","A presente patente é sobre um método de preparação de um biossensor que utiliza técnicas eletroquímicas para diagnosticar o vírus do dengue tipo 1, com mais agilidade. O processo de identificação ocorre através de uma reação específica de um componente deste biossensor, com os anticorpos do tipo IgM, presentes no soro humano.","- Procedimento simples; 
+- Baixo custo; 
+- Alta sensibilidade; 
+- Volume reduzido; 
+- Análise em tempo real; 
+- Diagnóstico rápido e específico do vírus da dengue.","Esse método pode ser aplicado na área da saúde pública, onde um diagnóstico rápido da doença pode resultar em um tratamento mais eficiente da doença. ",
+PATENTE,SAÚDE,,Plataforma fixa sobre uma haste móvel para auxiliar no registro de imagens para avaliação postural por biofotogrametria,UFTM,BR 10 2019 005773-4,"Marcos M. Shimano
+Suraya G. N. Shimano
+Edimar de Oliveira
+Fábio Masao Kawamura","Consiste de uma plataforma fixa, composta por um suporte inferior e superior, entre os quais está situado um sistema giratório capaz de girar 360o no qual está fixado a haste móvel horizontal, cujas extremidades possuem regulagem de comprimento, conectadas a duas hastes verticais reguláveis. As imagens podem ser obtidas de maneira rápida e eficaz, sem que a pessoa precise mudar de posição ou manter-se imóvel por muito tempo.","- As imagens são capturadas sempre da mesma distância aumentando a precisão nas análises;
+- A pessoa não precisa se movimentar para obter imagens de outras vistas de seu corpo;
+- Possui compatibilidade com dispositivos móveis;
+- Baixo custo de produção.","Ramo da saúde podendo ser utilizado em clínicas de fisioterapia, academias, escolas, clubes esportivos, centros de reabilitação, unidades básicas de saúde e centros de diagnósticos por imagens e outras finalidades.",
+PATENTE,SAÚDE,,Dispositivo subaquático para reabilitação do membro inferior,"UFTM
+UFU",BR 10 2020 008559 0,"Suraya G. N. Shimano
+Rogério S. Gonçalves
+Isabella de P. C. Borges","A invenção refere-se a um dispositivo de Movimentação Passiva Contínua, subaquático, no qual a movimentação do dispositivo é realizada por meio da força do próprio usuário a partir de um mecanismo semelhante a um remador acoplado a estrutura de movimentação passiva contínua do membro inferior. O dispositivo é leve, prático e auxilia na reabilitação do membro inferior humano por sequela de algum processo patológico.","- A utilização do ambiente aquático possui como vantagens a redução do medo de cair, a diminuição da dor e a maior facilidade de movimentação do paciente;
+- A terapia pode ser realizada pelo paciente, sob supervisão de um fisioterapeuta, o que facilita e acelera o processo de reabilitação.","Esta invenção possui potencial de aplicação
+industrial em organizações que desenvolvem
+equipamentos médicos para a reabilitação
+fisioterapeuta em diversas áreas.",POSSUI FOTO/ILUSTRAÇÃO
+PATENTE,SAÚDE,,Sistema de Sustentação e Movimentação de Membros Superiores,UFTM,BR 10 2017 002305-2,"Alessandra C. A e Souza
+Zilda de C. Silveira
+Ismael M. Barbosa
+Valeria M. C. Elui","A presente invenção compreende um sistema de sustentação e movimentação de membros superiores, o qual auxilia na reabilitação terapêutica de indivíduos com disfunção neuromuscular ou musculoesquelética. Apresenta um mecanismo de apoio para as articulações do cotovelo e punho para sustentar estes segmentos corporais contra a força de ação da gravidade.","- Pode ser fixado a uma mesa ou ser utilizado diretamente no chão;
+- Auxilia na terapia assistiva de pessoas com perda de movimentação no ombro, cotovelo, antebraço, punho e mão;
+- Configuração e design permitem liberdade de movimentação de dedos e polegar simultânea ao posicionamento do punho.",Em hospitais e em clínicas de fisioterapia.,
+PATENTE,ENGENHARIAS,,"Dispositivo mecânico de fixação para medição de cilindricidade, rebarba e rugosidade superficial de corpo de prova cilìndrico",UFTM,BR 20 2024 003407 0,"Raphael Silva Lins
+Valter F. Junior
+Luciano Antônio F.
+Paulo Martins",Este dispositivo permite centralizar peças cilíndricas com agilidade e rapidez em circularímetro. Possibilita uma fixação rígida em desempeno de granito ou em máquina de medição por coordenada (MMC) e medições de rugosidade com perpendicularidade com possibilidade de rotação angular. Foi projetado para ser utilizado como elemento de fixação de peças cilíndricas para controle dimensional e geométrico.,"- Redução drástica de tempo na montagem e centralização no circularímetro;
+- Garante uma melhor ergonomia para o operador;
+- Fixação rígida em máquinas de medição tridimensional por coordenadas (MMC);
+- Possibilita medição angular com variação de 30o em 30o para medição de rugosidade superficial;
+- Construção e manutenção simples.","O dispositivo poderá ser acoplado em qualquer circularímetro ou máquina de medições por coordenada (MMC) para realização de medidas dimensionais internas ou externas de peças cilíndricas e medições de erros geométricos (de forma e/ou posição), podendo ser utilizado para medição de rebarbas com perfilômetro, rugosidade superficial com rugosímetro, diâmetros com paquímetros e/ou micrômetros.",POSSUI FOTO/ILUSTRAÇÃO
+PATENTE,ENGENHARIAS,,Circuito eletrônico analógico para sensoriamento e condicionamento de tensão e corrente elétrica em baixa tensão,UFTM,BR 10 2023 000126 2,"Lucas Pereira Pires
+Lennyn Yuichi S. Alves","A invenção refere-se a um circuito eletrônico analógico composto por transdutores, circuitos integrados e elementos passivos dispostos de modo a efetuar o sensoriamento e o condicionamento de um sinal de corrente elétrica e um sinal de tensão elétrica de forma exata e prática, facilitando ao usuário fazer a digitalização destes sinais na sequência.","- Excelente exatidão, obtendo-se desvio máximo de ± 0,9% garantido pelos fabricantes dos transdutores de tensão e corrente bem como pela escolha adequada do resistor de medição da tensão elétrica;
+- Praticidade no processo de sensoriamento e condicionamento de tensão e corrente elétrica, garantida pelo formato plug-and-play do sistema com a entrada (variáveis a serem sensoriadas) e saída (microcontrolador) bem como pelos ajustes rápidos e intuitivos a serem realizados por meio de potenciômetros e chaves seletoras;
+- Estágio inicial contendo filtro ativo passa baixas tratando do efeito anti-aliasing e mitigação de conteúdo harmônico de elevada frequência advindo de interferências eletromagnéticas presentes no sinal sensoriado;
+- Baixo consumo energético garantido pelo uso de circuitos integrados e projeto de elementos resistivos que requerem corrente elétrica baixa da fonte de alimentação;
+- Ausência de interferência no sistema a ser medido por meio do uso de transdutores de efeito Hall.","As aplicações dessa invenção podem se dar tanto em sistemas elétricos de baixa potência (como em circuitos de telecomunicações, por exemplo) quanto em sistemas de potência mais elevada (como em energias renováveis, por exemplo), desde que respeitados os limites operacionais dos transdutores de tensão e corrente utilizados (500 V e 50 A, respectivamente.",
+PATENTE,ENGENHARIAS,,Uso do grafeno como aditivo para aumento de resistência mecânica em compósitos à base de cimento,UFTM,BR 10 2022 010679 7,"Rogério V. Gelamo
+Moacir A. P. Netto
+Paulo de C. Guetti
+Adller Ernesto de L. F.","A presente invenção consiste em uma nova metodologia de dispersão do aditivo de multicamadas de grafeno em compósitos cimentícios, como argamassas, concretos, dentre outros, com a qual otimiza os resultados mecânicos à tração e à compressão. O método consiste na funcionalização do grafeno a partir da mistura de solvente orgânico (isopropanol) e eventual dispersão das multicamadas em solução orgânica ou inorgânica (água) em agregado miúdo, e, após evaporação do solvente e homogeneização do agregado, a confecção das argamassas, concretos, dentro outros.","- Redução de microfissuras;
+- Melhora na resistência mecânica à compressão e flexo-tração da argamassa de cimento;
+- Baixo custo comparado a outros processos de mesma finalidade;
+- Processo de produção simplificado comparado a outros de mesma finalidade;
+- Dispersão mais homogênea do grafeno, com menos risco de formação de grumos de grafeno no concreto;
+- Possibilidade de execução do processo em canteiros de obras e empresas do setor de concreto armado e protendido.","A otimização na dispersão do grafeno na matriz cimentícia aumenta a efetividade do aditivo, o que permite a produção de argamassas e concretos de alto desempenho mecânico. Deste modo, a presente invenção pode beneficiar a indústria da construção civil, especialmente usinas de concreto e indústria de pré-moldados, entre outros.",
+PATENTE,ENGENHARIAS,,Método para drenagem superficial utilizando pneus inservíveis.,UFTM,BR 10 2015 025400-8,Paulo Roberto Garcia,"Consiste na utilização de pneus, cuja a vida útil já se esgotou, para a drenagem de águas pluviais. Assim, a água da chuva será encaminhada a reservatórios, os quais serão estruturados com pneus inservíveis e solo, também formando a tubulação responsável por captar a água da chuva e colaborando com a realimentação do lençol freático.","- Alternativa econômica e sustentável;
+- Descarte adequado de pneus velhos;
+- Ajuda a reduzir os meios de proliferação de vetores transmissores de doenças;
+- Realimentação do lençol freático.","A tecnologia citada tem aplicação direta na construção civil, especificamente na área de drenagem.",
+PATENTE,ENGENHARIAS,,Processo de retificação de aço de elevada resistência ao desgaste,"UFTM
+UFU",BR 10 2021 001005-3 ,"Rogério V. Gelamo 
+Rosemar B. da Silva 
+Raphael L. de Paiva 
+Rodrigo de S. Ruzzi ","A retificação é um processo normalmente aplicado em aços endurecidos com o objetivo de garantir ao componente, pós tratamento térmico, uma combinação entre baixos valores de rugosidade e tolerâncias dimensionais estreitas. Estes materiais possuem grande suscetibilidade a danos de origem térmica e, dessa forma, a correta seleção dos parâmetros de corte e condições de lubri-refrigeração no processo de retificação é fundamental. Neste sentido, esta invenção diz respeito à determinação de condições adequadas de corte e de lubri-refrigeração para a retificação, com abrasivo cerâmico convencional, de aços de alta resistência ao desgaste em estado endurecido (pós tratamento térmico). ","Determinação de condições adequadas de corte, para retificação de aços endurecidos de elevada resistência ao desgaste. ","Metalúrgica, Mineração e Siderúrgica ",
+PATENTE,ENGENHARIAS,,"Dispositivo mecânico para arraste de cabeçote móvel para realização de furos, alargamentos, roscas com macho por intermédio de automatização em tornos 
+mecânicos horizontais ",UFTM,BR 10 2020 018483-0 ,"Luciano Antônio 
+Fernandes Raphael Silva Lins ","Atualmente, os acessórios de série do torno horizontal não são capazes de dar movimento automático sincronizado com a rotação do mesmo, comandado pelo carro principal, ao cabeçote móvel. Na verdade este cabeçote funciona a maior parte do tempo como um segundo apoio às peças e posição estática, o qual a partir de agora passa a ter movimento automático. Este movimento síncrono permite ao cabeçote móvel realizar tarefas com avanço controlado em processos de usinagem como a realização de furos, alargamento, roscas com machos, dentre outros. ","Furos e alargamentos com melhores acabamento superficial e tolerâncias de forma e dimensão; 
+- Redução do tempo de execução e aumento da 
+produtividade de peças fabricadas por hora; 
+- Intercambialidade entre diversos modelos de torno 
+mecânicos horizontais existentes no mercado independente do fabricante; 
+- Redução de custos de fabricação no que tange à diminuição de doenças ocupacionais e de custos de manutenção; 
+- Aumento da lucratividade entre 10% e 40% por lote. ","Este dispositivo mecânico automatizado pode ser acoplado em qualquer torno mecânico horizontal ou máquinas operatrizes com essas características, visando a realização de furos, alargamentos, roscas, entre outros. ",
+PATENTE,ENGENHARIAS,,"Insertos intercambiáveis cerâmicos, à base de zircônia estabilizada com ítria, para usinagem",UFTM,BR 20 2021 006786-7 ,"Raphael Silva Lins 
+Vitor T. G. Naves 
+Mário Sérgio da Luz ","O presente modelo de utilidade é uma nova opção para confecção de insertos intercambiáveis baseado em modelos padronizados pela norma ABNT NBR ISO 1832 para usinagem de metais ferrosos e não ferrosos trabalhando em alta performance a seco com parâmetros de corte elevados. Os insertos feitos de Zircônia estabilizada com ĺtria podem atender operações de torneamento cilíndrico, fresamento de topo e fresamento circular. Essas ferramentas de cerâmica óxida se caracterizam como mais uma opção de insertos cerâmicos no mercado desenvolvido com tecnologia nacional.","- Podem ser aplicadas em situações que requerem elevados valores de velocidade de corte durante a usinagem a seco; 
+- Operações de usinagem sem aplicação de fluido de corte propiciam condições favoráveis ambiente de trabalho com mínima possibilidade de contaminação, por parte dos usuários de máquinas operatrizes, de doenças respiratórias e dermatites que podem ser provocadas devido ao uso de fluidos de corte; 
+- Cavacos provenientes de Zircônia estabilizada com ĺtria podem ser reciclados compondo, portanto, um novo material para ferramentas de usinagem. ",Indústria metal-mecânica ,POSSUI FOTO/ILUSTRAÇÃO
+PATENTE,ENGENHARIAS,,Punção semiautomático portátil para escrita braille ,UFTM,BR 10 2021 006078-6 ,"Marcos M. Shimano 
+Bruno Simões Barini 
+Suraya G. N. Shimano ","O presente dispositivo introduz uma tecnologia assistiva (semiautomática) para auxiliar deficientes visuais na escrita Braille, usando reglete e punção. É constituído por um pino (3) preso a um disco dentado (2) apoiado em uma mola (1), que é engatilhada em outro disco (5) com guia (6) e apoiado em um rolamento axial (7). Uma mola caracol (10) é presa no guia e no corpo. O mecanismo é envolvido por três partes: tampa (8), corpo (9) e ponteira (11). A ponteira é enroscada e a tampa é encaixada no corpo. Ao girar a tampa, é armazenada energia na mola caracol. Assim, uma força aplicada no dispositivo faz o disco superior subir (2) e o disco inferior (5) girar, isso ocorre até que o próximo dente e o disco superior junto com o punção bata com uma energia maior, suficiente para marcar o papel. ","- Possui um sistema de molas e engrenagens para que a força aplicada seja menor do que a força necessária para marcar o papel, representando um esforço físico menor; 
+- O mecanismo do punção é todo mecânico, ou seja, não é necessária nenhuma bateria ou ligação com a rede elétrica, é de baixo custo, de fácil utilização, portátil e seguro. Além disso, tem dimensões próximas de um punção comum; 
+- Abordagens ergonômica e social, pois evitará calosidades nas mãos, lesões por esforço repetitivo ou doenças osteomusculares relacionadas ao trabalho e possibilitará a alfabetização mais precoce de crianças na escrita Braille.",A presente invenção se refere a uma tecnologia assistiva para auxiliar pessoas (adultos e crianças) com deficiência visual (e também com comprometimentos físicos na mão) na escrita Braille usando reglete e punção (comum em alfabetização). ,POSSUI FOTO/ILUSTRAÇÃO
+PATENTE,ENGENHARIAS,,"Granulação de Fertilizante Foliar por Spray Dryer, na perspectiva de projeção em escala industrial ",UFTM,BR 10 2018 009208 1 ,"Leticia Alberto 
+Kássia Graciele dos Santos 
+Mônica Hitomi Okura ","Consiste na secagem por pulverização de um líquido, transportado por uma bomba dosadora até o bico atomizador, onde ocorre a alimentação concomitante ao ar previamente aquecido, para secagem e transformação das partículas em forma esférica e geralmente ocas, com uma distribuição de tamanho relativamente definida e homogênea. Após a nebulização na câmara de secagem, o pó seco segue para separação e recuperação no ciclone. ","- Aumento na solubilidade do fertilizante foliar em água; 
+- Melhoria na homogeneidade do produto; 
+- Maior facilidade de aplicação em campo; 
+- Aumento na estabilidade do produto; 
+- Aplicação de menores volumes de solução; 
+- Redução dos custos de aplicação. ","Produção de fertilizantes foliares altamente solúveis em água. Essa produção se dá através da secagem do fertilizante em spray dryer, cujo equipamento deve ser utilizado em conjunto a tanques de mistura, ciclone e envasadora. ",
+PATENTE,ENGENHARIAS,,Método de irradiação de hemocomponentes em acelerador linear com modelo de recipiente padronizado de policarbonato,UFTM,BR 10 2018 001847 7,"Vitor Carvalho Lara
+Wagner Roberto Batista",É caracterizada pela padronização do método de irradiação de hemocomponentes em aparelho acelerador linear. Envolve a confecção de tabela que relaciona volume ocupado pelas bolsas dentro do recipiente e quantidade de unidades monitoras a serem programadas no equipamento de radioterapia.,"- Dispensa o uso de equipamento irradiador de células dedicado que apresenta alto custo;
+- Praticidade do método com relação ao cálculo de unidades monitoras para cada volume de sangue devido à padronização em tabela.","Esse método pode ser aplicado na área de saúde, especificamente no preparo de hemocomponentes para procedimentos de transfusão em seres humanos envolvendo previamente a irradiação para evitar a Doença do Enxerto Contra Hospedeiro Associada à Transfusão.",
+PATENTE,ENGENHARIAS,,Síntese de Polímeros condutores sob condições de elevada diferença de potencial elétrico (DDP).,UFTM,BR 10 2017 016907 3,"Luis Carlos de Morais
+Daniel Pasquini","A presente patente é sobre um método de síntese de polímeros condutores e seus respectivos derivados químicos em diferentes solventes puros e em misturas de solventes. A síntese ocorre em condições de elevada diferença de potencial elétrico aplicada por uma fonte de tensão que pode variar de 50 volts até 45.000 volts, com amperagem inferior a 5 mA.","- Polímeros apresentam propriedades elétricas superiores às amostras sintetizadas pela metodologia descrita na literatura;
+Pode ser implementada em escala industrial.",Esse método pode ser aplicado na área da produção de polímeros condutores elétricos em menor tempo quando comparado com o método químico oxidativo convencional.,
+PATENTE,QUÍMICA / FÍSICA,,Método de Produção de Grafite Oxidado-esfoliado em Multicamadas e Folhas de Grafeno Oxidado,"UFTM
+UFU",BR 10 2016 028938-6,"Luis Carlos de Morais
+Daniel Pasquini","A presente patente é sobre um método de produção alternativo visando a oxidação e esfoliação de grafite natural a partir de modificações no método de Hummers. É possível produzir grafite natural oxidado, multicamadas de grafeno oxidado e folhas de grafeno oxidado, em baixa temperatura, com elevado potencial para aplicação industrial.","- Quantidade menor de tempo e de reagentes requeridos;
+- Metodologia possível de ser instalada em indústrias de grande e pequeno portes.","Esse método pode ser aplicado na área da produção de grafeno oxidado, que é um dos principais componentes do grafite, devido às suas características físicas, químicas e mecânicas.",
+PATENTE,QUÍMICA / FÍSICA,,Processo de síntese de polianilina nano estruturada ,"UFTM
+UFU",BR 10 2021 007174-5 ,"Daniel Pasquini Luís Carlos de Morais 
+Camila V. Medeiros ","A presente invenção diz respeito a um processo de síntese interfacial que permite produzir polianilina nano estruturada em diferentes diâmetros e comprimentos, podendo ser modo estático ou em agitação. É uma associação de duas importantes variáveis 
+que juntas permitem produzir polianilina nano estruturada em diferentes temperaturas. ","- A metodologia é de simples implementação e um dos componentes usados é de baixo custo e grande abundância no Brasil. De acordo com artigos especializados no assunto, um review evidenciava que na temperatura de próxima a zero graus Celsius não se produzia polianilina nano estruturada e outros tipos de partículas eram preferenciais. Com o método desenvolvido é possível produzir polianilina nano estruturada nessas condições.","Empresas, indústrias e segmentos da sociedade que necessitam de materiais que exibam propriedades de condutividade elétrica ou mesmo de barreira para eletromagnéticas. ",
+PATENTE,QUÍMICA / FÍSICA,,Cobrejunta Cerâmico não permanente a base de Y-TZP para soldagem a arco voltaico,UFTM,BR 20 2020 014959 3,Raphael Silva Lins,"O presente modelo de utilidade refere-se a um Cobrejunta Cerâmico não permanente a base de Zircônia Tetragonais Policristalina estabilizada com Ítria (Y-TZP) para soldagem a arco voltaico com fixação adesiva antitérmica. Este material é um tipo de cobrejunta não permanente, também chamado de ""backing"", usado na parte posterior da junta durante a soldagem, que tem a finalidade de impedir o material em fusão de vazar, dando um formato padronizado à raiz da solda, sem riscos de perfurações ao longo do cordão.","- Reaproveitamento dos postiços que não se fundem durante a soldagem e são retirados após a mesma;
+- Pode ser reutilizado por mais de uma vez, após inspeção visual;
+- Redução dos custo de processos de soldagem.","Este produto é utilizado como cobrejunta na soldagem de passes de raiz de soldas de responsabilidade, utilizando ligas à base de Fe, Ni, Cr ou Co ou ligas cuja combinação seja qualquer uma delas na fusão do cordão de solda, e que precisam ser inspecionadas, como as aplicadas em indústria naval, metal mecânica, aeronáutica, aeroespacial, petróleo e gás, etc.",POSSUI IMAGEM/ILUSTRAÇÃO
+PATENTE,QUÍMICA / FÍSICA,,Incorporação de solvente orgânico ao pó de gesso e obtenção de argamassa de gesso,UFTM,BR 10 2020 011446 8,"Paulo de Castro Guetti
+Felipe Silva Lima
+Rogério V. Gelamo","Compreende na incorporação de etanol ou Isopropanol ao pó de gesso para melhorias das propriedades físicas e mecânicas. O novo compósito de gesso apresentou vantagens, tanto nas propriedades do estado fresco quanto do endurecido, tendo em vista que esse possuiu um aumento significativo nas resistências à compressão e à tração e também no tempo de início e fim de pega. Ressalta-se que a incorporação de um solvente orgânico, abundante e de baixo custo, tais como o etanol e o isopropanol ao gesso, resulta no baixo custo do novo compósito de gesso proposto.","- Baixo custo comparado a outros processos com a mesma finalidade;
+- Aumento das resistências à compressão e à tração e aumento no tempo de pega do gesso;
+- Redução na formação de fissuras no material e no desperdício de material;
+- Melhoria na capacidade portante e fácil disponibilidade do ativo.","O gesso de alto desempenho poderá ser utilizado tanto in loco, como em indústrias de pré-fabricados, bem como em atividades de artesanato. Tendo assim como foco a Indústria Química e a Construção Civil.",
+PATENTE,QUÍMICA / FÍSICA,,Processo para obtenção de um material solúvel de nióbio,UFTM,BR 10 2020 000446 8,"Pedro H. do
+Nascimento Pereira
+Geoffroy R. P. Malpass","Esta invenção refere-se a um método para se produzir um material solúvel em água à base de nióbio. O processo ocorre com uma reação utilizando ácido fosforoso, agua e um precursor de nióbio. O referido composto é aplicável na síntese de materiais de diversos tipos, como exemplo cristais em que o nióbio é o constituinte principal ou dopante, filmes finos, catalisadores e cerâmicas funcionalizadas, materiais estes que são utilizados em indústrias de diversas áreas como eletrônica e química.","- Possui apenas nióbio como único elemento metálico na sua composição;
+- Simplicidade na sintetização do material solúvel, que possui baixa toxicidade;
+- Solubilidade em água e em uma faixa de pH maior do que o atual produto, oxalato amoniacal de nióbio;
+- Síntese em estado sólido ou viscoso, ambos de mesma composição, o que torna possível a escolha mais vantajosa para produção;","Em catalisadores e/ou precursor de catalisadores utilizados em indústrias químicas e de petróleo. Em empresas produtoras de produtos à base de nióbio como Companhia Brasileira de Metalurgia e Mineração – CBMM, Mineração Taboca e Niobrás no Brasil, Niobec no Canadá e NioCorp nos Estados Unidos.",
+PATENTE,QUÍMICA / FÍSICA,,Filtros celulósicos compósitos para remoção de contaminantes de água por filtração usando baixo vácuo,"UFTM
+UFU",BR 10 2020 000311-9,"Daniel Pasquini
+Luís Carlos de Morais
+Pedro Eduardo Costa","A invenção propõe a produção de filtros (ou membranas) celulósicos compósitos a partir da mistura dos componentes: nanofibras de celulose de Eucalipto, polpa de celulose branqueada de Eucalipto, resíduos agroindustriais lignocelulósicos preferencialmente cascas de soja e fibras de bagaço de cana nas formas brutas, semibranqueadas e branqueadas, ferritas magnéticas, lignina e lignina hidroximetilada e polímeros condutores, aplicados na remoção de contaminantes da água.","- Curto tempo de filtração;
+- Elevada eficiência para remover contaminantes em água;
+- Elevados valores de fluxo.","Método para a purificação de águas (rios, mares, águas pluviais, efluentes domésticos, etc) que podem ter sido contaminadas por diversos autores, como exemplo: por pesticidas, metais tóxicos, corantes, entre outros.",POSSUI IMAGEM/ILUSTRAÇÃO
+PATENTE,QUÍMICA / FÍSICA,,"Filtros celulósicos compósitos para purificação de óleos, gorduras e biocombustíveis","UFTM
+UFU",BR 10 2019 020339-0,"Daniel Pasquini
+Luís Carlos de Morais
+Flávia N. F. do Prado
+Michelle Garcia Gomes","A presente invenção se trata do desenvolvimento de filtros celulósicos compósitos para purificação de óleos, gorduras e biocombustíveis. Os filtros são feitos a partir de misturas de nanofibras celulósicas de Eucalipto (CNF) com os resíduos agroindustriais, especificamente fibras de bagaço de cana-de-açúcar e casca de soja, que foram dispersos em meio aquoso e submetidos a um processo de filtração a vácuo.","- São feitos a partir de misturas de componentes oriundos da biomassa, sendo considerados não poluentes e, portanto, são ecologicamente corretos;
+- Os filtros foram desenvolvidos a partir de um processo simples, de baixo custo em infraestrutura e método operacional, o que contribui para serem aplicados em diferentes regiões do Brasil em  que o poder econômico é menor;
+- De acordo com pesquisas, eles apresentam excelente resistência mecânica, tempos de filtração curtos, com excelentes vazão e fluxo de permeados.","Atividades que requerem o uso de purificação de óleos, gorduras e biocombustíveis.",
+PATENTE,QUÍMICA / FÍSICA,,Fluido de corte híbrido para redução de danos térmicos em superliga durante a retificação ,"UFTM
+UFU
+UFF",BR 10 2018 006216 6 ,"Rogério Gelamo  
+Rosemar Batista da Silva 
+Déborah de Oliveira 
+Maria da Penha C. Fonseca ","Consiste na utilização de multicamadas de flocos de ordem de 1 grafeno com a 20 micrômetros de tamanho e espessura da ordem de 1 nm a 30 nm, que foram adicionadas ao fluido de corte de base vegetal e semissintético para uso durante a retificação de ligas ferrosas, em condições brandas e severas. Mostra melhoras nas propriedades térmicas e tribológicas do fluido de corte, pois proporciona resultados compatíveis ou mesmo superiores aos obtidos com fluido  de corte sem a adição de partículas de grafeno e ainda em relação à técnica convencional de aplicação de fluido de corte. ","- Presença do grafeno em baixa concentração reduziu danos térmicos nas superfícies (minimização de trincas); 
+- Menor variação de microdureza; 
+- Menor potência de corte; 
+- Menores valores de rugosidade e tensão residual de tração; 
+- Alternativa a técnica convencional de aplicação de fluido de corte que emprega grandes vazões de fluidos. ",Redução de danos térmicos em liga de níquel durante a retificação plana tangencial em diferentes condições de corte. ,
+PATENTE,QUÍMICA / FÍSICA,,Método de Produção de Grafite Oxidado-esfoliado em Multicamadas e Folhas de Grafeno Oxidado,"UFTM
+UFU",BR 10 2016 028938-6,"Luis Carlos de Morais
+Daniel Pasquini","A presente patente é sobre um método de produção alternativo visando a oxidação e esfoliação de grafite natural a partir de modificações no método de Hummers. É possível produzir grafite natural oxidado, multicamadas de grafeno oxidado e folhas de grafeno oxidado, em baixa temperatura, com elevado potencial para aplicação industrial.","- Quantidade menor de tempo e de reagentes requeridos;
+- Metodologia possível de ser instalada em indústrias de grande e pequeno portes.","Esse método pode ser aplicado na área da produção de grafeno oxidado, que é um dos principais componentes do grafite, devido às suas características físicas, químicas e mecânicas.",
+PATENTE,AGRONOMIA / BIOLOGIA,,Armadilha luminosa e aderente para insetos,UFTM,BR 20 2015 025397-0,Afonso Pelli,"A invenção refere-se a uma armadilha luminosa e aderente para insetos que confere segurança, conforto, resultados no controle de insetos, propiciando melhor desempenho/rentabilidade em várias atividades. Concilia quatro princípios ativos para  tração de insetos: aderência, diferentes cores, luz em comprimento de onda visível e ultravioleta. As cores utilizadas são amarelo, azul e verde – com diferentes combinações. Possui faces adesivas no interior, permitindo que os insetos capturados  fiquem escondidos no lado interno da armadilha, conferindo eficiência, conforto visual e higiene.","- Pode ser utilizado dentro e fora de edificações;
+- Eficácia na coleta, no monitoramento e no controle de insetos;
+- Identificação das pragas antes de alcançarem elevadas densidades;
+- Eficácia e plasticidade de utilização;
+- Equipamento de fácil montagem;
+- Economia em função da redução ou eliminação das aplicações de inseticidas;
+- Possui baixos custos e consumo de energia.","A invenção deve ser utilizada em áreas industriais (alimentícia, farmacêutica,  cosméticos, eletrônica e química fina), áreas da saúde (enfermarias, salas cirúrgicas, consultórios e ambulatório, laboratórios de análises clínicas, banco de leite,  hemoderivados) e residencial, prevenindo inúmeras doenças veiculadas por vetores biológicos ou mecânicos.",
+PATENTE,UTILIDADES,PEDIDA,"Armadilha Biluminoadere (Armadilha luminosa e
+aderente para insetos)",UFTM,BR 20 2015 025397-0,Afonso Pelli,"Esta armadilha utiliza quatro princípios para atração e retenção de insetos voadores, sendo estes: sistema adesivo, luz em comprimento de onda visível e na faixa ultravioleta e cores específicas das faces dela. Assim, através de aderência e luminosidade, ocorre a captura de insetos, podendo ser utilizada em diversos meios, sendo um produto adaptável a grande diversidade de ambientes e a variabilidade das características de diversas espécies de insetos.","- Pode ser utilizado em todos os tipos de ambientes;
+- Não prejudica a saúde das pessoas e meio ambiente (não envolve inseticidas);
+- Baixo custo de montagem e consumo de energia;
+- Auxilia como método preventivo no controle de doenças veiculadas por vetores (biológicos ou mecânicos), especialmente na área da saúde.","Diversos ambientes nos quais deseja se reduzir ou eliminar a presença de insetos, tais como restaurantes, supermercados, hospitais, consultórios, residencial e comercial, dentre outros.",POSSUI IMAGEM/ILUSTRAÇÃO
+PATENTE,UTILIDADES,PEDIDA,Dispositivo para estabilização e posicionamento de punho ,"UFTM
+USP",BR 20 2018 013584 3,"Zilda de Castro Silveira 
+Alessandra C. de Albuquerque e Souza 
+Paula Midori Kaneko 
+Rafael Rocha Mattazio
+","A invenção se insere na área de engenharia mecânica e saúde, mais particularmente na área de Tecnologia Assistiva na categoria de órteses destinadas a pessoas com deficiência física. O invento realiza estabilização e posicionamento de punho e, por meio do acessório para encaixe de objetos, possibilita a realização de atividades como desenhar e escrever, e outras atividades da vida diária, como alimentação, por meio da inserção de talheres na adaptação ou ainda a higiene pessoal.","-  Pode ser adequado ao tamanho do usuário, adulto ou criança; 
+- Quando produzido por manufatura aditiva, é personalizável à anatomia do usuário; 
+- Adaptação para diferentes objetos, por exemplo, para escrita e desenho, higiene pessoal e alimentação. ","Pacientes que apresentem problemas relacionados com distúrbios neuromotores advindos das mais diferentes causas, como Doença de Parkinson, Paralisia cerebral, Microcefalia, Acidente Vascular cerebral e acidentes dos mais diversos.",
+PATENTE,UTILIDADES,PEDIDA,Dispositivo de parafusamento rápido para parafusadeira Reitz Parr-15/5 rep ,UFTM,BR 20 2018 075186 2,"João Vitor Sartori Ricciardi 
+Richard Humberto de Oliveira Filho","Este dispositivo realiza parafusamento rápido de três parafusos simultâneos, coincidentes com o arco de uma circunferência de diâmetro especificado, a fim de reduzir o tempo do processo de parafusamento com parafusadeiras de eixo único. ","- Todos os componentes podem ser facilmente encontrados no mercado, o que facilita a manutenção; 
+- A maioria dos componentes podem ser facilmente reproduzidos em impressoras 3D, diminuindo custo de manutenção; 
+- Proporciona elevada taxa de produção dos equipamentos para o qual foi desenvolvido, eliminando gargalo de produção com uma solução viável economicamente. ","Pode ser aplicado em qualquer linha de produção (montagem) que envolva o parafusamento de mais de um parafuso no mesmo plano, bastando somente variar as dimensões de componentes para aquelas requeridas no projeto. ",
+PATENTE,UTILIDADES,PEDIDA,Transmissor de temperatura multicanal com comunicação MODBUS e controle discreto das temperaturas,UFTM,BR 20 2019 001702-9,"Antônio C. L. Júnior
+Mario Sérgio da Luz","Este dispositivo concatena as funções de monitoramento multicanal de temperatura, controle discreto das temperaturas, comunicação com dispositivo computacional e comunicação com dispositivos de uso industrial. A utilização simultânea dessas tecnologias permite que as temperaturas mensuradas possam ser controladas de forma discreta pelo próprio dispositivo eletrônico ou mesmo serem enviadas para aplicativos de monitoramento como sistemas SCADA ou dispositivos industriais como CLP.","- Concentra vários pontos de medição e permite a redução da quantidade de endereços necessários para comunicação na rede;
+- Permite mensurar vários pontos de temperatura;
+- Permite que uma faixa de tensões contínuas possa ser utilizada para alimentação da placa eletrônica;
+- Utilização de circuitos integrados permite que a placa eletrônica tenha tamanho final menor.","O produto em questão pode ser aplicado de maneira ampla, como por exemplo, para realizar gestão térmica na indústria petroquímica, gerenciamento térmico de equipamentos industriais, fornos. Permite de forma direta e indireta a medição de líquidos, sólidos e gases onde haja necessidade do monitoramento da temperatura.",
+PATENTE,UTILIDADES,PEDIDA,Dispositivo Mecânico com Abertura e Fechamento da carcaça com catalisador veicular para troca do filtro catalítico e reutilização da carcaça,UFTM,BR 20 2019 011683 3,"Raphael Silva Lins
+Frederico M. Mendonça
+Luís Antônio D. R. Filho","Esta invenção atinge os objetivos pela presença de abas em cada uma das partes da carcaça do catalisador dividido, permeadas por furos nos quais se utiliza um conjunto de fixação não permanente de pressão e/ou aperto, para abertura e fechamento da carcaça. Ao longo das abas furadas, que substituem a solda entre as partes divididas da carcaça, utiliza-se um sistema de vedação para garantir
+estanqueidade do conjunto mecânico.","- Pode ser utilizado em todas as categorias de veículos a combustão, e tipos de combustíveis;
+- Possibilita a troca dos filtros catalíticos sem necessidade da troca do conjunto (carcaça e filtro);
+- Mantém os níveis de ruído e gases emitidos pelo escapamento dos veículos, dentro das especificações legais.","Sistemas de escape e catalisadores de todas
+as categorias de veículos a combustão, incluindo
+os tipos de combustíveis, biocombustíveis e
+combinações entre eles.",
+PATENTE,UTILIDADES,PEDIDA,Utilização de subproduto de Indústria de fertilizantes fosfatados em lixiviação de metais em placas de circuito impresso.,UFTM,BR 20 2017 009881-3,"Fabiana de A. Lana
+Geoffroy R. P. Malpass","Devido ao grande número de produtos eletrônicos produzidos anualmente, vem se tornando cada vez mais importante a necessidade da reciclagem, principalmente de componentes não biodegradáveis. Nesse âmbito, esta patente apresenta uma nova substância para extração de cobre de placas de circuitos integrados. Sendo também um subproduto da indústria fertilizantes desperdiçado, após os processos principais.","- Reciclagem do ácido fluossilícico;
+- De acordo com legislações ambientais;
+- Redução no uso de ácido sulfúrico;
+- Recuperação de cobre das placas de circuito.","Aplicações em indústrias de tratamento de água e, nesse caso, na lixiviação de placas de circuito impresso na reciclagem de aparelhos eletrônicos obsoletos e descartados.",
+PATENTE,UTILIDADES,PEDIDA,"Filmes Antimicrobianos a Base de Alginato de Sódio Utilizando Óleo Essencial Bioativo de
+Shinus Terebinthifolius e Melaleuca Alternifolia",UFTM,BR 20 2016 028945-4,"Ana C. G. Malpass
+Geoffroy R. P. Malpass
+Jéssica M. Rosa
+Laira Martinelli
+Mônica H. Okura","Este novo curativo caracteriza se pela associação de quatro componentes distintos: filmes de polissacarídeo natural, agentes surfactantes e plastificantes e óleos essenciais bioativos. Sendo uma alternativa no tratamento de feridas, com os óleos originados de plantas (os quais apresentam atividade antimicrobiana) e com uma matriz dos filmes constituída por alginato de sódio (atividade cicatrizante), mostrou resultados superiores à de alguns antibióticos potentes utilizados atualmente.","- Atividade antimicrobiana;
+- Biocompatibilidade e biodegradante;
+- Permeabilidade ao O2 e CO2;
+- Propriedades cicatrizantes;
+- Controle da migração de água;
+- Migração lipídica.","Área da saúde, facilitando o processo de recuperação de ferimentos, prevenindo futuras inflamações e promovendo tratamento de feridas infectadas.",POSSUI IMAGEM/ILUSTRAÇÃO
+PATENTE,UTILIDADES,CONCEDIDA,"DISPOSITIVO PARA AUXÍLIO DE TAREFAS MANUAIS
+","UFTM
+USP",BR 202016024314-4,"ALESSANDRA CAVALCANTI DE ALBUQUERQUE E SOUZA; ARTUR VALADARES DE
+FREITAS SANTOS; ZILDA DE CASTRO SILVEIRA","O presente modelo de utilidade refere-se a um dispositivo auxiliar manual compreendendo um cabo (1) acoplado a, preferencialmente, um utensílio (3), escova de dente ou pente, dotado de  uma tampa traseira (4) e outra tampa frontal (2), em que o referido cabo (1) apresenta cobertura ergonômica (5) e correia universal (6) de modo a garantir a preensão da mão do usuário no cabo durante o desempenho da atividade diária. Adicionalmente, o referido cabo (1) possui quatro cavidades internas (8), que visam a compensação de peso por meio da inserção e retirada de água, proporcionando uma variação de massa do conjunto.",,,não há documento padrão (igual aos demais acima descritos); sugiro solicitar novas respostas ao autor.
