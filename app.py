@@ -427,25 +427,23 @@ def render_impacto_social():
     c4.metric("APC estimado (US$)", br(apc_tot) if apc_tot else "—",
               help="Custo de publicação (Article Processing Charges) reportado ao OpenAlex.")
 
-    c1, c2 = st.columns(2)
-    with c1:
-        st.subheader("Alinhamento aos ODS")
-        g = fsdg.copy()
-        g["ODS"] = g["sdg_id"].map(lambda x: f"{int(x)}. {ODS_PT.get(int(x), '')}"
-                                   if pd.notna(x) else None)
-        po = g.groupby("ODS")["work_id"].nunique().reset_index(name="n")
-        st.plotly_chart(barra_h(po, "ODS", "n", h=480, cor=T["accent"]),
-                        width="stretch")
-    with c2:
-        st.subheader("Principais financiadores")
-        if "funders" in fraw:
-            f = fraw["funders"].explode().dropna().value_counts().head(15).reset_index()
-            f.columns = ["financiador", "n"]
-            if len(f):
-                st.plotly_chart(barra_h(f, "financiador", "n", h=480, cor=T["secondary"]),
-                                width="stretch")
-            else:
-                st.info("Sem dados de financiamento na seleção atual.")
+    st.subheader("Alinhamento aos ODS")
+    g = fsdg.copy()
+    g["ODS"] = g["sdg_id"].map(lambda x: f"{int(x)}. {ODS_PT.get(int(x), '')}"
+                               if pd.notna(x) else None)
+    po = g.groupby("ODS")["work_id"].nunique().reset_index(name="n")
+    st.plotly_chart(barra_h(po, "ODS", "n", h=560, cor=T["accent"]), width="stretch")
+
+    st.subheader("Principais financiadores")
+    if "funders" in fraw:
+        f = fraw["funders"].explode().dropna().value_counts().head(15).reset_index()
+        f.columns = ["financiador", "n"]
+        if len(f):
+            st.plotly_chart(barra_h(f, "financiador", "n", h=480, cor=T["secondary"]),
+                            width="stretch")
+        else:
+            st.info("Sem dados de financiamento na seleção atual.")
+        st.caption("Análise completa de financiamento na aba **Financiamento**.")
 
     st.divider()
     st.subheader("Impacto em inovação — citações em patentes (The Lens)")
