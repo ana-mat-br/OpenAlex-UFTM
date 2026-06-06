@@ -46,6 +46,10 @@ def fetch_works() -> pd.DataFrame:
             countries = sorted({c for a in auth for c in (a.get("countries") or [])})
             inst_rors = {(i.get("ror") or "").rsplit("/", 1)[-1]
                          for a in auth for i in (a.get("institutions") or []) if i.get("ror")}
+            autores_uftm = [(a.get("author") or {}).get("display_name") for a in auth
+                            if ROR_UFTM in {(i.get("ror") or "").rsplit("/", 1)[-1]
+                                            for i in (a.get("institutions") or [])}
+                            and (a.get("author") or {}).get("display_name")]
             oa = work.get("open_access") or {}
             apc = (work.get("apc_paid") or work.get("apc_list") or {}) or {}
             funder_list = work.get("funders") or []
@@ -82,6 +86,8 @@ def fetch_works() -> pd.DataFrame:
                               for c in (work.get("corresponding_institution_ids") or [])),
                 "is_retracted": bool(work.get("is_retracted")),
                 "is_paratext": bool(work.get("is_paratext")),
+                "autores_uftm": autores_uftm,
+                "n_autores": len(auth),
                 "sdgs": sdgs,
             })
         print(f"  baixados {len(rows)}...")

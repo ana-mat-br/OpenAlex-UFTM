@@ -498,8 +498,30 @@ def render_excelencia():
         s = (base.dropna(subset=["fwci", "field"]).groupby("field")
              .agg(fwci=("fwci", "mean"), n=("id", "count")).reset_index())
         s = s[s["n"] >= 20].sort_values("fwci", ascending=False).head(12)
-        st.plotly_chart(barra_h(s, "field", "fwci", h=360, fmt=".2f"),
-                        width="stretch")
+        s["rotulo"] = s.apply(lambda r: f"{r['field']} ({br(r['n'])})", axis=1)
+        st.plotly_chart(barra_h(s, "rotulo", "fwci", h=380, fmt=".2f"), width="stretch")
+        st.caption("Número entre parênteses = nº de trabalhos (só áreas com ≥ 20). Médias altas "
+                   "em áreas pequenas vêm de poucos artigos muito citados — inclusive "
+                   "megacolaborações de centenas de autores (ex.: física de partículas).")
+
+    st.subheader("Trabalhos por área — o que está por trás de cada número")
+    sel = st.selectbox("Área", s["field"].tolist(), key="area_trabalhos")
+    wl = base[base["field"] == sel].sort_values("fwci", ascending=False)
+    show = wl[["title", "year", "fwci", "cited_by"]].copy()
+    if "autores_uftm" in wl.columns:
+        show["autores"] = wl["autores_uftm"].map(
+            lambda L: ", ".join(map(str, L)) if hasattr(L, "__len__") and len(L) else "—")
+    if "n_autores" in wl.columns:
+        show["n_autores"] = wl["n_autores"]
+    show = show.rename(columns={"title": "Título", "year": "Ano", "fwci": "FWCI",
+                                "cited_by": "Citações", "autores": "Autores UFTM",
+                                "n_autores": "Nº autores"})
+    show["Título"] = show["Título"].astype(str).str.replace(r"<[^>]+>", "", regex=True)
+    st.dataframe(show, hide_index=True, width="stretch", height=420,
+                 column_config={"FWCI": st.column_config.NumberColumn(format="%.2f")})
+    st.caption("Ordenado por FWCI. *Nº autores* alto (centenas) indica **megacolaboração** — a "
+               "UFTM é um entre muitos coautores, mas o FWCI do artigo entra inteiro na média da "
+               "área. Por isso a mediana costuma contar uma história diferente da média.")
 
 
 def render_patentes():
