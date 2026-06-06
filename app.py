@@ -127,11 +127,16 @@ def br(n, dec=0):
     return s.replace(",", "X").replace(".", ",").replace("X", ".")
 
 
+def pct(x, dec=0):
+    """Percentual no padrão brasileiro (vírgula decimal)."""
+    return br(x * 100, dec) + "%"
+
+
 def fig_layout(fig, h=420):
     fig.update_layout(
         paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
         font=dict(color=T["text"], family="Inter"), height=h,
-        margin=dict(l=8, r=24, t=24, b=8), showlegend=False,
+        margin=dict(l=8, r=24, t=24, b=8), showlegend=False, separators=",.",
         xaxis=dict(gridcolor=T["border"], zerolinecolor=T["border"]),
         yaxis=dict(gridcolor=T["border"], zerolinecolor=T["border"]),
         hoverlabel=dict(bgcolor=T["surface"], font_color=T["text"]),
@@ -203,7 +208,7 @@ def grafo_coautoria(nos, arestas, h=560):
     fig = go.Figure([edge, node, rotulos])
     fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
                       height=h, margin=dict(l=0, r=0, t=0, b=0), showlegend=False,
-                      xaxis=dict(visible=False), yaxis=dict(visible=False),
+                      separators=",.", xaxis=dict(visible=False), yaxis=dict(visible=False),
                       hoverlabel=dict(bgcolor=T["surface"], font_color=T["text"]))
     return fig
 
@@ -366,8 +371,8 @@ def render_excelencia():
     c1.metric("FWCI médio", br(fw.mean(), 2) if len(fw) else "—",
               help="1,0 = média mundial do campo. Acima de 1 = acima da média global.")
     c2.metric("% com FWCI > 1", f"{(fw > 1).mean():.0%}" if len(fw) else "—")
-    c3.metric("No top 10% mundial", f"{base['top10'].mean():.1%}" if len(base) else "—")
-    c4.metric("No top 1% mundial", f"{base['top1'].mean():.1%}" if len(base) else "—")
+    c3.metric("No top 10% mundial", pct(base["top10"].mean(), 1) if len(base) else "—")
+    c4.metric("No top 1% mundial", pct(base["top1"].mean(), 1) if len(base) else "—")
     st.caption(
         "**Como ler** · Estes números comparam cada pesquisa da UFTM com a média mundial da "
         "sua área. **FWCI 1,0** = exatamente a média do mundo (acima de 1 é acima da média). "
