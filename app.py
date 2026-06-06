@@ -773,13 +773,16 @@ def render_pesquisadores():
                "inteira). *Produções (UFTM)* = nº desses trabalhos. O **índice h** e o **i10** "
                "são de **carreira** (todo o histórico do pesquisador, em qualquer instituição); "
                "**ORCID** é o identificador único.")
+    ta = ta.sort_values("citacoes_uftm", ascending=False)
     st.plotly_chart(barra_h(ta.head(15), "autor", "citacoes_uftm", h=460), width="stretch")
-    st.dataframe(
-        ta.rename(columns={"autor": "Pesquisador", "works_uftm": "Produções (UFTM)",
-                           "citacoes_uftm": "Citações (na UFTM)",
-                           "h_index": "Índice h (carreira)", "i10": "i10 (carreira)"}),
-        width="stretch", height=420, hide_index=True,
-        column_config={"orcid": st.column_config.LinkColumn("ORCID")})
+    cols = [c for c in ["autor", "citacoes_uftm", "works_uftm", "h_index", "i10", "orcid"]
+            if c in ta.columns]
+    disp = ta[cols].rename(columns={
+        "autor": "Pesquisador", "citacoes_uftm": "Citações (na UFTM)",
+        "works_uftm": "Produções (UFTM)", "h_index": "Índice h (carreira)",
+        "i10": "i10 (carreira)"})
+    st.dataframe(disp, width="stretch", height=420, hide_index=True,
+                 column_config={"orcid": st.column_config.LinkColumn("ORCID")})
 
 
 def render_periodicos():
