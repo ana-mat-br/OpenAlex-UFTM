@@ -641,6 +641,10 @@ def render_ciencia_aberta():
                "grátis para quem lê e para quem publica; **Verde** = cópia gratuita num "
                "repositório; **Ouro** = aberta, mas a universidade paga uma taxa (APC). "
                "**DOAJ** é um selo de revista aberta confiável.")
+    st.caption("As categorias de cor seguem o campo *oa_status* do OpenAlex, baseado no "
+               "**Unpaywall** — esquema ouro/verde/híbrido/bronze de **Piwowar et al. (2018)**; "
+               "os termos *verde* e *ouro* vêm de **Harnad et al. (2004)** e *diamante*, do "
+               "**OA Diamond Journals Study** (cOAlition S / Science Europe, 2021).")
     oa_pt = {"diamond": "Diamante (grátis autor e leitor)", "gold": "Ouro (com APC)",
              "green": "Verde (repositório)", "hybrid": "Híbrido", "bronze": "Bronze",
              "closed": "Fechado"}
