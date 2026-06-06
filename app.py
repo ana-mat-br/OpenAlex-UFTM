@@ -1200,12 +1200,20 @@ def render_explorar():
             if c in f.columns]
     tab = f[cols].copy()
     tab["type"] = tab["type"].map(tipo_pt)
+    if "autores_uftm" in f.columns:
+        trunc = (f["autores_truncados"] if "autores_truncados" in f.columns
+                 else pd.Series(False, index=f.index))
+        tab.insert(1, "autores", [
+            "megacolaboração (100+ autores)" if t
+            else (", ".join(map(str, L)) if hasattr(L, "__len__") and len(L) else "—")
+            for L, t in zip(f["autores_uftm"], trunc)])
     if termo:
         tab = tab[tab["title"].str.contains(termo, case=False, na=False)]
     tab = tab.sort_values(["year", "cited_by"], ascending=[False, False])
     st.dataframe(tab, width="stretch", height=520,
                  column_config={"doi": st.column_config.LinkColumn("DOI"),
                                 "type": "Tipo", "title": "Título", "year": "Ano",
+                                "autores": "Autores (UFTM)",
                                 "is_oa": "Acesso aberto", "fwci": "FWCI",
                                 "cited_by": "Citações", "source": "Revista"})
     st.download_button("Baixar CSV", tab.to_csv(index=False).encode("utf-8"),
