@@ -107,7 +107,8 @@ def load(sig):
 
 @st.cache_data
 def load_obs(sig):
-    nomes = ["bench_instituicoes", "bench_por_ano", "colab_instituicoes",
+    nomes = ["bench_instituicoes", "bench_por_ano",
+             "bench_porte_instituicoes", "bench_porte_por_ano", "colab_instituicoes",
              "colab_paises", "temas_campo", "temas_topicos", "top_autores",
              "scimago_quartis", "rede_autores_nos", "rede_autores_arestas",
              "lens_patentes"]
@@ -543,14 +544,16 @@ def render_ciencia_aberta():
 
 
 def render_benchmarking():
-    cabecalho("Comparação", "A UFTM ao lado das 11 universidades federais de Minas Gerais")
+    cabecalho("Comparação", "A UFTM diante de pares — em Minas Gerais e no Brasil")
     bi = obs.get("bench_instituicoes")
+    bp = obs.get("bench_porte_instituicoes")
     if bi is None:
-        st.info("Rode `python fetch_observatorio.py` para gerar os dados de benchmarking.")
+        st.info("Rode `python fetch_observatorio.py` para gerar os dados de comparação.")
         return
-    st.caption("**Como ler** · Cada barra é uma universidade; a **UFTM aparece em verde** e as "
-               "demais em verde-claro. Escolha o indicador para comparar (quantidade de "
-               "pesquisas, impacto, acesso aberto, etc.).")
+    st.caption("**Como ler** · Cada barra é uma instituição; a **UFTM aparece em verde** e as "
+               "demais em verde-claro. À esquerda, as **federais de Minas Gerais** (comparação "
+               "regional); à direita, **federais de porte semelhante** no Brasil inteiro "
+               "(nº de produções parecido com o da UFTM). Escolha o indicador para comparar.")
     metricas = {
         "Produções": ("works", ",.0f"), "Citações": ("citacoes", ",.0f"),
         "Citações por trabalho": ("cit_por_trabalho", ",.2f"),
@@ -563,36 +566,38 @@ def render_benchmarking():
     }
     metricas = {k: v for k, v in metricas.items() if v[0] in bi.columns}
     escolha = st.selectbox("Métrica", list(metricas.keys()))
-    col, fmt = metricas[escolha]
+    col, fmt0 = metricas[escolha]
 
-    por_periodo = col in ("works", "citacoes")
-    if por_periodo:
-        sl = obs["bench_por_ano"]
-        sl = sl[sl["year"].between(*faixa)]
-        d = sl.groupby("sigla", as_index=False)[col].sum()
-        nota = f"Recorte do período {faixa[0]}–{faixa[1]}."
-    else:
-        d = bi[["sigla", col]].copy()
+    def grupo_df(bi_df, ba_df):
+        if col in ("works", "citacoes"):
+            sl = ba_df[ba_df["year"].between(*faixa)]
+            return sl.groupby("sigla", as_index=False)[col].sum(), fmt0
+        d = bi_df[["sigla", col]].copy()
         if col.endswith("_share"):
             d[col] = d[col] * 100
-            fmt = ".1f"
-        nota = "Total acumulado (não afetado pelo filtro de período)."
-    st.plotly_chart(barra_h(d, "sigla", col, h=400, fmt=fmt, destaque="UFTM"),
-                    width="stretch")
-    ref = ("  Referência: no mundo, por definição ~10% das pesquisas estão no top 10% e ~1% no "
-           "top 1% — acima disso é estar acima da média mundial."
-           if col in ("top10_share", "top1_share") else "")
-    st.caption(nota + ref)
+            return d, ".1f"
+        return d, fmt0
 
-    st.subheader("Evolução temporal")
-    eixo = st.radio("Indicador", ["works", "citacoes"], horizontal=True,
-                    format_func=lambda x: "Produções" if x == "works" else "Citações")
-    ba = obs["bench_por_ano"]
-    am = min(int(ba["year"].max()), ymax)
-    ba = ba[ba["year"].between(am - 9, am)]
-    st.plotly_chart(linhas_tempo(ba, "year", eixo, "sigla", destaque="UFTM", h=380),
-                    width="stretch")
-    st.caption("UFTM em verde; demais federais de MG em cinza.")
+    c1, c2 = st.columns(2)
+    with c1:
+        st.markdown("**Federais de Minas Gerais**")
+        d, f = grupo_df(bi, obs["bench_por_ano"])
+        st.plotly_chart(barra_h(d, "sigla", col, h=440, fmt=f, destaque="UFTM"), width="stretch")
+    with c2:
+        st.markdown("**Federais de porte semelhante (Brasil)**")
+        if bp is not None:
+            d, f = grupo_df(bp, obs["bench_porte_por_ano"])
+            st.plotly_chart(barra_h(d, "sigla", col, h=440, fmt=f, destaque="UFTM"),
+                            width="stretch")
+        else:
+            st.info("Rode `python fetch_observatorio.py` para gerar o grupo de porte.")
+
+    por_periodo = col in ("works", "citacoes")
+    nota = (f"Recorte do período {faixa[0]}–{faixa[1]}." if por_periodo
+            else "Total acumulado (não afetado pelo filtro de período).")
+    ref = ("  Referência: no mundo, ~10% das pesquisas estão no top 10% e ~1% no top 1% — acima "
+           "disso é estar acima da média mundial." if col in ("top10_share", "top1_share") else "")
+    st.caption(nota + ref)
 
 
 def render_colaboracao():

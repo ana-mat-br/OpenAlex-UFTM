@@ -17,12 +17,20 @@ OUT = Path(__file__).parent / "data"
 OUT.mkdir(exist_ok=True)
 
 UFTM = "01av3m334"
-# As 11 universidades federais de Minas Gerais (referência do benchmarking)
+# As 11 universidades federais de Minas Gerais (comparação regional)
 INSTS = {
     "UFTM": "01av3m334", "UFMG": "0176yjw32", "UFU": "04x3wvr31",
     "UFV": "0409dgb37", "UFJF": "04yqw9c44", "UFSJ": "03vrj4p82",
     "UFOP": "056s65p46", "UFLA": "0122bmm03", "UFVJM": "02gen2282",
     "UNIFAL": "034vpja60", "UNIFEI": "00235nr42",
+}
+
+# Federais de PORTE semelhante à UFTM (≈ 8,4k–14,8k produções), Brasil inteiro
+INSTS_PORTE = {
+    "UFTM": "01av3m334", "UFERSA": "05x2svh05", "UNIR": "02842cb31",
+    "UFGD": "0310smc09", "UNIPAMPA": "003qt4p19", "UFCSPA": "00x0nkm13",
+    "UNIVASF": "00devjr72", "UFRB": "057mvv518", "UFFS": "03z9wm572",
+    "UFRA": "02j71c790",
 }
 
 
@@ -41,9 +49,9 @@ def _intl_share(ror: str) -> float:
     return intl / max(total, 1)
 
 
-def benchmarking() -> None:
+def benchmarking_grupo(insts: dict, prefixo: str) -> None:
     linhas, series = [], []
-    for sigla, ror in INSTS.items():
+    for sigla, ror in insts.items():
         inst = Institutions()[f"https://ror.org/{ror}"]
         ss = inst.get("summary_stats", {})
         oa_share = _share_true(ror, "open_access.is_oa")
@@ -65,9 +73,14 @@ def benchmarking() -> None:
             series.append({"sigla": sigla, "year": c["year"],
                            "works": c["works_count"], "citacoes": c["cited_by_count"]})
         time.sleep(0.3)
-    pd.DataFrame(linhas).to_csv(OUT / "bench_instituicoes.csv", index=False)
-    pd.DataFrame(series).to_csv(OUT / "bench_por_ano.csv", index=False)
-    print(f"benchmarking: {len(linhas)} instituições")
+    pd.DataFrame(linhas).to_csv(OUT / f"{prefixo}_instituicoes.csv", index=False)
+    pd.DataFrame(series).to_csv(OUT / f"{prefixo}_por_ano.csv", index=False)
+    print(f"{prefixo}: {len(linhas)} instituições")
+
+
+def benchmarking() -> None:
+    benchmarking_grupo(INSTS, "bench")              # federais de MG
+    benchmarking_grupo(INSTS_PORTE, "bench_porte")  # federais de porte semelhante (Brasil)
 
 
 def colaboracao() -> None:
