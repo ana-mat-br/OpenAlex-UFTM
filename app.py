@@ -176,7 +176,7 @@ def load_obs(sig):
              "colab_paises", "temas_campo", "temas_topicos", "top_autores",
              "scimago_quartis", "rede_autores_nos", "rede_autores_arestas",
              "lens_patentes", "ods_por_instituicao", "portfolio_uftm",
-             "citescore_analogo", "citescore_oficial"]
+             "citescore_analogo", "citescore_oficial", "qualis_estilo"]
     return {n: (pd.read_csv(DATA / f"{n}.csv") if (DATA / f"{n}.csv").exists() else None)
             for n in nomes}
 
@@ -1064,6 +1064,12 @@ def render_qualidade():
             n=("issn", "size"), quartile=("quartile", "first"), sjr=("sjr", "first"))
             .reset_index().merge(cs[["issn", "citescore_analogo"]], on="issn", how="left"))
 
+        qe = obs.get("qualis_estilo")                 # estrato estilo Qualis (aberto)
+        if qe is not None and len(qe):
+            jt = jt.merge(qe[["issn", "estrato", "percentil"]].rename(
+                columns={"estrato": "qualis_estilo", "percentil": "percentil_area"}),
+                on="issn", how="left")
+
         ofi = obs.get("citescore_oficial")            # opcional: planilha Scopus (manual)
         tem_ofi = ofi is not None and len(ofi)
         if tem_ofi:
@@ -1085,16 +1091,19 @@ def render_qualidade():
         jt = jt.sort_values("n", ascending=False).head(25)
         ren = {"source": "Revista", "n": "Produções UFTM", "quartile": "Quartil SJR",
                "sjr": "SJR", "citescore_analogo": "CiteScore (análogo)",
+               "qualis_estilo": "Estilo Qualis", "percentil_area": "Percentil (área)",
                "citescore": "CiteScore (oficial)", "percentil": "Percentil", "qualis": "Qualis"}
         cols = [c for c in ["source", "n", "quartile", "sjr", "citescore_analogo",
+                            "qualis_estilo", "percentil_area",
                             "citescore", "percentil", "qualis"] if c in jt.columns]
         st.dataframe(jt[cols].rename(columns=ren), hide_index=True, width="stretch", height=440)
-        st.caption("**CiteScore (análogo)** = citações médias em 2 anos por trabalho da revista "
-                   "(OpenAlex) — aproximação **aberta** do CiteScore oficial (que usa janela maior "
-                   "e exige Scopus). " + ("As colunas **oficiais** vêm da planilha Scopus "
-                   "importada; o **Qualis** é derivado do percentil do CiteScore (regra da CAPES)."
-                   if tem_ofi else "Para o CiteScore e o estrato **Qualis oficiais**, importe a "
-                   "planilha da Scopus em `data/citescore_oficial.csv` (login institucional)."))
+        st.caption("**CiteScore (análogo)** = citações médias em 2 anos por trabalho (OpenAlex), "
+                   "aproximação **aberta** do CiteScore. **Estilo Qualis** = estrato A1–B4 pelo "
+                   "**percentil dentro da área Scopus** (mesma regra da CAPES, mas sobre a métrica "
+                   "aberta) — é uma **aproximação, não o Qualis oficial**. " +
+                   ("As colunas oficiais vêm da planilha Scopus importada."
+                    if tem_ofi else "O CiteScore/Qualis **oficiais** exigem a planilha paga da "
+                    "Scopus (login) — fora do alcance automático."))
 
 
 def render_idiomas():
@@ -1136,6 +1145,31 @@ def render_idiomas():
     st.plotly_chart(fig, width="stretch")
     st.caption("Percentual das produções de cada ano por idioma. Uma tendência de alta no inglês "
                "costuma indicar maior internacionalização da pesquisa.")
+
+    st.subheader("Publicações em outros idiomas")
+    st.caption("Produções que **não** estão em inglês, português ou espanhol.")
+    outros = fraw[fraw["language"].notna()
+                  & ~fraw["language"].isin(["en", "pt", "es"])].copy()
+    if len(outros):
+        outros["Idioma"] = outros["language"].map(lambda x: IDIOMA_PT.get(x, str(x).upper()))
+        if "autores_uftm" in outros.columns:
+            trunc = (outros["autores_truncados"] if "autores_truncados" in outros.columns
+                     else pd.Series(False, index=outros.index))
+            outros["Autores"] = [
+                "megacolaboração (100+ autores)" if t
+                else (", ".join(map(str, L)) if hasattr(L, "__len__") and len(L) else "—")
+                for L, t in zip(outros["autores_uftm"], trunc)]
+        else:
+            outros["Autores"] = "—"
+        outros["title"] = outros["title"].astype(str).str.replace(r"<[^>]+>", "", regex=True)
+        tab = (outros[["title", "Autores", "year", "Idioma", "doi"]]
+               .rename(columns={"title": "Título", "year": "Ano", "doi": "DOI"})
+               .sort_values("Ano", ascending=False))
+        st.dataframe(tab, hide_index=True, width="stretch", height=420,
+                     column_config={"DOI": st.column_config.LinkColumn("DOI")})
+        st.caption(f"{len(tab)} produções em {outros['Idioma'].nunique()} outros idiomas.")
+    else:
+        st.info("Nenhuma publicação fora de inglês, português ou espanhol no período selecionado.")
 
 
 def render_explorar():
