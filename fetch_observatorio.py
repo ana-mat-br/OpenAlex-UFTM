@@ -125,11 +125,29 @@ def pesquisadores() -> None:
     print(f"pesquisadores: {len(autores)} autores")
 
 
+def ods_perfil() -> None:
+    """Perfil de ODS (share por objetivo) da UFTM e dos pares, para comparação."""
+    insts = dict(INSTS)
+    insts.update(INSTS_PORTE)  # união (UFTM aparece uma vez)
+    rows = []
+    for sigla, ror in insts.items():
+        g = (Works().filter(institutions={"ror": ror})
+             .group_by("sustainable_development_goals.id").get())
+        total = sum(x["count"] for x in g)
+        for x in g:
+            rows.append({"sigla": sigla, "sdg_id": str(x["key"]).rsplit("/", 1)[-1],
+                         "n": x["count"], "share": round(x["count"] / max(total, 1), 5)})
+        time.sleep(0.3)
+    pd.DataFrame(rows).to_csv(OUT / "ods_por_instituicao.csv", index=False)
+    print(f"ods_perfil: {len(insts)} instituições")
+
+
 def main() -> None:
     benchmarking()
     colaboracao()
     temas()
     pesquisadores()
+    ods_perfil()
     print("OK — arquivos gravados em data/")
 
 
