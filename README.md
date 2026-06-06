@@ -10,8 +10,7 @@ colaboração/internacionalização, ODS e impacto social. Visual claro e minima
 
 ## Páginas
 
-Visão Geral · **Impacto científico** (FWCI e percentis mundiais) · **Comparação** (federais de MG + pares de porte semelhante no Brasil) · **Impacto Social** (ODS, financiamento, APC, patentes) · **Ciência
-Aberta** · Colaboração (com rede de coautoria) · ODS · Temas · Pesquisadores · **Onde
+Visão Geral · **Impacto científico** (FWCI e percentis mundiais) · **Comparação** (federais de MG + pares de porte semelhante no Brasil) · **ODS** · **Financiamento** · **Patentes** · **Ciência Aberta** · Colaboração (com rede de coautoria) · ODS · Temas · Pesquisadores · **Onde
 publicamos** · **Qualidade das revistas** (quartis Scimago) · Explorar · **Transparência**
 (glossário + metodologia) — navegação por menu lateral (`streamlit-option-menu`).
 

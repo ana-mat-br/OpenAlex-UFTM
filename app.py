@@ -264,12 +264,12 @@ with st.sidebar:
     faixa = st.slider("Período", ymin, ymax, (max(ymin, ymax - 9), ymax))
 
     st.divider()
-    NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "Impacto Social",
-           "Financiamento", "ODS", "Pesquisadores", "Colaboração", "Temas", "Onde publicamos",
-           "Qualidade das revistas", "Explorar", "Transparência"]
-    ICONS = ["speedometer2", "award", "bar-chart-line", "unlock", "globe-americas",
-             "cash-coin", "bullseye", "person-badge", "diagram-3", "tags", "journal-text",
-             "patch-check", "search", "info-circle"]
+    NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "ODS",
+           "Financiamento", "Patentes", "Pesquisadores", "Colaboração", "Temas",
+           "Onde publicamos", "Qualidade das revistas", "Explorar", "Transparência"]
+    ICONS = ["speedometer2", "award", "bar-chart-line", "unlock", "bullseye",
+             "cash-coin", "lightbulb", "person-badge", "diagram-3", "tags",
+             "journal-text", "patch-check", "search", "info-circle"]
     _override = st.session_state.pop("ir_para", None)  # navegação por link (ex.: rodapé)
     # key dependente do conteúdo+estilo: força o re-render quando ordem/ícones/visual mudam
     _menu_sig = hashlib.md5(("|".join(NAV) + "|".join(ICONS) + "estilo-v3").encode()).hexdigest()[:8]
@@ -407,71 +407,38 @@ def render_excelencia():
                    "Métrica normalizada — total acumulado por instituição (OpenAlex).")
 
 
-def render_impacto_social():
-    cabecalho("Impacto Social", "O alcance da pesquisa da UFTM além da universidade")
-    st.caption("**Como ler** · O alcance da pesquisa fora da universidade: alinhamento aos "
-               "**ODS** (os objetivos da ONU), quanto vem de **financiamento** público/privado, "
-               "o custo de deixar a pesquisa aberta e — quando ativado — quantas **patentes** "
-               "citam a UFTM.")
-    c1, c2, c3, c4 = st.columns(4)
-    n_ods = fsdg["work_id"].nunique()
-    fin = fraw[fraw["n_grants"] > 0] if "n_grants" in fraw else fraw.iloc[0:0]
-    apc_tot = fraw["apc_usd"].dropna().sum() if "apc_usd" in fraw else 0
-    c1.metric("Produções com ODS", br(n_ods),
-              help="Pesquisas ligadas a pelo menos um dos 17 objetivos da ONU, segundo "
-                   "estimativa por inteligência artificial do OpenAlex.")
-    c2.metric("Produções financiadas", br(len(fin)),
-              f"{len(fin)/max(len(fraw),1):.0%} do total")
-    c3.metric("Financiadores distintos",
-              br(fraw["funders"].explode().nunique()) if "funders" in fraw else "—")
-    c4.metric("APC estimado (US$)", br(apc_tot) if apc_tot else "—",
-              help="Custo de publicação (Article Processing Charges) reportado ao OpenAlex.")
-
-    st.subheader("Alinhamento aos ODS")
-    g = fsdg.copy()
-    g["ODS"] = g["sdg_id"].map(lambda x: f"{int(x)}. {ODS_PT.get(int(x), '')}"
-                               if pd.notna(x) else None)
-    po = g.groupby("ODS")["work_id"].nunique().reset_index(name="n")
-    st.plotly_chart(barra_h(po, "ODS", "n", h=560, cor=T["accent"]), width="stretch")
-
-    st.subheader("Principais financiadores")
-    if "funders" in fraw:
-        f = fraw["funders"].explode().dropna().value_counts().head(15).reset_index()
-        f.columns = ["financiador", "n"]
-        if len(f):
-            st.plotly_chart(barra_h(f, "financiador", "n", h=480, cor=T["secondary"]),
-                            width="stretch")
-        else:
-            st.info("Sem dados de financiamento na seleção atual.")
-        st.caption("Análise completa de financiamento na aba **Financiamento**.")
-
-    st.divider()
-    st.subheader("Impacto em inovação — citações em patentes (The Lens)")
+def render_patentes():
+    cabecalho("Patentes", "Quando a pesquisa da UFTM vira inovação")
+    st.caption("**Como ler** · Mostra quantas **patentes no mundo citam** pesquisas da UFTM — "
+               "um sinal de que o conhecimento gerado aqui chega à indústria e gera inovação "
+               "(transferência de tecnologia). Fonte: The Lens.")
     lp = obs.get("lens_patentes")
     if lp is not None and len(lp):
         m1, m2, m3 = st.columns(3)
         m1.metric("Produções citadas por patentes", br(len(lp)))
         m2.metric("Citações em patentes (total)", br(int(lp["n_patentes"].sum())))
-        m3.metric("Citações por patente (média)",
-                  br(lp["n_patentes"].mean(), 1) if len(lp) else "—")
-        top = lp.sort_values("n_patentes", ascending=False).head(12).copy()
-        top["rotulo"] = top["title"].str.slice(0, 60)
-        st.plotly_chart(barra_h(top, "rotulo", "n_patentes", h=440, cor=T["secondary"]),
+        m3.metric("Citações por patente (média)", br(lp["n_patentes"].mean(), 1))
+        st.subheader("Pesquisas da UFTM mais citadas por patentes")
+        top = lp.sort_values("n_patentes", ascending=False).head(15).copy()
+        top["rotulo"] = top["title"].fillna("(sem título)").str.slice(0, 60)
+        st.plotly_chart(barra_h(top, "rotulo", "n_patentes", h=480, cor=T["secondary"]),
                         width="stretch")
-        st.caption("Patentes (mundiais) que citam produções da UFTM — proxy de impacto em "
-                   "inovação e transferência de tecnologia. Fonte: The Lens (base aberta que "
-                   "liga pesquisas a patentes).")
+        st.caption("Cada barra é uma pesquisa da UFTM e o número de patentes (no mundo) que a "
+                   "citam. Quanto mais citações em patentes, maior o uso prático do conhecimento.")
     else:
-        st.info(
-            "**Patentes ainda não ativadas.** Esta seção acende com dados reais quando um "
-            "**token gratuito do The Lens** estiver configurado. Passo a passo:\n"
-            "1. Crie conta em **lens.org** e solicite acesso à **Scholarly API** (uso acadêmico, gratuito).\n"
-            "2. Guarde o token como segredo **`LENS_TOKEN`** no GitHub (Settings → Secrets → Actions) "
-            "e/ou rode localmente: `LENS_TOKEN=seu_token python fetch_lens.py`.\n"
-            "3. Na próxima atualização, patentes que citam a pesquisa da UFTM aparecem aqui.")
-    st.caption("Políticas públicas (Overton) e atenção online (Altmetric) exigem assinatura paga "
-               "e ficam como evolução futura. Declaramos também que algumas medidas de bases "
-               "pagas (como número de visualizações) não têm equivalente em dados abertos.")
+        st.info("As **patentes que citam a pesquisa da UFTM** aparecerão aqui — um indicador de "
+                "impacto em inovação e transferência de tecnologia para a sociedade. "
+                "**Recurso em implantação.**")
+        with st.expander("Para administradores do painel — como ativar"):
+            st.markdown(
+                "Usa o **The Lens** (token acadêmico gratuito):\n"
+                "1. Crie conta em lens.org e solicite acesso à **Scholarly API**.\n"
+                "2. Guarde o token como segredo **`LENS_TOKEN`** no GitHub "
+                "(Settings → Secrets → Actions), ou rode local: "
+                "`LENS_TOKEN=seu_token python fetch_lens.py`.\n"
+                "3. Na próxima atualização mensal, as patentes aparecem nesta aba.")
+    st.caption("Outros sinais de impacto fora da academia — citações em **políticas públicas** "
+               "e **atenção na mídia** — dependem de bases pagas e ficam como evolução futura.")
 
 
 def render_ciencia_aberta():
@@ -688,11 +655,16 @@ def render_colaboracao():
 
 
 def render_ods():
-    cabecalho("ODS", "Como a pesquisa da UFTM se conecta à Agenda 2030 da ONU")
+    cabecalho("ODS", "A contribuição da UFTM para a sociedade, pelos Objetivos da ONU")
     st.caption("**Como ler** · Os **ODS** são os 17 Objetivos de Desenvolvimento Sustentável da "
-               "ONU (saúde, educação, igualdade, clima...). Mostramos com quais a pesquisa da "
-               "UFTM mais se relaciona. A associação é uma **estimativa por inteligência "
-               "artificial** do OpenAlex — uma aproximação, não uma declaração dos autores.")
+               "ONU (saúde, educação, igualdade, clima...) — uma forma de ver o **impacto social** "
+               "da pesquisa. Mostramos com quais a UFTM mais se relaciona. A associação é uma "
+               "**estimativa por inteligência artificial** do OpenAlex — aproximação, não uma "
+               "declaração dos autores.")
+    n_ods = fsdg["work_id"].nunique()
+    c1, c2 = st.columns(2)
+    c1.metric("Produções ligadas a ODS", br(n_ods), f"{n_ods/max(len(fraw),1):.0%} do total")
+    c2.metric("ODS distintos", f"{fsdg['sdg_id'].nunique()} de 17")
     g = fsdg.copy()
     g["ODS"] = g["sdg_id"].map(lambda x: f"{int(x)}. {ODS_PT.get(int(x), '')}"
                                if pd.notna(x) else None)
@@ -983,7 +955,7 @@ def render_transparencia():
         "- **Scimago (SJR):** ranking mundial e gratuito de revistas — define os quartis (Q1–Q4) "
         "da aba *Qualidade das revistas*, ligado pelo código (ISSN) de cada revista.\n"
         "- **The Lens:** base aberta que liga pesquisas a patentes — alimenta as patentes da aba "
-        "*Impacto Social* (quando há credencial de acesso).")
+        "*Patentes* (quando há credencial de acesso).")
 
     st.markdown("**3. Como cada indicador é calculado**")
     st.markdown(
@@ -1070,8 +1042,8 @@ def render_transparencia():
 PAGINAS = {
     "Visão Geral": render_visao_geral, "Impacto científico": render_excelencia,
     "Comparação": render_benchmarking, "Ciência Aberta": render_ciencia_aberta,
-    "Impacto Social": render_impacto_social, "Financiamento": render_financiamento,
-    "ODS": render_ods,
+    "ODS": render_ods, "Financiamento": render_financiamento,
+    "Patentes": render_patentes,
     "Pesquisadores": render_pesquisadores, "Colaboração": render_colaboracao,
     "Temas": render_temas, "Onde publicamos": render_periodicos,
     "Qualidade das revistas": render_qualidade, "Explorar": render_explorar,
