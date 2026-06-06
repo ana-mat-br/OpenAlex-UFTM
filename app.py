@@ -602,7 +602,11 @@ def render_benchmarking():
             else "Total acumulado (não afetado pelo filtro de período).")
     ref = ("  Referência: no mundo, ~10% das pesquisas estão no top 10% e ~1% no top 1% — acima "
            "disso é estar acima da média mundial." if col in ("top10_share", "top1_share") else "")
-    st.caption(nota + ref)
+    cit = ("  As citações aqui vêm do **contador institucional do OpenAlex** (igual para todas "
+           "as universidades, para comparar), maior que a soma trabalho a trabalho da Visão "
+           "Geral — entenda na aba Transparência."
+           if col in ("citacoes", "cit_por_trabalho") else "")
+    st.caption(nota + ref + cit)
 
 
 def render_colaboracao():
@@ -1019,6 +1023,26 @@ def render_transparencia():
         "(muitas nacionais) podem não receber quartil ou impacto.\n"
         "- Indicadores de impacto **não são comparáveis entre bases diferentes** — o OpenAlex e "
         "as bases científicas pagas contam de formas distintas.")
+
+    st.divider()
+    st.subheader("Por que os números de citação variam entre fontes")
+    soma_works = int(raw["cited_by"].sum())
+    bi_t = obs.get("bench_instituicoes")
+    agg_inst = (int(bi_t[bi_t["sigla"] == "UFTM"]["citacoes"].iloc[0])
+                if bi_t is not None and "UFTM" in set(bi_t["sigla"]) else None)
+    st.markdown(
+        "Não existe **um único** número de citações: ele depende de **como se conta** e de "
+        "**quais trabalhos entram**. Veja, todos a partir do OpenAlex, para a UFTM:\n"
+        f"- **Soma trabalho a trabalho** — o que este painel usa na *Visão Geral*: "
+        f"**{br(soma_works)}** citações. É a soma das citações de cada trabalho que você "
+        f"consegue ver na aba *Explorar* (rastreável).\n"
+        + (f"- **Contador agregado da instituição** no OpenAlex — usado na *Comparação*, para "
+           f"medir todas as universidades do mesmo jeito: **{br(agg_inst)}**. É bem maior e "
+           f"sabidamente inflado em relação à soma real dos trabalhos.\n" if agg_inst else "")
+        + "- Outros painéis que também usam OpenAlex (como a **Capivara/UFTM**) chegam a "
+        "números diferentes (~122 mil) por adotarem ainda outro recorte.\n\n"
+        "**Nenhum está “errado”** — são receitas diferentes. Aqui priorizamos a **soma trabalho "
+        "a trabalho** por ser a mais transparente: você enxerga os trabalhos que formam o total.")
 
     if "is_retracted" in fraw.columns:
         st.divider()
