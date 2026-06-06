@@ -363,6 +363,16 @@ def render_excelencia():
     if "fwci" not in fraw.columns:
         st.info("Re-colete os dados (fetch_uftm_ods.py) para habilitar FWCI e percentis.")
         return
+    st.markdown(
+        f"<div style='border-left:2px solid {T['primary']};padding:.15rem 0 .15rem 1.1rem;"
+        f"margin:.1rem 0 1.1rem;color:{T['text_soft']};font-size:1.02rem;line-height:1.6;"
+        f"max-width:840px'>O <b style='color:{T['text']}'>FWCI (Field-Weighted Citation "
+        f"Impact)</b> é o indicador-padrão de impacto **normalizado por área**, definido pelo "
+        f"<b>Snowball Metrics</b> (consórcio internacional de universidades) e adotado pela "
+        f"Scopus/SciVal. Compara as citações de uma pesquisa com a média mundial de pesquisas "
+        f"semelhantes: <b style='color:{T['text']}'>1,0 = a média do mundo</b>; acima de 1, "
+        f"acima da média. A fórmula completa está na aba Transparência.</div>",
+        unsafe_allow_html=True)
     excluir = st.checkbox("Excluir os 2 anos mais recentes (a janela de citações deles ainda "
                           "está incompleta)", value=False)
     base = fraw[fraw["year"] <= faixa[1] - 2] if excluir else fraw
@@ -681,11 +691,18 @@ def render_colaboracao():
 
 def render_ods():
     cabecalho("Impacto Social", "A contribuição da UFTM para a sociedade — pelos Objetivos da ONU (ODS)")
-    st.caption("**Como ler** · Os **ODS** são os 17 Objetivos de Desenvolvimento Sustentável da "
-               "ONU (saúde, educação, igualdade, clima...) — uma forma de ver o **impacto social** "
-               "da pesquisa. Mostramos com quais a UFTM mais se relaciona. A associação é uma "
-               "**estimativa por inteligência artificial** do OpenAlex — aproximação, não uma "
-               "declaração dos autores.")
+    st.markdown(
+        f"<div style='border-left:2px solid {T['primary']};padding:.15rem 0 .15rem 1.1rem;"
+        f"margin:.1rem 0 1.1rem;color:{T['text_soft']};font-size:1.02rem;line-height:1.6;"
+        f"max-width:840px'>Os <b style='color:{T['text']}'>ODS</b> são os 17 <b>Objetivos de "
+        f"Desenvolvimento Sustentável</b> da <b>Agenda 2030</b>, adotada por todos os "
+        f"países-membros da <b>ONU em 2015</b> — um chamado global para acabar com a pobreza, "
+        f"proteger o planeta e garantir paz e prosperidade. Vê-los na pesquisa é uma forma de "
+        f"medir o <b style='color:{T['text']}'>impacto social</b> da universidade.</div>",
+        unsafe_allow_html=True)
+    st.caption("**Como ler** · Mostramos com quais objetivos a pesquisa da UFTM mais se "
+               "relaciona. A associação é uma **estimativa por inteligência artificial** do "
+               "OpenAlex — uma aproximação, não uma declaração dos autores.")
     n_ods = fsdg["work_id"].nunique()
     c1, c2 = st.columns(2)
     c1.metric("Produções ligadas a ODS", br(n_ods), f"{n_ods/max(len(fraw),1):.0%} do total")
