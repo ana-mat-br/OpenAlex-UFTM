@@ -291,9 +291,6 @@ with st.sidebar:
                                   "font-weight": "700"},
         })
 
-    st.divider()
-    st.caption(f"Fonte: OpenAlex · ROR 01av3m334 · dados {ymin}–{ymax}")
-
 fraw, fsdg = aplica_filtros(faixa)
 
 
