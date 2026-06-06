@@ -9,3 +9,7 @@ __pycache__/
 
 # OS
 .DS_Store
+
+# Planilha bruta da Scopus/Elsevier (licenca restrita) — nao versionar
+scopus_sources.xlsx
+data/scopus_sources.xlsx

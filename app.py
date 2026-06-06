@@ -175,7 +175,8 @@ def load_obs(sig):
              "bench_porte_instituicoes", "bench_porte_por_ano", "colab_instituicoes",
              "colab_paises", "temas_campo", "temas_topicos", "top_autores",
              "scimago_quartis", "rede_autores_nos", "rede_autores_arestas",
-             "lens_patentes", "ods_por_instituicao", "portfolio_uftm"]
+             "lens_patentes", "ods_por_instituicao", "portfolio_uftm",
+             "citescore_analogo", "citescore_oficial"]
     return {n: (pd.read_csv(DATA / f"{n}.csv") if (DATA / f"{n}.csv").exists() else None)
             for n in nomes}
 
@@ -1053,6 +1054,47 @@ def render_qualidade():
     st.caption("Usamos o melhor quartil de cada revista no ranking Scimago (edição 2025), "
                "ligando os dados pelo código de cada revista (ISSN). Revistas fora dessas bases "
                "internacionais (muitas nacionais) não recebem quartil.")
+
+    cs = obs.get("citescore_analogo")
+    if cs is not None and len(cs):
+        st.subheader("SJR × CiteScore — principais revistas")
+        cs = cs.copy()
+        cs["issn"] = cs["issn_l"].astype(str).str.replace("-", "", regex=False).str.upper()
+        jt = (m.groupby(["source", "issn"]).agg(
+            n=("issn", "size"), quartile=("quartile", "first"), sjr=("sjr", "first"))
+            .reset_index().merge(cs[["issn", "citescore_analogo"]], on="issn", how="left"))
+
+        ofi = obs.get("citescore_oficial")            # opcional: planilha Scopus (manual)
+        tem_ofi = ofi is not None and len(ofi)
+        if tem_ofi:
+            ofi = ofi.copy()
+            ofi["issn"] = ofi["issn"].astype(str).str.replace("-", "", regex=False).str.upper()
+            jt = jt.merge(ofi, on="issn", how="left")
+
+            def _qualis(p):
+                if pd.isna(p):
+                    return None
+                for lo, lab in [(87.5, "A1"), (75, "A2"), (62.5, "A3"), (50, "A4"),
+                                (37.5, "B1"), (25, "B2"), (12.5, "B3"), (0, "B4")]:
+                    if p >= lo:
+                        return lab
+                return "C"
+            if "percentil" in jt.columns:
+                jt["qualis"] = jt["percentil"].map(_qualis)
+
+        jt = jt.sort_values("n", ascending=False).head(25)
+        ren = {"source": "Revista", "n": "Produções UFTM", "quartile": "Quartil SJR",
+               "sjr": "SJR", "citescore_analogo": "CiteScore (análogo)",
+               "citescore": "CiteScore (oficial)", "percentil": "Percentil", "qualis": "Qualis"}
+        cols = [c for c in ["source", "n", "quartile", "sjr", "citescore_analogo",
+                            "citescore", "percentil", "qualis"] if c in jt.columns]
+        st.dataframe(jt[cols].rename(columns=ren), hide_index=True, width="stretch", height=440)
+        st.caption("**CiteScore (análogo)** = citações médias em 2 anos por trabalho da revista "
+                   "(OpenAlex) — aproximação **aberta** do CiteScore oficial (que usa janela maior "
+                   "e exige Scopus). " + ("As colunas **oficiais** vêm da planilha Scopus "
+                   "importada; o **Qualis** é derivado do percentil do CiteScore (regra da CAPES)."
+                   if tem_ofi else "Para o CiteScore e o estrato **Qualis oficiais**, importe a "
+                   "planilha da Scopus em `data/citescore_oficial.csv` (login institucional)."))
 
 
 def render_idiomas():

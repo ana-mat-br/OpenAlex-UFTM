@@ -17,6 +17,7 @@ import fetch_scimago
 import fetch_colaboracao
 import fetch_lens
 import fetch_aguin_patentes
+import fetch_citescore
 
 OUT = Path(__file__).parent / "data"
 
@@ -34,16 +35,22 @@ def main() -> None:
     except Exception as e:  # mantém o arquivo anterior se o download falhar
         print(f"   Scimago falhou, mantém dados anteriores: {e}")
 
-    print(">> 4/5 rede de coautoria (fetch_colaboracao)")
+    print(">> 4/7 rede de coautoria (fetch_colaboracao)")
     fetch_colaboracao.main()
 
-    print(">> 5/6 patentes The Lens (fetch_lens — precisa de LENS_TOKEN)")
+    print(">> 5/7 CiteScore-análogo das revistas (OpenAlex)")
+    try:
+        fetch_citescore.main()
+    except Exception as e:
+        print(f"   CiteScore-análogo pulado (mantém dados anteriores): {e}")
+
+    print(">> 6/7 patentes The Lens (fetch_lens — precisa de LENS_TOKEN)")
     try:
         fetch_lens.main()
     except Exception as e:
         print(f"   Lens pulado (sem token ou erro): {e}")
 
-    print(">> 6/6 portfólio de patentes da UFTM (AGUIN)")
+    print(">> 7/7 portfólio de patentes da UFTM (AGUIN)")
     try:
         fetch_aguin_patentes.main()
     except Exception as e:
