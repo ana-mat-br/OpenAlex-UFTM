@@ -1,5 +1,7 @@
 # Painel DAAD — UFTM
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20572857.svg)](https://doi.org/10.5281/zenodo.20572857)
+
 Painel web da produção científica da UFTM (Diretoria de Avaliação e Análise de Dados —
 DAAD/PROPPG), com dados do **OpenAlex** (ROR `01av3m334`). Construído em **Streamlit**.
 
@@ -97,6 +99,8 @@ etc.), sujeitos aos termos de cada fonte.
 O repositório tem um `CITATION.cff` (botão "Cite this repository" no GitHub). Ao publicar um
 *release*, o projeto é arquivado no **Zenodo**, que emite um **DOI** citável:
 
-> Fernandes, A. P. *Painel DAAD — Observatório de produção científica da UFTM*.
-> UFTM/PROPPG/DAAD. https://github.com/ana-mat-br/painel-daad ·
-> https://painel-daad.streamlit.app · ORCID 0000-0002-9974-0230
+> Fernandes, A. P. (2026). *Painel DAAD — Observatório de produção científica da UFTM*
+> (v1.0.0). UFTM/PROPPG/DAAD. Zenodo. https://doi.org/10.5281/zenodo.20572857
+
+Repositório: https://github.com/ana-mat-br/painel-daad · Painel:
+https://painel-daad.streamlit.app · ORCID: 0000-0002-9974-0230

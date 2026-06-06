@@ -1388,7 +1388,14 @@ def render_transparencia():
         "- Todos os dados são coletados na **mesma rodada** (um único `fetch_all.py`), no mesmo "
         "instante da base — então as páginas falam do mesmo retrato do OpenAlex.\n"
         "- Todo o código que coleta e monta o painel é **aberto e auditável** em "
-        "[github.com/ana-mat-br/painel-daad](https://github.com/ana-mat-br/painel-daad).")
+        "[github.com/ana-mat-br/painel-daad](https://github.com/ana-mat-br/painel-daad), "
+        "sob licença MIT.")
+
+    st.markdown("**Como citar**")
+    st.markdown(
+        "Fernandes, A. P. (2026). *Painel DAAD — Observatório de produção científica da UFTM* "
+        "(v1.0.0). UFTM/PROPPG/DAAD. Zenodo. "
+        "[https://doi.org/10.5281/zenodo.20572857](https://doi.org/10.5281/zenodo.20572857)")
 
     st.markdown("**5. Limites e cuidados**")
     st.markdown(
