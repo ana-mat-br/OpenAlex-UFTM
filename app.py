@@ -175,7 +175,7 @@ def load_obs(sig):
              "bench_porte_instituicoes", "bench_porte_por_ano", "colab_instituicoes",
              "colab_paises", "temas_campo", "temas_topicos", "top_autores",
              "scimago_quartis", "rede_autores_nos", "rede_autores_arestas",
-             "lens_patentes", "ods_por_instituicao", "portfolio_uftm",
+             "lens_patentes", "portfolio_uftm",
              "citescore_analogo", "citescore_oficial", "qualis_estilo"]
     return {n: (pd.read_csv(DATA / f"{n}.csv") if (DATA / f"{n}.csv").exists() else None)
             for n in nomes}
