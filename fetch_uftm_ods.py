@@ -24,7 +24,9 @@ SELECT = [
     "cited_by_count", "sustainable_development_goals", "primary_location",
     "open_access", "fwci", "citation_normalized_percentile", "primary_topic",
     "authorships", "apc_paid", "apc_list", "funders",
+    "corresponding_institution_ids", "is_retracted", "is_paratext",
 ]
+OPENALEX_ID_UFTM = "I4210106570"
 
 
 def fetch_works() -> pd.DataFrame:
@@ -76,6 +78,10 @@ def fetch_works() -> pd.DataFrame:
                 "apc_usd": apc.get("value_usd"),
                 "funders": funders,
                 "n_grants": len(funder_list),
+                "lidera": any(OPENALEX_ID_UFTM in str(c)
+                              for c in (work.get("corresponding_institution_ids") or [])),
+                "is_retracted": bool(work.get("is_retracted")),
+                "is_paratext": bool(work.get("is_paratext")),
                 "sdgs": sdgs,
             })
         print(f"  baixados {len(rows)}...")

@@ -265,10 +265,10 @@ with st.sidebar:
 
     st.divider()
     NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "Impacto Social",
-           "ODS", "Pesquisadores", "Colaboração", "Temas", "Onde publicamos",
+           "Financiamento", "ODS", "Pesquisadores", "Colaboração", "Temas", "Onde publicamos",
            "Qualidade das revistas", "Explorar", "Transparência"]
     ICONS = ["speedometer2", "award", "bar-chart-line", "unlock", "globe-americas",
-             "bullseye", "person-badge", "diagram-3", "tags", "journal-text",
+             "cash-coin", "bullseye", "person-badge", "diagram-3", "tags", "journal-text",
              "patch-check", "search", "info-circle"]
     _override = st.session_state.pop("ir_para", None)  # navegação por link (ex.: rodapé)
     # key dependente do conteúdo+estilo: força o re-render quando ordem/ícones/visual mudam
@@ -543,6 +543,45 @@ def render_ciencia_aberta():
                "publicação em acesso aberto pago (não inclui acordos transformativos/descontos).")
 
 
+def render_financiamento():
+    cabecalho("Financiamento", "Quem banca a pesquisa da UFTM")
+    if "n_grants" not in fraw.columns or not len(fraw):
+        st.info("Re-colete os dados (fetch_uftm_ods.py).")
+        return
+    fin = fraw[fraw["n_grants"] > 0]
+    naofin = fraw[fraw["n_grants"] == 0]
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Produções financiadas", br(len(fin)),
+              f"{len(fin)/max(len(fraw),1):.0%} do total")
+    c2.metric("Financiadores distintos", br(fraw["funders"].explode().nunique()))
+    fwci_fin = fin["fwci"].dropna().mean() if len(fin) else float("nan")
+    fwci_nao = naofin["fwci"].dropna().mean() if len(naofin) else float("nan")
+    c3.metric("FWCI: financiada × não", f"{br(fwci_fin, 2)} × {br(fwci_nao, 2)}",
+              help="Impacto médio das produções com financiamento declarado vs. sem. "
+                   "Costuma ser maior nas financiadas.")
+    st.caption("**Como ler** · *Financiada* = a produção declara ao menos uma agência de fomento "
+               "(ex.: CAPES, CNPq, FAPEMIG). Nem toda pesquisa registra isso, então é um **piso** "
+               "do que é financiado, não o total.")
+
+    c1, c2 = st.columns(2)
+    with c1:
+        st.subheader("Principais financiadores")
+        f = fraw["funders"].explode().dropna().value_counts().head(15).reset_index()
+        f.columns = ["financiador", "n"]
+        if len(f):
+            st.plotly_chart(barra_h(f, "financiador", "n", h=460, cor=T["accent"]),
+                            width="stretch")
+    with c2:
+        st.subheader("Produção financiada ao longo do tempo")
+        ev = fraw.assign(fin=fraw["n_grants"] > 0).groupby("year")["fin"].mean().reset_index()
+        fig = go.Figure(go.Scatter(x=ev["year"], y=ev["fin"], mode="lines+markers",
+                                   line=dict(color=T["primary"], width=3),
+                                   hovertemplate="%{x}: %{y:.0%}<extra></extra>"))
+        fig = fig_layout(fig, 460)
+        fig.update_yaxes(tickformat=".0%")
+        st.plotly_chart(fig, width="stretch")
+
+
 def render_benchmarking():
     cabecalho("Comparação", "A UFTM diante de pares — em Minas Gerais e no Brasil")
     bi = obs.get("bench_instituicoes")
@@ -610,10 +649,14 @@ def render_colaboracao():
         intl = fraw["is_international"].mean()
         nac = (~fraw["is_international"] & (fraw["n_institutions"] > 1)).mean()
         inst = (fraw["n_institutions"] <= 1).mean()
-        c1, c2, c3 = st.columns(3)
+        c1, c2, c3, c4 = st.columns(4)
         c1.metric("Internacional", f"{intl:.0%}", help="≥ 2 países distintos.")
         c2.metric("Nacional", f"{nac:.0%}", help="Só Brasil, ≥ 2 instituições.")
         c3.metric("Institucional", f"{inst:.0%}", help="Apenas UFTM.")
+        if "lidera" in fraw.columns:
+            c4.metric("UFTM lidera", f"{fraw['lidera'].mean():.0%}",
+                      help="Produções em que a UFTM é a instituição correspondente (autor de "
+                           "contato) — sinal de protagonismo, não apenas participação.")
 
     ci = obs.get("colab_instituicoes")
     if ci is None:
@@ -688,6 +731,24 @@ def render_temas():
     tt = obs["temas_topicos"]
     st.plotly_chart(barra_h(tt.head(20), "topico", "n", h=540, cor=T["secondary"]),
                     width="stretch")
+
+    if "topic" in fraw.columns and len(fraw):
+        st.subheader("Temas emergentes")
+        st.caption("**Como ler** · Assuntos que **mais cresceram**: comparamos os 3 anos mais "
+                   "recentes do período com os 3 anteriores. Barras maiores = temas em ascensão "
+                   "na UFTM.")
+        am = min(int(fraw["year"].max()), ymax)
+        rec = fraw[fraw["year"].between(am - 2, am)]["topic"].value_counts()
+        ant = fraw[fraw["year"].between(am - 5, am - 3)]["topic"].value_counts()
+        df = pd.DataFrame({"recente": rec, "anterior": ant}).fillna(0)
+        df = df[(df["recente"] + df["anterior"]) >= 12]
+        df["cresc"] = df["recente"] - df["anterior"]
+        emg = df.sort_values("cresc", ascending=False).head(12).reset_index()
+        emg.columns = ["topico", "recente", "anterior", "cresc"]
+        if len(emg):
+            st.plotly_chart(barra_h(emg, "topico", "cresc", h=460),
+                            width="stretch")
+            st.caption("Crescimento = nº de produções nos 3 anos recentes menos os 3 anteriores.")
 
 
 def render_pesquisadores():
@@ -962,11 +1023,30 @@ def render_transparencia():
         "- Indicadores de impacto **não são comparáveis entre bases diferentes** — o OpenAlex e "
         "as bases científicas pagas contam de formas distintas.")
 
+    if "is_retracted" in fraw.columns:
+        st.divider()
+        st.subheader("Integridade do acervo")
+        st.markdown("Indicadores de **confiança nos dados** — quanto mais limpo o acervo, mais "
+                    "sólidos os números acima. Período selecionado:")
+        n = max(len(fraw), 1)
+        c1, c2, c3 = st.columns(3)
+        c1.metric("Retratações", br(int(fraw["is_retracted"].sum())),
+                  help="Produções formalmente retiradas/retratadas. Quanto menos, melhor.")
+        c2.metric("Com DOI", f"{fraw['doi'].notna().mean():.0%}",
+                  help="Produções com identificador permanente (DOI). As sem DOI são mais "
+                       "difíceis de rastrear e citar.")
+        if "is_paratext" in fraw.columns:
+            c3.metric("Paratexto", br(int(fraw["is_paratext"].sum())),
+                      help="Itens marcados como paratexto (capas, sumários, expedientes) — não "
+                           "são pesquisa; ficam de fora das análises de impacto.")
+        st.caption("Fonte das marcações: OpenAlex (is_retracted, is_paratext, presença de DOI).")
+
 
 PAGINAS = {
     "Visão Geral": render_visao_geral, "Impacto científico": render_excelencia,
     "Comparação": render_benchmarking, "Ciência Aberta": render_ciencia_aberta,
-    "Impacto Social": render_impacto_social, "ODS": render_ods,
+    "Impacto Social": render_impacto_social, "Financiamento": render_financiamento,
+    "ODS": render_ods,
     "Pesquisadores": render_pesquisadores, "Colaboração": render_colaboracao,
     "Temas": render_temas, "Onde publicamos": render_periodicos,
     "Qualidade das revistas": render_qualidade, "Explorar": render_explorar,
