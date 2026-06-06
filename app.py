@@ -90,6 +90,14 @@ TOPICO_PT = {
     "Physical Education and Sports Studies": "Educação Física e Esportes",
 }
 
+# Códigos de idioma (ISO 639-1) -> PT
+IDIOMA_PT = {
+    "en": "Inglês", "pt": "Português", "es": "Espanhol", "fr": "Francês", "de": "Alemão",
+    "it": "Italiano", "ru": "Russo", "ca": "Catalão", "lv": "Letão", "hr": "Croata",
+    "eo": "Esperanto", "gu": "Guzerate", "nl": "Holandês", "ja": "Japonês", "zh": "Chinês",
+    "la": "Latim", "pl": "Polonês", "uk": "Ucraniano",
+}
+
 st.set_page_config(page_title="Painel DAAD — UFTM", layout="wide",
                    initial_sidebar_state="expanded")
 
@@ -355,10 +363,11 @@ with st.sidebar:
     st.divider()
     NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "Impacto Social",
            "Financiamento", "Patentes", "Pesquisadores", "Colaboração", "Temas",
-           "Onde publicamos", "Qualidade das revistas", "Explorar", "Transparência"]
+           "Onde publicamos", "Qualidade das revistas", "Publicações por língua", "Explorar",
+           "Transparência"]
     ICONS = ["speedometer2", "award", "bar-chart-line", "unlock", "globe-americas",
              "cash-coin", "lightbulb", "person-badge", "diagram-3", "tags",
-             "journal-text", "patch-check", "search", "info-circle"]
+             "journal-text", "patch-check", "translate", "search", "info-circle"]
     _override = st.session_state.pop("ir_para", None)  # navegação por link (ex.: rodapé)
     # key dependente do conteúdo+estilo: força o re-render quando ordem/ícones/visual mudam
     _menu_sig = hashlib.md5(("|".join(NAV) + "|".join(ICONS) + "estilo-v3").encode()).hexdigest()[:8]
@@ -952,6 +961,47 @@ def render_qualidade():
                "internacionais (muitas nacionais) não recebem quartil.")
 
 
+def render_idiomas():
+    cabecalho("Publicações por língua", "Em que idiomas a pesquisa da UFTM é publicada")
+    if "language" not in fraw.columns or not fraw["language"].notna().any():
+        st.info("Re-colete os dados (fetch_uftm_ods.py) para habilitar o idioma.")
+        return
+    st.caption("**Como ler** · O idioma de cada trabalho, segundo o OpenAlex. Publicar em "
+               "**inglês** amplia o alcance internacional; em **português**, aproxima a pesquisa "
+               "da sociedade e da comunidade científica nacional.")
+    lang = fraw["language"].dropna()
+    c1, c2, c3 = st.columns(3)
+    c1.metric("Em inglês", pct((lang == "en").mean()))
+    c2.metric("Em português", pct((lang == "pt").mean()))
+    c3.metric("Idiomas distintos", br(lang.nunique()))
+
+    st.subheader("Distribuição por idioma")
+    comp = (lang.map(lambda x: IDIOMA_PT.get(x, str(x).upper())).value_counts()
+            .head(10).rename_axis("idioma").reset_index(name="n"))
+    st.plotly_chart(barra_h(comp, "idioma", "n", h=420), width="stretch")
+
+    st.subheader("Inglês × português ao longo do tempo")
+    df = fraw.dropna(subset=["language"]).copy()
+    df["grp"] = df["language"].map(lambda x: "Inglês" if x == "en"
+                                   else ("Português" if x == "pt" else "Outros"))
+    tot_ano = df.groupby("year")["language"].size()
+    ev = df.groupby(["year", "grp"]).size().reset_index(name="n")
+    ev["share"] = ev.apply(lambda r: r["n"] / tot_ano[r["year"]], axis=1)
+    cores = {"Inglês": T["primary"], "Português": T["accent"], "Outros": T["faint"]}
+    fig = go.Figure()
+    for g in ["Inglês", "Português", "Outros"]:
+        gg = ev[ev["grp"] == g].sort_values("year")
+        if len(gg):
+            fig.add_trace(go.Scatter(x=gg["year"], y=gg["share"], mode="lines+markers", name=g,
+                                     line=dict(color=cores[g], width=2.5)))
+    fig = fig_layout(fig, 340)
+    fig.update_yaxes(tickformat=".0%")
+    fig.update_layout(showlegend=True, legend=dict(font=dict(color=T["text"], size=10)))
+    st.plotly_chart(fig, width="stretch")
+    st.caption("Percentual das produções de cada ano por idioma. Uma tendência de alta no inglês "
+               "costuma indicar maior internacionalização da pesquisa.")
+
+
 def render_explorar():
     cabecalho("Explorar", "Procure qualquer pesquisa da UFTM pelo título")
     c1, c2, c3 = st.columns([2, 1, 1])
@@ -1188,7 +1238,8 @@ PAGINAS = {
     "Patentes": render_patentes,
     "Pesquisadores": render_pesquisadores, "Colaboração": render_colaboracao,
     "Temas": render_temas, "Onde publicamos": render_periodicos,
-    "Qualidade das revistas": render_qualidade, "Explorar": render_explorar,
+    "Qualidade das revistas": render_qualidade,
+    "Publicações por língua": render_idiomas, "Explorar": render_explorar,
     "Transparência": render_transparencia,
 }
 _forcar = os.environ.get("OBS_FORCE_PAGE")  # seam de teste (sem efeito em produção)
