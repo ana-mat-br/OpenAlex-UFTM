@@ -1039,10 +1039,15 @@ def render_transparencia():
         + (f"- **Contador agregado da instituição** no OpenAlex — usado na *Comparação*, para "
            f"medir todas as universidades do mesmo jeito: **{br(agg_inst)}**. É bem maior e "
            f"sabidamente inflado em relação à soma real dos trabalhos.\n" if agg_inst else "")
-        + "- Outros painéis que também usam OpenAlex (como a **Capivara/UFTM**) chegam a "
-        "números diferentes (~122 mil) por adotarem ainda outro recorte.\n\n"
-        "**Nenhum está “errado”** — são receitas diferentes. Aqui priorizamos a **soma trabalho "
-        "a trabalho** por ser a mais transparente: você enxerga os trabalhos que formam o total.")
+        + "- A **Capivara/UFTM** chega a ~122 mil porque parte de uma **lista diferente de "
+        "trabalhos**: ela ancora no **Currículo Lattes** dos pesquisadores (o que cada um "
+        "declarou) e busca as citações no OpenAlex para essa lista. Como o Lattes capta "
+        "trabalhos que a afiliação no OpenAlex não registra, o total fica maior.\n\n"
+        "**Nenhum está “errado”** — são âncoras diferentes (afiliação no OpenAlex × Currículo "
+        "Lattes). Este painel é automático e sempre atualizado, mas só vê o que tem afiliação "
+        "registrada; a Capivara é mais completa para a produção declarada, mas depende do "
+        "Lattes estar em dia. Aqui priorizamos a **soma trabalho a trabalho** por ser "
+        "rastreável: você enxerga, na aba *Explorar*, os trabalhos que formam o total.")
 
     if "is_retracted" in fraw.columns:
         st.divider()
