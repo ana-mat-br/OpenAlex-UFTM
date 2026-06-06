@@ -4,14 +4,13 @@ Painel web da produção científica da UFTM (Diretoria de Avaliação e Anális
 DAAD/PROPPG), com dados do **OpenAlex** (ROR `01av3m334`). Construído em **Streamlit**.
 
 Reproduz, com fontes abertas, análises no estilo SciVal/Stela Experta: indicadores
-**normalizados** (FWCI, percentis top 1%/10%), benchmarking com as 11 federais de MG,
+**normalizados** (FWCI, percentis top 1%/10%), benchmarking com as federais de MG e com pares de porte semelhante no país,
 colaboração/internacionalização, ODS e impacto social. Visual claro e minimalista
 (verde UFTM #00983A, Inter + Palatino).
 
 ## Páginas
 
-Visão Geral · **Impacto científico** (FWCI e percentis mundiais) · **Comparação** (11
-federais de MG) · **Impacto Social** (ODS, financiamento, APC, patentes) · **Ciência
+Visão Geral · **Impacto científico** (FWCI e percentis mundiais) · **Comparação** (federais de MG + pares de porte semelhante no Brasil) · **Impacto Social** (ODS, financiamento, APC, patentes) · **Ciência
 Aberta** · Colaboração (com rede de coautoria) · ODS · Temas · Pesquisadores · **Onde
 publicamos** · **Qualidade das revistas** (quartis Scimago) · Explorar · **Transparência**
 (glossário + metodologia) — navegação por menu lateral (`streamlit-option-menu`).
