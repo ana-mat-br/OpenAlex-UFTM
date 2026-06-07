@@ -14,6 +14,7 @@ Rodar:  python fetch_bdtd.py
 """
 from __future__ import annotations
 
+import html
 import json
 import time
 import urllib.parse
@@ -26,6 +27,9 @@ OUT = Path(__file__).parent / "data"
 OUT.mkdir(exist_ok=True)
 
 API = "https://bdtd.ibict.br/vufind/api/v1/search"
+OPENALEX = "https://api.openalex.org/works"
+UFTM_ROR = "https://ror.org/01av3m334"
+MAILTO = "anapaula.fernandes@uftm.edu.br"
 INSTITUICAO = "UFTM"           # rótulo da UFTM na faceta institution da BDTD
 PER_PAGE = 100                 # limite máximo por página na API VuFind
 HEADERS = {"User-Agent": "PainelDAAD-UFTM/1.0 (anapaula.fernandes@uftm.edu.br)"}
@@ -113,6 +117,41 @@ def _area_e_palavras(rec: dict) -> tuple[str | None, str]:
     return area, "; ".join(kws[:8])
 
 
+def openalex_dissertacoes() -> None:
+    """Teses/dissertações de autores ligados à UFTM já indexadas no OpenAlex.
+    Em geral têm DOI cunhado pelo repositório de OUTRA instituição (a UFTM não
+    emite DOI) — daí aparecerem aqui e quase nenhuma das ~1.950 da BDTD aparecer.
+    Grava data/openalex_teses_uftm.csv."""
+    flt = f"authorships.institutions.ror:{UFTM_ROR},type:dissertation"
+    sel = "id,doi,title,publication_year,authorships,primary_location"
+    qs = urllib.parse.urlencode({"filter": flt, "per-page": 200,
+                                 "select": sel, "mailto": MAILTO})
+    req = urllib.request.Request(f"{OPENALEX}?{qs}", headers=HEADERS)
+    with urllib.request.urlopen(req, timeout=90) as r:
+        d = json.loads(r.read().decode("utf-8"))
+
+    linhas = []
+    for w in d.get("results", []):
+        auts = [a.get("author", {}).get("display_name")
+                for a in (w.get("authorships") or [])]
+        auts = [a for a in auts if a]
+        fonte = ((w.get("primary_location") or {}).get("source") or {}).get("display_name")
+        titulo = html.unescape(w.get("title") or "").replace("\r", " ").replace("\n", " ")
+        linhas.append({
+            "ano": pd.to_numeric(w.get("publication_year"), errors="coerce"),
+            "titulo": " ".join(titulo.split()).strip(),
+            "autor": "; ".join(auts[:3]),
+            "doi": w.get("doi"),
+            "fonte": fonte,
+            "url": w.get("id"),
+        })
+    df = pd.DataFrame(linhas)
+    df["ano"] = pd.to_numeric(df["ano"], errors="coerce").astype("Int64")
+    df = df.sort_values("ano", ascending=False).reset_index(drop=True)
+    df.to_csv(OUT / "openalex_teses_uftm.csv", index=False)
+    print(f"OpenAlex teses/dissertações UFTM: {len(df)} (com DOI: {df['doi'].notna().sum()})")
+
+
 def main() -> None:
     primeira = _busca(1)
     total = int(primeira.get("resultCount") or 0)
@@ -160,6 +199,8 @@ def main() -> None:
     n_dout = (df["tipo"] == TIPO_PT["doctoralThesis"]).sum()
     print(f"BDTD UFTM: {len(df)} itens ({n_mest} dissertações, {n_dout} teses); "
           f"com DOI: {com_doi}; gravado em data/bdtd_uftm.csv")
+
+    openalex_dissertacoes()
 
 
 if __name__ == "__main__":

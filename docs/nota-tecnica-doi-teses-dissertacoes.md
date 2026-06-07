@@ -6,7 +6,7 @@
 
 **Para:** Pró-Reitoria de Pesquisa e Pós-Graduação (PROPPG)
 
-**Data:** ___/___/2026
+**Data:** _____ / _____ / 2026
 
 ---
 

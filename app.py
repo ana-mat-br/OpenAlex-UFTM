@@ -176,7 +176,8 @@ def load_obs(sig):
              "colab_paises", "temas_campo", "temas_topicos", "top_autores",
              "scimago_quartis", "rede_autores_nos", "rede_autores_arestas",
              "lens_patentes", "portfolio_uftm",
-             "citescore_analogo", "citescore_oficial", "qualis_estilo", "bdtd_uftm"]
+             "citescore_analogo", "citescore_oficial", "qualis_estilo", "bdtd_uftm",
+             "openalex_teses_uftm"]
     return {n: (pd.read_csv(DATA / f"{n}.csv") if (DATA / f"{n}.csv").exists() else None)
             for n in nomes}
 
@@ -1076,6 +1077,27 @@ def render_dissertacoes():
             "repositório) faria estas dissertações e teses passarem a ser **citáveis e "
             "indexáveis** no OpenAlex, DataCite e OpenAIRE — hoje elas só são plenamente "
             "visíveis aqui e na própria BDTD.")
+
+    oa = obs.get("openalex_teses_uftm")
+    if oa is not None and len(oa):
+        st.subheader("Já indexadas no OpenAlex (com DOI)")
+        n_doi = int(oa["doi"].notna().sum())
+        st.caption(
+            f"São apenas **{br(len(oa))}** — as teses/dissertações de autores ligados à UFTM "
+            f"que o OpenAlex enxerga, justamente porque **{br(n_doi)} têm DOI**. Repare na "
+            "coluna *Fonte/repositório*: o DOI quase sempre foi emitido pelo repositório de "
+            "**outra** instituição (UFU, USP, UnB, UNICAMP...), onde a tese foi depositada — "
+            "a UFTM ainda não atribui DOI. É a prova da lacuna: com DOI próprio, as ~1.950 da "
+            "BDTD acima passariam a aparecer aqui também.")
+        disp = oa[["ano", "titulo", "autor", "fonte", "doi"]]
+        st.dataframe(
+            disp, width="stretch", hide_index=True,
+            column_config={
+                "ano": st.column_config.NumberColumn("Ano", format="%d"),
+                "titulo": st.column_config.TextColumn("Título", width="large"),
+                "autor": "Autor(a)", "fonte": "Fonte/repositório",
+                "doi": st.column_config.LinkColumn(
+                    "DOI", display_text=r"https?://(?:dx\.)?doi\.org/(.+)")})
 
 
 def render_pesquisadores():
