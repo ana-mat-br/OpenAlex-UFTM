@@ -13,3 +13,6 @@ __pycache__/
 # Planilha bruta da Scopus/Elsevier (licenca restrita) — nao versionar
 scopus_sources.xlsx
 data/scopus_sources.xlsx
+
+# Debug do coletor Webometrics (HTML bruto salvo quando o parse falha)
+data/_webometrics_raw.html
