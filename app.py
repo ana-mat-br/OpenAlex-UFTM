@@ -176,7 +176,7 @@ def load_obs(sig):
              "colab_paises", "temas_campo", "temas_topicos", "top_autores",
              "scimago_quartis", "rede_autores_nos", "rede_autores_arestas",
              "lens_patentes", "portfolio_uftm",
-             "citescore_analogo", "citescore_oficial", "qualis_estilo"]
+             "citescore_analogo", "citescore_oficial", "qualis_estilo", "bdtd_uftm"]
     return {n: (pd.read_csv(DATA / f"{n}.csv") if (DATA / f"{n}.csv").exists() else None)
             for n in nomes}
 
@@ -383,10 +383,12 @@ with st.sidebar:
             unsafe_allow_html=True)
     NAV = ["Visão Geral", "Impacto científico", "Comparação", "Ciência Aberta", "Impacto Social",
            "Financiamento", "Patentes", "Pesquisadores", "Colaboração", "Temas",
+           "Dissertações e Teses",
            "Onde publicamos", "Qualidade das revistas", "Publicações por língua", "Explorar",
            "Transparência"]
     ICONS = ["speedometer2", "award", "bar-chart-line", "unlock", "globe-americas",
              "cash-coin", "lightbulb", "person-badge", "diagram-3", "tags",
+             "mortarboard",
              "journal-text", "patch-check", "translate", "search", "info-circle"]
     _override = st.session_state.pop("ir_para", None)  # navegação por link (ex.: rodapé)
     # key dependente do conteúdo+estilo: força o re-render quando ordem/ícones/visual mudam
@@ -466,7 +468,8 @@ def render_visao_geral():
         st.caption("**Teses e dissertações aparecem pouco** aqui não porque a UFTM produza "
                    "poucas, mas porque costumam ficar só em repositórios (BDTD, repositório "
                    "institucional) **sem DOI** — e o OpenAlex capta sobretudo o que tem DOI. "
-                   "Como aumentar essa cobertura está na aba *Transparência*.")
+                   "Veja o quadro completo (~1.950 itens) na aba *Dissertações e Teses*; como "
+                   "aumentar a cobertura está na aba *Transparência*.")
     with c2:
         st.subheader("Citações por ano")
         cit = fr.groupby("year")["cited_by"].sum().reset_index()
@@ -956,6 +959,116 @@ def render_temas():
             st.plotly_chart(barra_h(emg, "topico", "cresc", h=460),
                             width="stretch")
             st.caption("Crescimento = nº de produções nos 3 anos recentes menos os 3 anteriores.")
+
+
+def render_dissertacoes():
+    cabecalho("Dissertações e Teses", "A pós-graduação da UFTM, direto da BDTD")
+    bd = obs.get("bdtd_uftm")
+    if bd is None or "tipo" not in bd.columns:
+        st.info("Rode `python fetch_bdtd.py` para coletar as teses e dissertações da BDTD.")
+        return
+    st.markdown(
+        f"<div style='border-left:2px solid {T['primary']};padding:.15rem 0 .15rem 1.1rem;"
+        f"margin:.1rem 0 1.6rem;color:{T['text_soft']};font-size:1.05rem;line-height:1.65;"
+        f"max-width:760px'>"
+        f"A produção da pós-graduação <i>stricto sensu</i> da UFTM — que <b>quase não aparece "
+        f"nas demais abas</b> porque as teses ficam no repositório <b>sem DOI</b> e o OpenAlex "
+        f"capta sobretudo o que tem DOI. Aqui a fonte é a <b style='color:{T['text']}'>BDTD</b> "
+        f"(Biblioteca Digital Brasileira de Teses e Dissertações, do IBICT), que é a base "
+        f"completa. Veja a <i>Metodologia</i> ao final.</div>",
+        unsafe_allow_html=True)
+
+    bd = bd.copy()
+    bd["ano"] = pd.to_numeric(bd["ano"], errors="coerce")
+    bdf = bd[bd["ano"].between(faixa[0], faixa[1])]
+    MEST, DOUT = "Dissertação (mestrado)", "Tese (doutorado)"
+    n_mest = int((bdf["tipo"] == MEST).sum())
+    n_dout = int((bdf["tipo"] == DOUT).sum())
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Total no período", br(len(bdf)))
+    c2.metric("Dissertações (mestrado)", br(n_mest))
+    c3.metric("Teses (doutorado)", br(n_dout))
+    c4.metric("Com Currículo Lattes", pct(bdf["lattes"].notna().mean()) if len(bdf) else "—",
+              help="Parte dos registros em que o autor traz o link do Lattes — permite cruzar "
+                   "com o currículo e desambiguar pessoas.")
+    st.caption("**Como ler** · Cada item é uma dissertação (mestrado) ou tese (doutorado) "
+               "defendida na UFTM, segundo a BDTD. O filtro de **período** (barra lateral) vale "
+               "para esta aba toda.")
+
+    c1, c2 = st.columns(2)
+    with c1:
+        st.subheader("Defesas por ano")
+        py = (bdf.groupby(["ano", "tipo"]).size().reset_index(name="n"))
+        fig = go.Figure()
+        for tp, cor in [(MEST, T["primary"]), (DOUT, T["secondary"])]:
+            d = py[py["tipo"] == tp]
+            fig.add_bar(x=d["ano"], y=d["n"], name=tp, marker_color=cor,
+                        hovertemplate="%{x}: %{y}<extra>" + tp + "</extra>")
+        fig.update_layout(barmode="stack")
+        fig = fig_layout(fig, 360)
+        fig.update_layout(showlegend=True, legend=dict(orientation="h", y=-0.18, x=0))
+        st.plotly_chart(fig, width="stretch")
+    with c2:
+        st.subheader("Por grande área (CNPq)")
+        ar = (bdf["area_cnpq"].dropna().value_counts().rename_axis("area")
+              .reset_index(name="n"))
+        if len(ar):
+            st.plotly_chart(barra_h(ar.head(12), "area", "n", h=360), width="stretch")
+        st.caption("Área informada na BDTD (classificação CNPq). Parte dos registros mais "
+                   "antigos não traz a área — por isso a soma aqui é menor que o total.")
+
+    st.subheader("Explorar teses e dissertações")
+    b1, b2 = st.columns([3, 2])
+    busca = b1.text_input("Buscar por título, autor ou palavra-chave",
+                          key="busca_bdtd", placeholder="ex.: enfermagem, educação, nome do autor")
+    tsel = b2.selectbox("Tipo", ["Todos", MEST, DOUT], key="tipo_bdtd")
+    tab = bdf.copy()
+    if tsel != "Todos":
+        tab = tab[tab["tipo"] == tsel]
+    if busca:
+        q = busca.strip().lower()
+        campos = (tab["titulo"].fillna("") + " " + tab["autor"].fillna("") + " "
+                  + tab["palavras_chave"].fillna("") + " " + tab["area_cnpq"].fillna(""))
+        tab = tab[campos.str.lower().str.contains(q, regex=False)]
+    st.caption(f"{br(len(tab))} de {br(len(bdf))} itens no período.")
+    disp = tab[["ano", "tipo", "titulo", "autor", "area_cnpq", "palavras_chave", "url", "lattes"]]
+    st.dataframe(
+        disp, width="stretch", height=460, hide_index=True,
+        column_config={
+            "ano": st.column_config.NumberColumn("Ano", format="%d"),
+            "tipo": "Tipo", "titulo": st.column_config.TextColumn("Título", width="large"),
+            "autor": "Autor(a)", "area_cnpq": "Grande área (CNPq)",
+            "palavras_chave": "Palavras-chave",
+            "url": st.column_config.LinkColumn("Texto completo", display_text="Abrir"),
+            "lattes": st.column_config.LinkColumn("Lattes", display_text="Lattes")})
+    st.download_button("Baixar esta seleção (CSV)", disp.to_csv(index=False).encode("utf-8"),
+                       "uftm_teses_dissertacoes.csv", "text/csv", key="dl_bdtd")
+
+    with st.expander("Metodologia — de onde vêm estes dados"):
+        st.markdown(
+            "**Fonte.** Os dados vêm da **BDTD — Biblioteca Digital Brasileira de Teses e "
+            "Dissertações**, mantida pelo **IBICT** dentro do Programa Brasileiro de Acesso "
+            "Aberto. A BDTD reúne, em um só lugar, as teses e dissertações defendidas nas "
+            "instituições brasileiras — colhendo automaticamente os repositórios de cada uma "
+            "(no caso da UFTM, o `bdtd.uftm.edu.br`).\n\n"
+            "**Como coletamos.** Pelo **API aberto e gratuito** da BDTD (VuFind REST), filtrando "
+            f"pela instituição `UFTM`, página a página (de 100 em 100). Sem chave nem custo. "
+            "O coletor é o `fetch_bdtd.py`, que grava `data/bdtd_uftm.csv` — atualizado junto "
+            "com os demais dados do painel.\n\n"
+            "**O que captamos de cada item.** Título · tipo (mestrado/doutorado) · autor(a) "
+            "(com link do **Currículo Lattes**, quando a BDTD traz) · ano · idioma · **grande "
+            "área (CNPq)** · palavras-chave · resumo · link para o texto completo.\n\n"
+            "**Por que esta aba é separada do resto do painel.** As outras abas usam o "
+            "**OpenAlex**, que indexa sobretudo o que tem **DOI**. As teses da UFTM estão no "
+            "repositório **sem DOI** — por isso o OpenAlex enxerga só cerca de **19** delas, "
+            f"contra as **{br(len(bd))}** que existem na BDTD. Esta aba mostra o quadro completo.\n\n"
+            "**Limitações.** A grande área (CNPq) só consta de parte dos registros (os mais "
+            "antigos podem não trazê-la); contamos o **autor primário** (o orientando); o ano é "
+            "o de defesa/depósito informado na BDTD.\n\n"
+            "**Recomendação.** Atribuir **DOI** às teses (via **DataCite/IBICT**, integrado ao "
+            "repositório) faria estas dissertações e teses passarem a ser **citáveis e "
+            "indexáveis** no OpenAlex, DataCite e OpenAIRE — hoje elas só são plenamente "
+            "visíveis aqui e na própria BDTD.")
 
 
 def render_pesquisadores():
@@ -1465,7 +1578,8 @@ PAGINAS = {
     "Impacto Social": render_ods, "Financiamento": render_financiamento,
     "Patentes": render_patentes,
     "Pesquisadores": render_pesquisadores, "Colaboração": render_colaboracao,
-    "Temas": render_temas, "Onde publicamos": render_periodicos,
+    "Temas": render_temas, "Dissertações e Teses": render_dissertacoes,
+    "Onde publicamos": render_periodicos,
     "Qualidade das revistas": render_qualidade,
     "Publicações por língua": render_idiomas, "Explorar": render_explorar,
     "Transparência": render_transparencia,
