@@ -1156,6 +1156,13 @@ def render_dissertacoes():
                 f"referência de escala: {reftxt}. As demais federais de MG e as de mesmo porte "
                 "não constam com DOI próprio de tese na Crossref (usam DataCite ou não atribuem) "
                 "— por isso não aparecem aqui. Os ~1.950 itens da UFTM na BDTD seguem com DOI 0.")
+            st.caption(
+                "**O DOI em teses ajuda em outras frentes — não nos rankings de periódicos.** "
+                "Atribuir DOI melhora a **visibilidade web (Webometrics)** — efeito direto —, a "
+                "**descoberta e a citação no Google Scholar** e a atribuição correta de autoria. "
+                "Já os rankings baseados em artigos da Web of Science/Scopus (**CWUR, THE, QS**) "
+                "**não contam teses**: ali o efeito é indireto ou nulo. Ex.: a recente subida da "
+                "UFU no CWUR veio de **artigos em periódicos**, não do DOI nas teses.")
 
 
 def render_pesquisadores():
