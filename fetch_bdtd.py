@@ -152,29 +152,31 @@ def openalex_dissertacoes() -> None:
     print(f"OpenAlex teses/dissertações UFTM: {len(df)} (com DOI: {df['doi'].notna().sum()})")
 
 
-# Pares para o "choque de realidade": instituições onde as teses de autores da
-# UFTM acabaram depositadas (logo, com DOI) — quanto cada uma tem no OpenAlex.
-PARES = {"UFTM": "01av3m334", "UFU": "04x3wvr31", "USP": "036rp1748",
-         "UnB": "02xfp8v59", "UNICAMP": "04wffgt70"}
+CROSSREF = "https://api.crossref.org/prefixes"
+# Prefixos Crossref que cada instituição usa para registrar DOI de teses/disserta-
+# ções (o DOI resolve para o repositório dela, ex.: teses.usp.br). A UFTM não tem.
+PREFIXOS_TESE = {"USP": "10.11606", "UNICAMP": "10.47749",
+                 "UFU": "10.14393", "UnB": "10.26512"}
 
 
-def openalex_dissertacoes_pares() -> None:
-    """Nº de teses/dissertações (type:dissertation) indexadas no OpenAlex por
-    instituição — contraste da UFTM (≈0 com DOI próprio) com pares que atribuem
-    DOI de rotina. Grava data/openalex_teses_pares.csv."""
-    linhas = []
-    for sigla, ror in PARES.items():
-        qs = urllib.parse.urlencode({
-            "filter": f"authorships.institutions.ror:https://ror.org/{ror},type:dissertation",
-            "per-page": 1, "mailto": MAILTO})
-        req = urllib.request.Request(f"{OPENALEX}?{qs}", headers=HEADERS)
+def crossref_teses_doi() -> None:
+    """Nº de teses/dissertações COM DOI registradas na Crossref, por instituição
+    (filtro type:dissertation sob o prefixo de cada uma — onde os DOIs de fato
+    moram). A UFTM entra com 0: não possui prefixo nem DOIs. É a métrica honesta
+    do hábito de atribuir DOI (o OpenAlex subconta muito). Grava
+    data/crossref_teses_doi.csv."""
+    linhas = [{"sigla": "UFTM", "prefixo": "—", "n": 0}]
+    for sigla, p in PREFIXOS_TESE.items():
+        qs = urllib.parse.urlencode({"filter": "type:dissertation",
+                                     "rows": 0, "mailto": MAILTO})
+        req = urllib.request.Request(f"{CROSSREF}/{p}/works?{qs}", headers=HEADERS)
         with urllib.request.urlopen(req, timeout=60) as r:
-            n = json.loads(r.read().decode("utf-8"))["meta"]["count"]
-        linhas.append({"sigla": sigla, "ror": ror, "n": int(n)})
+            n = json.loads(r.read().decode("utf-8"))["message"]["total-results"]
+        linhas.append({"sigla": sigla, "prefixo": p, "n": int(n)})
         time.sleep(0.3)
     df = pd.DataFrame(linhas).sort_values("n", ascending=False).reset_index(drop=True)
-    df.to_csv(OUT / "openalex_teses_pares.csv", index=False)
-    print("OpenAlex dissertações por instituição: "
+    df.to_csv(OUT / "crossref_teses_doi.csv", index=False)
+    print("Crossref teses com DOI: "
           + ", ".join(f"{r.sigla} {r.n}" for r in df.itertuples()))
 
 
@@ -227,7 +229,7 @@ def main() -> None:
           f"com DOI: {com_doi}; gravado em data/bdtd_uftm.csv")
 
     openalex_dissertacoes()
-    openalex_dissertacoes_pares()
+    crossref_teses_doi()
 
 
 if __name__ == "__main__":
