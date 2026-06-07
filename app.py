@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import hashlib
 import os
+import re
 from pathlib import Path
 
 import pandas as pd
@@ -1098,6 +1099,30 @@ def render_dissertacoes():
                 "autor": "Autor(a)", "fonte": "Fonte/repositório",
                 "doi": st.column_config.LinkColumn(
                     "DOI", display_text=r"https?://(?:dx\.)?doi\.org/(.+)")})
+
+        PREFIXO_INST = {"10.14393": "UFU", "10.11606": "USP",
+                        "10.26512": "UnB", "10.47749": "UNICAMP"}
+
+        def _emissor(doi):
+            if not isinstance(doi, str):
+                return None
+            m = re.search(r"doi\.org/(10\.\d+)", doi)
+            return PREFIXO_INST.get(m.group(1), "outras") if m else "outras"
+
+        cont = oa["doi"].map(_emissor).dropna().value_counts()
+        if len(cont):
+            partes = [f"{br(int(q))} da {nome}" for nome, q in cont.items()]
+            lista = ", ".join(partes[:-1]) + (f" e {partes[-1]}" if len(partes) > 1
+                                              else partes[0])
+            sem = int(oa["doi"].isna().sum())
+            st.caption(
+                f"**De onde vêm esses DOIs:** dos **{br(n_doi)}** com DOI, "
+                f"**nenhum é da UFTM** — {lista}"
+                + (f" (e {br(sem)} sem DOI)" if sem else "")
+                + ". O DOI é sempre do repositório da instituição onde a tese foi depositada; "
+                "o destaque da **UFU** (federal vizinha, em Uberlândia) é justamente o de uma "
+                "universidade que já atribui DOI de rotina às suas teses — o que a UFTM ainda "
+                "não faz.")
 
 
 def render_pesquisadores():
