@@ -178,7 +178,7 @@ def load_obs(sig):
              "scimago_quartis", "rede_autores_nos", "rede_autores_arestas",
              "lens_patentes", "portfolio_uftm",
              "citescore_analogo", "citescore_oficial", "qualis_estilo", "bdtd_uftm",
-             "openalex_teses_uftm", "crossref_teses_doi"]
+             "openalex_teses_uftm", "openalex_diss_pares"]
     return {n: (pd.read_csv(DATA / f"{n}.csv") if (DATA / f"{n}.csv").exists() else None)
             for n in nomes}
 
@@ -1124,32 +1124,28 @@ def render_dissertacoes():
                 "universidade que já atribui DOI de rotina às suas teses — o que a UFTM ainda "
                 "não faz.")
 
-        pares = obs.get("crossref_teses_doi")
+        pares = obs.get("openalex_diss_pares")
         if pares is not None and len(pares):
-            outras = (pares[pares["sigla"] != "UFTM"].sort_values("n", ascending=False))
-            cit = " · ".join(f"<b>{r.sigla}: {br(int(r.n))}</b>" for r in outras.itertuples())
-            st.markdown(
-                f"<div style='border-left:3px solid {T['primary']};background:{T['green_tint']};"
-                f"padding:.7rem 1rem;margin:1rem 0;border-radius:4px;color:{T['text']};"
-                f"font-size:.95rem;line-height:1.6'>"
-                f"<b>Comparação com instituições pares.</b> A UFTM tem <b>{br(len(bd))}</b> teses "
-                f"e dissertações na BDTD, mas <b>nenhuma com DOI</b>. As instituições onde esses "
-                f"trabalhos acabaram depositados registram DOI para as suas teses — e já "
-                f"acumulam, na Crossref: {cit}; a UFTM, <b>0</b>. Os totais incluem o acervo "
-                f"histórico e refletem também o <b>porte</b> de cada instituição; o ponto não é o "
-                f"volume, e sim que essas universidades atribuem DOI às teses e a UFTM ainda "
-                f"não.</div>",
-                unsafe_allow_html=True)
-            comp = (pares.sort_values("n", ascending=False)
-                    .rename(columns={"sigla": "Instituição"}))
-            st.plotly_chart(barra_h(comp, "Instituição", "n", h=240, destaque="UFTM"),
-                            width="stretch")
-            st.caption("Teses/dissertações **com DOI** registradas na Crossref, por instituição "
-                       "(filtro `type:dissertation` sob o prefixo de cada uma — onde os DOIs de "
-                       "fato moram). Inclui o acervo histórico; é uma comparação do **hábito de "
-                       "atribuir DOI**, não um ranking de produção. A UFTM não possui prefixo "
-                       "DOI. (O OpenAlex subconta bastante: mostraria ~9 mil para a USP, contra "
-                       "as ~149 mil reais.)")
+            st.markdown("**Comparação com pares — federais de MG e de mesmo porte**")
+            st.caption("Critério-padrão do painel: comparar a UFTM com as **federais de Minas "
+                       "Gerais** e com **instituições de mesmo porte**. Métrica: teses indexadas "
+                       "no OpenAlex (`type:dissertation`) — proxy de teses descobríveis/com DOI. "
+                       "O OpenAlex subconta bastante, então os números são baixos para todas; "
+                       "vale o padrão relativo, não o valor absoluto.")
+            cc1, cc2 = st.columns(2)
+            for cont, grupo in ((cc1, "Federais de MG"), (cc2, "Mesmo porte")):
+                with cont:
+                    st.markdown(f"<div style='font-size:.85rem;color:{T['muted']};"
+                                f"margin:.2rem 0'>{grupo}</div>", unsafe_allow_html=True)
+                    g = (pares[pares["grupo"] == grupo].rename(columns={"sigla": "Instituição"}))
+                    st.plotly_chart(barra_h(g, "Instituição", "n", h=300, destaque="UFTM"),
+                                    width="stretch")
+            st.caption("Leitura honesta: nesta métrica a UFTM **não fica atrás** dos pares de "
+                       "mesmo porte (a maioria também indexa pouco) e fica no meio entre as de "
+                       "MG — só **UFU e UFV** se destacam, por já atribuírem DOI às teses. Mas "
+                       "atenção: a UFTM mantém ~1.950 teses na BDTD com **DOI próprio = 0**; as "
+                       "que aparecem aqui têm DOI de terceiros. O alvo a seguir são as vizinhas "
+                       "que já fazem (UFU, UFV).")
 
 
 def render_pesquisadores():
