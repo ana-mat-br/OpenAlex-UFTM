@@ -178,6 +178,43 @@ def openalex_diss_grupos() -> None:
           f"({len(linhas)} linhas)")
 
 
+CROSSREF = "https://api.crossref.org/prefixes"
+# Prefixos Crossref VERIFICADOS de teses (o DOI resolve ao repositório da instituição).
+# Federais de MG que mintam DOI próprio de tese + referências de escala. A maioria das
+# federais (UFTM incluída) NÃO mineta tese via Crossref (usa DataCite ou não atribui).
+PREFIXOS_TESE = {
+    "UFU":     (["10.14393"], "Federais de MG"),
+    "UFV":     (["10.47328"], "Federais de MG"),
+    "UFJF":    (["10.34019", "10.22195"], "Federais de MG"),
+    "USP":     (["10.11606"], "Referência (escala)"),
+    "UNICAMP": (["10.47749"], "Referência (escala)"),
+    "UnB":     (["10.26512"], "Referência (escala)"),
+}
+
+
+def crossref_teses_doi() -> None:
+    """Nº REAL de teses/dissertações com DOI na Crossref, por prefixo verificado de
+    cada instituição (type:dissertation). Complementa o OpenAlex (que subconta) com
+    o número exato de quem atribui DOI próprio. UFTM entra com 0. Grava
+    data/crossref_teses_doi.csv."""
+    def _cnt(p: str) -> int:
+        qs = urllib.parse.urlencode({"filter": "type:dissertation", "rows": 0, "mailto": MAILTO})
+        req = urllib.request.Request(f"{CROSSREF}/{p}/works?{qs}", headers=HEADERS)
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return int(json.loads(r.read().decode("utf-8"))["message"]["total-results"])
+
+    linhas = [{"sigla": "UFTM", "grupo": "Federais de MG", "n": 0}]
+    for sigla, (prefs, grupo) in PREFIXOS_TESE.items():
+        n = 0
+        for p in prefs:
+            n += _cnt(p)
+            time.sleep(0.2)
+        linhas.append({"sigla": sigla, "grupo": grupo, "n": n})
+    (pd.DataFrame(linhas).sort_values("n", ascending=False)
+     .to_csv(OUT / "crossref_teses_doi.csv", index=False))
+    print("Crossref teses (real): " + ", ".join(f"{r['sigla']} {r['n']}" for r in linhas))
+
+
 def main() -> None:
     primeira = _busca(1)
     total = int(primeira.get("resultCount") or 0)
@@ -228,6 +265,7 @@ def main() -> None:
 
     openalex_dissertacoes()
     openalex_diss_grupos()
+    crossref_teses_doi()
 
 
 if __name__ == "__main__":

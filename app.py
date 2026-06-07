@@ -178,7 +178,7 @@ def load_obs(sig):
              "scimago_quartis", "rede_autores_nos", "rede_autores_arestas",
              "lens_patentes", "portfolio_uftm",
              "citescore_analogo", "citescore_oficial", "qualis_estilo", "bdtd_uftm",
-             "openalex_teses_uftm", "openalex_diss_pares"]
+             "openalex_teses_uftm", "openalex_diss_pares", "crossref_teses_doi"]
     return {n: (pd.read_csv(DATA / f"{n}.csv") if (DATA / f"{n}.csv").exists() else None)
             for n in nomes}
 
@@ -1140,12 +1140,22 @@ def render_dissertacoes():
                     g = (pares[pares["grupo"] == grupo].rename(columns={"sigla": "Instituição"}))
                     st.plotly_chart(barra_h(g, "Instituição", "n", h=300, destaque="UFTM"),
                                     width="stretch")
-            st.caption("Leitura honesta: nesta métrica a UFTM **não fica atrás** dos pares de "
-                       "mesmo porte (a maioria também indexa pouco) e fica no meio entre as de "
-                       "MG — só **UFU e UFV** se destacam, por já atribuírem DOI às teses. Mas "
-                       "atenção: a UFTM mantém ~1.950 teses na BDTD com **DOI próprio = 0**; as "
-                       "que aparecem aqui têm DOI de terceiros. O alvo a seguir são as vizinhas "
-                       "que já fazem (UFU, UFV).")
+        cr = obs.get("crossref_teses_doi")
+        if cr is not None and len(cr):
+            st.markdown("**Pelo Crossref — números reais de teses com DOI**")
+            mg = (cr[cr["grupo"] == "Federais de MG"].rename(columns={"sigla": "Instituição"}))
+            st.plotly_chart(barra_h(mg, "Instituição", "n", h=240, destaque="UFTM"),
+                            width="stretch")
+            ref = cr[cr["grupo"] == "Referência (escala)"].set_index("sigla")["n"]
+            reftxt = " · ".join(f"{s} {br(int(n))}"
+                                for s, n in ref.sort_values(ascending=False).items())
+            st.caption(
+                "Contagem **real** na Crossref (`type:dissertation` pelo prefixo de cada "
+                "instituição — onde os DOIs de fato moram). Entre as **federais de MG**, "
+                "**UFU, UFV e UFJF** já atribuem DOI próprio às teses; a UFTM, **0**. Para "
+                f"referência de escala: {reftxt}. As demais federais de MG e as de mesmo porte "
+                "não constam com DOI próprio de tese na Crossref (usam DataCite ou não atribuem) "
+                "— por isso não aparecem aqui. Os ~1.950 itens da UFTM na BDTD seguem com DOI 0.")
 
 
 def render_pesquisadores():
