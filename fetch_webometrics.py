@@ -19,6 +19,7 @@ from __future__ import annotations
 
 import re
 import socket
+import sys
 import unicodedata
 import urllib.error
 import urllib.request
@@ -30,8 +31,10 @@ import pandas as pd
 OUT = Path(__file__).parent / "data"
 OUT.mkdir(exist_ok=True)
 
-# Página de ranking do Brasil (ordenada por rank mundial). Se mudar, troque aqui.
-BRAZIL_URL = "https://www.webometrics.info/en/Latin_America/Brazil"
+# Página de ranking do Brasil (ordenada por rank mundial). Sem "www" (o subdomínio
+# www.webometrics.info é NXDOMAIN). Confirme a URL exata no seu navegador e ajuste
+# aqui se necessário — ou rode passando um HTML salvo:  python fetch_webometrics.py pagina.html
+BRAZIL_URL = "https://webometrics.info/en/Latin_America/Brazil"
 HEADERS = {
     "User-Agent": ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
                    "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"),
@@ -125,8 +128,13 @@ def _dump(html: str) -> Path:
     return p
 
 
-def main() -> None:
-    html = _baixa(BRAZIL_URL)
+def main(fonte: str | None = None) -> None:
+    # fonte = caminho de um HTML salvo do navegador (validação offline); senão, baixa.
+    if fonte and Path(fonte).exists():
+        print(f"(lendo HTML local: {fonte})")
+        html = Path(fonte).read_text(encoding="utf-8", errors="replace")
+    else:
+        html = _baixa(BRAZIL_URL)
     parser = _Tabelas()
     parser.feed(html)
     tab = _tabela_ranking(parser.tabelas)
@@ -186,4 +194,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1] if len(sys.argv) > 1 else None)
