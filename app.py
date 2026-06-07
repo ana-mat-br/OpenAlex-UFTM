@@ -1008,6 +1008,13 @@ def render_dissertacoes():
         fig = fig_layout(fig, 360)
         fig.update_layout(showlegend=True, legend=dict(orientation="h", y=-0.18, x=0))
         st.plotly_chart(fig, width="stretch")
+        st.caption("**Atenção — cobertura.** Estes números refletem só o que está "
+                   "**cadastrado na BDTD** (depositado no repositório `bdtd.uftm.edu.br` e "
+                   "exposto ao IBICT). A UFTM **titula mais** do que aparece aqui: parte das "
+                   "defesas não chega a ser depositada, ou há atraso/embargo entre a defesa e o "
+                   "cadastro. A diferença para o número real de titulações (controle da "
+                   "PROPPG / Plataforma Sucupira-CAPES) **precisa ser averiguada** — é uma lacuna "
+                   "de cobertura do repositório, não da produção da pós-graduação.")
     with c2:
         st.subheader("Por grande área (CNPq)")
         ar = (bdf["area_cnpq"].dropna().value_counts().rename_axis("area")
