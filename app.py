@@ -178,7 +178,7 @@ def load_obs(sig):
              "scimago_quartis", "rede_autores_nos", "rede_autores_arestas",
              "lens_patentes", "portfolio_uftm",
              "citescore_analogo", "citescore_oficial", "qualis_estilo", "bdtd_uftm",
-             "openalex_teses_uftm"]
+             "openalex_teses_uftm", "openalex_teses_pares"]
     return {n: (pd.read_csv(DATA / f"{n}.csv") if (DATA / f"{n}.csv").exists() else None)
             for n in nomes}
 
@@ -1123,6 +1123,32 @@ def render_dissertacoes():
                 "o destaque da **UFU** (federal vizinha, em Uberlândia) é justamente o de uma "
                 "universidade que já atribui DOI de rotina às suas teses — o que a UFTM ainda "
                 "não faz.")
+
+        pares = obs.get("openalex_teses_pares")
+        if pares is not None and len(pares):
+            p = pares.set_index("sigla")["n"]
+            outras = p.drop("UFTM", errors="ignore").sort_values(ascending=False)
+            cit = " · ".join(f"<b>{s}: {br(int(n))}</b>" for s, n in outras.items())
+            st.markdown(
+                f"<div style='border-left:3px solid {T['primary']};background:{T['green_tint']};"
+                f"padding:.7rem 1rem;margin:1rem 0;border-radius:4px;color:{T['text']};"
+                f"font-size:.95rem;line-height:1.6'>"
+                f"<b>Comparação com instituições pares.</b> A UFTM tem <b>{br(len(bd))}</b> teses "
+                f"e dissertações na BDTD, mas <b>nenhuma com DOI próprio</b> — por isso quase não "
+                f"aparece no OpenAlex (<b>{br(int(p.get('UFTM', 0)))}</b>, e mesmo essas com DOI "
+                f"de terceiros). Nas instituições onde esses trabalhos foram depositados, o "
+                f"OpenAlex indexa bem mais teses, porque elas atribuem DOI: {cit}. Parte da "
+                f"diferença vem do <b>porte</b> de cada instituição; mas é a ausência de DOI que, "
+                f"sozinha, mantém as teses da UFTM fora desses índices.</div>",
+                unsafe_allow_html=True)
+            comp = (pares.sort_values("n", ascending=False)
+                    .rename(columns={"sigla": "Instituição"}))
+            st.plotly_chart(barra_h(comp, "Instituição", "n", h=240, destaque="UFTM"),
+                            width="stretch")
+            st.caption("Teses/dissertações indexadas no OpenAlex por instituição (`type:"
+                       "dissertation`). A indexação depende da atribuição de DOI; os números "
+                       "também refletem o porte de cada instituição — a comparação é ilustrativa, "
+                       "não um ranking de produção.")
 
 
 def render_pesquisadores():

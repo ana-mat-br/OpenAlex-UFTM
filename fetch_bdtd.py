@@ -152,6 +152,32 @@ def openalex_dissertacoes() -> None:
     print(f"OpenAlex teses/dissertações UFTM: {len(df)} (com DOI: {df['doi'].notna().sum()})")
 
 
+# Pares para o "choque de realidade": instituições onde as teses de autores da
+# UFTM acabaram depositadas (logo, com DOI) — quanto cada uma tem no OpenAlex.
+PARES = {"UFTM": "01av3m334", "UFU": "04x3wvr31", "USP": "036rp1748",
+         "UnB": "02xfp8v59", "UNICAMP": "04wffgt70"}
+
+
+def openalex_dissertacoes_pares() -> None:
+    """Nº de teses/dissertações (type:dissertation) indexadas no OpenAlex por
+    instituição — contraste da UFTM (≈0 com DOI próprio) com pares que atribuem
+    DOI de rotina. Grava data/openalex_teses_pares.csv."""
+    linhas = []
+    for sigla, ror in PARES.items():
+        qs = urllib.parse.urlencode({
+            "filter": f"authorships.institutions.ror:https://ror.org/{ror},type:dissertation",
+            "per-page": 1, "mailto": MAILTO})
+        req = urllib.request.Request(f"{OPENALEX}?{qs}", headers=HEADERS)
+        with urllib.request.urlopen(req, timeout=60) as r:
+            n = json.loads(r.read().decode("utf-8"))["meta"]["count"]
+        linhas.append({"sigla": sigla, "ror": ror, "n": int(n)})
+        time.sleep(0.3)
+    df = pd.DataFrame(linhas).sort_values("n", ascending=False).reset_index(drop=True)
+    df.to_csv(OUT / "openalex_teses_pares.csv", index=False)
+    print("OpenAlex dissertações por instituição: "
+          + ", ".join(f"{r.sigla} {r.n}" for r in df.itertuples()))
+
+
 def main() -> None:
     primeira = _busca(1)
     total = int(primeira.get("resultCount") or 0)
@@ -201,6 +227,7 @@ def main() -> None:
           f"com DOI: {com_doi}; gravado em data/bdtd_uftm.csv")
 
     openalex_dissertacoes()
+    openalex_dissertacoes_pares()
 
 
 if __name__ == "__main__":
